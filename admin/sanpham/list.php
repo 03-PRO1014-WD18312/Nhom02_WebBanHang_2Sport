@@ -1,0 +1,44 @@
+<main class="container">
+    <?php include "boxleft.php" ?>
+    <article>
+        <div class="list-product">
+            <h1>DANH SÁCH SẢN PHẨM</h1>
+            <form action="">
+                <input type="text" placeholder="Tìm tên sản phẩm">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh</th>
+                    <th>Giá gốc</th>
+                    <th>Giá giảm</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>Ball 2023</td>
+                    <td><img src="../assets/images/logo-web.svg" alt=""></td>
+                    <td>100,000 VND</td>
+                    <td>90,000 VND</td>
+                    <td>Hiển thị</td>
+                    <td>
+                        <a href="<?= $suasp ?>"><input type="button" value="Sửa"></a>   
+                        <a href="<?= $hard_delete ?>"><input type="button" value="Xóa cứng" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
+                        <a href="<?= $soft_delete ?>"><input type="button" value="Xóa mềm"></a>
+                    </td>
+                </tr>
+            </table>
+            <div class="action">
+                <a href="">THÊM DANH MỤC</a>
+                <a href="">CHỌN TẤT CẢ</a>
+                <a href="">BỎ CHỌN</a>
+                <a href="">XÓA CÁC MỤC ĐÃ CHỌN</a>
+            </div>
+        </div>
+    </article>
+</main>
