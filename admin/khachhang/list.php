@@ -14,7 +14,6 @@
                 <thead>
                     <tr>
                         <th>#STT</th>
-                        <th>Chọn</th>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Image</th>
@@ -25,56 +24,45 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><input class="check-box" type="checkbox" name="" id=""></td>
                         <td>andinhle</td>
                         <td>andinhle163@gmail.com</td>
                         <td><img src="../assets/images/anhkh.jpeg" alt="ảnh khách hàng"></td>
                         <td>admin</td>
                         <td>
                             <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                            <a href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><input class="check-box" type="checkbox" name="" id=""></td>
                         <td>andinhle</td>
                         <td>andinhle163@gmail.com</td>
                         <td><img src="../assets/images/anhkh.jpeg" alt="ảnh khách hàng"></td>
                         <td>admin</td>
                         <td>
                             <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                            <a href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td><input class="check-box" type="checkbox" name="" id=""></td>
                         <td>andinhle</td>
                         <td>andinhle163@gmail.com</td>
                         <td><img src="../assets/images/anhkh.jpeg" alt="ảnh khách hàng"></td>
                         <td>admin</td>
                         <td>
                             <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                            <a href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td><input class="check-box" type="checkbox" name="" id=""></td>
                         <td>andinhle</td>
                         <td>andinhle163@gmail.com</td>
                         <td><img src="../assets/images/anhkh.jpeg" alt="ảnh khách hàng"></td>
                         <td>admin</td>
                         <td>
                             <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                            <a href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
                 </tbody>
             </table>  
-            <button>
-                Xoá các mục đã chọn
-            </button>
         </article>
 </main>
