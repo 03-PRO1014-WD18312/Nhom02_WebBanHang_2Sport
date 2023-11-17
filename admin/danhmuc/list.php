@@ -22,8 +22,7 @@
                     <td><img src="../assets/images/logo-web.svg" alt=""></td>
                     <td>
                         <a href="<?= $suasp ?>"><input type="button" value="Sửa"></a>   
-                        <a href="<?= $hard_delete ?>"><input type="button" value="Xóa cứng" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
-                        <a href="<?= $soft_delete ?>"><input type="button" value="Xóa mềm"></a>
+                        <a href="<?= $hard_delete ?>"><input type="button" value="Xóa" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
                     </td>
                 </tr>
             </table>

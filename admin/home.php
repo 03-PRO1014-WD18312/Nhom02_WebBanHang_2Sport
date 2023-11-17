@@ -35,8 +35,8 @@
                     </span>
                 </div>
             </div>
-            <!-- <div class="bieudo">
+            <div class="bieudo">
                 <img src="../assets/images/bieudo.svg" alt="">
-            </div> -->
+            </div>
         </article>
 </main>

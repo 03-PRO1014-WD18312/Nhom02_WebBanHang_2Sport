@@ -2,7 +2,7 @@
     <?php include "boxleft.php" ?>
     <article>
         <div class="add-product">
-            <h1>THÊM MỚI SẢN PHẨM</h1>
+            <h1>SỬA SẢN PHẨM</h1>
             <form action="">
                 <div class="form-add">
                     <div class="left">
@@ -71,7 +71,7 @@
                 </div>
                 <label for="">MÔ TẢ</label><br>
                 <textarea name="" id="des" cols="50" rows="10"></textarea>
-                <input type="submit" value="THÊM SẢN PHẨM">
+                <input type="submit" value="SỬA SẢN PHẨM">
                 <input type="reset" value="NHẬP LẠI">
             </form>
         </div>

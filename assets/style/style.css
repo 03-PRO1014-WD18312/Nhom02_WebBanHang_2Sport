@@ -306,10 +306,11 @@ article{
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
-    background-color: #428bca;
+    background-color: var(--bg-color-main);
     color: #fff;
-    border: 1px solid #357ebd;
+    border: 1px solid var(--bg-color-main);
     border-radius: 4px;
+    margin-bottom: 5px;
 }
 .add-product form .right .choose-size{
     display: grid;
