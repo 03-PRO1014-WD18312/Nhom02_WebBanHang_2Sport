@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="bieudo">
-                    <img src="../assets/images/bieudo.svg" alt="">
+                    <img src="../assets/img/bieudo.svg" alt="">
                 </div>
             </article>
-        </main>
+    </main>
