@@ -566,3 +566,203 @@ main .slide-banner img{
 .form-cart .navigation a:hover{
     background-color: var(--bg-color-black-ins);
 }
+/* forget pass */
+.form-forgetpass{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-forgetpass h1{
+    width: 1360px;
+    padding: 10px;
+    text-align: center;
+    color: var(--bg-color-ins);
+    font-size: 30px;
+    background: linear-gradient(180deg, #BD0000 0%, #5A0000 100%);
+    border-radius: 10px 10px 0px 0px;
+}
+.form-forgetpass form{
+    width: 1360px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid #7A7A7A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-forgetpass form input[type="text"]{
+    width: 700px;
+    height: 40px;
+    border: 2px solid #7A7A7A;
+    padding: 10px;
+    font-size: 17px;
+    margin-bottom: 40px;
+}
+.form-forgetpass form input[type="button"]{
+    padding: 12px 40px;
+    border-radius: 25px;
+    background: #D70019;
+    color: var(--bg-color-ins);
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+}
+.form-forgetpass form input[type="button"]:hover{
+    background-color: var(--bg-color-black-ins);
+}
+/* end forget pass */
+/* detai */
+.form-detail{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-detail h1{
+    width: 1360px;
+    padding: 10px;
+    text-align: center;
+    color: var(--bg-color-ins);
+    font-size: 30px;
+    background: linear-gradient(180deg, #BD0000 0%, #5A0000 100%);
+    border-radius: 10px 10px 0px 0px;
+}
+.form-detail .infor-product{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    margin-top: 40px;
+}
+.form-detail .infor-product .left .image-product{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.form-detail .infor-product .left .image-product .pose-image{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-detail .infor-product .left .color-product{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.form-detail .infor-product .left .color-product div{
+    width: 60px;
+    height: 35px;
+    border: 0.5px solid var(--bg-color-black-ins);
+}
+.form-detail .infor-product .right .name-product{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.form-detail .infor-product .right .price{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+.form-detail .infor-product .right .price .discount{
+    color: #FF0000;
+    font-size: 22px;
+    font-weight: bold;
+}
+.form-detail .infor-product .right .price .origin-price{
+    color: #575757;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration-line: line-through;
+}
+.form-detail .infor-product .right .price .percent{
+    color: var(--bg-color-ins);
+    background-color: var(--bg-color-black-ins);
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 7px;
+}
+.form-detail .infor-product .right .price .percent:hover{
+    background-color: #FF0000;
+}
+.form-detail .infor-product .right .choose-color{
+    font-weight: bold;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.form-detail .infor-product .right .choose-color div{
+    width: 40px;
+    height: 20px;
+    border: 0.5px solid var(--bg-color-black-ins);
+}
+.form-detail .infor-product .right .choose-size{
+    font-weight: bold;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 70px;
+}
+.form-detail .infor-product .right .choose-size div{
+    border: 0.5px solid var(--bg-color-black-ins);
+    text-align: center;
+    padding: 3px 10px;
+}
+.form-detail .infor-product .right .choose-size div:hover{
+    color: var(--bg-color-ins);
+    background-color: #FF0000;
+    border: 0.5px solid var(--bg-color-ins);
+}
+.form-detail .infor-product .right form{
+    display: flex;
+    gap: 30px;
+}
+.form-detail .infor-product .right form input[type="button"]{
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: none;
+    color: var(--bg-color-ins);
+    font-weight: bold;
+}
+.form-detail .infor-product .right form .addToCart{
+    background-color: #FF0000;
+}
+.form-detail .infor-product .right form .buy{
+    background-color: var(--bg-color-black-ins);
+}
+.form-detail .detail-product{
+    width: 1360px;
+    margin-bottom: 20px;
+}
+.form-detail .detail-product h2{
+    height: 50px;
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--bg-color-main);
+    border-bottom: 1px solid var(--bg-color-main);
+    margin: 20px 0;
+}
+.form-detail .detail-product .name{
+    margin-bottom: 10px;
+}
+.form-detail .comment{
+    width: 1360px;
+}
+.form-detail .comment h2{
+    height: 50px;
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--bg-color-main);
+    border-bottom: 1px solid var(--bg-color-main);
+    margin-bottom: 20px;
+}
+.form-detail .comment table{
+    width: 100%;
+}
+/* end detail */

@@ -394,13 +394,22 @@ tbody img{
 }
 .add-product form .right .upload-image .pose-image .custom-file-input{
     display: inline-block;
-    padding: 6px 12px;
+    padding: 5px 30px;
     cursor: pointer;
     background-color: var(--bg-color-main);
     color: #fff;
     border: 1px solid var(--bg-color-main);
     border-radius: 4px;
-    margin-bottom: 5px;
+    margin-bottom: 9px;
+}
+.add-product form .right .upload-image .main-image .main-file-input{
+    display: inline-block;
+    padding: 60px 90px;
+    cursor: pointer;
+    background-color: var(--bg-color-main);
+    color: #fff;
+    border: 1px solid var(--bg-color-main);
+    border-radius: 4px;
 }
 .add-product form .right .choose-size{
     display: grid;

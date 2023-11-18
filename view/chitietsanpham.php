@@ -49,17 +49,15 @@
     <div class="detail-product">
         <h2>Chi tiết sản phẩm</h2>
         <div class="infor">
-            <p>Tên:Giày Kamito</p>
-            <p>Form giày:Bề ngang</p>
-            <p>Lối chơi phù hợp:Kỹ thuật, Cầm trịch</p>
-            <p>Mặt sân phù hợp:Sân cỏ nhân tạo</p>
-            <p>Mô tả:Giày Kamito TA11 AS là mẫu giày sân cỏ nhân tạo được thương hiệu Kamito thiết kế với sự góp ý của chính 
-                        Tuấn Anh. Như mọi mẫu giày "Signature" của các cầu thủ khác, Kamito TA11 mang những đặc trưng riêng biệt và 
-                        đầy thú vị liên quan đến đội trưởng của CLB Hoàng Anh Gia Lai - Nguyễn Tuấn Anh.</p>
+            <div class="name"><b>Tên: </b>Giày Kamito</div>
+            <div class="des"><b>Mô tả: </b>Giày Kamito TA11 AS là mẫu giày sân cỏ nhân tạo được thương hiệu Kamito thiết kế với sự góp ý của chính 
+                                            Tuấn Anh. Như mọi mẫu giày "Signature" của các cầu thủ khác, Kamito TA11 mang những đặc trưng riêng biệt và 
+                                            đầy thú vị liên quan đến đội trưởng của CLB Hoàng Anh Gia Lai - Nguyễn Tuấn Anh.</div>
+            
         </div>
     </div>
     <div class="comment">
-
+        <h2>Bình luận</h2>
     </div>
     <div class="similar-product">
 
