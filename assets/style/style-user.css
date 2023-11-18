@@ -566,3 +566,64 @@ main .slide-banner img{
 .form-cart .navigation a:hover{
     background-color: var(--bg-color-black-ins);
 }
+
+/* Go check đơn hàng  */
+.check-cart-wp{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.check-cart-ins{
+    max-width: 100%;
+    background-color: var(--bg-color-ins);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.check-cart-ins h3{
+    width: 650px;
+    height: 50px;
+    border-radius: 10px 10px 0px 0px;
+    background: linear-gradient(180deg, #BD0000 0%, #5A0000 100%);
+    text-align: center;
+    line-height: 50px;
+    color: var(--bg-color-ins);
+}
+.form-check-cart{
+    padding: 20px;
+}
+.form-check-cart .in-phone{
+    width: 100%;
+}
+.form-check-cart .in-phone, .in-captcha .check-captcha{
+    height: 45px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    padding-left: 10px;
+    outline: none;
+}
+.captcha-wp{
+    padding: 20px 0px;
+}
+.in-captcha{
+    display: flex;
+    border: 1px solid #d9d9d9;
+    justify-content: space-between;
+    width: 70%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.in-captcha .check-captcha{
+    border: none;
+    width: 100%;
+}
+.code-captcha{
+    border: none;
+    outline: none;
+    padding: 0px 20px;
+    font-size: 20px;
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-ins);
+}
+.captcha-wp span{
+    font-weight: 600;
+}
