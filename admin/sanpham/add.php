@@ -36,17 +36,18 @@
                     <div class="right">
                         <div class="upload-image">
                             <div class="pose-image">
-                                <label for="fileInput1" class="custom-file-input">Ảnh phụ 1</label>
+                                <label for="fileInput1" class="custom-file-input"><i class="fa-solid fa-upload"></i></label>
                                 <input type="file" id="fileInput1" style="display: none;" />
-                                <label for="fileInput2" class="custom-file-input">Ảnh phụ 2</label>
+                                <label for="fileInput2" class="custom-file-input"><i class="fa-solid fa-upload"></i></label>
                                 <input type="file" id="fileInput2" style="display: none;" />
-                                <label for="fileInput3" class="custom-file-input">Ảnh phụ 3</label>
+                                <label for="fileInput3" class="custom-file-input"><i class="fa-solid fa-upload"></i></label>
                                 <input type="file" id="fileInput3" style="display: none;" />
-                                <label for="fileInput4" class="custom-file-input">Ảnh phụ 4</label>
+                                <label for="fileInput4" class="custom-file-input"><i class="fa-solid fa-upload"></i></label>
                                 <input type="file" id="fileInput4" style="display: none;" />
                             </div>
-                            <div class="main-img">
-                                <input type="file">
+                            <div class="main-image">
+                                <label for="fileInput5" class="main-file-input">Ảnh phụ 1</label>
+                                <input type="file" id="fileInput5" style="display: none;">
                             </div>
                         </div>
                         <label for="">MÀU</label>
