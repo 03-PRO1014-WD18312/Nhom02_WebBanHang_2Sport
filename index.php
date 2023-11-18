@@ -12,6 +12,12 @@ if (isset($_GET['act']) && ($_GET['act'] != '')){
         case "cart" :
             require 'view/cart.php';
         break;
+        case "detail" :
+            require 'view/chitietsanpham.php';
+        break;
+        case "quenmatkhau" :
+            require 'view/quenmatkhau.php';
+        break;
     default:
         include 'view/home.php';
         break;
