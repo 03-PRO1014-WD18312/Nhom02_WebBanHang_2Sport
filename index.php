@@ -12,6 +12,9 @@ if (isset($_GET['act']) && ($_GET['act'] != '')){
         case "cart" :
             require 'view/cart.php';
         break;
+        case 'checkdh':
+            require 'view/checkdh.php';
+            break;
         case "detail" :
             require 'view/chitietsanpham.php';
         break;
