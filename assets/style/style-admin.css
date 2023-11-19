@@ -389,31 +389,39 @@ tbody img{
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
-.add-product form .right .upload-image .pose-image input[type="file"]{
-    display: none;
-}
+
 .add-product form .right .upload-image .pose-image .custom-file-input{
     display: inline-block;
-    padding: 5px 30px;
+    padding: 3px 5px;
     cursor: pointer;
     background-color: var(--bg-color-main);
     color: #fff;
     border: 1px solid var(--bg-color-main);
     border-radius: 4px;
     margin-bottom: 9px;
+    font-size: 15px;
+}
+.add-product form .right .upload-image .pose-image .custom-file-input i{
+    margin-right: 5px;
+    margin-bottom: 3px;
 }
 .add-product form .right .upload-image .main-image .main-file-input{
     display: inline-block;
-    padding: 60px 90px;
+    padding: 70px 120px;
     cursor: pointer;
     background-color: var(--bg-color-main);
     color: #fff;
     border: 1px solid var(--bg-color-main);
     border-radius: 4px;
+    font-size: 18px;
+}
+.add-product form .right .upload-image .main-image .main-file-input i{
+    margin-right: 5px;
+    margin-bottom: 3px;
 }
 .add-product form .right .choose-size{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 .add-product form .right .choose-size input[type="number"]{
     width: 50%;
@@ -477,8 +485,8 @@ tbody img{
     color: var(--bg-color-black-ins);
     background-color: var(--bg-color-while-ins);
     position: absolute;
-    right: 714px;
-    top: 1px;
+    right: 748px;
+    top: 1.5px;
 }
 .list-product table{
     width: 100%;

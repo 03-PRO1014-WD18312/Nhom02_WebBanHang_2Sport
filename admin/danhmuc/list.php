@@ -15,19 +15,26 @@
                     <th>Ảnh</th>
                     <th>Hành động</th>
                 </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>1</td>
-                    <td>Ball 2023</td>
-                    <td><img src="../assets/images/logo-web.svg" alt=""></td>
-                    <td>
-                        <a href="<?= $suasp ?>"><input type="button" value="Sửa"></a>   
-                        <a href="<?= $hard_delete ?>"><input type="button" value="Xóa" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
-                    </td>
-                </tr>
+                
+                <?php foreach($listCate as $row){
+                    extract($row);
+                    $sualoai = "index.php?act=suadm&id=$id";
+                    $xoaloai = "index.php?act=deletedm&id=$id";
+                ?>  
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><?= $id ?></td>
+                        <td><?= $name ?></td>
+                        <td><img src="../assets/img/<?= $img ?>" alt=""></td>
+                        <td>
+                            <a href="<?= $sualoai ?>"><input type="button" value="Sửa"></a>   
+                            <a href="<?= $xoaloai ?>"><input type="button" value="Xóa" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
+                        </td>
+                    </tr>
+                <?php } ?>
             </table>
             <div class="action">
-                <a href="">THÊM DANH MỤC</a>
+                <a href="index.php?act=adddm">THÊM DANH MỤC</a>
                 <a href="">CHỌN TẤT CẢ</a>
                 <a href="">BỎ CHỌN</a>
                 <a href="">XÓA CÁC MỤC ĐÃ CHỌN</a>
