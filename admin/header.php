@@ -16,7 +16,7 @@
                 <div class="bars">
                     <i class="fa-solid fa-bars"></i>
                 </div>
-                <a href=""><img class="logo" src="../assets/images/logo-web.svg" alt=""></a>
+                <a href=""><img class="logo" src="../assets/img/logo-web.svg" alt=""></a>
                 <marquee class="marquee-wel" behavior="" direction=""><i class="fa-solid fa-bolt-lightning"></i> CHÀO MỪNG BẠN ĐẾN VỚI TRANG QUẢN TRỊ</marquee>
                 <div class="profile-out">
                     <a href=""><i class="fa-solid fa-user-tie"></i> Admin</a>
