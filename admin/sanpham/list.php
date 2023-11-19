@@ -18,20 +18,25 @@
                     <th>Trạng thái</th>
                     <th>Hành động</th>
                 </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>1</td>
-                    <td>Ball 2023</td>
-                    <td><img src="../assets/images/logo-web.svg" alt=""></td>
-                    <td>100,000 VND</td>
-                    <td>90,000 VND</td>
-                    <td>Hiển thị</td>
-                    <td>
-                        <a href="<?= $suasp ?>"><input type="button" value="Sửa"></a>   
-                        <a href="<?= $hard_delete ?>"><input type="button" value="Xóa cứng" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
-                        <a href="<?= $soft_delete ?>"><input type="button" value="Xóa mềm"></a>
-                    </td>
-                </tr>
+                <?php foreach($listProduct as $row){
+                    extract($row);
+                    $suasp = "index.php?act=suasp&id=$id";
+                    $xoasp = "index.php?act=deletesp&id=$id";
+                ?>  
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><?= $id ?></td>
+                        <td><?= $name ?></td>
+                        <td><img src="../assets/img/<?= $img ?>" alt=""></td>
+                        <td><?= $price ?></td>
+                        <td><?= $discount ?></td>
+                        <td><?=$status == 1 ? 'Hiển thị' : 'Ẩn'?></td>
+                        <td>
+                            <a href="<?= $suasp ?>"><input type="button" value="Sửa"></a>   
+                            <a href="<?= $xoasp ?>"><input type="button" value="Xóa" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
+                        </td>
+                    </tr>
+                <?php } ?>
             </table>
             <div class="action">
                 <a href="">THÊM DANH MỤC</a>
