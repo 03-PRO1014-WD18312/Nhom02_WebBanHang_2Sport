@@ -13,7 +13,7 @@
     <div id="wrapper">
         <header id="header">
             <nav class="navigation container">
-                <a href=""><img class="logo-web" src="assets/img/logo-web.svg" alt="logo-web"></a>
+                <a href="index.php"><img class="logo-web" src="assets/img/logo-web.svg" alt="logo-web"></a>
                 <a href=""><img class="logo-web-mobile" src="assets/img/logo-mobile.svg" alt="logo-web-mobile"></a>
                 <div class="nav-left">
                     <form class="form-search" action="">

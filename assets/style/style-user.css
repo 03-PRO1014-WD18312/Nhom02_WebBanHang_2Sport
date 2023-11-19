@@ -577,6 +577,7 @@ main .slide-banner img{
     max-width: 100%;
     background-color: var(--bg-color-ins);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-sizing: border-box;
 }
 .check-cart-ins h3{
     width: 650px;
@@ -626,6 +627,21 @@ main .slide-banner img{
 }
 .captcha-wp span{
     font-weight: 600;
+}
+.btn-checkdh{
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: var(--bg-color-main);
+    border-radius: 10px;
+    color: var(--bg-color-ins);
+    margin: 5px 0px;
+    display: inline-block;
+}
+.btn-checkdh:hover{
+    background-color: var(--bg-color-black-ins);
+}
+.fa-arrow-right{
+    font-size: 17px;
 }
 /* forget pass */
 .form-forgetpass{
@@ -827,3 +843,165 @@ main .slide-banner img{
     width: 100%;
 }
 /* end detail */
+
+
+/* Go product */
+.product-wp{
+    max-width: 100%;
+    margin: 20px 0px;
+}
+.product-wp h3{
+    height: 50px;
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    background: linear-gradient(180deg, #BD0000 0%, #5A0000 120%);
+    color: var(--bg-color-ins);
+    line-height: 50px;
+    padding: 0px 15px;
+}
+.product-wp h3 span{
+    font-size: 15px;
+    font-weight: 300;
+    font-style: italic;
+}
+.product-ins{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+    padding: 15px 0px;
+}
+.product-item{
+    max-width: 100%;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.product-item a img{
+    width: 100%;
+}
+.product-describe{
+    border-top: 1px solid #d9d9d9;
+    padding: 15px;
+}
+.detail{
+    position: relative;
+}
+.detail-show{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-ins);
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+}
+.detail:hover .detail-img img{
+    opacity: 0.4;
+    transition: .4s;
+}
+.detail:hover .detail-show{
+    opacity: 1;
+    visibility: visible;
+    transition: .4s;
+}
+.product-describe a{
+    text-decoration: none;
+}
+.product-describe p{
+    font-size: 18px;
+    font-weight: 600;
+}
+.product-describe .price-new{
+    color: var(--bg-color-main);
+    font-size: 18px;
+    font-weight: 600;
+}
+.product-describe .price-origin{
+    font-size: 15px;
+    font-style: italic;
+    padding-top: 15px;
+    display: inline-block;
+}
+.buy-cart{
+    display: flex;
+    justify-content: space-between;
+}
+.buy-cart .fa-cart-plus{
+    padding: 12px;
+    color: var(--bg-color-ins);
+    border-radius: 5px;
+    font-size: 20px;
+}
+.addcart-product{
+    background-color: var(--bg-color-black-ins);
+    width: 30%;
+    text-align: center;
+}
+.buy-cart .buy-product{
+    padding: 15px 20px;
+    cursor: pointer;
+    width: 70%;
+    background-color: var(--bg-color-main);
+    text-align: center;
+
+}
+.buy-cart .buy-product button{
+    outline: none;
+    border: none;
+    background: none;
+    color: var(--bg-color-ins);
+    font-size: 16px;
+}
+.view-now{
+    background-color: var(--bg-color-main);
+    margin: 0px auto;
+    width: 15%;
+    border-radius: 7px;
+}
+.view-now a{
+    text-decoration: none;
+    color: var(--bg-color-ins);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+}
+/* Go policy */
+.policy-wp{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 100%;
+    gap: 2em;
+    margin: 100px 0px;
+}
+.policy-item{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    border-radius: 10px;
+    justify-content: center;
+    color: var(--bg-color-ins);
+    background: linear-gradient(180deg, #9C0101 0%, #540000 100%);
+
+}
+.policy-item .fa-solid{
+    padding: 10px;
+    font-size: 25px;
+    border: 2px solid var(--bg-color-ins);
+    border-radius: 50%;
+    margin: 0px 10px;
+}
+.policy-des{
+    padding: 0px 10px;
+}
+.policy-des p{
+    font-size: 15px;
+    font-style: italic;
+    font-weight: lighter;
+    color: #d9d9d9;
+}
