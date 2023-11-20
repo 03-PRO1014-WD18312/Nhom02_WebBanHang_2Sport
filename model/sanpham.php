@@ -18,6 +18,11 @@ function loadone_product($id){
     $result = pdo_query_one($sql);
     return $result;
 }
+function loadone_product_infor($id){
+    $sql = "SELECT * from product_infor where idProduct='$id'";
+    $result = pdo_query_one($sql);
+    return $result;
+}
 function update_product($id, $name, $price, $discount, $quantity, $iddm, $status, $des, $size1, $size2, $size3, $size4, $size5, $hinh, $hinh1, $hinh2, $hinh3, $hinh4, $color1, $color2, $color3, $color4, $color5){
     $sql = "UPDATE product
     JOIN product_infor ON product.id = product_infor.idProduct

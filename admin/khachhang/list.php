@@ -13,55 +13,33 @@
             <table>
                 <thead>
                     <tr>
-                        <th>#STT</th>
+                        <th>ID</th>
+                        <th>Image</th>
                         <th>Username</th>
                         <th>Email</th>
-                        <th>Image</th>
+                        <th>Address</th>
                         <th>Vai trò</th>
                         <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($listAccount as $row){
+                        extract($row);
+                        $sualoai = "index.php?act=suadm&id=$id";
+                        $xoaloai = "index.php?act=deletedm&id=$id";
+                    ?>  
                     <tr>
-                        <td>1</td>
-                        <td>andinhle</td>
-                        <td>andinhle163@gmail.com</td>
-                        <td><img src="../assets/images/anhkh.jpeg" alt="ảnh khách hàng"></td>
-                        <td>admin</td>
+                        <td><?= $id ?></td>
+                        <td><img src="../assets/img/<?= $img ?>" alt="ảnh khách hàng"></td>
+                        <td><?= $username ?></td>
+                        <td><?= $email ?></td>
+                        <td><?= $address ?></td>
+                        <td><?=$role == 1 ? 'Admin' : 'User'?></td>
                         <td>
                             <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>andinhle</td>
-                        <td>andinhle163@gmail.com</td>
-                        <td><img src="../assets/images/anhkh.jpeg" alt="ảnh khách hàng"></td>
-                        <td>admin</td>
-                        <td>
-                            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>andinhle</td>
-                        <td>andinhle163@gmail.com</td>
-                        <td><img src="../assets/images/anhkh.jpeg" alt="ảnh khách hàng"></td>
-                        <td>admin</td>
-                        <td>
-                            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>andinhle</td>
-                        <td>andinhle163@gmail.com</td>
-                        <td><img src="../assets/images/anhkh.jpeg" alt="ảnh khách hàng"></td>
-                        <td>admin</td>
-                        <td>
-                            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                        </td>
-                    </tr>
+                    <?php } ?>
                 </tbody>
             </table>  
         </article>

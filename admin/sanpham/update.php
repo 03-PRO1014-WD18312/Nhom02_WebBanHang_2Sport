@@ -2,6 +2,10 @@
 if (is_array($sanpham)) {
     extract($sanpham);
 }
+if (is_array($infor)) {
+    extract($infor);
+}
+
 ?>
 <main class="container">
     <?php include "boxleft.php" ?>
@@ -44,10 +48,10 @@ if (is_array($sanpham)) {
                     <div class="right">
                         <div class="upload-image">
                             <div class="pose-image">
-                                <input type="file" name="image1" id="fileInput1" style="margin-bottom: 10px;"/>
-                                <input type="file" name="image2" id="fileInput2" style="margin-bottom: 10px;"/>
-                                <input type="file" name="image3" id="fileInput3" style="margin-bottom: 10px;"/>
-                                <input type="file" name="image4" id="fileInput4" style="margin-bottom: 10px;"/>
+                                <input type="file" name="image1" id="fileInput1" style="margin-bottom: 10px;"/><img src="../assets/img/<?= $image1 ?>" alt="" width="40px" height="30px">
+                                <input type="file" name="image2" id="fileInput2" style="margin-bottom: 10px;"/><img src="../assets/img/<?= $image2 ?>" alt="" width="40px" height="30px">
+                                <input type="file" name="image3" id="fileInput3" style="margin-bottom: 10px;"/><img src="../assets/img/<?= $image3 ?>" alt="" width="40px" height="30px">
+                                <input type="file" name="image4" id="fileInput4" style="margin-bottom: 10px;"/><img src="../assets/img/<?= $image4 ?>" alt="" width="40px" height="30px">
                             </div>
                             <div class="main-image">
                                 <input type="file" name="image" id="fileInput5">
@@ -95,10 +99,10 @@ if (is_array($sanpham)) {
                         <label for="">SIZE</label>
                         <div class="choose-size">
                             <input type="number" min="0" name="size1" value="<?= $size1 ?>">
-                            <input type="number" min="0" name="size2">
-                            <input type="number" min="0" name="size3">
-                            <input type="number" min="0" name="size4">
-                            <input type="number" min="0" name="size5">
+                            <input type="number" min="0" name="size2" value="<?= $size2 ?>">
+                            <input type="number" min="0" name="size3" value="<?= $size3 ?>">
+                            <input type="number" min="0" name="size4" value="<?= $size4 ?>">
+                            <input type="number" min="0" name="size5" value="<?= $size5 ?>">
                         </div>
                     </div>
                 </div>

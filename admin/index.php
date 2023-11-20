@@ -2,6 +2,7 @@
     include "header.php";
     include "../model/pdo.php";
     include "../model/danhmuc.php";
+    include "../model/taikhoan.php";
     include "../model/sanpham.php";
     if (isset($_GET['act']) && ($_GET['act']) != ""){
     $act = $_GET['act'];
@@ -61,9 +62,9 @@
             case 'suasp' :
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $id = $_GET['id'];
-                    $sanpham = loadone_product($id); 
+                    $sanpham = loadone_product($id);  
+                    $infor = loadone_product_infor($id);  
                     $listdanhmuc = list_category();
-                    $listsanpham = list_product();
                 }
                 include "sanpham/update.php";
                 break;

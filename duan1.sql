@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2023 lúc 04:41 AM
+-- Thời gian đã tạo: Th10 20, 2023 lúc 08:45 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -36,6 +36,13 @@ CREATE TABLE `account` (
   `img` varchar(255) NOT NULL,
   `role` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `account`
+--
+
+INSERT INTO `account` (`id`, `username`, `password`, `email`, `address`, `img`, `role`) VALUES
+(1, 'lavansang', '123321', 'sangokyes@gmail.com', 'Nam từ liêm-Hà nội', 'anhkh.jpeg', 0);
 
 -- --------------------------------------------------------
 
@@ -175,45 +182,50 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `discount`, `img`, `quantity`, `des`, `view`, `status`, `idCategory`) VALUES
-(24, 'sang la', 12000, 11111, 'test1.png', 9, 'll', 0, 1, 3),
 (25, 'Giày nike ', 30000, 25000, 'test1.png', 10, 'Giày nike 2023', 0, 0, 4),
 (26, 'Giày nike ', 30000, 25000, 'giaythethao.png', 10, 'test', 0, 1, 4),
-(29, 'Giày nike ', 300000, 250000, '', 10, '', 0, 1, 3),
-(30, 'Giày nike ', 300000, 250000, '', 10, '', 0, 1, 3),
+(29, 'Giày nike ', 300000, 250000, 'giaythethao.png', 10, '', 0, 1, 3),
+(30, 'Giày nike ', 300000, 250000, 'gangtaythumon.png', 10, '', 0, 1, 3),
 (46, 'Ganng', 300000, 250000, 'test1.png', 10, 'gang', 0, 1, 5),
 (49, 'Tất bóng đá dài', 50000, 45000, 'tatbongdadai.png', 200, 'Tất bóng đá 2023', 0, 1, 9);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_infor`
+-- Cấu trúc bảng cho bảng `product_color`
 --
 
-CREATE TABLE `product_infor` (
+CREATE TABLE `product_color` (
   `id` int(11) NOT NULL,
-  `size1` int(11) NOT NULL,
-  `size2` int(11) NOT NULL,
-  `size3` int(11) NOT NULL,
-  `size4` int(11) NOT NULL,
-  `size5` int(11) NOT NULL,
-  `image1` varchar(255) NOT NULL,
-  `image2` varchar(255) NOT NULL,
-  `image3` varchar(255) NOT NULL,
-  `image4` varchar(255) NOT NULL,
-  `color1` varchar(50) NOT NULL,
-  `color2` varchar(50) NOT NULL,
-  `color3` varchar(50) NOT NULL,
-  `color4` varchar(50) NOT NULL,
-  `color5` varchar(50) NOT NULL,
-  `idProduct` int(11) NOT NULL
+  `color` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Đang đổ dữ liệu cho bảng `product_infor`
+-- Cấu trúc bảng cho bảng `product_size`
 --
 
-INSERT INTO `product_infor` (`id`, `size1`, `size2`, `size3`, `size4`, `size5`, `image1`, `image2`, `image3`, `image4`, `color1`, `color2`, `color3`, `color4`, `color5`, `idProduct`) VALUES
-(3, 5, 6, 7, 0, 0, 'giaythethao.png', 'tatbongdangan.png', '', '', 'fff', '000', 'ff0000', '', '', 49);
+CREATE TABLE `product_size` (
+  `id` int(11) NOT NULL,
+  `size` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `variants`
+--
+
+CREATE TABLE `variants` (
+  `id` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `idProduct` int(11) NOT NULL,
+  `idSize` int(11) NOT NULL,
+  `idColor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -284,10 +296,24 @@ ALTER TABLE `product`
   ADD KEY `product_ibfk_1` (`idCategory`);
 
 --
--- Chỉ mục cho bảng `product_infor`
+-- Chỉ mục cho bảng `product_color`
 --
-ALTER TABLE `product_infor`
+ALTER TABLE `product_color`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `product_size`
+--
+ALTER TABLE `product_size`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `variants`
+--
+ALTER TABLE `variants`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `idColor` (`idColor`),
+  ADD KEY `idSize` (`idSize`),
   ADD KEY `idProduct` (`idProduct`);
 
 --
@@ -298,7 +324,7 @@ ALTER TABLE `product_infor`
 -- AUTO_INCREMENT cho bảng `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -343,10 +369,22 @@ ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
--- AUTO_INCREMENT cho bảng `product_infor`
+-- AUTO_INCREMENT cho bảng `product_color`
 --
-ALTER TABLE `product_infor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `product_color`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `product_size`
+--
+ALTER TABLE `product_size`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `variants`
+--
+ALTER TABLE `variants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -399,10 +437,12 @@ ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`idCategory`) REFERENCES `category` (`id`);
 
 --
--- Các ràng buộc cho bảng `product_infor`
+-- Các ràng buộc cho bảng `variants`
 --
-ALTER TABLE `product_infor`
-  ADD CONSTRAINT `product_infor_ibfk_1` FOREIGN KEY (`idProduct`) REFERENCES `product` (`id`);
+ALTER TABLE `variants`
+  ADD CONSTRAINT `variants_ibfk_1` FOREIGN KEY (`idColor`) REFERENCES `product_color` (`id`),
+  ADD CONSTRAINT `variants_ibfk_2` FOREIGN KEY (`idSize`) REFERENCES `product_size` (`id`),
+  ADD CONSTRAINT `variants_ibfk_3` FOREIGN KEY (`idProduct`) REFERENCES `product` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

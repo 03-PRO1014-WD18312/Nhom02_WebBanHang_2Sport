@@ -11,6 +11,7 @@
                 <tr>
                     <th></th>
                     <th>Mã sản phẩm</th>
+                    <th>Mã danh mục</th>
                     <th>Tên sản phẩm</th>
                     <th>Ảnh</th>
                     <th>Giá gốc</th>
@@ -26,6 +27,7 @@
                     <tr>
                         <td><input type="checkbox"></td>
                         <td><?= $id ?></td>
+                        <td><?= $idCategory ?></td>
                         <td><?= $name ?></td>
                         <td><img src="../assets/img/<?= $img ?>" alt=""></td>
                         <td><?= $price ?></td>
