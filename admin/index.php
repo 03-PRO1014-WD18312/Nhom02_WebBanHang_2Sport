@@ -4,6 +4,7 @@
     include "../model/danhmuc.php";
     include "../model/taikhoan.php";
     include "../model/sanpham.php";
+    include "../model/taikhoan.php";
     if (isset($_GET['act']) && ($_GET['act']) != ""){
     $act = $_GET['act'];
     switch ($act) {
@@ -155,7 +156,8 @@
                     move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
                     update_category($id,$name,$hinh);
                     $danhmuc = loadone_category($id); 
-                    $messSuccess = "Cập nhật thành công!";
+                    // $messSuccess = "Cập nhật thành công!";
+                    header('location: index.php?act=listdm');
                 }
                 $listCate = list_category();
                 include "danhmuc/update.php";
@@ -170,6 +172,7 @@
                 include "binhluan/list.php";
                 break;
             case 'khachhang':
+                $dskh=list_kh();
                 include 'khachhang/list.php';
             break;
             case 'spdm':

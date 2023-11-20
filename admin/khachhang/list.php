@@ -23,23 +23,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($listAccount as $row){
-                        extract($row);
-                        $sualoai = "index.php?act=suadm&id=$id";
-                        $xoaloai = "index.php?act=deletedm&id=$id";
-                    ?>  
-                    <tr>
-                        <td><?= $id ?></td>
-                        <td><img src="../assets/img/<?= $img ?>" alt="ảnh khách hàng"></td>
-                        <td><?= $username ?></td>
-                        <td><?= $email ?></td>
-                        <td><?= $address ?></td>
-                        <td><?=$role == 1 ? 'Admin' : 'User'?></td>
-                        <td>
-                            <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
-                        </td>
-                    </tr>
-                    <?php } ?>
+                <?php
+                    $i = 0;
+                    $stt=1;
+                    foreach ($dskh as $kh) {
+                        extract($kh);
+                        echo'
+                            <tr>
+                                <td>'.$stt++.'</td>
+                                <td>'.$username.'</td>
+                                <td>'.$email.'</td>
+                                <td><img src="../assets/img/'.$img.'" alt="anh-user"></td>
+                                <td>'.$role.'</td>
+                                <td><a class="btn btn-info" href="index.php?act=suakh&id='.$id.'"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                            </tr>
+                        ';
+                        $i++;
+                    }
+                    echo'<caption style="caption-side:bottom;text-align:left; color: #A6A6A4; font-style:italic; padding:15px 0px;">Có '.$i.' khách hàng</caption>';
+                ?>
+
                 </tbody>
             </table>  
         </article>
