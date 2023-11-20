@@ -745,15 +745,8 @@ main .slide-banner img{
     gap: 100px;
     margin-top: 40px;
 }
-.form-detail .infor-product .left .image-product{
-    display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-}
-.form-detail .infor-product .left .image-product .pose-image{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.form-detail .infor-product .left .main-image{
+    margin-bottom: 30px;
 }
 .form-detail .infor-product .left .color-product{
     display: flex;

@@ -14,8 +14,6 @@
                     <th>Mã danh mục</th>
                     <th>Tên sản phẩm</th>
                     <th>Ảnh</th>
-                    <th>Giá gốc</th>
-                    <th>Giá giảm</th>
                     <th>Trạng thái</th>
                     <th>Hành động</th>
                 </tr>
@@ -30,8 +28,6 @@
                         <td><?= $idCategory ?></td>
                         <td><?= $name ?></td>
                         <td><img src="../assets/img/<?= $img ?>" alt=""></td>
-                        <td><?= $price ?></td>
-                        <td><?= $discount ?></td>
                         <td><?=$status == 1 ? 'Hiển thị' : 'Ẩn'?></td>
                         <td>
                             <a href="<?= $suasp ?>"><input type="button" value="Sửa"></a>   

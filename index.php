@@ -2,6 +2,7 @@
     session_start();
     include 'model/pdo.php';
     include 'model/danhmuc.php';
+    include 'model/sanpham.php';
     include 'model/taikhoan.php';
     include 'view/header.php';
     if (isset($_GET['act']) && ($_GET['act'] != '')){
@@ -107,6 +108,9 @@
                 include 'view/checkdh.php';
                 break;
             case "detail" :
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    
+                }
                 include 'view/chitietsanpham.php';
             break;
             case "quenmatkhau" :

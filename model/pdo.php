@@ -46,6 +46,29 @@ function pdo_query($sql){
         unset($conn);
     }
 }
+function pdo_execute_multi($sql_array) {
+    try {
+        $conn = pdo_get_connection();
+        $conn->beginTransaction();
+
+        foreach ($sql_array as $sql) {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            if ($stmt->errorCode() != '00000') {
+                $errorInfo = $stmt->errorInfo();
+                throw new PDOException($errorInfo[2]);
+            }
+        }
+
+        $conn->commit();
+    } catch (PDOException $e) {
+        $conn->rollBack();
+        throw $e;
+    } finally {
+        unset($conn);
+    }
+}
 // Truy vấn  1 dữ liệu
 function pdo_query_one($sql){
     $sql_args=array_slice(func_get_args(),1);
