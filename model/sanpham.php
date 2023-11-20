@@ -56,5 +56,9 @@ function delete_product($id){
     SET foreign_key_checks = 1";
     pdo_execute($sql);
 }
-
+function loadone_product_infor($id){
+    $sql = "SELECT * from product_infor where idProduct='$id'";
+    $result = pdo_query_one($sql);
+    return $result;
+}
 ?>

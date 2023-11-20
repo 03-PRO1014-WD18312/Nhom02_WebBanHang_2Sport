@@ -17,7 +17,12 @@ showOverlay.addEventListener('click',()=>{
     showCategory.classList.remove('show-category');
     showOverlay.classList.remove('show-overlay');
 });
-
+//show-reg-log
+var btnUser=document.querySelector('.circle-user');
+var showRegLog=document.querySelector('.reg-log');
+btnUser.addEventListener('click',()=>{
+    showRegLog.classList.toggle('show-reg-log');
+});
 // search-show-none 
 var btnSearch=document.querySelector('.search-res');
 var showSearch=document.querySelector('.search-wp-none');
