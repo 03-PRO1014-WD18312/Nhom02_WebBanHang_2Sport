@@ -92,7 +92,7 @@
                 // Thêm class "my-class" vào phần tử div
         newElement.classList.add("variant");
         // Hiển thị phần tử div trong DOM
-        document.body.appendChild(newElement);
+        // document.body.appendChild(newElement);
         newElement.innerHTML = `
             <div class="variant-in">
                 <label for="">Kích cỡ</label></br>

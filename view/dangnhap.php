@@ -1,12 +1,19 @@
 <?php 
     if (isset($_SESSION['login'])) {
-        header('location: index.php');
-    } 
+        echo '
+            <script>
+                if (performance.navigation.type === 0) {
+                    window.location.href = window.location.href;
+                    window.location.href = "index.php";
+                }
+            </script>
+        ';
+    }
 ?>
 <div class="container">
     <div class="form-signin">
         <h1>ĐĂNG NHẬP</h1>
-        <form action="" method="post">
+        <form action="index.php?act=dangnhap" method="post">
             <input type="text" name="username" placeholder="Vui lòng nhập username">
             <span style="color: orangered; font-size: small;"><?php echo $errorEnterUsername;?></span><br>
             <input type="password" name="password" placeholder="Vui lòng nhập mật khẩu">

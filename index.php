@@ -69,22 +69,33 @@
                         if (is_array($checkLogin)) {
                             $_SESSION['login'] = $checkLogin;
                             echo "<script>alert('🎉 Đăng nhập thành công 👏');</script>";
-                            include 'view/home.php';
-                            exit();
+                            echo '
+                                <script>
+                                    if (performance.navigation.type === 0) {
+                                        window.location.href = window.location.href;
+                                        window.location.href = "index.php";
+                                    }
+                                </script>
+                            ';
                         } else {
                             echo "<script>alert('Sai user hoặc Pass');</script>";
                         }
                     } 
                 }
-                if (isset($_SESSION['login'])) {
-                    include 'view/home.php';
-                } 
                 include 'view/dangnhap.php';
                 break;
             case 'logout':
                 if (isset($_POST['logout'])) {
                     if (isset($_SESSION['login'])) {
                         unset($_SESSION['login']);
+                        echo '
+                            <script>
+                                if (performance.navigation.type === 0) {
+                                    window.location.href = window.location.href;
+                                    window.location.href = "index.php";
+                                }
+                            </script>
+                        ';
                     }
                 }
                 include 'view/home.php';
