@@ -3,6 +3,7 @@
     include "../model/pdo.php";
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
+    include "../model/taikhoan.php";
     if (isset($_GET['act']) && ($_GET['act']) != ""){
     $act = $_GET['act'];
     switch ($act) {
@@ -64,6 +65,7 @@
                     $sanpham = loadone_product($id); 
                     $listdanhmuc = list_category();
                     $listsanpham = list_product();
+                    $list_infor=loadone_product_infor($id);
                 }
                 include "sanpham/update.php";
                 break;
@@ -154,7 +156,8 @@
                     move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
                     update_category($id,$name,$hinh);
                     $danhmuc = loadone_category($id); 
-                    $messSuccess = "Cập nhật thành công!";
+                    // $messSuccess = "Cập nhật thành công!";
+                    header('location: index.php?act=listdm');
                 }
                 $listCate = list_category();
                 include "danhmuc/update.php";
@@ -169,6 +172,7 @@
                 include "binhluan/list.php";
                 break;
             case 'khachhang':
+                $dskh=list_kh();
                 include 'khachhang/list.php';
             break;
             case 'spdm':

@@ -35,6 +35,7 @@
 .list-menu{
     display: flex;
     list-style-type: none;
+    align-items: center;
 }
 .list-menu>li{
     position: relative;
@@ -108,16 +109,21 @@
 }
 .reg-log{
     list-style-type: none;
-    background-color: var(--bg-color-ins);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: var(--bg-color-main);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     width: 165px;
     position: absolute;
-    left: -25px;
+    left: -34px;
     padding: 5px;
+    top: 100;
     border-radius: 5px;
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
+}
+.show-reg-log{
+    opacity: 1;
+    visibility: visible;
 }
 .reg-log>li a{
     text-decoration: none;
@@ -132,10 +138,11 @@
 .reg-log>li{
     line-height: 20px;
     padding: 10px 0px;
-    background-color: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: var(--bg-color-ins);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(250, 188, 188, 0.3) 0px 18px 36px -18px inset;
     margin: 5px 0px;
     border-radius: 5px;
+    text-align: center;
 }
 .reg-log>li:hover a{
     color: var(--bg-color-ins);
@@ -160,7 +167,13 @@
 .logo-web-mobile{
     display: none;
 }
-
+.circle-user{
+    max-width:100%;
+    cursor: pointer;
+}
+.circle-user img{
+    width: 35px;
+}
 .category{
     opacity: 0;
     background-color: var(--bg-color-ins);
@@ -368,7 +381,7 @@ main .slide-banner img{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     width: 140px;
     height: 40px;
@@ -379,27 +392,23 @@ main .slide-banner img{
 /* Signin */
 .form-signin{
     margin-top: 30px;
-    width: 100%px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 100%;
 }
 .form-signin h1{
-    width: 1360px;
     padding: 10px;
     text-align: center;
     color: var(--bg-color-ins);
     font-size: 30px;
     background: linear-gradient(180deg, #BD0000 0%, #5A0000 100%);
     border-radius: 10px 10px 0px 0px;
+    width: 100%;
 }
 .form-signin form{
-    width: 1360px;
+    width: 100%;
     padding-top: 100px;
     padding-bottom: 100px;
     border-radius: 0px 0px 10px 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: 1px solid #7A7A7A;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -408,48 +417,54 @@ main .slide-banner img{
     margin-bottom: 10px;
 }
 .form-signin form input[type="text"],.form-signin form input[type="password"]{
-    width: 700px;
     height: 45px;
-    border: 2px solid #7A7A7A;
+    border: 1px solid #d9d9d9;
     padding: 10px;
     font-size: 17px;
+    width: 55%;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .form-signin form .forget-pass{
     text-decoration: none;
-    color: #7A7A7A;
-    margin-left: 580px;
+    color: var(--bg-color-main);
     margin-bottom: 50px;
 }
 .form-signin form .forget-pass:hover{
     color: var(--bg-color-black-ins);
 }
-.form-signin form input[type="button"]{
+.form-signin form input[type="submit"]{
     padding: 12px 40px;
     border-radius: 25px;
-    background: #D70019;
+    background: var(--bg-color-main);
     color: var(--bg-color-ins);
     font-size: 18px;
     font-weight: bold;
     border: none;
+    cursor: pointer;
 }
-.form-signin form input[type="button"]:hover{
+.form-signin form input[type="submit"]:hover{
     background-color: var(--bg-color-black-ins);
 }
 .form-signin form .signup-now{
     text-decoration: none;
     color: #D70019;
 }
+.form-signin form p{
+    padding: 15px 0px;
+}
 /* end signin */
 /* signup */
 .form-signup{
     margin-top: 30px;
-    width: 100%px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .form-signup h1{
-    width: 1360px;
+    width: 100%;
     padding: 10px;
     text-align: center;
     color: var(--bg-color-ins);
@@ -458,45 +473,61 @@ main .slide-banner img{
     border-radius: 10px 10px 0px 0px;
 }
 .form-signup form{
-    width: 1360px;
+    width: 100%;
     padding-top: 100px;
     padding-bottom: 100px;
     border-radius: 0px 0px 10px 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: 1px solid #7A7A7A;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 .form-signup form input{
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    outline: none;
+}
+.form-signup>form>input{
     margin-bottom: 10px;
 }
-.form-signup form input[type="text"],.form-signup form input[type="password"]{
-    width: 700px;
+.form-signup form input[type="text"],.form-signup form input[type="password"],.form-signup form input[type="email"]{
+    width: 55%;
     height: 45px;
-    border: 2px solid #7A7A7A;
+    border: 1px solid #d9d9d9;
     padding: 10px;
     font-size: 17px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .form-signup form .accept{
     text-decoration: none;
     color: #7A7A7A;
-    margin-left: -350px;
     margin-bottom: 50px;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
 }
 .form-signup form .accept:hover{
     color: var(--bg-color-black-ins);
 }
-.form-signup form input[type="button"]{
+.form-signup form input[type="submit"]{
     padding: 12px 40px;
     border-radius: 25px;
-    background: #D70019;
+    background-color: var(--bg-color-main);
     color: var(--bg-color-ins);
     font-size: 18px;
     font-weight: bold;
     border: none;
+    cursor: pointer;
 }
-.form-signup form input[type="button"]:hover{
+.form-signup form input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+}
+
+
+.form-signup form input[type="submit"]:hover{
     background-color: var(--bg-color-black-ins);
 }
 .form-signup form .signin-now{

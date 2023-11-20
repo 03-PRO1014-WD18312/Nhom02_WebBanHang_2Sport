@@ -7,8 +7,8 @@
                 <div class="form-add">
                     <div class="left">
                         <label for="">TÊN SẢN PHẨM</label><br>
-                        <input type="text" name="namesp"><br>
-                        <div class="price">
+                        <input type="text" name="namesp" placeholder="Nhập tên sản phẩm"><br>
+                        <!-- <div class="price">
                             <div class="origin-price">
                                 <label for="">GIÁ GỐC</label><br>
                                 <input type="text" name="price">
@@ -17,9 +17,8 @@
                                 <label for="">GIÁ GIẢM</label><br>
                                 <input type="text" name="discount">
                             </div>
-                        </div>
-                        <label for="">SỐ LƯỢNG</label><br>
-                        <input type="number" name="quantity" min="0"><br>
+                        </div> -->
+                        <br>
                         <label for="">DANH MỤC</label><br>
                         <select name="iddm" id="category">
                             <?php 
@@ -28,83 +27,139 @@
                                     echo '<option value="'.$id.'">'.$name.'</option>';
                                 }
                             ?>
-                        </select><br>
+                        </select><br><br>
                         <label for="">TRẠNG THÁI</label><br>
                         <select name="status" id="status">
                             <option value="1">Hiển thị</option>
                             <option value="0">Ẩn</option>
-                        </select><br>
+                        </select><br><br>
                     </div>
                     <div class="right">
-                        <div class="upload-image">
-                            <div class="pose-image">
-                                <label for="fileInput1" class="custom-file-input"><i class="fa-solid fa-upload"></i>Ảnh phụ 1</label>
-                                <input type="file" name="image1" id="fileInput1" style="display: none;" />
-                                <label for="fileInput2" class="custom-file-input"><i class="fa-solid fa-upload"></i>Ảnh phụ 2</label>
-                                <input type="file" name="image2" id="fileInput2" style="display: none;" />
-                                <label for="fileInput3" class="custom-file-input"><i class="fa-solid fa-upload"></i>Ảnh phụ 3</label>
-                                <input type="file" name="image3" id="fileInput3" style="display: none;" />
-                                <label for="fileInput4" class="custom-file-input"><i class="fa-solid fa-upload"></i>Ảnh phụ 4</label>
-                                <input type="file" name="image4" id="fileInput4" style="display: none;" />
-                            </div>
                             <div class="main-image">
                                 <label for="fileInput5" class="main-file-input"><i class="fa-solid fa-upload"></i>Ảnh chính</label>
                                 <input type="file" name="image" id="fileInput5" style="display: none;">
                             </div>
-                        </div>
-                        <label for="">MÀU</label>
-                        <div class="choose-color">
-                            <select name="color1">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
-                            </select>
-                            <select name="color2">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
-                            </select>
-                            <select name="color3">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
-                            </select>
-                            <select name="color4">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
-                            </select>
-                            <select name="color5">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
-                            </select>
-                        </div>
-                        <label for="">SIZE</label>
-                        <div class="choose-size">
-                            <input type="number" min="0" name="size1">
-                            <input type="number" min="0" name="size2">
-                            <input type="number" min="0" name="size3">
-                            <input type="number" min="0" name="size4">
-                            <input type="number" min="0" name="size5">
-                        </div>
+                            <div class="textarea-sp">
+                                <label for="">MÔ TẢ</label><br>
+                                <textarea name="des" id="des" cols="50" rows="7" placeholder="Nhập mô tả"></textarea>
+                            </div>
                     </div>
                 </div>
-                <label for="">MÔ TẢ</label><br>
-                <textarea name="des" id="des" cols="50" rows="10"></textarea>
-                <input type="submit" value="THÊM SẢN PHẨM" name="addProduct">
-                <input type="reset" value="NHẬP LẠI">
+                <div class="variant-wp">
+                    <label for="">SẢN PHẨM BIẾN THỂ</label><br>
+                    <hr>
+                    <div id="container">
+                    </div>
+                    <button id="btn-variant">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </button>
+                    <datalist id="size">
+                        <option value="39">
+                        <option value="40">
+                        <option value="41">
+                        <option value="42">
+                        <option value="43">
+                        <option value="M">
+                        <option value="S">
+                        <option value="L">
+                        <option value="XL">
+                        <option value="XXL">
+                    </datalist>
+                    <datalist id="color">
+                        <option value="blue">
+                        <option value="green">
+                        <option value="red">
+                        <option value="white">
+                        <option value="yellow">
+                        <option value="black">
+                    </datalist>
+                </div>
+                <input type="submit" class="submit" value="THÊM SẢN PHẨM" name="addProduct">
+                <input type="reset" class="reset" value="NHẬP LẠI">
             </form>
         </div>
     </article>
 </main>
+<script>
+    //thêm biến thể sản phẩm
+    var addButton = document.getElementById("btn-variant");
+    var container = document.getElementById("container");
+
+    // Định nghĩa hàm xử lý sự kiện khi người dùng nhấn vào nút "Thêm"
+    function addElement() {
+    // Tạo một phần tử HTML mới
+        var newElement = document.createElement("div");
+                // Thêm class "my-class" vào phần tử div
+        newElement.classList.add("variant");
+        // Hiển thị phần tử div trong DOM
+        document.body.appendChild(newElement);
+        newElement.innerHTML = `
+            <div class="variant-in">
+                <label for="">Kích cỡ</label></br>
+                <input type="text" list="size" name="size[]" placeholder="Nhập size">
+            </div>
+            <div class="variant-in">
+                <label for="">Màu</label></br>
+                <input type="text" list="color" name="color[]" placeholder="Nhập màu">
+            </div>
+            <div class="variant-in">
+                <label for="">Giá gốc</label></br>
+                <input type="number" name="price[]" placeholder="Nhập giá gốc">
+            </div>
+            <div class="variant-in">
+                <label for="">Giá khuyến mãi</label></br>
+                <input type="number" name="priceSale[]" placeholder="Nhập giá sale">
+            </div>
+            <div class="variant-in">
+                <label for="">Số lượng</label></br>
+                <input type="number" name="quantity[]" min="1" value="1" placeholder="Nhập số lượng">
+            </div>
+        `;
+
+        // Thêm phần tử mới vào container
+        container.appendChild(newElement);
+
+        // Tạo nút "Xóa" và gắn sự kiện xóa khi người dùng nhấn vào
+        var deleteButton = document.createElement("button");
+        deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+        deleteButton.addEventListener("click", function() {
+            container.removeChild(newElement);
+            saveState();
+        });
+
+        // Thêm nút "Xóa" vào phần tử mới
+        newElement.appendChild(deleteButton);
+
+        // Lưu trạng thái của phần tử mới vào Local Storage
+        saveState();
+    }
+
+    // Gắn sự kiện "click" cho nút "Thêm" và gọi hàm addElement() khi xảy ra sự kiện
+    addButton.addEventListener("click", addElement);
+
+    // Hàm lưu trạng thái của các phần tử vào Local Storage
+    function saveState() {
+    var elements = container.innerHTML;
+    localStorage.setItem("elements", elements);
+    }
+
+    // Hàm khôi phục trạng thái các phần tử từ Local Storage
+    function restoreState() {
+    var savedElements = localStorage.getItem("elements");
+    if (savedElements) {
+        container.innerHTML = savedElements;
+        // Gắn lại sự kiện xóa cho các phần tử đã được khôi phục
+        var deleteButtons = document.querySelectorAll("#container button");
+        for (var i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener("click", function() {
+            container.removeChild(this.parentNode);
+            saveState();
+        });
+        }
+    }
+    }
+
+    // Gọi hàm khôi phục trạng thái khi trang được load lại
+    restoreState();
+
+</script>

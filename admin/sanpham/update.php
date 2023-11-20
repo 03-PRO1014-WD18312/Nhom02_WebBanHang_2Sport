@@ -2,6 +2,9 @@
 if (is_array($sanpham)) {
     extract($sanpham);
 }
+if (is_array($list_infor)) {
+    extract($list_infor);
+}
 ?>
 <main class="container">
     <?php include "boxleft.php" ?>
@@ -29,16 +32,16 @@ if (is_array($sanpham)) {
                         <label for="">DANH MỤC</label><br>
                         <select name="iddm" id="category">
                             <?php 
-                                foreach ($listdanhmuc as $danhmuc) {
-                                    extract($danhmuc);
-                                    echo '<option value="'.$id.'">'.$name.'</option>';
-                                }
+                                $listdanhmuc=list_category();
+                                foreach ($listdanhmuc as $danhmuc) {?>
+                                    <option value="<?= $danhmuc['id'] ?>"<?= ($id==$danhmuc['id']) ?'selected':""?> ><?= $danhmuc['name'] ?></option>
+                                <?php }
                             ?>
                         </select><br>
                         <label for="">TRẠNG THÁI</label><br>
                         <select name="status" id="status">
-                            <option value="1">Hiển thị</option>
-                            <option value="0">Ẩn</option>
+                            <option value="1" <?php if($status == "1") echo "selected";?>>Hiển thị</option>
+                            <option value="0" <?php if($status == "0") echo "selected";?>>Ẩn</option>
                         </select><br>
                     </div>
                     <div class="right">
@@ -57,39 +60,39 @@ if (is_array($sanpham)) {
                         <label for="">MÀU</label>
                         <div class="choose-color">
                             <select name="color1">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
+                                <option value="" <?php if($color1 == "Chọn màu") echo "selected";?>>Chọn màu</option>
+                                <option value="000" <?php if($color1 == "000") echo "selected";?>>Black</option>
+                                <option value="fff" <?php if($color1 == "fff") echo "selected";?>>White</option>
+                                <option value="ff0000" <?php if($color1 == "ff0000") echo "selected";?>>Red</option>
+                                <option value="0000ff" <?php if($color1 == "0000ff") echo "selected";?>>Blue</option>
                             </select>
                             <select name="color2">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
+                                <option value="" <?php if($color2 == "Chọn màu") echo "selected";?>>Chọn màu</option>
+                                <option value="000" <?php if($color2 == "000") echo "selected";?>>Black</option>
+                                <option value="fff" <?php if($color2 == "fff") echo "selected";?>>White</option>
+                                <option value="ff0000" <?php if($color2 == "ff0000") echo "selected";?>>Red</option>
+                                <option value="0000ff" <?php if($color2 == "0000ff") echo "selected";?>>Blue</option>
                             </select>
                             <select name="color3">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
+                                <option value="" <?php if($color3 == "Chọn màu") echo "selected";?>>Chọn màu</option>
+                                <option value="000" <?php if($color3 == "000") echo "selected";?>>Black</option>
+                                <option value="fff" <?php if($color3 == "fff") echo "selected";?>>White</option>
+                                <option value="ff0000" <?php if($color3 == "ff0000") echo "selected";?>>Red</option>
+                                <option value="0000ff" <?php if($color3 == "0000ff") echo "selected";?>>Blue</option>
                             </select>
                             <select name="color4">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
+                                <option value="" <?php if($color4 == "Chọn màu") echo "selected";?>>Chọn màu</option>
+                                <option value="000" <?php if($color4 == "000") echo "selected";?>>Black</option>
+                                <option value="fff" <?php if($color4 == "fff") echo "selected";?>>White</option>
+                                <option value="ff0000" <?php if($color4 == "ff0000") echo "selected";?>>Red</option>
+                                <option value="0000ff" <?php if($color4 == "0000ff") echo "selected";?>>Blue</option>
                             </select>
                             <select name="color5">
-                                <option value="">Chọn màu</option>
-                                <option value="fff">White</option>
-                                <option value="000">Black</option>
-                                <option value="ff0000">Red</option>
-                                <option value="0000ff">Blue</option>
+                                <option value="" <?php if($color5 == "Chọn màu") echo "selected";?>>Chọn màu</option>
+                                <option value="000" <?php if($color5 == "000") echo "selected";?>>Black</option>
+                                <option value="fff" <?php if($color5 == "fff") echo "selected";?>>White</option>
+                                <option value="ff0000" <?php if($color5 == "ff0000") echo "selected";?>>Red</option>
+                                <option value="0000ff" <?php if($color5 == "0000ff") echo "selected";?>>Blue</option>
                             </select>
                         </div>
                         <label for="">SIZE</label>
