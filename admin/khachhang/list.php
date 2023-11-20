@@ -13,10 +13,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>#STT</th>
+                        <th>ID</th>
+                        <th>Image</th>
                         <th>Username</th>
                         <th>Email</th>
-                        <th>Image</th>
+                        <th>Address</th>
                         <th>Vai trò</th>
                         <th>Thao tác</th>
                     </tr>
@@ -41,6 +42,7 @@
                     }
                     echo'<caption style="caption-side:bottom;text-align:left; color: #A6A6A4; font-style:italic; padding:15px 0px;">Có '.$i.' khách hàng</caption>';
                 ?>
+
                 </tbody>
             </table>  
         </article>
