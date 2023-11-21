@@ -1,37 +1,49 @@
+<?php 
+    extract($detail);
+?>
 <div class="form-detail">
     <h1>CHI TIẾT SẢN PHẨM</h1>
     <div class="infor-product">
         <div class="left">
             <div class="image-product">
                 <div class="main-image">
-                    <img src="assets/img/quanaobongda.png" alt="" width="400px" height="360px">
+                    <img src="assets/img/<?= $img ?>" alt="" width="400px" height="360px">
                 </div>
             </div>
             <div class="color-product">
-                <div style="background-color: #fff;"></div>
-                <div style="background-color: #000;"></div>
-                <div style="background-color: red;"></div>
+                <?php foreach($infor as $row){
+                    extract($row);    
+                ?>
+                <div style="background-color:<?= $color ?>;"></div>
+                <?php } ?>
             </div>
         </div>
         <div class="right">
-            <h3 class="name-product">Giày Kamito TA11</h3>
+            <h3 class="name-product"><?= $name ?></h3>
             <div class="price">
-                <p class="discount">711,000 VND</p>
-                <p class="origin-price">790,000 VND</p>
-                <p class="percent">10%</p>
+                <?php foreach($infor as $row){
+                    extract($row);    
+                ?>
+                <p class="discount"><?= $discount ?></p>
+                <p class="origin-price"><?= $price ?></p>
+                <p class="percent"><?= ($discount-$price)/10000 ?>%</p>
+                <?php } ?>
             </div>
             <div class="choose-color">
                 <p>Chọn màu:</p>
-                <div style="background-color: #fff;"></div>
-                <div style="background-color: #000;"></div>
-                <div style="background-color: red;"></div>
+                <?php foreach($infor as $row){
+                    extract($row);    
+                ?>
+                <div style="background-color:<?= $color ?>;"></div>
+                <?php } ?>
             </div>
             <div class="choose-size">
                 <p>Chọn size:</p>
-                <div class="size1">39</div>
-                <div class="size2">40</div>
-                <div class="size3">41</div>
-                <div class="size4">42</div>
+                <?php foreach($infor as $row){
+                    extract($row);    
+                ?>
+                <div class="size1"><?= $size ?></div>
+                <?php } ?>
             </div>
             <form action="">
                 <input type="button" class="addToCart" value="THÊM VÀO GIỎ">
@@ -42,10 +54,8 @@
     <div class="detail-product">
         <h2>Chi tiết sản phẩm</h2>
         <div class="infor">
-            <div class="name"><b>Tên: </b>Giày Kamito</div>
-            <div class="des"><b>Mô tả: </b>Giày Kamito TA11 AS là mẫu giày sân cỏ nhân tạo được thương hiệu Kamito thiết kế với sự góp ý của chính 
-                                            Tuấn Anh. Như mọi mẫu giày "Signature" của các cầu thủ khác, Kamito TA11 mang những đặc trưng riêng biệt và 
-                                            đầy thú vị liên quan đến đội trưởng của CLB Hoàng Anh Gia Lai - Nguyễn Tuấn Anh.</div>
+            <div class="name"><b>Tên: </b><?= $name ?></div>
+            <div class="des"><b>Mô tả: </b><?= $des?></div>
             
         </div>
     </div>

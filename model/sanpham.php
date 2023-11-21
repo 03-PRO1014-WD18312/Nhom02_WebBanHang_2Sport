@@ -49,7 +49,7 @@ function loadone_product($id){
     return $result;
 }
 function detail_product($id){
-    $sql = "SELECT product.id, product.name, product.img, product.des, product.status, category.name as cateName
+    $sql = "SELECT product.id, product.name, product.img, product.des, product.view, product.status, category.name as cateName
     from product join category on product.idCategory = category.id where product.id = '$id'";
     $result = pdo_query_one($sql);
     return $result;
@@ -89,11 +89,7 @@ function delete_product($id){
 
     pdo_execute($sql);
 }
-function lista(){
-    $sql = "select * from product where idCategory = 4";
-    $result = pdo_query($sql);
-    return $result;
-}
+
 function list_giay(){
     $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount 
     FROM product 
@@ -145,5 +141,9 @@ function list_ball(){
     WHERE product.idCategory = 7";
     $result = pdo_query($sql);
     return $result;
+}
+function tang_luot_xem($id){
+    $sql = "UPDATE product set view = view + 1 where id = $id";
+    pdo_execute($sql);
 }
 ?>
