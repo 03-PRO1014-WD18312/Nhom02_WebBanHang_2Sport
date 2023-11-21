@@ -111,9 +111,9 @@
     list-style-type: none;
     background-color: var(--bg-color-main);
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-    width: 165px;
+    width: 200px;
     position: absolute;
-    left: -34px;
+    right: 0;
     padding: 5px;
     top: 100;
     border-radius: 5px;
@@ -130,21 +130,34 @@
     padding-left: 5px;
 }
 .fa-user-pen{
-    color: #1D97C1;
+    color: #1597BB;
 }
-.fa-right-to-bracket{
-    color: var(--bg-color-main);
+.fa-arrow-right-to-bracket, .fa-arrow-right-from-bracket{
+    color: #c93837;
 }
+.fa-pen-to-square{
+    color: #009e91;
+}
+
 .reg-log>li{
     line-height: 20px;
     padding: 10px 0px;
     background-color: var(--bg-color-ins);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(250, 188, 188, 0.3) 0px 18px 36px -18px inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     margin: 5px 0px;
     border-radius: 5px;
     text-align: center;
 }
-.reg-log>li:hover a{
+.reg-log>li:hover .fa-user-pen, .reg-log>li:hover .fa-arrow-right-to-bracket{
+    color: var(--bg-color-ins);
+}
+.reg-log>li:hover .fa-pen-to-square{
+    color: var(--bg-color-ins);
+}
+.reg-log>li:hover .fa-arrow-right-from-bracket{
+    color: var(--bg-color-ins);
+}
+.reg-log li:hover a{
     color: var(--bg-color-ins);
 }
 .reg-log>li:hover{
@@ -390,9 +403,20 @@ main .slide-banner img{
 }
 
 /* Signin */
+.login-wp, .register-wp{
+    display: flex;
+}
+.img-login, .img-signup{
+    width: 100%;
+    height: auto;
+}
+.img-login img, .img-signup img{
+    width: 100%;
+}
 .form-signin{
     margin-top: 30px;
     max-width: 100%;
+    width: 100%;
 }
 .form-signin h1{
     padding: 10px;
@@ -421,7 +445,7 @@ main .slide-banner img{
     border: 1px solid #d9d9d9;
     padding: 10px;
     font-size: 17px;
-    width: 55%;
+    width: 75%;
     outline: none;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -462,6 +486,8 @@ main .slide-banner img{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    height: auto;
 }
 .form-signup h1{
     width: 100%;
@@ -477,11 +503,13 @@ main .slide-banner img{
     padding-top: 100px;
     padding-bottom: 100px;
     border-radius: 0px 0px 10px 10px;
+    background-color: var(--bg-color-ins);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 550px;
 }
 .form-signup form input{
     border: 1px solid #d9d9d9;
@@ -492,7 +520,7 @@ main .slide-banner img{
     margin-bottom: 10px;
 }
 .form-signup form input[type="text"],.form-signup form input[type="password"],.form-signup form input[type="email"]{
-    width: 55%;
+    width: 75%;
     height: 45px;
     border: 1px solid #d9d9d9;
     padding: 10px;
@@ -890,7 +918,7 @@ main .slide-banner img{
 }
 .product-ins{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 1em;
     padding: 15px 0px;
 }
