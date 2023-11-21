@@ -113,7 +113,9 @@
                 break;
             case "detail" :
                 if(isset($_GET['id']) && $_GET['id'] > 0){
-                    
+                    $detail = detail_product($_GET['id']);
+                    $infor = loadone_product_infor($_GET['id']);
+                    tang_luot_xem($_GET['id']);
                 }
                 include 'view/chitietsanpham.php';
             break;

@@ -1,6 +1,6 @@
 <?php 
     if (isset($_SESSION['login'])) {
-        if ($_SESSION['login']['role']==='2') {
+        if ($_SESSION['login']['role']=='2') {
 ?>
 <main class="container">
         <?php include "boxleft.php" ?>
