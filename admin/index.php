@@ -1,12 +1,31 @@
 <?php
-    include "header.php";
+    session_start();
+    if (isset($_SESSION['login']) && !$_SESSION['login']['role']=='1' || !$_SESSION['login']['role']=='2') {
+        header('location: ../index.php');
+    }
     include "../model/pdo.php";
     include "../model/danhmuc.php";
     include "../model/taikhoan.php";
     include "../model/sanpham.php";
+    include "../model/search.php";
+    include "header.php";
     if (isset($_GET['act']) && ($_GET['act']) != ""){
     $act = $_GET['act'];
     switch ($act) {
+            case 'logout':
+                if (isset($_SESSION['login'])) {
+                    unset($_SESSION['login']);
+                    echo '
+                        <script>
+                            if (performance.navigation.type === 0) {
+                                window.location.href = window.location.href;
+                                window.location.href = "../index.php";
+                            }
+                        </script>
+                    ';
+                }
+                include 'view/home.php';
+                break;
             case 'listsp' :
                 $listProduct = list_product();
                 include "sanpham/list.php";
@@ -105,6 +124,37 @@
                 include "binhluan/list.php";
                 break;
             case 'khachhang':
+                $keyword=$_REQUEST['keyword'];
+                $table='account';
+                $column1='username';
+                $column2='email';
+                if (isset($_POST['searchkh'])) {
+                    if ($search_wp=search_wp($table,$column1,$column2,$keyword)==true) {
+                        $dskh=search_wp($table,$column1,$column2,$keyword);
+                        include 'khachhang/list.php';
+                        exit();
+                    }else {
+                        echo"<script>
+                            alert('Không có user hay email tồn tại !');
+                        </script>";
+                    }
+                }
+                $dskh=list_kh();
+                include 'khachhang/list.php';
+                break;
+            case 'phanquyen':
+                if (isset($_GET['id'])) {
+                    $id=$_GET['id'];
+                    phanquyen($id);
+                }
+                $dskh=list_kh();
+                include 'khachhang/list.php';
+            break;
+            case 'goquyen':
+                if (isset($_GET['id'])) {
+                    $id=$_GET['id'];
+                    goquyen($id);
+                }
                 $dskh=list_kh();
                 include 'khachhang/list.php';
             break;

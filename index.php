@@ -12,8 +12,8 @@
                 if (isset($_POST['register'])) {
                     $user=$_POST['user'];
                     $email=$_POST['mail'];
-                    $pass=md5($_POST['pass']);
-                    $passCheck=md5($_POST['passcheck']);
+                    $passW=$_POST['pass'];
+                    $passCheckW=$_POST['passcheck'];
                     $userError=$emailError=$passError=$passCheckError="";
                     if (empty($user)) {
                         $userError="(* Vui lòng nhập username *)";
@@ -25,20 +25,26 @@
                         $emailError="(* Vui lòng nhập email *)";
                     }
                     //
-                    if (empty($pass)) {
+                    if (empty($passW)) {
                         $passError="(* Vui lòng nhập mật khẩu *)";
-                    }elseif( strlen($pass)<6){
+                    }elseif( strlen($passW)<6){
                         $passError="(* Password không được nhỏ hơn 6 kí tự *)";
                     }
                     else {
-                        if ($pass !== $passCheck) {
+                        if ($passW !== $passCheckW) {
                             $passCheckError="(* Mật khẩu không trùng khớp *)";
                         }
                     }
-
                     if (empty($userError) & empty($emailError) & empty($passError) & empty($passCheckError)) {
-                        register_kh($user,$pass,$email);
-                        echo 'đăng kí thành công';
+                        var_dump(check_register($user,$email));
+                        if ($check_register=check_register($user,$email)==true) {
+                            echo "<script>alert('User hoặc Email đã tồn tại');</script>";
+                        }else{
+                            $pass=md5($_POST['pass']);
+                            register_kh($user,$pass,$email);
+                            echo 'đăng kí thành công';
+                        }
+                        
                     }
 
                 }
@@ -86,18 +92,16 @@
                 include 'view/dangnhap.php';
                 break;
             case 'logout':
-                if (isset($_POST['logout'])) {
-                    if (isset($_SESSION['login'])) {
-                        unset($_SESSION['login']);
-                        echo '
-                            <script>
-                                if (performance.navigation.type === 0) {
-                                    window.location.href = window.location.href;
-                                    window.location.href = "index.php";
-                                }
-                            </script>
-                        ';
-                    }
+                if (isset($_SESSION['login'])) {
+                    unset($_SESSION['login']);
+                    echo '
+                        <script>
+                            if (performance.navigation.type === 0) {
+                                window.location.href = window.location.href;
+                                window.location.href = "index.php";
+                            }
+                        </script>
+                    ';
                 }
                 include 'view/home.php';
                 break;

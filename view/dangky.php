@@ -1,4 +1,4 @@
-<main class="container">
+<div class="container register-wp">
     <div class="form-signup">
         <h1>ĐĂNG KÝ</h1>
         <form action="" method="post">
@@ -18,4 +18,7 @@
             <p>Bạn đã có tài khoản?<a class="signin-now" href="index.php?act=dangnhap"> Đăng nhập ngay</a></p>
         </form>
     </div>
-</main>
+    <div class="img-signup">
+        <img src="assets/img/img-signup.svg" alt="anhsignup">
+    </div>  
+</div>
