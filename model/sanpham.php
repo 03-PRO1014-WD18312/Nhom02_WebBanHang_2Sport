@@ -95,10 +95,10 @@ function lista(){
     return $result;
 }
 function list_giay(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount
     FROM product 
     JOIN (
-        SELECT idProduct, price, discount
+        SELECT idProduct, price, discount, id as idVariant
         FROM variants
         GROUP BY idProduct
     ) AS variants ON product.id = variants.idProduct 

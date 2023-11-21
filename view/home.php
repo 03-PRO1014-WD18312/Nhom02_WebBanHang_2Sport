@@ -47,7 +47,15 @@
                     </span>
                 </div>
                 <div class="buy-cart">
-                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>">
+                        <input type="hidden" name="ten_sp" value="<?= $name ?>">
+                        <input type="hidden" name="price" value="<?= $discount ?>">
+                        <input type="hidden" name="imgsp" value="<?= $img ?>">
+                        <!-- <input type="hidden" name="colorsp" value="<?= $color ?>">
+                        <input type="hidden" name="sizesp" value="<?= $size ?>"> -->
+                        <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
+                    </form>
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>

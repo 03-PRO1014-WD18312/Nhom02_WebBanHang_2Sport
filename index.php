@@ -4,6 +4,7 @@
     include 'model/danhmuc.php';
     include 'model/sanpham.php';
     include 'model/taikhoan.php';
+    include 'model/cart.php';
     include 'view/header.php';
     if (isset($_GET['act']) && ($_GET['act'] != '')){
         $act = $_GET['act'];
@@ -105,9 +106,34 @@
                 }
                 include 'view/home.php';
                 break;
-            case "cart" :
-                include 'view/cart.php';
+            case "addcart" :
+                $nameSp=$_POST['ten_sp'];
+                $priceSp=$_POST['price'];
+                $imgSp=$_POST['imgsp'];
+                $colorSp=$_POST['colorsp'];
+                $sizeSp=$_POST['sizesp'];
+                $id_variant=$_POST['id_variant'];
+                $idkh=$_SESSION['login']['id'];
+                if (isset($_SESSION['login'])) {
+                    addcart($nameSp,$priceSp,$imgSp,$idkh);
+                    echo "<script>alert('Thêm giỏ hàng thành công 🛒');
+                        window.location.href = 'index.php';
+                    </script>";
+                }else {
+                    echo'<script>
+                        alert("Vui lòng đăng nhập");
+                    </script>';
+                    include 'view/home.php';
+                }
             break;
+            case 'showcart':
+                if (isset($_SESSION['login'])){
+                   $idkh=$_SESSION['login']['id'];
+                    $showcart=showcart($idkh);
+                    include 'view/cart.php'; 
+                }
+                
+                break;
             case 'checkdh':
                 include 'view/checkdh.php';
                 break;

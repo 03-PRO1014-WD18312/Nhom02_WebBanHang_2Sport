@@ -991,13 +991,18 @@ main .slide-banner img{
 }
 .addcart-product{
     background-color: var(--bg-color-black-ins);
-    width: 30%;
+    width: auto;
     text-align: center;
+    border: none;
+    outline: none;
+    height: 100%;
+    cursor: pointer;
+
 }
 .buy-cart .buy-product{
     padding: 15px 20px;
     cursor: pointer;
-    width: 70%;
+    width: 100%;
     background-color: var(--bg-color-main);
     text-align: center;
 
@@ -1057,3 +1062,4 @@ main .slide-banner img{
     font-weight: lighter;
     color: #d9d9d9;
 }
+
