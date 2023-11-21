@@ -41,25 +41,46 @@
                         <?php 
                             if (isset($_SESSION['login'])) {
                                 extract($_SESSION['login']);
-                                echo '
-                                <li class="circle-user">
-                                    <a><img src="assets/img/'.$_SESSION['login']['img'].'" alt="">'.$_SESSION['login']['username'].'</a>
-                                    <ul class="reg-log">
-                                        <li>
-                                            <form action="index.php?act=logout" method="post">
-                                                <button type="submit" class="btn btn-danger" name="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng Xuất</button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </li>
-                                ';
+                                if ($_SESSION['login']['role']==='1' || $_SESSION['login']['role']==='2') {
+                                    echo '
+                                    <li class="circle-user">
+                                        <a><img src="assets/img/'.$_SESSION['login']['img'].'" alt="">'.$_SESSION['login']['username'].'</a>
+                                        <ul class="reg-log">
+                                            <li>
+                                                <a href="admin/index.php"><i class="fa-solid fa-screwdriver-wrench"></i> Trang quản trị</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?act="><i class="fa-solid fa-pen-to-square"></i> Edit thông tin</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?act=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    ';                                    
+                                }else {
+                                    echo '
+                                    <li class="circle-user">
+                                        <a><img src="assets/img/'.$_SESSION['login']['img'].'" alt="">'.$_SESSION['login']['username'].'</a>
+                                        <ul class="reg-log">
+                                            <li>
+                                                <a href="index.php?act="><i class="fa-solid fa-pen-to-square"></i> Edit thông tin</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?act=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    ';  
+                                }
+    
                             }else {
                                 echo'
                                     <li class="circle-user">
                                         <a><i class="fa-solid fa-circle-user"></i>Tài khoản</a>
                                         <ul class="reg-log">
-                                            <li><a href="index.php?act=dangky"><i class="fa-solid fa-user-pen"></i> Đăng kí</a></li>
-                                            <li><a href="index.php?act=dangnhap"><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a></li>
+                                            <li><a href="index.php?act=dangky"><i class="fa-solid fa-user-pen"></i> Đăng ký</a></li>
+                                            <li><a href="index.php?act=dangnhap"><i class="fa-solid fa-arrow-right-to-bracket"></i> Đăng nhập</a></li>
                                         </ul
                                     </li>
                                 ';
