@@ -37,7 +37,7 @@
                     <a href="" class="detail-img">
                         <img src="assets/img/<?= $img ?>" alt="">
                     </a>
-                    <a href="index.php?act=detail&id=" class="detail-show">CHI TIẾT</a>
+                    <a href="index.php?act=detail&id=<?= $id ?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
                     <a href=""><p><?= $name ?></p></a>
@@ -76,7 +76,7 @@
                     <a href="" class="detail-img">
                         <img src="assets/img/<?= $img ?>" alt="">
                     </a>
-                    <a href="index.php?act=detail&id=" class="detail-show">CHI TIẾT</a>
+                    <a href="index.php?act=detail&id=<?= $id ?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
                     <a href=""><p><?= $name ?></p></a>
@@ -107,7 +107,7 @@
                     <a href="" class="detail-img">
                         <img src="assets/img/<?= $img ?>" alt="">
                     </a>
-                    <a href="index.php?act=detail&id=" class="detail-show">CHI TIẾT</a>
+                    <a href="index.php?act=detail&id=<?= $id ?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
                     <a href=""><p><?= $name ?></p></a>
@@ -138,7 +138,7 @@
                     <a href="" class="detail-img">
                         <img src="assets/img/<?= $img ?>" alt="">
                     </a>
-                    <a href="index.php?act=detail&id=" class="detail-show">CHI TIẾT</a>
+                    <a href="index.php?act=detail&id=<?= $id ?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
                     <a href=""><p><?= $name ?></p></a>
