@@ -47,10 +47,9 @@
                     $target_direct = "../assets/img/";
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-
-                    insert_product($name, $iddm, $status, $des, $price, $discount, $quantity,  $size, $color, $hinh);
+                    insert_product($name, $iddm, $status, $des, $prices, $discounts, $quantitys,  $sizes, $colors, $hinh);
                     header('location: index.php?act=listsp');
-                }
+                } 
                 $listdanhmuc = list_category();
                 include "sanpham/add.php";
                 break;
@@ -148,13 +147,14 @@
                 $column1='username';
                 $column2='email';
                 if (isset($_POST['searchkh'])) {
-                    if ($search_wp=search_wp($table,$column1,$column2,$keyword)==true) {
-                        $dskh=search_wp($table,$column1,$column2,$keyword);
+                    $id=$_SESSION['login']['id'];
+                    if ($search_wp=search_wp($table,$column1,$column2,$keyword, $id)==true) {
+                        $dskh=search_wp($table,$column1,$column2,$keyword,$id);
                         include 'khachhang/list.php';
                         exit();
                     }else {
                         echo"<script>
-                            alert('Không có user hay email tồn tại !');
+                            alert('Không có user hoặc email tồn tại ! hoặc đã đăng nhập');
                         </script>";
                     }
                 }

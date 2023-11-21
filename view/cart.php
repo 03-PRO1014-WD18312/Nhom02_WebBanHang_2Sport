@@ -10,22 +10,22 @@
                 <th>Tổng</th>
                 <th>Xóa</th>
             </tr>
-            <tr>
-                <td><img src="assets/img/test1.png" alt=""></td>
-                <td>Quần áo Riki CSD Namor</td>
-                <td>650,000 VND</td>
-                <td><button>-</button>1<button>+</button></td>
-                <td>650,000 VND</td>
-                <td><i class="fa-solid fa-trash-can"></i></td>
-            </tr>
-            <tr>
-                <td><img src="assets/img/test2.png" alt=""></td>
-                <td>Quần áo Riki CSD Namor 1</td>
-                <td>650,000 VND</td>
-                <td><button>-</button>1<button>+</button></td>
-                <td>650,000 VND</td>
-                <td><i class="fa-solid fa-trash-can"></i></td>
-            </tr>
+            <?php 
+                $showcart=showcart($idkh);
+                foreach ($showcart as $cart) {
+                    extract($cart);
+                    echo '
+                    <tr>
+                        <td><img src="assets/img/'.$img.'" alt=""></td>
+                        <td>'.$name.'</td>
+                        <td>'.$price.'</td>
+                        <td><button>-</button>1<button>+</button></td>
+                        <td>650,000 VND</td>
+                        <td><i class="fa-solid fa-trash-can"></i></td>
+                    </tr>
+                    ';
+                }
+            ?>
         </table>
         <div class="total"><i class="fa-solid fa-file-invoice-dollar"></i>Tổng: 1,300,000 VND</div>
         <div class="navigation">

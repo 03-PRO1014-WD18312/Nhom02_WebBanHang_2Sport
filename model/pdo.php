@@ -31,7 +31,6 @@ function pdo_execute($sql){
 // Truy vấn nhiều dữ liệu
 function pdo_query($sql){
     $sql_args=array_slice(func_get_args(),1);
-
     try{
         $conn=pdo_get_connection();
         $stmt=$conn->prepare($sql);
