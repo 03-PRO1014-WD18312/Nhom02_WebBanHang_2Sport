@@ -16,12 +16,20 @@
                 <div class="bars">
                     <i class="fa-solid fa-bars"></i>
                 </div>
-                <a href=""><img class="logo" src="../assets/img/logo-web.svg" alt=""></a>
-                <marquee class="marquee-wel" behavior="" direction=""><i class="fa-solid fa-bolt-lightning"></i> CHÀO MỪNG BẠN ĐẾN VỚI TRANG QUẢN TRỊ</marquee>
-                <div class="profile-out">
-                    <a href=""><i class="fa-solid fa-user-tie"></i> Admin</a>
-                    <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-                </div>
+                <a href="../index.php"><img class="logo" src="../assets/img/logo-web.svg" alt=""></a>
+                <?php 
+                    if (isset($_SESSION['login'])) {
+                        extract($_SESSION['login']);
+                        echo'
+                            <marquee class="marquee-wel" behavior="" direction="" style="text-transform: uppercase;"><i class="fa-solid fa-bolt-lightning"></i> CHÀO MỪNG '.$_SESSION['login']['username'].' ĐẾN VỚI TRANG QUẢN TRỊ</marquee>
+                            <div class="profile-out">
+                                <a href=""><i class="fa-solid fa-user-tie"></i>'.$_SESSION['login']['username'].'</a>
+                                <a href="index.php?act=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                            </div>
+                        ';
+                    }
+                ?>
+                <!-- <marquee class="marquee-wel" behavior="" direction=""><i class="fa-solid fa-bolt-lightning"></i> CHÀO MỪNG BẠN ĐẾN VỚI TRANG QUẢN TRỊ</marquee> -->
             </nav>
         </header>
         <marquee class="marquee-wel-none" behavior="" direction=""><i class="fa-solid fa-bolt-lightning"></i> CHÀO MỪNG BẠN ĐẾN VỚI TRANG QUẢN TRỊ</marquee>

@@ -293,6 +293,19 @@ tbody img{
     color: var(--bg-color-while-ins);
     cursor: pointer;
 }
+.form-updatekh{
+    display: flex;
+    max-width: 100%;
+}
+.updatekh-left, .updatekh-right{
+    width: 100%;
+}
+.updatekh-left input{
+    
+}
+
+
+
 /* add-category */
 .add-category h1{
     color: var(--bg-color-while-ins);
@@ -604,4 +617,6 @@ tbody img{
     cursor: pointer;
 }
 /* end list-product */
+
+
 

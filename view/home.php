@@ -103,12 +103,50 @@
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
+            <div class="product-item">
+                <div class="detail">
+                    <a href="" class="detail-img">
+                        <img src="assets/img/anhgiay.webp" alt="">
+                    </a>
+                    <a href="" class="detail-show">CHI TIẾT</a>
+                </div>
+                <div class="product-describe">
+                    <a href=""><p>Giày bóng đá Jogarbola</p></a>
+                    <span class="price-new">650.000đ</span>
+                    <span class="price-origin">
+                        <del>680.000đ</del>
+                    </span>
+                </div>
+                <div class="buy-cart">
+                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
+                </div>
+            </div>
         </div>
         <div class="view-now"><a href="">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
         <h3>GĂNG TAY THỦ MÔN <span>( 100 SẢN PHẨM )</span></h3>
         <div class="product-ins">
+            <div class="product-item">
+                <div class="detail">
+                    <a href="" class="detail-img">
+                        <img src="assets/img/gangtaythumon.webp" alt="">
+                    </a>
+                    <a href="" class="detail-show">CHI TIẾT</a>
+                </div>
+                <div class="product-describe">
+                    <a href=""><p>Găng tay thủ môn</p></a>
+                    <span class="price-new">650.000đ</span>
+                    <span class="price-origin">
+                        <del>680.000đ</del>
+                    </span>
+                </div>
+                <div class="buy-cart">
+                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
+                </div>
+            </div>
             <div class="product-item">
                 <div class="detail">
                     <a href="" class="detail-img">
@@ -267,12 +305,50 @@
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
+            <div class="product-item">
+                <div class="detail">
+                    <a href="" class="detail-img">
+                        <img src="assets/img/tuidunggiay1.webp" alt="">
+                    </a>
+                    <a href="" class="detail-show">CHI TIẾT</a>
+                </div>
+                <div class="product-describe">
+                    <a href=""><p>Túi đựng giày</p></a>
+                    <span class="price-new">650.000đ</span>
+                    <span class="price-origin">
+                        <del>680.000đ</del>
+                    </span>
+                </div>
+                <div class="buy-cart">
+                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
+                </div>
+            </div>
         </div>
         <div class="view-now"><a href="">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
         <h3>ÁO BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
         <div class="product-ins">
+            <div class="product-item">
+                <div class="detail">
+                    <a href="" class="detail-img">
+                        <img src="assets/img/aobongda.webp" alt="">
+                    </a>
+                    <a href="" class="detail-show">CHI TIẾT</a>
+                </div>
+                <div class="product-describe">
+                    <a href=""><p>Áo bóng đá Liverpol</p></a>
+                    <span class="price-new">650.000đ</span>
+                    <span class="price-origin">
+                        <del>680.000đ</del>
+                    </span>
+                </div>
+                <div class="buy-cart">
+                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
+                </div>
+            </div>
             <div class="product-item">
                 <div class="detail">
                     <a href="" class="detail-img">

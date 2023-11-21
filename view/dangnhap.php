@@ -10,7 +10,10 @@
         ';
     }
 ?>
-<div class="container">
+<div class="container login-wp">
+    <div class="img-login">
+        <img src="assets/img/img-login.svg" alt="anhlogin">
+    </div>  
     <div class="form-signin">
         <h1>ĐĂNG NHẬP</h1>
         <form action="index.php?act=dangnhap" method="post">
@@ -22,6 +25,6 @@
             <input type="submit" name="login" value="Đăng nhập">
             <p>Bạn chưa có tài khoản? <a class="signup-now" href="index.php?act=dangky">Đăng ký ngay</a></p>
         </form>
-    </div>    
+    </div>
 </div>
 
