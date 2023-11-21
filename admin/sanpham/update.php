@@ -3,9 +3,6 @@ if (is_array($sanpham)) {
     extract($sanpham);
 }
 
-if (is_array($list_infor)) {
-    extract($list_infor);
-}
 ?>
 <main class="container">
     <?php include "boxleft.php" ?>

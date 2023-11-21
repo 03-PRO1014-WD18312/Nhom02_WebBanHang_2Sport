@@ -3,13 +3,6 @@
     <div class="infor-product">
         <div class="left">
             <div class="image-product">
-                <div class="pose-image">
-                    <img src="assets/img/quanaobongda.png" alt="" width="70px" height="60px">
-                    <img src="assets/img/quanaobongda.png" alt="" width="70px" height="60px">
-                    <img src="assets/img/quanaobongda.png" alt="" width="70px" height="60px">
-                    <img src="assets/img/quanaobongda.png" alt="" width="70px" height="60px">
-                    <img src="assets/img/quanaobongda.png" alt="" width="70px" height="60px">
-                </div>
                 <div class="main-image">
                     <img src="assets/img/quanaobongda.png" alt="" width="400px" height="360px">
                 </div>

@@ -8,16 +8,6 @@
                     <div class="left">
                         <label for="">TÊN SẢN PHẨM</label><br>
                         <input type="text" name="namesp" placeholder="Nhập tên sản phẩm"><br>
-                        <!-- <div class="price">
-                            <div class="origin-price">
-                                <label for="">GIÁ GỐC</label><br>
-                                <input type="text" name="price">
-                            </div>
-                            <div class="discount">
-                                <label for="">GIÁ GIẢM</label><br>
-                                <input type="text" name="discount">
-                            </div>
-                        </div> -->
                         <br>
                         <label for="">DANH MỤC</label><br>
                         <select name="iddm" id="category">
