@@ -36,7 +36,7 @@
                     </form>
                     <ul class="list-menu">
                         <li><a href="index.php?act=checkdh"><i class="fa-solid fa-receipt"></i> Check đơn hàng</a></li>
-                        <li><a href="index.php?act=cart"><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng</a></li>
+                        <li><a href="index.php?act=showcart"><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng</a></li>
                         <li class="fa-bag"><a href=""><i class="fa-solid fa-bag-shopping"></i></a></li>
                         <?php 
                             if (isset($_SESSION['login'])) {
