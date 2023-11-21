@@ -14,6 +14,7 @@
                 <?php foreach($infor as $row){
                     extract($row);    
                 ?>
+
                 <div style="background-color:<?= $color ?>;"></div>
                 <?php } ?>
             </div>

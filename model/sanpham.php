@@ -38,6 +38,55 @@ function insert_product($name, $iddm, $status, $des, $prices, $discounts, $quant
     }
     pdo_execute_multi($sql_array);
 }
+function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $discounts, $quantitys, $colors, $sizes){
+    $sql_array = array();
+    
+    // Update bảng product
+    $sql_array[] = "UPDATE product SET name = '$name', idCategory = '$iddm', status = '$status', des = '$des', img = '$hinh' WHERE id = '$id'";
+
+    // Update variants, product_size, and product_color 
+    $count = count($sizes);
+    for ($i = 0; $i < $count; $i++) {
+        $quantity = $quantitys[$i];
+        $price = $prices[$i];
+        $size = $sizes[$i];
+        $color = $colors[$i];
+        $discount = $discounts[$i];
+
+        // Update product_color tại dòng hiện tại
+        $sql_array[] = "UPDATE product_color 
+                        SET color = '$color' 
+                        WHERE id = (SELECT idColor FROM variants WHERE idProduct = '$id' LIMIT 1 OFFSET $i);";
+
+        // Update product_size tại dòng hiện tại
+        $sql_array[] = "UPDATE product_size 
+                        SET size = '$size' 
+                        WHERE id = (SELECT idSize FROM variants WHERE idProduct = '$id' LIMIT 1 OFFSET $i);";
+
+        // Update variants tại dòng hiện tại
+        $sql_array[] = "UPDATE variants 
+                SET price = '$price', quantity = '$quantity', discount = '$discount'
+                WHERE idProduct = '$id' AND id = (SELECT id FROM variants WHERE idProduct = '$id' LIMIT 1 OFFSET $i);";
+    }
+
+    pdo_execute_multi($sql_array);
+}
+function select_update_product($id){
+    $sql = "SELECT product.id, product.name, product.status, product.img, product.des, product.idCategory, 
+    variants.id, variants.price, variants.discount, variants.quantity, product_color.color, product_size.size 
+    FROM variants 
+    JOIN product ON variants.idProduct = product.id 
+    JOIN product_size ON variants.idSize = product_size.id 
+    JOIN product_color ON variants.idColor = product_color.id 
+    WHERE product.id = $id";
+    $result = pdo_query($sql);
+    return $result;
+}
+function count_update($id){
+    $sql = "SELECT quantity FROM variants JOIN product on variants.idProduct = product.id WHERE product.id = $id;";
+    $result = pdo_query($sql);
+    return $result;
+}
 function list_product(){
     $sql = "SELECT * from product order by id";
     $listProduct = pdo_query($sql);
@@ -68,9 +117,6 @@ function loadone_product_infor($id){
     where variants.idProduct='$id'";
     $result = pdo_query($sql);
     return $result;
-}
-function update_product($id, $name, $price, $discount, $quantity, $iddm, $status, $des, $size1, $size2, $size3, $size4, $size5, $hinh, $hinh1, $hinh2, $hinh3, $hinh4, $color1, $color2, $color3, $color4, $color5){
-    
 }
 function delete_product($id){
     // Tắt ràng buộc khóa ngoại trước khi xóa sau đó bật lại

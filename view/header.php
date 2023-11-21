@@ -41,7 +41,7 @@
                         <?php 
                             if (isset($_SESSION['login'])) {
                                 extract($_SESSION['login']);
-                                if ($_SESSION['login']['role']==='1' || $_SESSION['login']['role']==='2') {
+                                if ($_SESSION['login']['role']=='1' || $_SESSION['login']['role']=='2') {
                                     echo '
                                     <li class="circle-user">
                                         <a><img src="assets/img/'.$_SESSION['login']['img'].'" alt="">'.$_SESSION['login']['username'].'</a>

@@ -57,14 +57,33 @@
             case 'suasp' :
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $id = $_GET['id'];
-                    $sanpham = loadone_product($id);  
-                    $listdanhmuc = list_category();
+                    $sanpham = select_update_product($id);
+                    $listdanhmuc = list_category(); 
+                    $count = count_update($id);
                 }
                 include "sanpham/update.php";
                 break;
             case 'updatesp' :
                 if (isset($_POST['updateProduct']) && $_POST['updateProduct']) {
-                    
+                    $id = $_POST['id'];
+                    $name = $_POST['namesp'];
+                    $iddm = $_POST['iddm'];
+                    $status = $_POST['status'];
+                    $des = $_POST['des'];
+
+                    $price = $_POST['price'];
+                    $discount = $_POST['priceSale'];
+                    $quantity = $_POST['quantity'];
+                    $size = $_POST['size'];
+                    $color = $_POST['color'];
+
+                    $hinh = $_FILES['image']['name'];
+                    $target_direct = "../assets/img/";
+                    $target_file = $target_direct.basename($hinh);
+                    move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+
+                    update_product($id, $iddm, $name, $status, $des, $hinh, $price, $discount, $quantity, $color, $size);
+                    header('location: index.php?act=listsp');
                 }
                 $listdanhmuc = list_category();
                 include "sanpham/update.php";
@@ -124,7 +143,7 @@
                 include "binhluan/list.php";
                 break;
             case 'khachhang':
-                $keyword=$_REQUEST['keyword'];
+                $keyword=$_POST['keyword'];
                 $table='account';
                 $column1='username';
                 $column2='email';
