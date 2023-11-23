@@ -42,20 +42,16 @@
                 </div>
                 <div class="product-describe">
                     <a href=""><p><?= $sp['name'] ?></p></a>
-                    <span class="price-new"><?= $sp['discount'] ?></span>
+                    <span class="price-new"><?= number_format($sp['discount'])  ?></span>
                     <span class="price-origin">
-                        <del><?= $sp['price'] ?></del>
-                    <a href=""><p><?= $name ?></p></a>
-                    <span class="price-new"><?= number_format($discount) ?>đ</span>
-                    <span class="price-origin">
-                        <del><?= number_format($price) ?>đ</del>
+                        <del><?=number_format($sp['price'])?></del>
                     </span>
                 </div>
                 <div class="buy-cart">
                     <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id_variant" value="<?= $sp['id'] ?>">
-                        <input type="hidden" name="idSize" value="<?= $sp['size']?>">
-                        <input type="hidden" name="idColor" value="<?= $sp['color']?>">
+                        <!-- <input type="hidden" name="idSize" value="<?= $sp['size1']?>">
+                        <input type="hidden" name="idColor" value="<?= $sp['color']?>"> -->
                         <input type="hidden" name="ten_sp" value="<?= $sp['name'] ?>">
                         <input type="hidden" name="price" value="<?= $sp['discount'] ?>">
                         <input type="hidden" name="imgsp" value="<?= $sp['img'] ?>">

@@ -20,6 +20,7 @@
                 $stt=1;
                 $sum = 0;
                 foreach ($showcart as $cart) {
+                    // var_dump($cart);
                     extract($cart);
                     $price_formatted = number_format($price, 0, '.', ',');
                     $thanhtien = $price * $quantity;

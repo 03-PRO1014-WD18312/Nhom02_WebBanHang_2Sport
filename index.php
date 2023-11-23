@@ -15,7 +15,6 @@
                     $id = $_GET['id'];
                     $listsp = list_sanpham_danhmuc($id);
                 }
-                
                 include "view/danhmucsampham.php";
                 break;
             // case "danhmuc" :
@@ -135,14 +134,11 @@
                 $nameSp=$_POST['ten_sp'];
                 $priceSp=$_POST['price'];
                 $imgSp=$_POST['imgsp'];
-                $colorSp=$_POST['colorsp'];
-                $sizeSp=$_POST['sizesp'];
                 $id_variant=$_POST['id_variant'];
-                $idSize=$_POST['idSize'];
-                $idColor=$_POST['idColor'];
                 $idkh=$_SESSION['login']['id'];
+                var_dump($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
                 if (isset($_SESSION['login'])) {
-                    addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant,$idSize,$idColor);
+                    addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
                     echo "<script>alert('Thêm giỏ hàng thành công 🛒');
                         window.location.href = 'index.php';
                     </script>";
