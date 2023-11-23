@@ -3,12 +3,37 @@
     include 'model/pdo.php';
     include 'model/danhmuc.php';
     include 'model/sanpham.php';
+    include 'model/search.php';
     include 'model/taikhoan.php';
     include 'model/cart.php';
     include 'view/header.php';
     if (isset($_GET['act']) && ($_GET['act'] != '')){
         $act = $_GET['act'];
         switch ($act) {
+            case "sanpham" :
+                if(isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $listsp = list_sanpham_danhmuc($id);
+                }
+                
+                include "view/danhmucsampham.php";
+                break;
+            // case "danhmuc" :
+            //     if(isset($_GET['id'])) {
+            //         $id = $_GET['id'];
+            //         $listspdm = list_danhmuc_sanpham($id);
+            //     }
+            //     include "view/danhmuc.php";
+            //     break;
+            case "timkiem" :
+                if(isset($_POST['keyw'])) {
+                    $keyw = $_POST['keyw'];
+                    $listSearch = search_product($keyw);
+                } else{
+
+                }
+                include "view/timkiem.php";
+                break;
             case "dangky" :
                 if (isset($_POST['register'])) {
                     $user=$_POST['user'];

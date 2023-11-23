@@ -18,9 +18,9 @@
         <h1>ĐĂNG NHẬP</h1>
         <form action="index.php?act=dangnhap" method="post">
             <input type="text" name="username" placeholder="Vui lòng nhập username">
-            <span style="color: orangered; font-size: small;"><?php echo $errorEnterUsername;?></span><br>
+            <span style="color: orangered; font-size: small;"><?php if(isset($errorEnterUsername)) echo $errorEnterUsername;?></span><br>
             <input type="password" name="password" placeholder="Vui lòng nhập mật khẩu">
-            <span style="color: orangered; font-size: small;"><?php echo $errorEnterPassword;?></span><br>
+            <span style="color: orangered; font-size: small;"><?php if(isset($errorEnterPassword)) echo $errorEnterPassword;?></span><br>
             <a class="forget-pass" href="">Quên mật khẩu?</a>
             <input type="submit" name="login" value="Đăng nhập">
             <p>Bạn chưa có tài khoản? <a class="signup-now" href="index.php?act=dangky">Đăng ký ngay</a></p>

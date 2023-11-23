@@ -12,16 +12,21 @@
                     <th>Ngày bình luận</th>
                     <th>Hành động</th>
                 </tr>
+                <?php foreach($binhluan as $row){
+                    extract($row);
+                    $delete = "index.php?act=deletebl&id=$id";
+                ?>
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>Lã Văn Sáng</td>
-                    <td>Giày Nike 2023</td>
-                    <td>Giày rất đẹp !!!</td>
-                    <td>17/11/2023</td>
+                    <td><?= $username ?></td>
+                    <td><?= $name ?></td>
+                    <td><?= $text ?></td>
+                    <td><?= $date ?></td>
                     <td>
-                        <a href="<?= $hard_delete ?>"><input type="button" value="Gỡ" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
+                        <a onclick="return confirm('Bạn có chắc muốn xóa bình luận này');" href="<?=$delete?>"><input type="button" value="Xóa"></a>
                     </td>
                 </tr>
+                <?php } ?>
             </table>
             <div class="action">
                 <a href="">CHỌN TẤT CẢ</a>
