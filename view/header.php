@@ -115,12 +115,12 @@
                         </li>
                     </ul>
                     <div class="fa-receipt-none"><a href=""><i class="fa-solid fa-receipt"></i> Check đơn hàng</a></div>
-                    <div class="circle-user-none"><a href=""><i class="fa-solid fa-circle-user"></i> Tài khoản <i class="fa-solid fa-angle-down"></i></a>
+                    <!-- <div class="circle-user-none"><a href=""><i class="fa-solid fa-circle-user"></i> Tài khoản <i class="fa-solid fa-angle-down"></i></a>
                         <ul class="reg-log-none">
                             <li><a href="index.php?act=dangky"><i class="fa-solid fa-user-pen"></i> Đăng kí</a></li>
                             <li><a href="index.php?act=dangnhap"><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a></li>
                         </ul>
-                    </div>
+                    </div> -->
                     <!-- <div class="chinhanh-none">
                         <i class="fa-solid fa-location-dot"></i>
                         <select class="select-cn" id="">

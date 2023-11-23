@@ -25,4 +25,9 @@ function delete_category($id){
     $sql = "DELETE from category where id = $id";
     pdo_execute($sql);
 }
+function join_sp_dm($id){
+    $sql = "SELECT * FROM product JOIN category ON product.idCategory = category.id WHERE product.id = $id";
+    $dssp=pdo_query($sql);
+    return $dssp;
+}
 ?>

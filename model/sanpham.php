@@ -137,14 +137,16 @@ function delete_product($id){
 }
 
 function list_giay(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
-        SELECT idProduct, price, discount, id as idVariant
+        SELECT idProduct, price, discount, id , idSize, idColor
         FROM variants
         GROUP BY idProduct
     ) AS variants ON product.id = variants.idProduct 
     JOIN category ON product.idCategory = category.id 
+    JOIN product_size ON variants.idSize=product_size.id
+    JOIN product_color ON variants.idColor=product_color.id
     WHERE product.idCategory = 4";
     $result = pdo_query($sql);
     return $result;

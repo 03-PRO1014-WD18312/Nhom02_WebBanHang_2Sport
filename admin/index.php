@@ -47,7 +47,7 @@
                     $target_direct = "../assets/img/";
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-                    insert_product($name, $iddm, $status, $des, $prices, $discounts, $quantitys,  $sizes, $colors, $hinh);
+                    insert_product($name, $iddm, $status, $des, $price, $discount, $quantity, $size, $color, $hinh);
                     header('location: index.php?act=listsp');
                 } 
                 $listdanhmuc = list_category();
@@ -57,7 +57,8 @@
                 if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                     $id = $_GET['id'];
                     $sanpham = select_update_product($id);
-                    $listdanhmuc = list_category(); 
+                    $listdanhmuc=list_category();
+                    $selectdm = join_sp_dm($id); 
                     $count = count_update($id);
                 }
                 include "sanpham/update.php";

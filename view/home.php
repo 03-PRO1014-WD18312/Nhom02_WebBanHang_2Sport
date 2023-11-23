@@ -30,6 +30,46 @@
         <?php 
         $listGiay = list_giay();
         foreach ($listGiay as $sp){
+            // echo '<pre>';
+            // var_dump($sp);
+        ?>
+            <div class="product-item">
+                <div class="detail">
+                    <a href="" class="detail-img">
+                        <img src="assets/img/<?= $sp['img']?>" alt="">
+                    </a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-show">CHI TIẾT</a>
+                </div>
+                <div class="product-describe">
+                    <a href=""><p><?= $sp['name'] ?></p></a>
+                    <span class="price-new"><?= $sp['discount'] ?></span>
+                    <span class="price-origin">
+                        <del><?= $sp['price'] ?></del>
+                    </span>
+                </div>
+                <div class="buy-cart">
+                    <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id_variant" value="<?= $sp['id'] ?>">
+                        <input type="hidden" name="idSize" value="<?= $sp['size']?>">
+                        <input type="hidden" name="idColor" value="<?= $sp['color']?>">
+                        <input type="hidden" name="ten_sp" value="<?= $sp['name'] ?>">
+                        <input type="hidden" name="price" value="<?= $sp['discount'] ?>">
+                        <input type="hidden" name="imgsp" value="<?= $sp['img'] ?>">
+                        <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
+                    </form>
+                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
+                </div>
+            </div>
+        <?php } ?>
+        </div>
+        <div class="view-now"><a href="">XEM THÊM</a></div>
+    </div>
+    <div class="product-wp">
+        <h3>GĂNG TAY THỦ MÔN <span>( 100 SẢN PHẨM )</span></h3>
+        <div class="product-ins">
+        <?php 
+        $listGang = list_gang();
+        foreach ($listGang as $sp){
             extract($sp);
         ?>
             <div class="product-item">
@@ -64,37 +104,6 @@
         <div class="view-now"><a href="">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
-        <h3>GĂNG TAY THỦ MÔN <span>( 100 SẢN PHẨM )</span></h3>
-        <div class="product-ins">
-        <?php 
-        $listGang = list_gang();
-        foreach ($listGang as $sp){
-            extract($sp);
-        ?>
-            <div class="product-item">
-                <div class="detail">
-                    <a href="" class="detail-img">
-                        <img src="assets/img/<?= $img ?>" alt="">
-                    </a>
-                    <a href="index.php?act=detail&id=<?= $id ?>" class="detail-show">CHI TIẾT</a>
-                </div>
-                <div class="product-describe">
-                    <a href=""><p><?= $name ?></p></a>
-                    <span class="price-new"><?= $discount ?></span>
-                    <span class="price-origin">
-                        <del><?= $price ?></del>
-                    </span>
-                </div>
-                <div class="buy-cart">
-                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
-                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
-                </div>
-            </div>
-        <?php } ?>
-        </div>
-        <div class="view-now"><a href="">XEM THÊM</a></div>
-    </div>
-    <div class="product-wp">
         <h3>QUẢ BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
@@ -117,7 +126,15 @@
                     </span>
                 </div>
                 <div class="buy-cart">
-                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>">
+                        <input type="hidden" name="ten_sp" value="<?= $name ?>">
+                        <input type="hidden" name="price" value="<?= $discount ?>">
+                        <input type="hidden" name="imgsp" value="<?= $img ?>">
+                        <!-- <input type="hidden" name="colorsp" value="<?= $color ?>">
+                        <input type="hidden" name="sizesp" value="<?= $size ?>"> -->
+                        <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
+                    </form>
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
@@ -148,7 +165,15 @@
                     </span>
                 </div>
                 <div class="buy-cart">
-                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>">
+                        <input type="hidden" name="ten_sp" value="<?= $name ?>">
+                        <input type="hidden" name="price" value="<?= $discount ?>">
+                        <input type="hidden" name="imgsp" value="<?= $img ?>">
+                        <!-- <input type="hidden" name="colorsp" value="<?= $color ?>">
+                        <input type="hidden" name="sizesp" value="<?= $size ?>"> -->
+                        <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
+                    </form>
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <?php 
     extract($detail);
 ?>
-<div class="form-detail">
+<div class="form-detail container">
     <h1>CHI TIẾT SẢN PHẨM</h1>
     <div class="infor-product">
         <div class="left">
