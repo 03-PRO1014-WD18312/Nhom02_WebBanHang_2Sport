@@ -1,12 +1,12 @@
 <?php
     session_start();
+    include 'view/header.php';
     include 'model/pdo.php';
     include 'model/danhmuc.php';
     include 'model/sanpham.php';
     include 'model/search.php';
     include 'model/taikhoan.php';
     include 'model/cart.php';
-    include 'view/header.php';
     if (isset($_GET['act']) && ($_GET['act'] != '')){
         $act = $_GET['act'];
         switch ($act) {
@@ -138,9 +138,11 @@
                 $colorSp=$_POST['colorsp'];
                 $sizeSp=$_POST['sizesp'];
                 $id_variant=$_POST['id_variant'];
+                $idSize=$_POST['idSize'];
+                $idColor=$_POST['idColor'];
                 $idkh=$_SESSION['login']['id'];
                 if (isset($_SESSION['login'])) {
-                    addcart($nameSp,$priceSp,$imgSp,$idkh);
+                    addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant,$idSize,$idColor);
                     echo "<script>alert('Thêm giỏ hàng thành công 🛒');
                         window.location.href = 'index.php';
                     </script>";
@@ -150,18 +152,38 @@
                     </script>';
                     include 'view/home.php';
                 }
-            break;
+                break;
             case 'showcart':
                 if (isset($_SESSION['login'])){
-                   $idkh=$_SESSION['login']['id'];
+                    $idkh=$_SESSION['login']['id'];
                     $showcart=showcart($idkh);
                     include 'view/cart.php'; 
+                    exit();
                 }
-                
+                $showcart=showcart($idkh);
+                include 'view/cart.php'; 
+                break;
+            case 'deletecart':
+                $id=$_GET['id'];
+                if (isset($id) && $id > 0) {
+                    deletecart($id);
+                }
+                $idkh=$_SESSION['login']['id'];
+                $showcart=showcart($idkh);
+                include 'view/cart.php'; 
+                break;
+            case 'order':
+                $idkh=$_SESSION['login']['id'];
+                $showcart=showcart($idkh);
+                include 'view/order.php';
+                break;
+            case 'payout':
+                include 'view/payout.php';
                 break;
             case 'checkdh':
                 include 'view/checkdh.php';
                 break;
+
             case "detail" :
                 if(isset($_GET['id']) && $_GET['id'] > 0){
                     $detail = detail_product($_GET['id']);
