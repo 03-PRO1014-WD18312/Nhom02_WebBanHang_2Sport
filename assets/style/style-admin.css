@@ -595,6 +595,10 @@ tbody img{
     margin: 15px 0px;
 
 }
+#container .variant .size{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 #container .variant .variant-in{
     max-width: 100%;
 }

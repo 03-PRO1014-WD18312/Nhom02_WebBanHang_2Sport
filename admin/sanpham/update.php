@@ -9,9 +9,10 @@ $i = 0;
         <div class="add-product">
             <h1>SỬA SẢN PHẨM</h1>
             <form action="index.php?act=updatesp" method="POST" enctype="multipart/form-data">
+
                 <div class="form-add">
                     <div class="left">
-                        <input type="hidden" name="id" value="<?= $sanpham[0]['id'] ?>">
+                        <input type="hidden" name="id" value="<?= $sanpham[0]['idProduct'] ?>">
                         <label for="">TÊN SẢN PHẨM</label><br>
                         <input type="text" name="namesp" placeholder="Nhập tên sản phẩm" value="<?= $sanpham[0]['name'] ?>"><br>
                         <br>
@@ -50,12 +51,15 @@ $i = 0;
                         ?>
                         <div class="variant">
                             <div class="variant-in">
-                                <label for="">Kích cỡ</label></br>
-                                <input type="text" list="size" name="size[]" placeholder="Nhập size" value="<?= $sanpham[$i]['size'] ?>">
-                            </div>
-                            <div class="variant-in">
                                 <label for="">Màu</label></br>
                                 <input type="text" list="color" name="color[]" placeholder="Nhập màu" value="<?= $sanpham[$i]['color'] ?>">
+                            </div>
+                            <div class="variant-in size">
+                                <label for="">Kích cỡ</label></br>
+                                <input type="text" list="size" name="size1[]" placeholder="Nhập size" value="<?= $sanpham[$i]['size1'] ?>">
+                                <input type="text" list="size" name="size2[]" placeholder="Nhập size" value="<?= $sanpham[$i]['size2'] ?>">
+                                <input type="text" list="size" name="size3[]" placeholder="Nhập size" value="<?= $sanpham[$i]['size3'] ?>">
+                                <input type="text" list="size" name="size4[]" placeholder="Nhập size" value="<?= $sanpham[$i]['size4'] ?>">
                             </div>
                             <div class="variant-in">
                                 <label for="">Giá gốc</label></br>
@@ -67,7 +71,7 @@ $i = 0;
                             </div>
                             <div class="variant-in">
                                 <label for="">Số lượng</label></br>
-                                <input type="number" name="quantity[]" min="1" value="<?= $sanpham[0]['quantity'] ?>" placeholder="Nhập số lượng" >
+                                <input type="number" name="quantity[]" min="1" value="<?= $sanpham[$i]['quantity'] ?>" placeholder="Nhập số lượng" >
                             </div>
                         </div>
                         <?php $i++; } ?>
@@ -93,7 +97,7 @@ $i = 0;
                         <option value="black">
                     </datalist>
                 </div>
-                <input type="submit" class="submit" value="SỬA SẢN PHẨM" name="updateProduct">
+                <input type="submit" class="submit" value="SỬA SẢN PHẨM" name="sua">
                 <input type="reset" class="reset" value="NHẬP LẠI">
             </form>
         </div>
