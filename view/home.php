@@ -16,7 +16,7 @@
                     extract($dm);
                     echo '
                         <div class="product-symbolic">
-                            <a href=""><img src="assets/img/'.$img.'" alt=""></a>
+                            <a href="index.php?act=sanpham&id='.$id.'"><img src="assets/img/'.$img.'" alt=""></a>
                             <a class="name-catalog" href="">'.$name.'</a>
                         </div>
                     ';
@@ -45,6 +45,10 @@
                     <span class="price-new"><?= $sp['discount'] ?></span>
                     <span class="price-origin">
                         <del><?= $sp['price'] ?></del>
+                    <a href=""><p><?= $name ?></p></a>
+                    <span class="price-new"><?= number_format($discount) ?>đ</span>
+                    <span class="price-origin">
+                        <del><?= number_format($price) ?>đ</del>
                     </span>
                 </div>
                 <div class="buy-cart">
@@ -62,7 +66,7 @@
             </div>
         <?php } ?>
         </div>
-        <div class="view-now"><a href="">XEM THÊM</a></div>
+        <div class="view-now"><a href="index.php?act=danhmuc&id=4">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
         <h3>GĂNG TAY THỦ MÔN <span>( 100 SẢN PHẨM )</span></h3>
@@ -101,7 +105,7 @@
             </div>
         <?php } ?>
         </div>
-        <div class="view-now"><a href="">XEM THÊM</a></div>
+        <div class="view-now"><a href="index.php?act=danhmuc&id=5">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
         <h3>QUẢ BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
@@ -140,7 +144,7 @@
             </div>
         <?php } ?>
         </div>
-        <div class="view-now"><a href="">XEM THÊM</a></div>
+        <div class="view-now"><a href="index.php?act=danhmuc&id=7">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
         <h3>ÁO BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
@@ -179,7 +183,7 @@
             </div>
         <?php } ?>
         </div>
-        <div class="view-now"><a href="">XEM THÊM</a></div>
+        <div class="view-now"><a href="index.php?act=danhmuc&id=6">XEM THÊM</a></div>
     </div>
     <div class="policy-wp">
         <div class="policy-item">

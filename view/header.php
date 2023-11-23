@@ -16,10 +16,10 @@
                 <a href="index.php"><img class="logo-web" src="assets/img/logo-web.svg" alt="logo-web"></a>
                 <a href=""><img class="logo-web-mobile" src="assets/img/logo-mobile.svg" alt="logo-web-mobile"></a>
                 <div class="nav-left">
-                    <form class="form-search" action="">
+                    <form class="form-search" action="index.php?act=timkiem" method="POST">
                         <div class="search-wp">
-                            <input class="input-search" type="search" placeholder="Bạn cần tìm gì...">
-                            <button class="btn-search"><i class="fa fa-search"></i></button>
+                            <input class="input-search" type="search" name="keyw" placeholder="Bạn cần tìm gì...">
+                            <button type="submit" name="search" class="btn-search"><i class="fa fa-search"></i></button>
                         </div>
                         <div class="search-res">
                             <i class="fa-solid fa-magnifying-glass"></i>

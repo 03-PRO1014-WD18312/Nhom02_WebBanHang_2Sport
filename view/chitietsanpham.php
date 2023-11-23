@@ -25,8 +25,8 @@
                 <?php foreach($infor as $row){
                     extract($row);    
                 ?>
-                <p class="discount"><?= $discount ?></p>
-                <p class="origin-price"><?= $price ?></p>
+                <p class="discount"><?= number_format($discount) ?>đ</p>
+                <p class="origin-price"><?= number_format($price) ?>đ</p>
                 <p class="percent"><?= ($discount-$price)/10000 ?>%</p>
                 <?php } ?>
             </div>
@@ -43,7 +43,10 @@
                 <?php foreach($infor as $row){
                     extract($row);    
                 ?>
-                <div class="size1"><?= $size ?></div>
+                <div class="size1"><?= $size1 ?></div>
+                <div class="size1"><?= $size2 ?></div>
+                <div class="size1"><?= $size3 ?></div>
+                <div class="size1"><?= $size4 ?></div>
                 <?php } ?>
             </div>
             <form action="">
@@ -60,8 +63,9 @@
             
         </div>
     </div>
-    <div class="comment">
+    <div class="comment" width="1360px">
         <h2>Bình luận</h2>
+        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="250px"></iframe>
     </div>
     <div class="similar-product">
 

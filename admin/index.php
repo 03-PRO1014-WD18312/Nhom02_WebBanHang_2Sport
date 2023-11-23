@@ -7,6 +7,7 @@
     include "../model/danhmuc.php";
     include "../model/taikhoan.php";
     include "../model/sanpham.php";
+    include "../model/binhluan.php";
     include "../model/search.php";
     include "header.php";
     if (isset($_GET['act']) && ($_GET['act']) != ""){
@@ -40,7 +41,11 @@
                     $price = $_POST['price'];
                     $discount = $_POST['priceSale'];
                     $quantity = $_POST['quantity'];
-                    $size = $_POST['size'];
+                    $size1 = $_POST['size1'];
+                    $size2 = $_POST['size2'];
+                    $size3 = $_POST['size3'];
+                    $size4 = $_POST['size4'];
+                    $color = $_POST['color'];
                     $color = $_POST['color'];
 
                     $hinh = $_FILES['image']['name'];
@@ -48,6 +53,7 @@
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
                     insert_product($name, $iddm, $status, $des, $price, $discount, $quantity, $size, $color, $hinh);
+                    insert_product($name, $iddm, $status, $des, $price, $discount, $quantity, $size1, $size2, $size3, $size4, $color, $hinh);
                     header('location: index.php?act=listsp');
                 } 
                 $listdanhmuc = list_category();
@@ -64,7 +70,7 @@
                 include "sanpham/update.php";
                 break;
             case 'updatesp' :
-                if (isset($_POST['updateProduct']) && $_POST['updateProduct']) {
+                if (isset($_POST['sua']) && $_POST['sua']) {
                     $id = $_POST['id'];
                     $name = $_POST['namesp'];
                     $iddm = $_POST['iddm'];
@@ -74,7 +80,10 @@
                     $price = $_POST['price'];
                     $discount = $_POST['priceSale'];
                     $quantity = $_POST['quantity'];
-                    $size = $_POST['size'];
+                    $size1 = $_POST['size1'];
+                    $size2 = $_POST['size2'];
+                    $size3 = $_POST['size3'];
+                    $size4 = $_POST['size4'];
                     $color = $_POST['color'];
 
                     $hinh = $_FILES['image']['name'];
@@ -82,7 +91,7 @@
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
 
-                    update_product($id, $iddm, $name, $status, $des, $hinh, $price, $discount, $quantity, $color, $size);
+                    update_product($id, $iddm, $name, $status, $des, $hinh, $price, $discount, $quantity, $color, $size1, $size2, $size3, $size4);
                     header('location: index.php?act=listsp');
                 }
                 $listdanhmuc = list_category();
@@ -140,6 +149,14 @@
                 }
                 break;
             case 'listbl' :
+                $binhluan = load_all_comment();
+                include "binhluan/list.php";
+                break;
+            case 'deletebl' :
+                if(isset($_GET['id']) && $_GET['id'] > 0) {
+                    delete_comment($_GET['id']);
+                }
+                $binhluan = load_all_comment();
                 include "binhluan/list.php";
                 break;
             case 'khachhang':
