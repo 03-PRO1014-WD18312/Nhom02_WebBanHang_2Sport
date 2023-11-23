@@ -50,8 +50,6 @@
                 <div class="buy-cart">
                     <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id_variant" value="<?= $sp['id'] ?>">
-                        <!-- <input type="hidden" name="idSize" value="<?= $sp['size1']?>">
-                        <input type="hidden" name="idColor" value="<?= $sp['color']?>"> -->
                         <input type="hidden" name="ten_sp" value="<?= $sp['name'] ?>">
                         <input type="hidden" name="price" value="<?= $sp['discount'] ?>">
                         <input type="hidden" name="imgsp" value="<?= $sp['img'] ?>">

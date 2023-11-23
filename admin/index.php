@@ -52,7 +52,6 @@
                     $target_direct = "../assets/img/";
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-                    insert_product($name, $iddm, $status, $des, $price, $discount, $quantity, $size, $color, $hinh);
                     insert_product($name, $iddm, $status, $des, $price, $discount, $quantity, $size1, $size2, $size3, $size4, $color, $hinh);
                     header('location: index.php?act=listsp');
                 } 

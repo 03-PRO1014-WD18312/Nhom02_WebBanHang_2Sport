@@ -22,21 +22,21 @@
                 foreach ($showcart as $cart) {
                     // var_dump($cart);
                     extract($cart);
-                    $price_formatted = number_format($price, 0, '.', ',');
-                    $thanhtien = $price * $quantity;
+                    $price_formatted = number_format($variant_discount, 0, '.', ',');
+                    $thanhtien = $variant_discount * $quantity;
                     $thanhtien_formatted = number_format($thanhtien, 0, '.', ',');
                     $sum += $thanhtien;
                     echo '
                         <tr>
                             <td>'.$stt++.'</td>
-                            <td><img src="assets/img/'.$img.'" width="50px" alt=""></td>
-                            <td>'.$name.'</td>
+                            <td><img src="assets/img/'.$product_img.'" width="50px" alt=""></td>
+                            <td>'.$product_name.'</td>
                             <td><span style="background-color: '.$color.'; padding: 10px 20px; border:1px solid #d9d9d9; border-radius:50%;"></span></td>
-                            <td>'.$size.'</td>
+                            <td>'.$size1.'</td>
                             <td>'.$price_formatted.'đ</td>
                             <td><input type="number" min="1" name="" value="'.$quantity.'" id=""></td>
                             <td>'.$thanhtien_formatted.'đ</td>
-                            <td><a href="index.php?act=deletecart&id='.$id.'" onclick="return xoacart()"><i class="fa-solid fa-trash-can"></i></a></td>
+                            <td><a href="index.php?act=deletecart&id='.$cart_id.'" onclick="return xoacart()"><i class="fa-solid fa-trash-can"></i></a></td>
                         </tr>
                     ';
                     $i++;
