@@ -46,7 +46,7 @@
 }
 .list-menu>li>a{
     text-decoration: none;
-    padding: 22px 15px;
+    padding: 18px 15px;
     font-weight: bold;
 }
 .form-search{
@@ -120,6 +120,7 @@
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
+    z-index: 999;
 }
 .show-reg-log{
     opacity: 1;
@@ -183,6 +184,8 @@
 .circle-user{
     max-width:100%;
     cursor: pointer;
+    z-index: 999;
+    position: relative;
 }
 .circle-user img{
     width: 35px;
@@ -567,13 +570,10 @@ main .slide-banner img{
 /* cart */
 .form-cart{
     margin-top: 30px;
-    width: 100%px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    z-index: 998;
 }
 .form-cart h1{
-    width: 1360px;
+    width: 100%;
     padding: 10px;
     text-align: center;
     color: var(--bg-color-ins);
@@ -582,18 +582,31 @@ main .slide-banner img{
     border-radius: 10px 10px 0px 0px;
 }
 .form-cart .cart-detail{
-    width: 1360px;
-    padding-top: 100px;
+    width: 100%;
+    padding-top: 10px;
     padding-bottom: 100px;
     border-radius: 0px 0px 10px 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: 1px solid #7A7A7A;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
 }
 .form-cart .cart-detail table{
-    width: 90%;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #d9d9d9;
+
+}
+.form-cart .cart-detail table img{
+    max-width: 100px;
+    height: auto;
+}
+.form-cart .cart-detail table th{
+    padding: 20px 0px;
+    background-color: var(--bg-color-black-ins);
+    color: var(--bg-color-ins);
+}
+.form-cart .cart-detail table th , .form-cart .cart-detail table tr , td{
+    border-collapse: collapse;
+    border: 1px solid #d9d9d9;
 }
 .form-cart .cart-detail table th{
     font-size: 18px;
@@ -607,14 +620,15 @@ main .slide-banner img{
 }
 .form-cart .total{
     color: var(--bg-color-main);
-    font-weight: bold;
-    margin-left: 900px;    
-    margin-bottom: 50px;
+    font-weight: bold;  
+
 }
-.form-cart .navigation{
-    padding-left: 900px;
+.form-cart .submit-cart{
+    display: flex;
+    justify-content: end;
+
 }
-.form-cart .navigation a{
+.form-cart .submit-cart a{
     text-decoration: none;
     color: var(--bg-color-ins);
     background-color: var(--bg-color-main);
@@ -759,7 +773,7 @@ main .slide-banner img{
     align-items: center;
 }
 .form-detail h1{
-    width: 1360px;
+    width: 100%;
     padding: 10px;
     text-align: center;
     color: var(--bg-color-ins);
@@ -1062,4 +1076,70 @@ main .slide-banner img{
     font-weight: lighter;
     color: #d9d9d9;
 }
+.fa-trash-can{
+    color: var(--bg-color-main);
+}
+/* thanhtoandonhang */
+.order-wp{
+    display: flex;
+    /* justify-content: space-around; */
+    margin-top: 20px;
+}
+.product-show{
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    background-color: var(--bg-color-ins);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.product-show img{
+    width: auto;
+    border-radius: 100%;
+}
+.profile-sp{
+    padding-left: 20px;
+    height: 100%;
+    width: auto;
+    
+}
 
+.variant-text{
+    display: flex;
+}
+.form-receive{
+    width: 50%;
+    margin-left: 50px;
+    background-color: var(--bg-color-ins);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 100%;
+    padding: 20px;
+    border-radius: 20px;
+}
+.form-receive h4{
+    background-color: var(--bg-color-main);
+    width: 100%;
+    color: var(--bg-color-ins);
+    padding: 10px 0px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 10px 10px 0px 0px;
+}
+.form-receive input{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    margin: 10px 0px;
+    padding-left: 10px;
+}
+.form-receive textarea{
+    width: 100%;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    margin: 10px 0px;
+    padding: 10px;
+}

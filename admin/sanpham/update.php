@@ -18,12 +18,11 @@ $i = 0;
                         <br>
                         <label for="">DANH MỤC</label><br>
                         <select name="iddm" id="category">
-                            <?php 
-                                foreach ($listdanhmuc as $danhmuc) {
-                                    extract($danhmuc);
-                                    echo '<option value="'.$sanpham[0]['idCategory'].'" selected>'.$name.'</option>';
-                                }
-                            ?>
+                        <?php 
+                            foreach ($selectdm as $danhmuc) {?>
+                            <option value="<?= $danhmuc['idCategory'] ?>"<?= ($danhmuc['idCategory']) ?'selected':""?> ><?= $danhmuc['name'] ?></option>
+                            <?php }
+                        ?>
                         </select><br><br>
                         <label for="">TRẠNG THÁI</label><br>
                         <select name="status" id="status">

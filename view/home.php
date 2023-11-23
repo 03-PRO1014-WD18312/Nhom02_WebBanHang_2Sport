@@ -30,16 +30,21 @@
         <?php 
         $listGiay = list_giay();
         foreach ($listGiay as $sp){
-            extract($sp);
+            // echo '<pre>';
+            // var_dump($sp);
         ?>
             <div class="product-item">
                 <div class="detail">
                     <a href="" class="detail-img">
-                        <img src="assets/img/<?= $img ?>" alt="">
+                        <img src="assets/img/<?= $sp['img']?>" alt="">
                     </a>
-                    <a href="index.php?act=detail&id=<?= $id ?>" class="detail-show">CHI TIẾT</a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
+                    <a href=""><p><?= $sp['name'] ?></p></a>
+                    <span class="price-new"><?= $sp['discount'] ?></span>
+                    <span class="price-origin">
+                        <del><?= $sp['price'] ?></del>
                     <a href=""><p><?= $name ?></p></a>
                     <span class="price-new"><?= number_format($discount) ?>đ</span>
                     <span class="price-origin">
@@ -48,12 +53,12 @@
                 </div>
                 <div class="buy-cart">
                     <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>">
-                        <input type="hidden" name="ten_sp" value="<?= $name ?>">
-                        <input type="hidden" name="price" value="<?= $discount ?>">
-                        <input type="hidden" name="imgsp" value="<?= $img ?>">
-                        <!-- <input type="hidden" name="colorsp" value="<?= $color ?>">
-                        <input type="hidden" name="sizesp" value="<?= $size ?>"> -->
+                        <input type="hidden" name="id_variant" value="<?= $sp['id'] ?>">
+                        <input type="hidden" name="idSize" value="<?= $sp['size']?>">
+                        <input type="hidden" name="idColor" value="<?= $sp['color']?>">
+                        <input type="hidden" name="ten_sp" value="<?= $sp['name'] ?>">
+                        <input type="hidden" name="price" value="<?= $sp['discount'] ?>">
+                        <input type="hidden" name="imgsp" value="<?= $sp['img'] ?>">
                         <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
                     </form>
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
@@ -86,7 +91,15 @@
                     </span>
                 </div>
                 <div class="buy-cart">
-                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>">
+                        <input type="hidden" name="ten_sp" value="<?= $name ?>">
+                        <input type="hidden" name="price" value="<?= $discount ?>">
+                        <input type="hidden" name="imgsp" value="<?= $img ?>">
+                        <!-- <input type="hidden" name="colorsp" value="<?= $color ?>">
+                        <input type="hidden" name="sizesp" value="<?= $size ?>"> -->
+                        <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
+                    </form>
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
@@ -117,7 +130,15 @@
                     </span>
                 </div>
                 <div class="buy-cart">
-                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>">
+                        <input type="hidden" name="ten_sp" value="<?= $name ?>">
+                        <input type="hidden" name="price" value="<?= $discount ?>">
+                        <input type="hidden" name="imgsp" value="<?= $img ?>">
+                        <!-- <input type="hidden" name="colorsp" value="<?= $color ?>">
+                        <input type="hidden" name="sizesp" value="<?= $size ?>"> -->
+                        <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
+                    </form>
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
@@ -148,7 +169,15 @@
                     </span>
                 </div>
                 <div class="buy-cart">
-                    <a href="" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></a>
+                    <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>">
+                        <input type="hidden" name="ten_sp" value="<?= $name ?>">
+                        <input type="hidden" name="price" value="<?= $discount ?>">
+                        <input type="hidden" name="imgsp" value="<?= $img ?>">
+                        <!-- <input type="hidden" name="colorsp" value="<?= $color ?>">
+                        <input type="hidden" name="sizesp" value="<?= $size ?>"> -->
+                        <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
+                    </form>
                     <a href="" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
