@@ -9,6 +9,7 @@
     function showcart($idkh){
         $sql="SELECT
         cart.id AS cart_id,
+        cart.quantity,
         product.id AS product_id,
         product.name AS product_name,
         product.img AS product_img,

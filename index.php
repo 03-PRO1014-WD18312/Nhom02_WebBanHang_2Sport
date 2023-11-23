@@ -136,7 +136,7 @@
                 $imgSp=$_POST['imgsp'];
                 $id_variant=$_POST['id_variant'];
                 $idkh=$_SESSION['login']['id'];
-                var_dump($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
+                // var_dump($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
                 if (isset($_SESSION['login'])) {
                     addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
                     echo "<script>alert('Thêm giỏ hàng thành công 🛒');
