@@ -172,7 +172,7 @@ function list_sanpham_danhmuc($id){
 //     WHERE product.idCategory = $id";
 // }
 function list_giay(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
     FROM product 
     JOIN (
         SELECT idProduct, price, discount, id , idSize, idColor
@@ -183,7 +183,6 @@ function list_giay(){
     JOIN product_size ON variants.idSize=product_size.id
     JOIN product_color ON variants.idColor=product_color.id
     WHERE product.idCategory = 4";
-    WHERE product.idCategory = 4 limit 5";
     $result = pdo_query($sql);
     return $result;
 }
