@@ -126,11 +126,22 @@ function loadone_product_infor($id){
     variants.discount, 
     variants.quantity, 
     product_size.id, product_size.size1,product_size.size2,product_size.size3,product_size.size4,
-    product_color.id, product_color.color 
+    product_color.id as idColor, product_color.color 
     from variants 
     join product_size on variants.idSize = product_size.id
     join product_color on variants.idColor = product_color.id
     where variants.idProduct='$id'";
+    $result = pdo_query($sql);
+    return $result;
+}
+function load_detail($id){
+    $sql = "SELECT variants.id, product.name, product.img, variants.price, variants.discount, product_color.color, 
+    product_size.size1, product_size.size2, product_size.size3, product_size.size4 
+    FROM product 
+    JOIN variants on variants.idProduct = product.id 
+    JOIN product_size on product_size.id = variants.idSize 
+    JOIN product_color on product_color.id = variants.idColor 
+    WHERE variants.id = $id;";
     $result = pdo_query($sql);
     return $result;
 }

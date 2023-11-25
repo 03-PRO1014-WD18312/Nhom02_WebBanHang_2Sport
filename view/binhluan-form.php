@@ -23,31 +23,79 @@
     <style>
         .binhluan table{
             width: 100%; 
+            border-left: 1px solid #D70019;
+            border-right: 1px solid #D70019;
+            border-bottom: 1px solid #D70019;
+            margin-bottom: 10px;
         }
 
         .binhluan table tr{
             display: grid;
             width: 100%;
-            grid-template-columns: 1fr 7fr 1fr;
+            grid-template-columns: 1fr 6fr 1fr;
             margin-bottom: 5px;
-            border-bottom: 1px solid #666;
         }
-        .box_title{
-            background:#EEEE;
-            padding: 5px;
-            margin-top: 10px;
+        textarea{
+            width: 100%;
+        }
+        form{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        textarea{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input[type="submit"]{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #D70019;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+        input[type="submit"]:hover{
+            background-color: black;
+        }
+        .name, .date{
+            text-align: center;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <div class="row mb">   
+    <div class="row mb"> 
+        <div class="binhluan">
+            <table>
+                <tr>
+                    <th>Khách hàng</th>
+                    <th>Nội dung bình luận</th>
+                    <th>Ngày binh luận</th>
+                </tr>
+                <?php
+                    foreach ($dsbl as $bl) {
+                        extract($bl);
+                        echo '<tr><td class="name">'.$username.'</td>';
+                        echo '<td>'.":".$text.'</td>';
+                        echo '<td class="date">'.date("d/m/Y", strtotime($date)).'</td></tr>';
+                    }
+                ?>  
+            </table>
+        </div> 
     <?php if(isset($_SESSION['login'])){ ?>
         <div class="form">
             <form action="binhluan-form.php" method="post">
                 <input type="hidden" name="iduser" value="<?=$_SESSION['login']['id']?>">
                 <input type="hidden" name="user" value="<?=$_SESSION['login']['username']?>">
                 <input type="hidden" name="idsp" value="<?= $idsp ?>">
-                <input type="text" name="noidung" value="">
+                <textarea name="noidung" id="" cols="10" rows="5"></textarea><br>
                 <input type="submit" name="guibinhluan" value="GỬI BÌNH LUẬN">
             </form>
         </div> 
@@ -55,20 +103,7 @@
     } else{
         echo '<p style="color: red;">Đăng nhập để thực hiện chức năng bình luận</p>';
     }
-    ?>
-        <div class="box_title">BÌNH LUẬN</div>
-        <div class="binhluan">
-            <table>
-                <?php
-                    foreach ($dsbl as $bl) {
-                        extract($bl);
-                        echo '<tr><td>'.$username.'</td>';
-                        echo '<td>'.":".$text.'</td>';
-                        echo '<td>'.date("d/m/Y", strtotime($date)).'</td></tr>';
-                    }
-                ?>  
-            </table>
-        </div>
+    ?> 
     </div>
 </body>
 </html>

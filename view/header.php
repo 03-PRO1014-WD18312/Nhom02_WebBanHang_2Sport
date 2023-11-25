@@ -1,3 +1,6 @@
+<?php
+// $showcart_count = isset($_GET['showcart_count']) ? $_GET['showcart_count'] : 0;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,7 @@
     <link rel="stylesheet" href="assets/style/style-user.css">
     <link rel="stylesheet" href="assets/style/responsive-user.css">
     <link rel="icon" type="image/png" href="assets/img/brand.png">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -36,7 +40,7 @@
                     </form>
                     <ul class="list-menu">
                         <li><a href="index.php?act=checkdh"><i class="fa-solid fa-receipt"></i> Check đơn hàng</a></li>
-                        <li><a href="index.php?act=showcart"><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng</a></li>
+                        <li><a href="index.php?act=showcart"><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng<span>(<?php if(isset($_SESSION['login'])) echo $cartCount; ?>)</span></a></li>
                         <li class="fa-bag"><a href=""><i class="fa-solid fa-bag-shopping"></i></a></li>
                         <?php 
                             if (isset($_SESSION['login'])) {
