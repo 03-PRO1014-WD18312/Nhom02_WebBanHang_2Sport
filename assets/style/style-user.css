@@ -614,7 +614,7 @@ main .slide-banner img{
 .form-cart .cart-detail table td{
     text-align: center;
 }
-.form-cart img{
+.form-cart>img{
     width: 180px;
     height: 108px;
 }
@@ -1081,43 +1081,40 @@ main .slide-banner img{
 }
 /* thanhtoandonhang */
 .order-wp{
-    display: flex;
+    /* display: flex; */
     /* justify-content: space-around; */
     margin-top: 20px;
+    width: 100%;
 }
-.product-show{
-    display: flex;
-    max-width: 100%;
-    align-items: center;
-    background-color: var(--bg-color-ins);
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    height: auto;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 10px;
+.order-wp table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
 }
-.product-show img{
+.order-wp table th ,td{
+    border: 1px solid #d9d9d9;
+}
+.order-wp table th{
+    padding: 10px 0px;
+    background-color: var(--bg-color-black-ins);
+    color: var(--bg-color-ins);
+}
+.order-wp table td img{
     width: auto;
-    border-radius: 100%;
-}
-.profile-sp{
-    padding-left: 20px;
-    height: 100%;
-    width: auto;
-    
+    height: 70px;
 }
 
-.variant-text{
-    display: flex;
+.profile-payment{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
 }
 .form-receive{
-    width: 50%;
-    margin-left: 50px;
     background-color: var(--bg-color-ins);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     height: 100%;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 10px;
+    border-radius: 10px;
 }
 .form-receive h4{
     background-color: var(--bg-color-main);
@@ -1142,4 +1139,79 @@ main .slide-banner img{
     border-radius: 5px;
     margin: 10px 0px;
     padding: 10px;
+}
+.form-receive input[type='submit']{
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-ins);
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.receive-infor{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-edit-infor-order .fa-square-pen{
+    color: var(--bg-color-main);
+    cursor: pointer;
+}
+.receive-infor label{
+    color: var(--bg-color-main);
+    padding: 5px 0px;
+    display: inline-block;
+    font-weight: bold;
+
+}
+.receive-infor span{
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 100;
+    color: #444444;
+}
+.right_order{
+    background-color: var(--bg-color-ins);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    max-width: 70%;
+    padding: 10px;
+    height: auto;
+}
+.right_order img{
+    width: 100%;
+}
+.right_order h4{
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-ins);
+    text-align: center;
+    padding: 7px 0px;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.payment-in{
+    margin-top: 15px;
+
+}
+.payout-in{
+    max-width: 100%;
+}
+
+.select-payment{
+    height: 35px;
+    margin: 10px 0px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    width: 100%;
+}
+.payout-in input[type='submit']{
+    background: var(--bg-color-main);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: var(--bg-color-ins);
+    outline: none;
+    border: none;
+    text-decoration: none;
 }
