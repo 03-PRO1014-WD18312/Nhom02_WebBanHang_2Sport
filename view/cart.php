@@ -1,6 +1,3 @@
-<?php 
-
-?>
 <main class="form-cart container">
     <h1><i class="fa-solid fa-bag-shopping"></i>GIỎ HÀNG</h1>
     <div class="cart-detail">
@@ -12,7 +9,7 @@
                 <th colspan="2">Color / Size</th>
                 <th>Giá</th>
                 <th>Số lượng</th>
-                <th>Tổng</th>
+                <th>Thành tiền</th>
                 <th>Xóa</th>
             </tr>
             <?php 
@@ -42,7 +39,7 @@
                     $i++;
                 }
                     echo'<caption style="caption-side:bottom;text-align:left; color: #A6A6A4; font-style:italic; padding:15px 0px;">Có '.$i.' sản phẩm trong giỏ hàng</caption>';
-                    echo'<caption class="total" style="caption-side:bottom;text-align:right; padding:30px 30px 50px 0px;"><i class="fa-solid fa-file-invoice-dollar"></i>Tổng: '. number_format($sum, 0, '.', ',').' VND</caption>
+                    echo'<caption class="total" style="caption-side:bottom;text-align:right; padding:0px 30px 50px 0px;"><i class="fa-solid fa-file-invoice-dollar"></i>Tổng: '. number_format($sum, 0, '.', ',').' VND</caption>
                 ';
             ?>
             <script>
@@ -53,7 +50,11 @@
         </table>
         <div class="submit-cart">
             <a href="index.php" class="shopping">Tiếp tục mua hàng</a>
-            <a href="index.php?act=order" class="order">Đặt hàng</a>
+            <a href="index.php?act=order" class="order">Mua hàng</a>
+            <!-- <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
+            action="view/payment_atm.php">
+            <input type="submit" name="momo" value="Thanh toán momo">
+            </form> -->
         </div>
     </div>
 </main>

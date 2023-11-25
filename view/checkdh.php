@@ -13,7 +13,8 @@
                         </button>
                     </div>
                 </div>
-                <a href="#" class="btn-checkdh">TRA CỨU <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#" class="btn-checkdh">TRA CỨU <i class="fa-solid fa-arrow-right"></i></a> OR
+                <a href="index.php?act=dangnhap" class="btn-checkdh">ĐĂNG NHẬP <i class="fa-solid fa-arrow-right"></i></a>
             </form>
         </div>
         <img src="assets/img/anhcheckdh.svg" alt="">
