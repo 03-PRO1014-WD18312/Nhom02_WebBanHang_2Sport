@@ -14,15 +14,14 @@
                 <?php foreach($infor as $row){
                     extract($row);    
                 ?>
-
-                <div style="background-color:<?= $color ?>;"></div>
+                    <div style="background-color:<?= $color ?>;" onclick="getVariantPrice(<?= $idColor ?>)"></div>
                 <?php } ?>
             </div>
         </div>
         <div class="right">
             <h3 class="name-product"><?= $name ?></h3>
             <div class="price">
-                <?php foreach($infor as $row){
+                <?php foreach($load_detail as $row){
                     extract($row);    
                 ?>
                 <p class="discount"><?= number_format($discount) ?>đ</p>
@@ -40,7 +39,7 @@
             </div>
             <div class="choose-size">
                 <p>Chọn size:</p>
-                <?php foreach($infor as $row){
+                <?php foreach($load_detail as $row){
                     extract($row);    
                 ?>
                 <div class="size1"><?= $size1 ?></div>
@@ -65,7 +64,7 @@
     </div>
     <div class="comment" width="1360px">
         <h2>Bình luận</h2>
-        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="250px"></iframe>
+        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="500px" style="margin-bottom: 50px;"></iframe>
     </div>
     <div class="similar-product">
 
