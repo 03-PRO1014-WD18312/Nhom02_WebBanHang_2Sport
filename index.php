@@ -1,6 +1,5 @@
 <?php
     session_start();
-    include 'view/header.php';
     include 'model/pdo.php';
     include 'model/danhmuc.php';
     include 'model/sanpham.php';
@@ -8,6 +7,17 @@
     include 'model/taikhoan.php';
     include 'model/cart.php';
     include 'model/order_payment.php';
+    if (isset($_SESSION['login'])) {
+        $idkh = $_SESSION['login']['id'];
+
+        // Retrieve cart count
+        $cartCount = count(showcart($idkh));
+
+        include 'view/header.php';
+    }
+    else{
+        include 'view/header.php';
+    }
     if (isset($_GET['act']) && ($_GET['act'] != '')){
         $act = $_GET['act'];
         switch ($act) {
@@ -144,6 +154,7 @@
                             window.location.href = window.location.href;
                             window.location.href = 'index.php?act=showcart';
                         }
+                        window.location.href = 'index.php?act=showcart';
                     </script>";
                 }else {
                     echo'<script>
@@ -163,6 +174,14 @@
                 $id=$_GET['id'];
                 if (isset($id) && $id > 0) {
                     deletecart($id);
+                    echo '
+                        <script>
+                            if (performance.navigation.type === 0) {
+                                window.location.href = window.location.href;
+                                window.location.href = "index.php?act=showcart";
+                            }
+                        </script>
+                    ';
                 }
                 $idkh=$_SESSION['login']['id'];
                 $showcart=showcart($idkh);
@@ -191,9 +210,10 @@
                 include 'view/checkdh.php';
                 break;
             case "detail" :
-                if(isset($_GET['id']) && $_GET['id'] > 0){
+                if(isset($_GET['id']) || isset($_GET['idVariant'])){
                     $detail = detail_product($_GET['id']);
                     $infor = loadone_product_infor($_GET['id']);
+                    $load_detail = load_detail(10);
                     tang_luot_xem($_GET['id']);
                 }
                 include 'view/chitietsanpham.php';
