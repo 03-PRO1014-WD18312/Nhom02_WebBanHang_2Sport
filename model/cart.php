@@ -39,7 +39,6 @@
         pdo_execute($sql);
     }
 
-    
-
+   
 
 ?>

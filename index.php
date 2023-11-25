@@ -6,6 +6,7 @@
     include 'model/search.php';
     include 'model/taikhoan.php';
     include 'model/cart.php';
+    include 'model/order_payment.php';
     if (isset($_SESSION['login'])) {
         $idkh = $_SESSION['login']['id'];
 
@@ -146,10 +147,13 @@
                 $imgSp=$_POST['imgsp'];
                 $id_variant=$_POST['id_variant'];
                 $idkh=$_SESSION['login']['id'];
-                // var_dump($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
                 if (isset($_SESSION['login'])) {
                     addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
                     echo "<script>alert('Thêm giỏ hàng thành công 🛒');
+                        if (performance.navigation.type == 0) {
+                            window.location.href = window.location.href;
+                            window.location.href = 'index.php?act=showcart';
+                        }
                         window.location.href = 'index.php?act=showcart';
                     </script>";
                 }else {
@@ -161,7 +165,7 @@
                 break;
             case 'showcart':
                 if (isset($_SESSION['login'])){
-                    $idkh=$_SESSION['login']['id'];
+                    $idkh=$_SESSION['login']['id']; 
                 }
                 $showcart=showcart($idkh);
                 include 'view/cart.php'; 
@@ -184,17 +188,27 @@
                 include 'view/cart.php'; 
                 break;
             case 'order':
+                $name_tt=$_POST['name_tt'];
+                $phone_tt=$_POST['phone_tt'];
+                $address_tt=$_POST['address_tt'];
                 $idkh=$_SESSION['login']['id'];
+                $payment_method=$_POST['payment_method'];
+                $_SESSION['infor_order']=check_infor_order($idkh);
+                if (isset($_POST['tt_nhanhang'])) {
+                    insert_infor_order($name_tt,$phone_tt,$address_tt,$idkh,$payment_method);
+                    echo "<script>alert('Cập nhập thông tin thành công 👏');
+                        if (performance.navigation.type == 0) {
+                            window.location.href = window.location.href;
+                            window.location.href = 'index.php?act=order';
+                        }
+                    </script>";
+                }
                 $showcart=showcart($idkh);
                 include 'view/order.php';
-                break;
-            case 'payout':
-                include 'view/payout.php';
                 break;
             case 'checkdh':
                 include 'view/checkdh.php';
                 break;
-
             case "detail" :
                 if(isset($_GET['id']) || isset($_GET['idVariant'])){
                     $detail = detail_product($_GET['id']);
@@ -204,6 +218,7 @@
                 }
                 include 'view/chitietsanpham.php';
             break;
+
             case "quenmatkhau" :
                 include 'view/quenmatkhau.php';
             break;

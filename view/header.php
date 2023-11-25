@@ -68,6 +68,9 @@
                                         <a><img src="assets/img/'.$_SESSION['login']['img'].'" alt="">'.$_SESSION['login']['username'].'</a>
                                         <ul class="reg-log">
                                             <li>
+                                                <a href="index.php?act=history-order"><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử mua hàng</a>
+                                            </li>
+                                            <li>
                                                 <a href="index.php?act="><i class="fa-solid fa-pen-to-square"></i> Edit thông tin</a>
                                             </li>
                                             <li>
@@ -119,13 +122,13 @@
                         </li>
                     </ul>
                     <div class="fa-receipt-none"><a href=""><i class="fa-solid fa-receipt"></i> Check đơn hàng</a></div>
-                    <!-- <div class="circle-user-none"><a href=""><i class="fa-solid fa-circle-user"></i> Tài khoản <i class="fa-solid fa-angle-down"></i></a>
+                    <div class="circle-user-none"><a href=""><i class="fa-solid fa-circle-user"></i> Tài khoản <i class="fa-solid fa-angle-down"></i></a>
                         <ul class="reg-log-none">
                             <li><a href="index.php?act=dangky"><i class="fa-solid fa-user-pen"></i> Đăng kí</a></li>
                             <li><a href="index.php?act=dangnhap"><i class="fa-solid fa-right-to-bracket"></i> Đăng nhập</a></li>
                         </ul>
-                    </div> -->
-                    <!-- <div class="chinhanh-none">
+                    </div>
+                    <div class="chinhanh-none">
                         <i class="fa-solid fa-location-dot"></i>
                         <select class="select-cn" id="">
                             <option value="">-- Chọn chi nhánh --</option>
@@ -133,7 +136,7 @@
                             <option value="1">Đà Nẵng</option>
                             <option value="1">Hồ Chí Minh</option>
                         </select>
-                    </div> -->
+                    </div>
                 </div>
             </nav>
             <div class="overlay"></div>
