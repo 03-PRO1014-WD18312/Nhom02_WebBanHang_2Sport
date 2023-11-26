@@ -73,7 +73,7 @@
 <body>
     <div class="row mb"> 
         <div class="binhluan">
-            <table>
+            <table style="text-align:center;">
                 <tr>
                     <th>Khách hàng</th>
                     <th>Nội dung bình luận</th>
@@ -83,7 +83,7 @@
                     foreach ($dsbl as $bl) {
                         extract($bl);
                         echo '<tr><td class="name">'.$username.'</td>';
-                        echo '<td>'.":".$text.'</td>';
+                        echo '<td>'.$text.'</td>';
                         echo '<td class="date">'.date("d/m/Y", strtotime($date)).'</td></tr>';
                     }
                 ?>  

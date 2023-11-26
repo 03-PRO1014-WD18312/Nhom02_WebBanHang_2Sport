@@ -107,7 +107,7 @@
         foreach ($listBall as $sp){
             extract($sp);
         ?>
-                        <div class="product-item">
+            <div class="product-item">
                 <div class="detail">
                     <a href="" class="detail-img">
                         <img src="assets/img/<?= $sp['img']?>" alt="">
@@ -144,7 +144,7 @@
         foreach ($listQuanao as $sp){
             extract($sp);
         ?>
-                        <div class="product-item">
+            <div class="product-item">
                 <div class="detail">
                     <a href="" class="detail-img">
                         <img src="assets/img/<?= $sp['img']?>" alt="">
