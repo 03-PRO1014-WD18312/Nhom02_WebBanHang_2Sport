@@ -114,14 +114,14 @@ function loadone_product($id){
     return $result;
 }
 function detail_product($id){
-    $sql = "SELECT product.id, product.name, product.img, product.des, product.view, product.status, category.name as cateName
+    $sql = "SELECT category.id as idCategory, product.id, product.name, product.img, product.des, product.view, product.status, category.name as cateName
     from product join category on product.idCategory = category.id where product.id = '$id'";
     $result = pdo_query_one($sql);
     return $result;
 }
 function loadone_product_infor($id){
     $sql = "SELECT 
-    variants.id, 
+    variants.id as idVariant, 
     variants.price, 
     variants.discount, 
     variants.quantity, 
@@ -131,6 +131,21 @@ function loadone_product_infor($id){
     join product_size on variants.idSize = product_size.id
     join product_color on variants.idColor = product_color.id
     where variants.idProduct='$id'";
+    $result = pdo_query($sql);
+    return $result;
+}
+function load_product_same_type($idCategory,$id){
+    $sql = "SELECT category.id as idCategory, product.id as idProduct, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
+    FROM product 
+    JOIN (
+        SELECT idProduct, price, discount, id , idSize, idColor
+        FROM variants
+        GROUP BY idProduct
+    ) AS variants ON product.id = variants.idProduct 
+    JOIN category ON product.idCategory = category.id 
+    JOIN product_size ON variants.idSize=product_size.id
+    JOIN product_color ON variants.idColor=product_color.id
+    WHERE product.idCategory = $idCategory and product.id <> $id limit 10";
     $result = pdo_query($sql);
     return $result;
 }

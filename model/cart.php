@@ -33,6 +33,7 @@
         return $showcart;
 
     }
+    
     //xoá giỏ hàng
     function deletecart($id){
         $sql="DELETE FROM `cart` WHERE `cart`.`id`=$id";

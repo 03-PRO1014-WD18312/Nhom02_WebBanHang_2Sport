@@ -14,39 +14,28 @@
                 <?php foreach($infor as $row){
                     extract($row);    
                 ?>
-                    <div style="background-color:<?= $color ?>;" onclick="getVariantPrice(<?= $idColor ?>)"></div>
+                    <div onclick="loadForms(<?= $idVariant ?>); return false;" class="color-id" style="background-color:<?= $color ?>;"></div>
                 <?php } ?>
             </div>
         </div>
         <div class="right">
             <h3 class="name-product"><?= $name ?></h3>
             <div class="price">
-                <?php foreach($load_detail as $row){
-                    extract($row);    
-                ?>
-                <p class="discount"><?= number_format($discount) ?>đ</p>
-                <p class="origin-price"><?= number_format($price) ?>đ</p>
-                <p class="percent"><?= ($discount-$price)/10000 ?>%</p>
-                <?php } ?>
+                
+                <iframe id="priceIframe" src="view/price-form.php" frameborder="0" width="100%" height="70px"></iframe>
+                
             </div>
             <div class="choose-color">
                 <p>Chọn màu:</p>
                 <?php foreach($infor as $row){
                     extract($row);    
                 ?>
-                <div style="background-color:<?= $color ?>;"></div>
+                    <div onclick="loadForms(<?= $idVariant ?>); return false;" class="color-id" style="background-color:<?= $color ?>;"></div>
                 <?php } ?>
             </div>
             <div class="choose-size">
                 <p>Chọn size:</p>
-                <?php foreach($load_detail as $row){
-                    extract($row);    
-                ?>
-                <div class="size1"><?= $size1 ?></div>
-                <div class="size1"><?= $size2 ?></div>
-                <div class="size1"><?= $size3 ?></div>
-                <div class="size1"><?= $size4 ?></div>
-                <?php } ?>
+                <iframe id="sizeIframe" src="view/size-form.php" frameborder="0" width="400px" height="70px"></iframe>
             </div>
             <form action="">
                 <input type="button" class="addToCart" value="THÊM VÀO GIỎ">
@@ -64,9 +53,72 @@
     </div>
     <div class="comment" width="1360px">
         <h2>Bình luận</h2>
-        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="500px" style="margin-bottom: 50px;"></iframe>
+        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="250px" style="margin-bottom: 50px;"></iframe>
     </div>
     <div class="similar-product">
-
+        <h2>Sản phẩm cùng loại</h2>
+        <div class="product-wp">
+            <div class="product-ins">
+            <?php 
+            $product_same_type = load_product_same_type($detail['idCategory'],$_GET['id']);
+            foreach ($product_same_type as $sp){
+                extract($sp);
+            ?>
+                            <div class="product-item">
+                    <div class="detail">
+                        <a href="" class="detail-img">
+                            <img src="assets/img/<?= $sp['img']?>" alt="">
+                        </a>
+                        <a href="index.php?act=detail&id=<?= $sp['idProduct']?>" class="detail-show">CHI TIẾT</a>
+                    </div>
+                    <div class="product-describe">
+                        <a href=""><p><?= $sp['name'] ?></p></a>
+                        <span class="price-new"><?= number_format($sp['discount'])  ?></span>
+                        <span class="price-origin">
+                            <del><?=number_format($sp['price'])?></del>
+                        </span>
+                    </div>
+                </div>
+            <?php } ?>
+            </div>
+        </div>
     </div>
 </div>
+<script>
+    function loadForms(idVariant) {
+        loadPriceForm(idVariant);
+        loadSizeForm(idVariant);
+        // Thêm các hàm khác nếu bạn muốn thực hiện thêm chức năng
+    }
+
+    function loadPriceForm(idVariant) {
+        fetch('view/price-form.php?id=' + idVariant, {
+            method: 'GET'
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('priceIframe').contentDocument.body.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Lỗi khi tải dữ liệu:', error);
+        });
+    }
+
+    function loadSizeForm(idVariant) {
+        fetch('view/size-form.php?id=' + idVariant, {
+            method: 'GET'
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('sizeIframe').contentDocument.body.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Lỗi khi tải dữ liệu:', error);
+        });
+    }
+
+    function loadColorForm() {
+        // Thực hiện các bước tương tự để tải form màu
+    }
+</script>
+

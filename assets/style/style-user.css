@@ -846,7 +846,9 @@ main .slide-banner img{
     font-weight: bold;
     display: flex;
     gap: 10px;
-    margin-bottom: 70px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
 }
 .form-detail .infor-product .right .choose-size div{
     border: 0.5px solid var(--bg-color-black-ins);
@@ -907,6 +909,19 @@ main .slide-banner img{
 }
 .form-detail .comment table{
     width: 100%;
+}
+.form-detail .similar-product{
+    width: 1360px;
+}
+.form-detail .similar-product h2{
+    height: 50px;
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--bg-color-main);
+    border-bottom: 1px solid var(--bg-color-main);
+    margin-bottom: 20px;
 }
 /* end detail */
 
