@@ -31,6 +31,12 @@
         $history_order=pdo_query($sql);
         return $history_order;
     }
+    //list toàn bộ danh sách đơn hàng
+    function list_order(){
+        $sql="SELECT * FROM order_info JOIN account ON order_info.idAccount = account.id";
+        $list_order=pdo_query($sql);
+        return $list_order;
+    }
     //tong tien
     function total_money_order($id_order){
        $sql="SELECT SUM(price) AS total_price FROM order_detail WHERE idOrder = $id_order";
@@ -43,4 +49,6 @@
         $show_order=pdo_query($sql);
         return $show_order;
     }
+    //
+    
 ?>
