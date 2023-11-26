@@ -22,6 +22,7 @@
                         extract($order);
                         foreach ($total as $sum) {
                             extract($sum);
+                            $rate = 0;
                         }
                         echo'
                             <tr>

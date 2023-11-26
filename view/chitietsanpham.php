@@ -1,54 +1,80 @@
 <?php 
     extract($detail);
 ?>
+
 <div class="form-detail container">
     <h1>CHI TIẾT SẢN PHẨM</h1>
     <div class="infor-product">
-        <div class="left">
-            <div class="image-product">
-                <div class="main-image">
-                    <img src="assets/img/<?= $img ?>" alt="" width="400px" height="360px">
+        <form action="" class="form">
+            <div class="left">
+                <div class="image-product">
+                    <div class="main-image">
+                        <img src="assets/img/<?= $img ?>" alt="" width="400px" height="360px">
+                    </div>
+                </div>
+                <div class="color-product">
+                    <?php foreach($infor as $row){
+                        extract($row);    
+                    ?>
+                        <div 
+                            onclick="loadForms(<?= $idVariant ?>); return false;" 
+                            class="color-id" 
+                            style="background-color:<?= $color; ?>"
+                            data-id="<?= $idVariant; ?>"
+                            data-price="<?= $price; ?>"
+                            data-size="<?= $size; ?>"
+                            data-discount="<?= $discount; ?>"
+                        ></div>
+                    <?php } ?>
                 </div>
             </div>
-            <div class="color-product">
-                <?php foreach($infor as $row){
-                    extract($row);    
-                ?>
-                    <div onclick="loadForms(<?= $idVariant ?>); return false;" class="color-id" style="background-color:<?= $color ?>;"></div>
-                <?php } ?>
+            <div class="right">
+                <h3 class="name-product"><?= $name ?></h3>
+                <div class="price">
+                    <?php foreach($infor as $row){
+                        extract($row);    
+                    ?>
+                        <p id="display-discount" class="discount">Giảm giá: <?= $discount ?> đ</p>
+                        <p id="display-price" class="origin-price">Giá: <?= $price ?> đ</p>
+                    <?php break; }?>
+                    <!-- <p id="display-percent" class="percent"><?= round(($discount - $price) / 10000) ?>%</p> -->
+                </div>
+                <div class="choose-color">
+                    <p>Chọn màu:</p>
+                    <?php foreach($infor as $row){
+                        extract($row);    
+                    ?>
+                        <div 
+                            onclick="loadForms(<?= $idVariant ?>); return false;" 
+                            class="color-id" 
+                            style="background-color:<?= $color; ?>"
+                            data-id="<?= $idVariant; ?>"
+                            data-price="<?= $price; ?>"
+                            data-size="<?= $size; ?>"
+                            data-discount="<?= $discount; ?>"
+                            data-percent="<?= round(($discount - $price) / 10000); ?>"
+                        ></div>
+                    <?php } ?>
+                </div>
+                <div class="choose-size">
+                    <p>Size:</p>
+                    <?php foreach($infor as $row){
+                        extract($row);    
+                    ?>
+                        <div class="size" id="display-size"><?= $size ?></div>
+                    <?php break; }?>
+                </div>
+
+                <input type="submit" class="addToCart" value="THÊM VÀO GIỎ">
+
             </div>
-        </div>
-        <div class="right">
-            <h3 class="name-product"><?= $name ?></h3>
-            <div class="price">
-                
-                <iframe id="priceIframe" src="view/price-form.php" frameborder="0" width="100%" height="70px"></iframe>
-                
-            </div>
-            <div class="choose-color">
-                <p>Chọn màu:</p>
-                <?php foreach($infor as $row){
-                    extract($row);    
-                ?>
-                    <div onclick="loadForms(<?= $idVariant ?>); return false;" class="color-id" style="background-color:<?= $color ?>;"></div>
-                <?php } ?>
-            </div>
-            <div class="choose-size">
-                <p>Chọn size:</p>
-                <iframe id="sizeIframe" src="view/size-form.php" frameborder="0" width="400px" height="70px"></iframe>
-            </div>
-            <form action="">
-                <input type="button" class="addToCart" value="THÊM VÀO GIỎ">
-                <input type="button" class="buy" value="MUA NGAY">
-            </form>
-        </div>
+        </form>
     </div>
     <div class="detail-product">
         <h2>Chi tiết sản phẩm</h2>
         <div class="infor">
             <div class="name"><b>Tên: </b><?= $name ?></div>
             <div class="des"><b>Mô tả: </b><?= $des?></div>
-            
         </div>
     </div>
     <div class="comment" width="1360px">
@@ -64,7 +90,7 @@
             foreach ($product_same_type as $sp){
                 extract($sp);
             ?>
-                            <div class="product-item">
+                <div class="product-item">
                     <div class="detail">
                         <a href="" class="detail-img">
                             <img src="assets/img/<?= $sp['img']?>" alt="">
@@ -84,41 +110,20 @@
         </div>
     </div>
 </div>
+
 <script>
     function loadForms(idVariant) {
-        loadPriceForm(idVariant);
-        loadSizeForm(idVariant);
-        // Thêm các hàm khác nếu bạn muốn thực hiện thêm chức năng
-    }
+        // Lấy thông tin từ data-attributes của màu được chọn
+        var selectedColor = document.querySelector(`[data-id="${idVariant}"]`);
+        var discount = selectedColor.getAttribute("data-discount");
+        var price = selectedColor.getAttribute("data-price");
+        var size = selectedColor.getAttribute("data-size");
+        var percent = selectedColor.getAttribute("data-percent");
 
-    function loadPriceForm(idVariant) {
-        fetch('view/price-form.php?id=' + idVariant, {
-            method: 'GET'
-        })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('priceIframe').contentDocument.body.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Lỗi khi tải dữ liệu:', error);
-        });
-    }
-
-    function loadSizeForm(idVariant) {
-        fetch('view/size-form.php?id=' + idVariant, {
-            method: 'GET'
-        })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('sizeIframe').contentDocument.body.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Lỗi khi tải dữ liệu:', error);
-        });
-    }
-
-    function loadColorForm() {
-        // Thực hiện các bước tương tự để tải form màu
+        // Hiển thị giá, discount và size tương ứng
+        document.getElementById("display-discount").innerText = "Giảm giá: " + discount + " đ";
+        document.getElementById("display-price").innerText = "Giá: " + price + " đ";
+        document.getElementById("display-size").innerText = size;
+        document.getElementById("display-percent").innerText = percent + "%";
     }
 </script>
-

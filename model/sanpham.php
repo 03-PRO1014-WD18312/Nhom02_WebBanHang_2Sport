@@ -1,5 +1,5 @@
 <?php
-function insert_product($name, $iddm, $status, $des, $prices, $discounts, $quantitys, $sizes1, $sizes2, $sizes3, $sizes4, $colors, $hinh){
+function insert_product($name, $iddm, $status, $des, $prices, $discounts, $quantitys, $sizes, $colors, $hinh){
     // Insert into product
     $sql_array = array("INSERT INTO product (name, idCategory, status, img, des) VALUES ('$name', '$iddm', '$status', '$hinh', '$des')");
     // Nhận ID sản phẩm được chèn cuối cùng
@@ -14,32 +14,20 @@ function insert_product($name, $iddm, $status, $des, $prices, $discounts, $quant
         $sql_array[] = "SET @lastColorId$colorCounter = LAST_INSERT_ID()";
         $colorCounter++;
     }
-    // Reset bộ đếm
-    $colorCounter = 1;
-    $sizeCounter = 1;
-    // Lặp qua các kích thước và số lượng để chèn vào các biến thể bằng cách sử dụng vòng lặp for
-    $count = count($colors);
-    for ($i = 0; $i < $count; $i++) {
-        $size1 = $sizes1[$i];
-        $size2 = $sizes2[$i];
-        $size3 = $sizes3[$i];
-        $size4 = $sizes4[$i];
-        $sizeCounter++;
-        $sql_array[] = "INSERT INTO product_size (size1, size2, size3, size4) VALUES ('$size1', '$size2', '$size3', '$size4')";
-
+    foreach ($sizes as $size) {
+        $sql_array[] = "INSERT INTO product_size (size) VALUES ('$size')";
+        // Lấy ID màu được chèn cuối cùng
         $sql_array[] = "SET @lastSizeId$sizeCounter = LAST_INSERT_ID()";
-        // Tăng bộ đếm
-        $colorCounter++;
         $sizeCounter++;
     }
     // Reset bộ đếm
     $colorCounter = 1;
     $sizeCounter = 1;
+    $count = count($colors);
     for ($i = 0; $i < $count; $i++) {
         $quantity = $quantitys[$i];
         $price = $prices[$i];
         $discount = $discounts[$i];
-        $sizeCounter++;
         $sql_array[] = "INSERT INTO variants (price, quantity, discount, idProduct, idSize, idColor) VALUES ('$price', '$quantity', '$discount', @lastProductId, @lastSizeId$sizeCounter, @lastColorId$colorCounter)";
         // Tăng bộ đếm
         $colorCounter++;
@@ -47,7 +35,7 @@ function insert_product($name, $iddm, $status, $des, $prices, $discounts, $quant
     }
     pdo_execute_multi($sql_array);
 }
-function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $discounts, $quantitys, $colors, $sizes1, $sizes2, $sizes3, $sizes4){
+function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $discounts, $quantitys, $colors, $sizes){
     $sql_array = array();
     
     // Update bảng product
@@ -62,10 +50,7 @@ function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $disco
     for ($i = 0; $i < $count; $i++) {
         $quantity = $quantitys[$i];
         $price = $prices[$i];
-        $size1 = $sizes1[$i];
-        $size2 = $sizes2[$i];
-        $size3 = $sizes3[$i];
-        $size4 = $sizes4[$i];
+        $size = $sizes[$i];
         $color = $colors[$i];
         $discount = $discounts[$i];
 
@@ -76,7 +61,7 @@ function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $disco
 
         // Update product_size tại dòng hiện tại
         $sql_array[] = "UPDATE product_size 
-                        SET size1 = '$size1', size2 = '$size2', size3 = '$size3', size4 = '$size4'
+                        SET size = '$size'
                         WHERE id = (SELECT idSize FROM variants WHERE idProduct = '$id' LIMIT 1 OFFSET $i);";
 
         // Update variants tại dòng hiện tại
@@ -89,7 +74,7 @@ function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $disco
 }
 function select_update_product($id){
     $sql = "SELECT product.id as idProduct, product.name, product.status, product.img, product.des, product.idCategory, 
-    variants.id, variants.price, variants.discount, variants.quantity, product_color.color, product_size.size1, product_size.size2, product_size.size3,product_size.size4 
+    variants.id, variants.price, variants.discount, variants.quantity, product_color.color, product_size.size
     FROM variants 
     JOIN product ON variants.idProduct = product.id 
     JOIN product_size ON variants.idSize = product_size.id 
@@ -125,7 +110,7 @@ function loadone_product_infor($id){
     variants.price, 
     variants.discount, 
     variants.quantity, 
-    product_size.id, product_size.size1,product_size.size2,product_size.size3,product_size.size4,
+    product_size.id, product_size.size,
     product_color.id as idColor, product_color.color 
     from variants 
     join product_size on variants.idSize = product_size.id
@@ -135,7 +120,7 @@ function loadone_product_infor($id){
     return $result;
 }
 function load_product_same_type($idCategory,$id){
-    $sql = "SELECT category.id as idCategory, product.id as idProduct, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
+    $sql = "SELECT category.id as idCategory, product.id as idProduct, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
         SELECT idProduct, price, discount, id , idSize, idColor
@@ -151,7 +136,7 @@ function load_product_same_type($idCategory,$id){
 }
 function load_detail($id){
     $sql = "SELECT variants.id, product.name, product.img, variants.price, variants.discount, product_color.color, 
-    product_size.size1, product_size.size2, product_size.size3, product_size.size4 
+    product_size.size
     FROM product 
     JOIN variants on variants.idProduct = product.id 
     JOIN product_size on product_size.id = variants.idSize 
@@ -198,7 +183,7 @@ function list_sanpham_danhmuc($id){
 //     WHERE product.idCategory = $id";
 // }
 function list_giay(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
         SELECT idProduct, price, discount, id , idSize, idColor
@@ -213,7 +198,7 @@ function list_giay(){
     return $result;
 }
 function list_gang(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
         SELECT idProduct, price, discount, id , idSize, idColor
@@ -228,7 +213,7 @@ function list_gang(){
     return $result;
 }
 function list_quanao(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
         SELECT idProduct, price, discount, id , idSize, idColor
@@ -243,7 +228,7 @@ function list_quanao(){
     return $result;
 }
 function list_ball(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
         SELECT idProduct, price, discount, id , idSize, idColor

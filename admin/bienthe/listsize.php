@@ -11,10 +11,7 @@
                 <tr>
                     <th></th>
                     <th>Mã size</th>
-                    <th>Size 1</th>
-                    <th>Size 2</th>
-                    <th>Size 3</th>
-                    <th>Size 4</th>
+                    <th>Size</th>
                     <th>Sản phẩm</th>
                     <th>Giá gốc</th>
                     <th>Giá giảm</th>
@@ -29,10 +26,7 @@
                     <tr>
                         <td><input type="checkbox"></td>
                         <td><?= $id ?></td>
-                        <td><?= $size1 ?></td>
-                        <td><?= $size2 ?></td>
-                        <td><?= $size3 ?></td>
-                        <td><?= $size4 ?></td>
+                        <td><?= $size ?></td>
                         <td><?= $name ?></td>
                         <td><?= $price ?></td>
                         <td><?= $discount ?></td>
