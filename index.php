@@ -252,10 +252,10 @@
                 include 'view/checkdh.php';
                 break;
             case "detail" :
-                if(isset($_GET['id']) || isset($_GET['idVariant'])){
+                if(isset($_GET['id'])){
                     $detail = detail_product($_GET['id']);
                     $infor = loadone_product_infor($_GET['id']);
-                    $load_detail = load_detail(10);
+                    $product_same_type = load_product_same_type($detail['idCategory'],$_GET['id']);
                     tang_luot_xem($_GET['id']);
                 }
                 include 'view/chitietsanpham.php';
@@ -264,6 +264,9 @@
             case "quenmatkhau" :
                 include 'view/quenmatkhau.php';
             break;
+            case "price-form" :
+                include 'view/price-form.php';
+                break;
         default:
             include 'view/home.php';
             break;
