@@ -2,7 +2,7 @@
     <div class="check-cart-wp">
         <div class="check-cart-ins">
             <h3><i class="fa-solid fa-receipt"></i> CHECK ĐƠN HÀNG</h3>
-            <form class="form-check-cart" action="" method="post">
+            <form class="form-check-cart" action="" method="post" enctype="multipart">
                 <input class="in-phone" type="tel" name="" placeholder="Vui lòng nhập số điện thoại" id="">
                 <div class="captcha-wp">
                     <span>NHẬP CAPTCHA</span>

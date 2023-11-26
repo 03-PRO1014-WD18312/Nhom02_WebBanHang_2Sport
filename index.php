@@ -9,10 +9,8 @@
     include 'model/order_payment.php';
     if (isset($_SESSION['login'])) {
         $idkh = $_SESSION['login']['id'];
-
         // Retrieve cart count
         $cartCount = count(showcart($idkh));
-
         include 'view/header.php';
     }
     else{
@@ -166,6 +164,10 @@
             case 'showcart':
                 if (isset($_SESSION['login'])){
                     $idkh=$_SESSION['login']['id']; 
+                }else{
+                    echo "<script>alert('Vui lòng đăng nhập để xem giỏ hàng 🧐');
+                    window.location.href = 'index.php?act=dangnhap';
+                    </script>";
                 }
                 $showcart=showcart($idkh);
                 include 'view/cart.php'; 
@@ -191,10 +193,10 @@
                 $idkh=$_SESSION['login']['id'];
                 $_SESSION['infor_order']=check_infor_order($idkh);
                 if (isset($_POST['tt_nhanhang'])) {
-                $name_tt=$_POST['name_tt'];
-                $phone_tt=$_POST['phone_tt'];
-                $address_tt=$_POST['address_tt'];
-                $payment_method=$_POST['payment_method'];
+                    $name_tt=$_POST['name_tt'];
+                    $phone_tt=$_POST['phone_tt'];
+                    $address_tt=$_POST['address_tt'];
+                    $payment_method=$_POST['payment_method'];
                     insert_infor_order($name_tt,$phone_tt,$address_tt,$idkh,$payment_method);
                     echo "<script>alert('Cập nhập thông tin thành công 👏');
                         if (performance.navigation.type == 0) {
@@ -206,6 +208,46 @@
                 $showcart=showcart($idkh);
                 include 'view/order.php';
                 break;
+            case 'payment_cash':
+                $idkh = $_SESSION['login']['id'];
+                $showcart = showcart($idkh);
+                $_SESSION['history_cart'] = $showcart;
+                $_SESSION['infor_order'] = check_infor_order($idkh);
+                var_dump($_SESSION['infor_order']);
+                if (isset($_POST['payment'])) {
+                        foreach ($_SESSION['history_cart'] as $cartItem) {
+                            $productName = $cartItem['product_name'];
+                            $price = $cartItem['variant_discount'];
+                            $color = $cartItem['color'];
+                            $size = $cartItem['size1'];
+                            $quantity = $cartItem['quantity'];
+                            $idProduct = $cartItem['product_id'];
+                            $idOrder = $_SESSION['infor_order'][0]['id'];
+                            insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
+                        }
+                        clean_cart($idkh);
+
+                        echo "<script>
+                                alert('Đặt hàng thành công 👏');
+                                window.location.href = 'index.php?act=history-order';
+                            </script>";
+                    }
+                break;
+            case 'history-order':
+
+                $idkh = $_SESSION['login']['id'];
+                // $_SESSION['infor_order'] = check_infor_order($idkh);
+                // $id_order = $_SESSION['infor_order'][0]['id'];
+                // $total=total_money_order($id_order);
+
+                $history_order=history_order($idkh);
+                include 'view/history_order.php';
+                break;
+            case 'show_order_hs':
+                $id_order=$_GET['id'];
+                $show_order=show_order($id_order);
+                include 'view/chitietdh.php';
+               break;
             case 'checkdh':
                 include 'view/checkdh.php';
                 break;

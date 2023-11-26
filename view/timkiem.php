@@ -1,5 +1,4 @@
 <main class="container">
-    
     <div class="product-wp">
         <h3>Kết quả tìm kiếm từ khóa " <?= $keyw ?> "</h3>
         <div class="product-ins">

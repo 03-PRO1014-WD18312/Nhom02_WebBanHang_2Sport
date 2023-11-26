@@ -40,7 +40,7 @@
                     </form>
                     <ul class="list-menu">
                         <li><a href="index.php?act=checkdh"><i class="fa-solid fa-receipt"></i> Check đơn hàng</a></li>
-                        <li><a href="index.php?act=showcart"><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng<span>(<?php if(isset($_SESSION['login'])) echo $cartCount; ?>)</span></a></li>
+                        <li><a href="index.php?act=showcart"><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng<span style="color: #BD0000; font-style:italic; font-size:13px;">(<?php if(isset($_SESSION['login'])) echo $cartCount; ?>)</span></a></li>
                         <li class="fa-bag"><a href=""><i class="fa-solid fa-bag-shopping"></i></a></li>
                         <?php 
                             if (isset($_SESSION['login'])) {
@@ -54,7 +54,7 @@
                                                 <a href="admin/index.php"><i class="fa-solid fa-screwdriver-wrench"></i> Trang quản trị</a>
                                             </li>
                                             <li>
-                                                <a href="index.php?act="><i class="fa-solid fa-pen-to-square"></i> Edit thông tin</a>
+                                                <a href="index.php?act=upInfoUser"><i class="fa-solid fa-pen-to-square"></i> Edit thông tin</a>
                                             </li>
                                             <li>
                                                 <a href="index.php?act=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
@@ -71,7 +71,7 @@
                                                 <a href="index.php?act=history-order"><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử mua hàng</a>
                                             </li>
                                             <li>
-                                                <a href="index.php?act="><i class="fa-solid fa-pen-to-square"></i> Edit thông tin</a>
+                                                <a href="index.php?act=upInfoUser"><i class="fa-solid fa-pen-to-square"></i> Edit thông tin</a>
                                             </li>
                                             <li>
                                                 <a href="index.php?act=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>

@@ -1,3 +1,8 @@
+<?php 
+    if (is_array($showcart)) {
+        extract($showcart);
+    }
+?>
 <main class="form-cart container">
     <h1><i class="fa-solid fa-bag-shopping"></i>GIỎ HÀNG</h1>
     <div class="cart-detail">
@@ -50,11 +55,15 @@
         </table>
         <div class="submit-cart">
             <a href="index.php" class="shopping">Tiếp tục mua hàng</a>
-            <a href="index.php?act=order" class="order">Mua hàng</a>
-            <!-- <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
-            action="view/payment_atm.php">
-            <input type="submit" name="momo" value="Thanh toán momo">
-            </form> -->
+            <?php 
+                if (!empty($showcart)) {
+                    echo '<a href="index.php?act=order" class="order">Mua hàng</a>';
+                }else {
+                    echo "<script>alert('Giỏ hàng rỗng 😐');
+                    </script>";
+                }
+                
+            ?>
         </div>
     </div>
 </main>

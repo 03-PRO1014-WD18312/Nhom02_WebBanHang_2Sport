@@ -213,41 +213,47 @@ function list_giay(){
     return $result;
 }
 function list_gang(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
     FROM product 
     JOIN (
-        SELECT idProduct, price, discount
+        SELECT idProduct, price, discount, id , idSize, idColor
         FROM variants
         GROUP BY idProduct
     ) AS variants ON product.id = variants.idProduct 
     JOIN category ON product.idCategory = category.id 
-    WHERE product.idCategory = 5 limit 5";
+    JOIN product_size ON variants.idSize=product_size.id
+    JOIN product_color ON variants.idColor=product_color.id
+    WHERE product.idCategory = 5 LIMIT 5";
     $result = pdo_query($sql);
     return $result;
 }
 function list_quanao(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
     FROM product 
     JOIN (
-        SELECT idProduct, price, discount
+        SELECT idProduct, price, discount, id , idSize, idColor
         FROM variants
         GROUP BY idProduct
     ) AS variants ON product.id = variants.idProduct 
     JOIN category ON product.idCategory = category.id 
-    WHERE product.idCategory = 6 limit 5";
+    JOIN product_size ON variants.idSize=product_size.id
+    JOIN product_color ON variants.idColor=product_color.id
+    WHERE product.idCategory = 6 LIMIT 5";
     $result = pdo_query($sql);
     return $result;
 }
 function list_ball(){
-    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount 
+    $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size1 
     FROM product 
     JOIN (
-        SELECT idProduct, price, discount
+        SELECT idProduct, price, discount, id , idSize, idColor
         FROM variants
         GROUP BY idProduct
     ) AS variants ON product.id = variants.idProduct 
     JOIN category ON product.idCategory = category.id 
-    WHERE product.idCategory = 7 limit 5";
+    JOIN product_size ON variants.idSize=product_size.id
+    JOIN product_color ON variants.idColor=product_color.id
+    WHERE product.idCategory = 7 LIMIT 5";
     $result = pdo_query($sql);
     return $result;
 }

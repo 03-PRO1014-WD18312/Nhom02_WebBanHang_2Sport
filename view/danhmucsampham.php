@@ -23,7 +23,7 @@
                 </div>
                 <div class="buy-cart">
                     <form action="index.php?act=addcart" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>">
+                        <input type="hidden" name="id_variant" value="<?= $idVariant ?>" >
                         <input type="hidden" name="ten_sp" value="<?= $name ?>">
                         <input type="hidden" name="price" value="<?= $discount ?>">
                         <input type="hidden" name="imgsp" value="<?= $img ?>">
