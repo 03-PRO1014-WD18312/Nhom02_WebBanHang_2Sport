@@ -234,7 +234,6 @@
                     }
                 break;
             case 'history-order':
-
                 $idkh = $_SESSION['login']['id'];
                 $_SESSION['infor_order'] = check_infor_order($idkh);
                 $id_order = $_SESSION['infor_order'][0]['id'];
@@ -260,7 +259,40 @@
                 }
                 include 'view/chitietsanpham.php';
             break;
+            case 'setInfoUser':
+                // var_dump($_SESSION['login']['id']);
+                if (isset($_POST['update-info-user'])) {
+                    $email_user=$_POST['email-user'];
+                    $name_order=$_POST['name_order'];
+                    $phone_order=$_POST['phone_order'];
+                    $address_order=$_POST['address_order'];
+                    $idkh=$_SESSION['login']['id'];
+                    if ($_FILES['fileimg']['name']=='') {
+                        $img_user = $_SESSION['login']['img'];
+                    }else {
+                        $img_user=$_FILES['fileimg']['name'];
+                        move_uploaded_file($_FILES['fileimg']['tmp_name'] , 'assets/img/'.$img_user);
+                    }
+                    update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$idkh);
 
+                    $_SESSION['login']['email'] = $email_user;
+                    $_SESSION['login']['name'] = $name_order;
+                    $_SESSION['login']['img'] = $img_user;
+                    $_SESSION['login']['phone'] = $phone_order;
+                    $_SESSION['login']['address'] = $address_order;
+                    update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$idkh);
+
+                    header("Location: index.php?act=setInfoUser");
+                    echo "<script>alert('Cập nhập thông tin thành công 👏');
+                        if (performance.navigation.type == 0) {
+                            window.location.href = window.location.href;
+                            window.location.href = 'index.php?act=setInfoUser';
+                        }
+                    </script>";
+
+                }
+                include 'view/setting_info_user.php';
+                break;
             case "quenmatkhau" :
                 include 'view/quenmatkhau.php';
             break;

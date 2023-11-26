@@ -13,27 +13,36 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>MÃ</th>
+                            <th>#Mã ĐH</th>
                             <th>NGÀY TẠO</th>
                             <th>KHÁCH HÀNG</th>
                             <th>TÌNH TRẠNG</th>
-                            <th>THANH TOÁN</th>
-                            <th>GIAO HÀNG</th>
                             <th>TỔNG TIỀN </th>
                             <th>CHI TIẾT </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>17/11/2023</td>
-                            <td>andinhle</td>
-                            <td>Chờ xử lý</td>
-                            <td>Đã thanh toán</td>
-                            <td>Chưa giao hàng</td>
-                            <td>100.000đ</td>
-                            <td><button class="btn-ct">Chi tiết</button></td>
-                        </tr>
+                    <?php 
+                        foreach ($list_order as $order) {
+                                $id_order=$order[0];
+                                $total=total_money_order($id_order);
+                                foreach ($total as $sum) {
+                                    extract($sum);
+                                }
+                                echo'
+                                    <tr>
+                                        <td>'.$order[0].'</td>
+                                        <td>'.$order['date'].'</td>
+                                        <td>'.$order['username'].'</td>
+                                        <td>
+                                        '. ($status == 0 ? 'Đang xử lý' : 'Đã xử lý') .'
+                                        </td>
+                                        <td>'.number_format($total_price, 0, '.', ',').' VNĐ</td>
+                                        <td><a href="index.php?act=show_order_hs&id='.$id.'">Chi tiết</a></td>
+                                    </tr>
+                                ';
+                            }
+                        ?>
                     </tbody>
                 </table>
             </article>
