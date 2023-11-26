@@ -60,7 +60,7 @@
             </div>
         <?php } ?>
         </div>
-        <div class="view-now"><a href="index.php?act=danhmuc&id=4">XEM THÊM</a></div>
+        <div class="view-now"><a href="index.php?act=sanpham&id=4">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
         <h3>GĂNG TAY THỦ MÔN <span>( 100 SẢN PHẨM )</span></h3>
@@ -97,7 +97,7 @@
             </div>
         <?php } ?>
         </div>
-        <div class="view-now"><a href="index.php?act=danhmuc&id=5">XEM THÊM</a></div>
+        <div class="view-now"><a href="index.php?act=sanpham&id=5">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
         <h3>QUẢ BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
@@ -134,7 +134,7 @@
             </div>
         <?php } ?>
         </div>
-        <div class="view-now"><a href="index.php?act=danhmuc&id=7">XEM THÊM</a></div>
+        <div class="view-now"><a href="index.php?act=sanpham&id=7">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
         <h3>ÁO BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
@@ -171,7 +171,7 @@
             </div>
         <?php } ?>
         </div>
-        <div class="view-now"><a href="index.php?act=danhmuc&id=6">XEM THÊM</a></div>
+        <div class="view-now"><a href="index.php?act=sanpham&id=6">XEM THÊM</a></div>
     </div>
     <div class="policy-wp">
         <div class="policy-item">

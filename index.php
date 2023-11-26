@@ -188,13 +188,13 @@
                 include 'view/cart.php'; 
                 break;
             case 'order':
+                $idkh=$_SESSION['login']['id'];
+                $_SESSION['infor_order']=check_infor_order($idkh);
+                if (isset($_POST['tt_nhanhang'])) {
                 $name_tt=$_POST['name_tt'];
                 $phone_tt=$_POST['phone_tt'];
                 $address_tt=$_POST['address_tt'];
-                $idkh=$_SESSION['login']['id'];
                 $payment_method=$_POST['payment_method'];
-                $_SESSION['infor_order']=check_infor_order($idkh);
-                if (isset($_POST['tt_nhanhang'])) {
                     insert_infor_order($name_tt,$phone_tt,$address_tt,$idkh,$payment_method);
                     echo "<script>alert('Cập nhập thông tin thành công 👏');
                         if (performance.navigation.type == 0) {
@@ -210,10 +210,10 @@
                 include 'view/checkdh.php';
                 break;
             case "detail" :
-                if(isset($_GET['id']) || isset($_GET['idVariant'])){
+                if(isset($_GET['id'])){
                     $detail = detail_product($_GET['id']);
                     $infor = loadone_product_infor($_GET['id']);
-                    $load_detail = load_detail(10);
+                    $product_same_type = load_product_same_type($detail['idCategory'],$_GET['id']);
                     tang_luot_xem($_GET['id']);
                 }
                 include 'view/chitietsanpham.php';
@@ -222,6 +222,9 @@
             case "quenmatkhau" :
                 include 'view/quenmatkhau.php';
             break;
+            case "price-form" :
+                include 'view/price-form.php';
+                break;
         default:
             include 'view/home.php';
             break;

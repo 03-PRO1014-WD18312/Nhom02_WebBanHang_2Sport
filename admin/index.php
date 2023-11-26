@@ -7,6 +7,7 @@
     include "../model/danhmuc.php";
     include "../model/taikhoan.php";
     include "../model/sanpham.php";
+    include "../model/bienthe.php";
     include "../model/binhluan.php";
     include "../model/search.php";
     include "header.php";
@@ -146,6 +147,14 @@
                     delete_category($_GET['id']);
                     header('location: index.php?act=listdm');
                 }
+                break;
+            case 'listcolor' :
+                $listColor = list_color();
+                include "bienthe/listcolor.php";
+                break;
+            case 'listsize' :
+                $listSize = list_size();
+                include "bienthe/listsize.php";
                 break;
             case 'listbl' :
                 $binhluan = load_all_comment();

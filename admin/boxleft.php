@@ -14,8 +14,8 @@
             <ul class="menu-item">
                 <li><a href="index.php?act=addsp">Thêm sản phẩm</a></li>
                 <li><a href="index.php?act=listsp">Danh sách</a></li>
-                <li><a href="index.php?act=qlcolor">Màu sắc</a></li>
-                <li><a href="index.php?act=qlsize">Size</a></li>
+                <li><a href="index.php?act=listcolor">Màu sắc</a></li>
+                <li><a href="index.php?act=listsize">Size</a></li>
             </ul>
         </li>
         <li><a href="index.php?act=qldh">Đơn hàng</a>
