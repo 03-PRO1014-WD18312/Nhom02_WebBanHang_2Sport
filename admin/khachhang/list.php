@@ -38,7 +38,7 @@
                                 <td>'.$email.'</td>
                                 <td><img src="../assets/img/'.$img.'" alt="anh-user"></td>
                                 <td> 
-                                    '. ($role == 1 ? 'Quản trị viên' : 'Khách hàng') .'
+                                    '. ($role == 1 ? 'Nhân viên' : 'Khách hàng') .'
                                 </td>
                                 <td>'. ($role == 0 ? '<a href="index.php?act=phanquyen&id='.$id.'" style="padding:10px; display:block;"><i class="fa-solid fa-user-plus" style="color: #023588;"></i></a>' : '<a href="index.php?act=goquyen&id='.$id.'" style="padding:10px; display:block;"><i class="fa-solid fa-user-minus" style="color: #ac0000;"></i></a>') .'</td>
                             </tr>

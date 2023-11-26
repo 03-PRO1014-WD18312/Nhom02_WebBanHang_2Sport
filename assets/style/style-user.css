@@ -572,7 +572,7 @@ main .slide-banner img{
     margin-top: 30px;
     z-index: 998;
 }
-.form-cart h1{
+.form-cart h1, .form-order h1{
     width: 100%;
     padding: 10px;
     text-align: center;
@@ -580,6 +580,7 @@ main .slide-banner img{
     font-size: 30px;
     background: linear-gradient(180deg, #BD0000 0%, #5A0000 100%);
     border-radius: 10px 10px 0px 0px;
+    
 }
 .form-cart .cart-detail{
     width: 100%;
@@ -614,7 +615,7 @@ main .slide-banner img{
 .form-cart .cart-detail table td{
     text-align: center;
 }
-.form-cart>img{
+.form-cart img{
     width: 180px;
     height: 108px;
 }
@@ -651,9 +652,10 @@ main .slide-banner img{
     background-color: var(--bg-color-ins);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     box-sizing: border-box;
+    width: 100%;
 }
 .check-cart-ins h3{
-    width: 650px;
+    width: 100%;
     height: 50px;
     border-radius: 10px 10px 0px 0px;
     background: linear-gradient(180deg, #BD0000 0%, #5A0000 100%);
@@ -1229,4 +1231,28 @@ main .slide-banner img{
     outline: none;
     border: none;
     text-decoration: none;
+}
+.btn-edit-infor-order .fa-square-pen{
+    font-size: 30px;
+}
+
+.history-order h2{
+    padding: 15px 0px;
+    text-align: center;
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-ins);
+}
+.history-order table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.history-order table tr , .history-order table th{
+    border: 1px solid #d9d9d9;
+}
+.history-order table th{
+    padding: 15px 0px;
+}
+.history-order table td{
+    padding: 10px 0px;
 }
