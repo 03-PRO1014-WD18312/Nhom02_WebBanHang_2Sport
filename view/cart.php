@@ -4,7 +4,7 @@
     }
 ?>
 <main class="form-cart container">
-    <h1><i class="fa-solid fa-bag-shopping"></i>GIỎ HÀNG</h1>
+    <h2><i class="fa-solid fa-bag-shopping"></i>GIỎ HÀNG</h2>
     <div class="cart-detail">
         <table>
             <tr>

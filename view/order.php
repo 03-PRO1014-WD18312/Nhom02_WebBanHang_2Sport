@@ -11,7 +11,7 @@
     if (!empty($showcart)) {
     ?>
         <main class="form-order container">
-        <h1><i class="fa-solid fa-cart-shopping"></i>THANH TOÁN ĐƠN HÀNG</h1>
+        <h2><i class="fa-solid fa-cart-shopping"></i>THANH TOÁN ĐƠN HÀNG</h2>
         <div class="order-wp">
             <table>
                 <tr>

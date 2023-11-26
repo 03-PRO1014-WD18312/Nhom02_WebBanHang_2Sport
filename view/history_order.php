@@ -2,9 +2,6 @@
 <main class="container history-order">
     <h2>LỊCH SỬ MUA HÀNG</h2>
     <div>
-        <!-- <div>
-            hello
-        </div> -->
         <table>
             <thead>
                 <tr>
@@ -29,7 +26,7 @@
                                 <td>'.$date.'</td>
                                 <td>'.number_format($total_price, 0, '.', ',').' VNĐ</td>
                                 <td>
-                                '. ($role == 0 ? 'Đang xử lý' : 'Đã xử lý') .'
+                                '. ($status == 0 ? 'Đang xử lý' : 'Đã xử lý') .'
                                 </td>
                                 <td>'.$rate.'</td>
                                 <td><a href="index.php?act=show_order_hs&id='.$id.'">Chi tiết</a></td>

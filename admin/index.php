@@ -10,6 +10,7 @@
     include "../model/bienthe.php";
     include "../model/binhluan.php";
     include "../model/search.php";
+    include "../model/order_payment.php";
     include "header.php";
     if (isset($_GET['act']) && ($_GET['act']) != ""){
     $act = $_GET['act'];
@@ -210,6 +211,7 @@
                 include 'thongke/dh-dt.php';
                 break;
             case 'qldh':
+                $list_order=list_order();
                 include 'donhang/list.php';
                 break;
         default:
