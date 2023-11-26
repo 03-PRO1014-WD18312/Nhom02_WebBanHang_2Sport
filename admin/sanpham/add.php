@@ -90,10 +90,7 @@
             </div>
             <div class="variant-in size">
                 <label for="">Kích cỡ</label></br>
-                <input type="text" list="size" name="size1[]" placeholder="Nhập size">
-                <input type="text" list="size" name="size2[]" placeholder="Nhập size">
-                <input type="text" list="size" name="size3[]" placeholder="Nhập size">
-                <input type="text" list="size" name="size4[]" placeholder="Nhập size">
+                <input type="text" list="size" name="size[]" placeholder="Nhập size">
             </div>
             <div class="variant-in">
                 <label for="">Giá gốc</label></br>

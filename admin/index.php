@@ -42,18 +42,14 @@
                     $price = $_POST['price'];
                     $discount = $_POST['priceSale'];
                     $quantity = $_POST['quantity'];
-                    $size1 = $_POST['size1'];
-                    $size2 = $_POST['size2'];
-                    $size3 = $_POST['size3'];
-                    $size4 = $_POST['size4'];
-                    $color = $_POST['color'];
+                    $size = $_POST['size'];
                     $color = $_POST['color'];
 
                     $hinh = $_FILES['image']['name'];
                     $target_direct = "../assets/img/";
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-                    insert_product($name, $iddm, $status, $des, $price, $discount, $quantity, $size1, $size2, $size3, $size4, $color, $hinh);
+                    insert_product($name, $iddm, $status, $des, $price, $discount, $quantity, $size, $color, $hinh);
                     header('location: index.php?act=listsp');
                 } 
                 $listdanhmuc = list_category();
@@ -80,10 +76,7 @@
                     $price = $_POST['price'];
                     $discount = $_POST['priceSale'];
                     $quantity = $_POST['quantity'];
-                    $size1 = $_POST['size1'];
-                    $size2 = $_POST['size2'];
-                    $size3 = $_POST['size3'];
-                    $size4 = $_POST['size4'];
+                    $size = $_POST['size'];
                     $color = $_POST['color'];
 
                     $hinh = $_FILES['image']['name'];
@@ -91,7 +84,7 @@
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
 
-                    update_product($id, $iddm, $name, $status, $des, $hinh, $price, $discount, $quantity, $color, $size1, $size2, $size3, $size4);
+                    update_product($id, $iddm, $name, $status, $des, $hinh, $price, $discount, $quantity, $color, $size);
                     header('location: index.php?act=listsp');
                 }
                 $listdanhmuc = list_category();

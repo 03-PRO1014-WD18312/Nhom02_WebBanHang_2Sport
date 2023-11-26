@@ -219,7 +219,7 @@
                             $productName = $cartItem['product_name'];
                             $price = $cartItem['variant_discount'];
                             $color = $cartItem['color'];
-                            $size = $cartItem['size1'];
+                            $size = $cartItem['size'];
                             $quantity = $cartItem['quantity'];
                             $idProduct = $cartItem['product_id'];
                             $idOrder = $_SESSION['infor_order'][0]['id'];
@@ -236,9 +236,9 @@
             case 'history-order':
 
                 $idkh = $_SESSION['login']['id'];
-                // $_SESSION['infor_order'] = check_infor_order($idkh);
-                // $id_order = $_SESSION['infor_order'][0]['id'];
-                // $total=total_money_order($id_order);
+                $_SESSION['infor_order'] = check_infor_order($idkh);
+                $id_order = $_SESSION['infor_order'][0]['id'];
+                $total=total_money_order($id_order);
 
                 $history_order=history_order($idkh);
                 include 'view/history_order.php';

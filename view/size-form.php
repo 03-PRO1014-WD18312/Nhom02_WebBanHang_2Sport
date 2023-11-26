@@ -37,16 +37,7 @@
 <body>
     <div class="form-size"> 
         <select name="" id="">
-            <option value="<?= $id ?>"><?= $load_size[0]['size1'] ?></option>
-            <?php if(!empty($load_size[0]['size2'])){ ?>
-            <option value="<?= $id ?>"><?= $load_size[0]['size2'] ?></option>
-            <?php }else{} ?>
-            <?php if(!empty($load_size[0]['size3'])){ ?>
-            <option value="<?= $id ?>"><?= $load_size[0]['size3'] ?></option>
-            <?php }else{} ?>
-            <?php if(!empty($load_size[0]['size4'])){ ?>
-            <option value="<?= $id ?>"><?= $load_size[0]['size4'] ?></option>
-            <?php }else{} ?>
+            <option value="<?= $id ?>"><?= $load_size[0]['size'] ?></option>
         </select>
     </div>
 </body>

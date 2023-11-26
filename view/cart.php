@@ -34,7 +34,7 @@
                             <td><img src="assets/img/'.$product_img.'" width="50px" alt=""></td>
                             <td>'.$product_name.'</td>
                             <td><span style="background-color: '.$color.'; padding: 10px 20px; border:1px solid #d9d9d9; border-radius:50%;"></span></td>
-                            <td>'.$size1.'</td>
+                            <td>'.$size.'</td>
                             <td>'.$price_formatted.'đ</td>
                             <td><input type="number" min="1" name="" value="'.$quantity.'" id=""></td>
                             <td>'.$thanhtien_formatted.'đ</td>
