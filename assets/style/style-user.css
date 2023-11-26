@@ -783,7 +783,7 @@ main .slide-banner img{
     background: linear-gradient(180deg, #BD0000 0%, #5A0000 100%);
     border-radius: 10px 10px 0px 0px;
 }
-.form-detail .infor-product{
+.form-detail .infor-product .form{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 100px;
@@ -849,8 +849,7 @@ main .slide-banner img{
     display: flex;
     gap: 10px;
     margin-top: 10px;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 50px;
 }
 .form-detail .infor-product .right .choose-size div{
     border: 0.5px solid var(--bg-color-black-ins);
@@ -862,21 +861,18 @@ main .slide-banner img{
     background-color: #FF0000;
     border: 0.5px solid var(--bg-color-ins);
 }
-.form-detail .infor-product .right form{
-    display: flex;
-    gap: 30px;
-}
-.form-detail .infor-product .right form input[type="button"]{
+
+.form-detail .infor-product .right input[type="submit"]{
     padding: 7px 10px;
     border-radius: 10px;
     border: none;
     color: var(--bg-color-ins);
     font-weight: bold;
 }
-.form-detail .infor-product .right form .addToCart{
+.form-detail .infor-product .right .addToCart{
     background-color: #FF0000;
 }
-.form-detail .infor-product .right form .buy{
+.form-detail .infor-product .right .buy{
     background-color: var(--bg-color-black-ins);
 }
 .form-detail .detail-product{

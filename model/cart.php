@@ -15,7 +15,7 @@
         product.img AS product_img,
         variants.price AS variant_price,
         variants.discount AS variant_discount,
-        product_size.size1,
+        product_size.size,
         product_color.color
     FROM
         cart

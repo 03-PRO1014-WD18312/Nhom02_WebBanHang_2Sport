@@ -219,7 +219,7 @@
                             $productName = $cartItem['product_name'];
                             $price = $cartItem['variant_discount'];
                             $color = $cartItem['color'];
-                            $size = $cartItem['size1'];
+                            $size = $cartItem['size'];
                             $quantity = $cartItem['quantity'];
                             $idProduct = $cartItem['product_id'];
                             $idOrder = $_SESSION['infor_order'][0]['id'];
