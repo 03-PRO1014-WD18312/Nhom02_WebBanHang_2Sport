@@ -3,45 +3,67 @@
     <article>
         <div class="list-product">
             <h1>DANH SÁCH SẢN PHẨM</h1>
-            <form action="">
+            <form action="" class="formSearch">
                 <input type="text" placeholder="Tìm tên sản phẩm">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button name="button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Mã sản phẩm</th>
-                    <th>Mã danh mục</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Ảnh</th>
-                    <th>Trạng thái</th>
-                    <th>Hành động</th>
-                </tr>
-                <?php foreach($listProduct as $row){
-                    extract($row);
-                    $suasp = "index.php?act=suasp&id=$id";
-                    $xoasp = "index.php?act=deletesp&id=$id";
-                ?>  
+            <form action="index.php?act=deleteselected-sp" method="post">
+                <table>
                     <tr>
-                        <td><input type="checkbox"></td>
-                        <td><?= $id ?></td>
-                        <td><?= $idCategory ?></td>
-                        <td><?= $name ?></td>
-                        <td><img src="../assets/img/<?= $img ?>" alt=""></td>
-                        <td><?=$status == 1 ? 'Hiển thị' : 'Ẩn'?></td>
-                        <td>
-                            <a href="<?= $suasp ?>"><input type="button" value="Sửa"></a>   
-                            <a href="<?= $xoasp ?>"><input type="button" value="Xóa" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
-                        </td>
+                        <th></th>
+                        <th>Mã sản phẩm</th>
+                        <th>Mã danh mục</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Ảnh</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
                     </tr>
-                <?php } ?>
-            </table>
-            <div class="action">
-                <a href="">THÊM DANH MỤC</a>
-                <a href="">CHỌN TẤT CẢ</a>
-                <a href="">BỎ CHỌN</a>
-                <a href="">XÓA CÁC MỤC ĐÃ CHỌN</a>
-            </div>
+                    <?php foreach($listProduct as $row){
+                        extract($row);
+                        $suasp = "index.php?act=suasp&id=$id";
+                        $xoasp = "index.php?act=deletesp&id=$id";
+                    ?>  
+                        <tr>
+                            <td><input type="checkbox" id="checkbox<?= $id ?>" name="selectedProducts[]" value="<?= $id ?>"></td>
+                            <td><?= $id ?></td>
+                            <td><?= $idCategory ?></td>
+                            <td><?= $name ?></td>
+                            <td><img src="../assets/img/<?= $img ?>" alt=""></td>
+                            <td><?=$status == 1 ? 'Hiển thị' : 'Ẩn'?></td>
+                            <td>
+                                <a href="<?= $suasp ?>"><input type="button" value="Sửa"></a>   
+                                <a href="<?= $xoasp ?>"><input type="button" value="Xóa" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </table>
+                <div class="action">
+                    <a href="index.php?act=addsp">THÊM SẢN PHẨM</a>
+                    <a href="#" class="select-all">CHỌN TẤT CẢ</a>
+                    <a href="#" class="deselect-all">BỎ CHỌN</a>
+                    <button class="delete" type="submit" onclick="return confirm('Bạn có chắc muốn xóa các sản phẩm đã chọn?')">XÓA SẢN PHẨM ĐÃ CHỌN</button>
+                </div>
+            </form>
         </div>
     </article>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('a.select-all').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor tag
+            var checkboxes = document.querySelectorAll('input[name="selectedProducts[]"]');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = true;
+            });
+        });
+
+        document.querySelector('a.deselect-all').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor tag
+            var checkboxes = document.querySelectorAll('input[name="selectedProducts[]"]');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        });
+    });
+</script>
+
