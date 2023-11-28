@@ -28,6 +28,6 @@
                 <li><a href="index.php?act=dhdt">Đơn hàng theo danh thu</a></li>
             </ul>
         </li>
-        <li><a href="#">Phản hồi</a></li>
+        <!-- <li><a href="#">Phản hồi</a></li> -->
     </ul>
 </aside>

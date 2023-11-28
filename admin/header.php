@@ -6,6 +6,7 @@
     <title>Trang quản trị admin</title>
     <link rel="stylesheet" href="../assets/style/style-admin.css">
     <link rel="stylesheet" href="../assets/style/responsive-admin.css">
+    <link rel="icon" type="image/png" href="../assets/img/brand.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>

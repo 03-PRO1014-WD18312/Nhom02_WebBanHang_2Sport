@@ -1,4 +1,3 @@
-
 <main class="container history-order">
     <h2>LỊCH SỬ MUA HÀNG</h2>
     <div>
@@ -15,25 +14,39 @@
             </thead>
             <tbody>
                 <?php 
-                    foreach ($history_order as $order) {
+                    $merge_order = [];
+                    foreach ($info_order as $order) {
                         extract($order);
-                        foreach ($total as $sum) {
-                            extract($sum);
-                            $rate = 0;
+                        $id_order = $id;
+                        $total=total_money_order($id_order);
+                        $merge_order=array_merge($merge_order,$total);
+                        foreach ($merge_order as $merge){
+                            extract($merge);
                         }
-                        echo'
+                        ?>
                             <tr>
-                                <td>'.$id.'</td>
-                                <td>'.$date.'</td>
-                                <td>'.number_format($total_price, 0, '.', ',').' VNĐ</td>
+                                <td><?=$id?></td>
+                                <td><?=$date?></td>
+
+                                <td><?=number_format($total_price, 0, '.', ',')?> VNĐ</td>
+
                                 <td>
-                                '. ($status == 0 ? 'Đang xử lý' : 'Đã xử lý') .'
+                                <?php 
+                                if ($status == 0 ) {
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #DB0000; border-radius:20px;"">Chưa xử lý</span>';
+                                    }elseif ($status == 1) {
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #069A8E; border-radius:20px;">Đã xử lý</span>';
+                                    }elseif ($status == 2) {
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Đang giao hàng</span>';
+                                    }else {
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #153462; border-radius:20px;">Đã giao hàng <i class="fa-solid fa-check" style="font-size:15px;"></i></span>';
+                                    } ?>
                                 </td>
-                                <td>'.$rate.'</td>
-                                <td><a href="index.php?act=show_order_hs&id='.$id.'">Chi tiết</a></td>
+                                <td><?=$rate?></td>
+                                <td><a href="index.php?act=show_order_hs&id=<?=$id?>">Chi tiết</a></td>
                             </tr>
-                        ';
-                    }
+
+                  <?php  }                          
                 ?>
             </tbody>
         </table>
