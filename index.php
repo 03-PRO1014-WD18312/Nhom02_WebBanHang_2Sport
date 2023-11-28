@@ -70,7 +70,6 @@
                         }
                     }
                     if (empty($userError) & empty($emailError) & empty($passError) & empty($passCheckError)) {
-                        var_dump(check_register($user,$email));
                         if ($check_register=check_register($user,$email)==true) {
                             echo "<script>alert('User hoặc Email đã tồn tại');</script>";
                         }else{
@@ -166,7 +165,7 @@
                     $idkh=$_SESSION['login']['id']; 
                 }else{
                     echo "<script>alert('Vui lòng đăng nhập để xem giỏ hàng 🧐');
-                    window.location.href = 'index.php?act=dangnhap';
+                        window.location.href = 'index.php?act=dangnhap';
                     </script>";
                 }
                 $showcart=showcart($idkh);
@@ -190,31 +189,13 @@
                 include 'view/cart.php'; 
                 break;
             case 'order':
-                $idkh=$_SESSION['login']['id'];
-                $_SESSION['infor_order']=check_infor_order($idkh);
-                if (isset($_POST['tt_nhanhang'])) {
-                    $name_tt=$_POST['name_tt'];
-                    $phone_tt=$_POST['phone_tt'];
-                    $address_tt=$_POST['address_tt'];
-                    $payment_method=$_POST['payment_method'];
-                    insert_infor_order($name_tt,$phone_tt,$address_tt,$idkh,$payment_method);
-                    echo "<script>alert('Cập nhập thông tin thành công 👏');
-                        if (performance.navigation.type == 0) {
-                            window.location.href = window.location.href;
-                            window.location.href = 'index.php?act=order';
-                        }
-                    </script>";
-                }
-                $showcart=showcart($idkh);
-                include 'view/order.php';
-                break;
-            case 'payment_cash':
-                $idkh = $_SESSION['login']['id'];
-                $showcart = showcart($idkh);
-                $_SESSION['history_cart'] = $showcart;
-                $_SESSION['infor_order'] = check_infor_order($idkh);
-                var_dump($_SESSION['infor_order']);
-                if (isset($_POST['payment'])) {
+                    extract($_SESSION['login']);
+                    $idkh=$id;
+                    $showcart = showcart($idkh);
+                    $_SESSION['history_cart'] = $showcart;
+                    if (isset($_POST['payment'])) {
+                        insert_infor_order($name,$phone,$address,$idkh,$payment);
+                        $info_order=check_infor_order($idkh);
                         foreach ($_SESSION['history_cart'] as $cartItem) {
                             $productName = $cartItem['product_name'];
                             $price = $cartItem['variant_discount'];
@@ -222,23 +203,24 @@
                             $size = $cartItem['size'];
                             $quantity = $cartItem['quantity'];
                             $idProduct = $cartItem['product_id'];
-                            $idOrder = $_SESSION['infor_order'][0]['id'];
+                            $idOrder = $info_order[0]['id'];
                             insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
                         }
                         clean_cart($idkh);
-
-                        echo "<script>
+                        echo "
+                            <script>
                                 alert('Đặt hàng thành công 👏');
                                 window.location.href = 'index.php?act=history-order';
-                            </script>";
+                            </script>
+                        ";
+
                     }
+                $showcart=showcart($idkh);
+                include 'view/order.php';
                 break;
             case 'history-order':
                 $idkh = $_SESSION['login']['id'];
-                $_SESSION['infor_order'] = check_infor_order($idkh);
-                $id_order = $_SESSION['infor_order'][0]['id'];
-                $total=total_money_order($id_order);
-
+                $info_order=check_infor_order($idkh);
                 $history_order=history_order($idkh);
                 include 'view/history_order.php';
                 break;
@@ -266,6 +248,7 @@
                     $name_order=$_POST['name_order'];
                     $phone_order=$_POST['phone_order'];
                     $address_order=$_POST['address_order'];
+                    $payment_order=$_POST['payment_method'];
                     $idkh=$_SESSION['login']['id'];
                     if ($_FILES['fileimg']['name']=='') {
                         $img_user = $_SESSION['login']['img'];
@@ -273,14 +256,15 @@
                         $img_user=$_FILES['fileimg']['name'];
                         move_uploaded_file($_FILES['fileimg']['tmp_name'] , 'assets/img/'.$img_user);
                     }
-                    update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$idkh);
+                    update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$payment_order,$idkh);
 
                     $_SESSION['login']['email'] = $email_user;
                     $_SESSION['login']['name'] = $name_order;
                     $_SESSION['login']['img'] = $img_user;
                     $_SESSION['login']['phone'] = $phone_order;
                     $_SESSION['login']['address'] = $address_order;
-                    update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$idkh);
+                    $_SESSION['login']['payment'] = $payment_order;
+                    update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$payment_order,$idkh);
 
                     header("Location: index.php?act=setInfoUser");
                     echo "<script>alert('Cập nhập thông tin thành công 👏');

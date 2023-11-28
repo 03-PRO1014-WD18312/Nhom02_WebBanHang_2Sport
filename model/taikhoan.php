@@ -35,8 +35,8 @@
       }
     //update-info-user
 
-    function update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$idkh){
-      $sql="UPDATE `account` SET `email`='$email_user',`img`='$img_user',`name`='$name_order',`phone`='$phone_order',`address`='$address_order' WHERE id=$idkh";
+    function update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$payment_order,$idkh){
+      $sql="UPDATE `account` SET `email`='$email_user',`img`='$img_user',`name`='$name_order',`phone`='$phone_order',`address`='$address_order', `payment`='$payment_order' WHERE id=$idkh";
       pdo_execute($sql);
     }
 

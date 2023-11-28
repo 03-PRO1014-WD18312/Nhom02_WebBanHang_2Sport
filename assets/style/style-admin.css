@@ -70,9 +70,9 @@ aside{
 .menu-list{
     text-align: center;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.80);
+    /* background: rgba(255, 255, 255, 0.80);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    min-height: 100vh;
+    min-height: 100vh; */
 }
 .menu-list>li{
     list-style-type: none;
@@ -615,5 +615,144 @@ tbody img{
 }
 /* end list-product */
 
+/* chitietdonhang */
 
-
+.table-product-wp{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    margin-top: 30px;
+    gap: 1.5em;
+    min-height: 100%;
+}
+.table-product-ins{
+    background-color: var(--bg-color-while-ins);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.table-product-ins table{
+    overflow: hidden;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+.table-product-ins table th, .table-product-ins table td{
+    border: none;
+}
+.table-product-ins table tbody td:nth-child(1){
+    display: flex;
+    text-align: left;
+    margin-left: 10px;
+}
+.table-product-ins table tbody td:nth-child(1) span{
+    font-size: 15px;
+}
+.table-product-ins table tbody td:nth-child(1) div{
+    margin-left: 10px;
+    text-align: left;
+}
+.table-product-ins table tbody td:nth-child(1) img{
+    border: 1px solid #d9d9d9;
+}
+.table-product-ins table tbody td:nth-child(1) a{
+    text-decoration: none;
+}
+/* .status-update{
+    display: flex;
+    justify-content: space-between;
+} */
+.status-update{
+    padding: 20px 10px;
+    border-top: 1px solid #d9d9d9;
+}
+.status-update h4{
+    padding-bottom: 15px;
+}
+.status-update select{
+    background-color: var(--bg-color-black-ins);
+    height: 40px;
+    color: var(--bg-color-while-ins);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 0px 15px;
+    cursor: pointer;
+}
+.status-update input[type='submit']{
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-while-ins);
+    padding: 12.5px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.table-product-right{
+    overflow: hidden;
+    border-radius: 10px 10px 0px 0px;
+    background-color: var(--bg-color-while-ins);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+.table-product-right>h5{
+    background-color: var(--bg-color-black-ins);
+    padding: 17px 0px;
+    color: var(--bg-color-while-ins);
+    text-align: center;
+}
+.table-product-right>div{
+    padding: 15px;
+}
+.info-user-order{
+    border-radius: 10px;
+    border: 1px solid #D9D9D9;
+    background-color: var(--bg-color-while-ins);
+    margin: 15px;
+}
+.info-user-order p{
+    padding: 5px 0px;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bg-color-main);
+}
+.info-user-order p>span{
+    font-weight: 300;
+    color: var(--bg-color-black-ins);
+}
+.fa-receipt, .fa-credit-card{
+    color: var(--bg-color-main);
+    font-size: 20px;
+}
+.total-receipt h4{
+    color: var(--bg-color-main);
+}
+.total-receipt span{
+    color: var(--bg-color-black-ins);
+}
+.payment-cash span{
+    font-weight: 600;
+    color: var(--bg-color-main);
+}
+.payment-cash select{
+    padding: 10px 0px;
+    width: 100%;
+    margin-top: 15px;
+}
+.btn-chitiet-order a{
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-while-ins);
+    border-radius: 5px;
+}
+.status-wp{
+    margin-top: 13px;
+    display: flex;
+    justify-content: space-between ;
+}
+.btn-back{
+    padding: 10px;
+}
+.btn-back a{
+    text-decoration: none;
+    color: var(--bg-color-main);
+}

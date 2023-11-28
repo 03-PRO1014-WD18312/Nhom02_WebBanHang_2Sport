@@ -3,6 +3,9 @@
         extract ($_SESSION['login']);
     }
 ?>
+<?php 
+    if (isset($_SESSION['login'])) {
+        ?>
 <main class="container update-user">
     <h2>THIẾT LẬP TÀI KHOẢN</h2>
     <div class="update-user-wp">
@@ -24,10 +27,10 @@
             </div>
             <nav class="nav-user-list">
                 <ul class="nav-user">
-                    <li><a href=""><i class="fa-solid fa-user-pen"></i> Sửa thông tin</a></li>
+                    <li><a href="index.php?act=setInfoUser"><i class="fa-solid fa-user-pen"></i> Sửa thông tin</a></li>
                     <li><a href=""><i class="fa-solid fa-rotate"></i> Đổi mật khẩu</a></li>
-                    <li><a href=""><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử mua hàng</a></li>
-                    <li><a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
+                    <li><a href="index.php?act=history-order"><i class="fa-solid fa-clock-rotate-left"></i> Lịch sử mua hàng</a></li>
+                    <li><a href="index.php?act=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
                 </ul>
             </nav>
             
@@ -59,11 +62,11 @@
                         <input type="text" name="phone_order" placeholder="Nhập số điện thoại : " value="<?= $phone;?>"><br><br>
                         <label for="">Địa chỉ</label><br>
                         <textarea name="address_order" id="" cols="30" rows="6" placeholder="Nhập địa chỉ nhận hàng : "><?= $address;?></textarea><br><br>
-                        <!-- <label for=""><i class="fa-solid fa-credit-card"></i> Phương thức thanh toán</label>
+                        <label for=""><i class="fa-solid fa-credit-card"></i> Cài đặt phương thức thanh toán</label>
                         <select class="select-payment" name="payment_method" id="">
-                            <option value="0" selected>💵 Thanh toán bằng tiền mặt</option>
-                            <option value="1">🏧 Thanh toán bằng ATM MOMO</option>
-                        </select> -->
+                            <option value="0" <?php if($payment == "0") echo "selected";?>>💵 Thanh toán bằng tiền mặt</option>
+                            <option value="1" <?php if($payment == "1") echo "selected";?>>🏧 Thanh toán bằng ATM MOMO</option>
+                        </select>
                     </div>
                 </div>
                 <br><br>
@@ -73,3 +76,12 @@
     </div>
 
 </main>
+
+<?php
+}else {
+    echo'<div style="width:100%; text-align:center; padding-top:75px">
+        <img src="./assets/img/404.svg" width="50%" alt="">
+    </div>
+    ';
+}
+?>
