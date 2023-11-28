@@ -243,15 +243,31 @@
                 $dskh=list_kh();
                 include 'khachhang/list.php';
             break;
+            case 'qldh':
+                $list_order=list_order();
+                include 'donhang/list.php';
+                break;
+            case 'chitietdh':
+                $id_order=$_GET['id'];
+                $show_order=show_order($id_order);
+                $status=$_POST['statusUpdate'];
+                $list_order=list_staus_order($id_order);
+                if (isset($_POST['update_order'])) {
+                    update_status_order($id_order,$status);
+                    echo"<script>
+                        alert('Cập nhật trạng thái đơn hàng thành công 👋');
+                        if (performance.navigation.type === 0) {
+                            window.location.href = window.location.href;
+                        }
+                    </script>";
+                }
+                include 'donhang/chitietdh.php';
+                break;
             case 'spdm':
                 include 'thongke/sp-dm.php';
                 break;
             case 'dhdt':
                 include 'thongke/dh-dt.php';
-                break;
-            case 'qldh':
-                $list_order=list_order();
-                include 'donhang/list.php';
                 break;
         default:
             include 'home.php';

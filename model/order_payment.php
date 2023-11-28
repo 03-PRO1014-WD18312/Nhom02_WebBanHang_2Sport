@@ -1,12 +1,12 @@
 <?php 
     //thêm thông tin nhận hàng
-    function insert_infor_order($name_tt,$phone_tt,$address_tt,$idkh,$payment_method){
-        $sql="INSERT INTO `order_info`(`name`, `address`, `phoneNumber`,`payment`, `date`, `idAccount`) VALUES ('$name_tt','$address_tt','$phone_tt','$payment_method',CURRENT_DATE(),'$idkh')";
+    function insert_infor_order($name,$phone,$address,$idkh,$payment){
+        $sql="INSERT INTO `order_info`(`name`, `address`, `phoneNumber`,`payment`, `date`, `idAccount`) VALUES ('$name','$address','$phone','$payment',CURRENT_DATE(),'$idkh')";
         pdo_execute($sql);
     }
     //
     function check_infor_order($idkh){
-        $sql="SELECT * FROM `order_info` WHERE idAccount=$idkh";
+        $sql="SELECT * FROM `order_info` WHERE idAccount=$idkh ORDER BY id DESC";
         $check_infor_order=pdo_query($sql);
         return $check_infor_order;
     }
@@ -37,18 +37,30 @@
         $list_order=pdo_query($sql);
         return $list_order;
     }
+    
     //tong tien
     function total_money_order($id_order){
-       $sql="SELECT SUM(price) AS total_price FROM order_detail WHERE idOrder = $id_order";
+       $sql="SELECT SUM(price) AS total_price FROM order_detail WHERE idOrder=$id_order GROUP BY idOrder;";
        $total_order=pdo_query($sql);
        return $total_order;
     }
     //show_order_product
     function show_order($id_order){
-        $sql="SELECT * FROM `order_detail` WHERE idOrder = $id_order";
+        $sql="SELECT * FROM `order_detail` INNER JOIN product ON order_detail.idProduct=product.id INNER JOIN order_info ON order_detail.idOrder=order_info.id WHERE idOrder = $id_order";
         $show_order=pdo_query($sql);
         return $show_order;
     }
     //
-    
+    // update trạng thái đơn hàng
+    function update_status_order($id_order,$status){
+        $sql="UPDATE `order_info` SET `status`='$status' WHERE id=$id_order";
+        pdo_execute($sql);
+    }
+
+    //hiển thị trạng thái đơn hàng
+    function list_staus_order($id_order){
+        $sql="SELECT * FROM `order_info` WHERE id=$id_order";
+        $list_staus_order=pdo_query($sql);
+        return $list_staus_order;
+    }
 ?>
