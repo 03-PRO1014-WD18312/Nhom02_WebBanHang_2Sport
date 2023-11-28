@@ -26,13 +26,6 @@
                 }
                 include "view/danhmucsampham.php";
                 break;
-            // case "danhmuc" :
-            //     if(isset($_GET['id'])) {
-            //         $id = $_GET['id'];
-            //         $listspdm = list_danhmuc_sanpham($id);
-            //     }
-            //     include "view/danhmuc.php";
-            //     break;
             case "timkiem" :
                 if(isset($_POST['keyw'])) {
                     $keyw = $_POST['keyw'];
@@ -161,6 +154,26 @@
                     include 'view/home.php';
                 }
                 break;
+            case 'updatecart':
+                if (isset($_SESSION['login'])){
+                    $idkh=$_SESSION['login']['id']; 
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        foreach ($_POST['quantity'] as $cart_id => $quantity) {
+                            // Thực hiện cập nhật số lượng cho từng sản phẩm trong giỏ hàng
+                            $sql = "UPDATE `cart` SET `quantity` = ? WHERE `id` = ?";
+                            pdo_execute($sql, $quantity, $cart_id);
+                        }
+                        echo "<script>alert('Cập nhật giỏ hàng thành công');
+                            window.location.href = 'index.php?act=showcart';
+                        </script>";
+                    }
+                    else {
+                        echo "<script>alert('Cập nhật giỏ hàng không thành công');
+                            window.location.href = 'index.php?act=showcart';
+                        </script>";
+                    }
+                }
+                break;                
             case 'showcart':
                 if (isset($_SESSION['login'])){
                     $idkh=$_SESSION['login']['id']; 

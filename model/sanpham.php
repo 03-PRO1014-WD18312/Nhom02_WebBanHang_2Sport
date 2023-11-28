@@ -171,17 +171,6 @@ function list_sanpham_danhmuc($id){
     $result = pdo_query($sql);
     return $result;
 }
-// function list_danhmuc_sanpham($id){
-//     $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount
-//     FROM product 
-//     JOIN (
-//         SELECT idProduct, price, discount, id as idVariant
-//         FROM variants
-//         GROUP BY idProduct
-//     ) AS variants ON product.id = variants.idProduct 
-//     JOIN category ON product.idCategory = category.id 
-//     WHERE product.idCategory = $id";
-// }
 function list_giay(){
     $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 

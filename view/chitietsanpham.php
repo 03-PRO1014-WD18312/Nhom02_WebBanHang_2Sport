@@ -1,11 +1,32 @@
 <?php 
     extract($detail);
+    if(isset($_POST['addToCart'])){
+        $nameSp=$_POST['productName'];
+        $priceSp=$_POST['selectedDiscount'];
+        $imgSp=$_POST['productImage'];
+        $id_variant=$_POST['variantId'];
+        $idkh=$_SESSION['login']['id'];
+        if (isset($_SESSION['login'])) {
+            addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
+            echo "<script>alert('Thêm giỏ hàng thành công 🛒');
+                if (performance.navigation.type == 0) {
+                    window.location.href = window.location.href;
+                    window.location.href = 'index.php?act=showcart';
+                }
+                window.location.href = 'index.php?act=showcart';
+            </script>";
+        }else {
+            echo'<script>
+                alert("Vui lòng đăng nhập");
+            </script>';
+        }
+    }
 ?>
 
 <div class="form-detail container">
     <h1>CHI TIẾT SẢN PHẨM</h1>
     <div class="infor-product">
-        <form action="" class="form">
+        <form action="" method="POST" class="form">
             <div class="left">
                 <div class="image-product">
                     <div class="main-image">
@@ -37,7 +58,7 @@
                         <p id="display-discount" class="discount">Giảm giá: <?= $discount ?> đ</p>
                         <p id="display-price" class="origin-price">Giá: <?= $price ?> đ</p>
                     <?php break; }?>
-                    <!-- <p id="display-percent" class="percent"><?= round(($discount - $price) / 10000) ?>%</p> -->
+                    <p id="display-percent" class="percent"><?= round(($discount - $price) / 10000) ?>%</p>
                 </div>
                 <div class="choose-color">
                     <p>Chọn màu:</p>
@@ -65,7 +86,14 @@
                     <?php break; }?>
                 </div>
 
-                <input type="submit" class="addToCart" value="THÊM VÀO GIỎ">
+                <input type="hidden" name="productName" value="<?= $name ?>">
+                <input type="hidden" name="productImage" value="<?= $img ?>">
+                <input type="hidden" name="variantId" id="variantId">
+                <input type="hidden" id="selectedColor" name="selectedColor">
+                <input type="hidden" id="selectedPrice" name="selectedPrice">
+                <input type="hidden" id="selectedDiscount" name="selectedDiscount">
+                <input type="hidden" id="selectedSize" name="selectedSize">
+                <input type="submit" class="addToCart" name="addToCart" value="THÊM VÀO GIỎ">
 
             </div>
         </form>
@@ -112,18 +140,28 @@
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Call loadForms with the ID of the first variant
+    loadForms(<?php echo $infor[0]['idVariant']; ?>);
+    });
     function loadForms(idVariant) {
         // Lấy thông tin từ data-attributes của màu được chọn
         var selectedColor = document.querySelector(`[data-id="${idVariant}"]`);
         var discount = selectedColor.getAttribute("data-discount");
         var price = selectedColor.getAttribute("data-price");
         var size = selectedColor.getAttribute("data-size");
-        var percent = selectedColor.getAttribute("data-percent");
+        var percent = (discount - price)/10000;
 
         // Hiển thị giá, discount và size tương ứng
         document.getElementById("display-discount").innerText = "Giảm giá: " + discount + " đ";
         document.getElementById("display-price").innerText = "Giá: " + price + " đ";
         document.getElementById("display-size").innerText = size;
         document.getElementById("display-percent").innerText = percent + "%";
+
+        document.getElementById("selectedColor").value = selectedColor.style.backgroundColor;
+        document.getElementById("selectedPrice").value = price;
+        document.getElementById("selectedDiscount").value = discount;
+        document.getElementById("selectedSize").value = size;
+        document.getElementById("variantId").value = idVariant;
     }
 </script>

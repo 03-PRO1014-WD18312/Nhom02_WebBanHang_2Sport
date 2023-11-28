@@ -11,7 +11,7 @@
         </div>
         <div class="list-catalog">
             <?php 
-                $listCate=list_category();
+                $listCate=list_category_home();
                 foreach ($listCate as $dm) {
                     extract($dm);
                     echo '

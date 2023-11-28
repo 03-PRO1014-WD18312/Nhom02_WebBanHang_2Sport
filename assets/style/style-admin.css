@@ -528,7 +528,7 @@ tbody img{
     padding: 10px;
     color: #7A7A7A;
 }
-.list-product form button{
+.list-product .formSearch button{
     width: 34px;
     height: 34px;
     border-radius: 20px;
@@ -569,7 +569,19 @@ tbody img{
     padding: 5px 10px;
     border-radius: 5px;
 }
+
 .list-product .action a:hover{
+    background-color: var(--bg-color-main);
+}
+.list-product .action .delete{
+    color: var(--bg-color-while-ins);
+    background-color: var(--bg-color-black-ins);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+.list-product .action .delete:hover{
     background-color: var(--bg-color-main);
 }
 #btn-variant{
