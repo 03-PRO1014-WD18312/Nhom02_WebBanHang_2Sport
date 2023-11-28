@@ -16,6 +16,22 @@ function list_category(){
     $listCate = pdo_query($sql);
     return $listCate;
 }
+function check_category($id){
+    $sql = "SELECT COUNT(product.id) as product_count FROM category LEFT JOIN product ON category.id = product.idCategory WHERE category.id = $id GROUP BY category.id";
+    $result = pdo_query_one($sql);
+
+    if ($result && $result['product_count'] > 1) {
+        return true; // Đã có nhiều hơn 1 sản phẩm
+    } else {
+        return false; // Hoặc không có sản phẩm hoặc chỉ có 1 sản phẩm
+    }
+}
+
+function list_category_home(){
+    $sql = "SELECT * from category order by id limit 7";
+    $listCate = pdo_query($sql);
+    return $listCate;
+}
 function loadone_category($id){
     $sql = "SELECT * from category where id='$id'";
     $result = pdo_query_one($sql);

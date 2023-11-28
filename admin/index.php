@@ -97,8 +97,17 @@
                     header('location: index.php?act=listsp');
                 }
                 break;
+            case 'deleteselected-sp':
+                if(isset($_POST['selectedProducts']) && !empty($_POST['selectedProducts'])) {
+                    foreach($_POST['selectedProducts'] as $selectedProductId) {
+                        delete_product($selectedProductId);
+                    }
+                    header('location: index.php?act=listsp');
+                }
+                break;
             case 'listdm' :
                 $listCate = list_category();
+                $check = check_category($id);
                 include "danhmuc/list.php";
                 break;
             case 'adddm' :
@@ -130,7 +139,6 @@
                     move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
                     update_category($id,$name,$hinh);
                     $danhmuc = loadone_category($id); 
-                    // $messSuccess = "Cập nhật thành công!";
                     header('location: index.php?act=listdm');
                 }
                 $listCate = list_category();
@@ -143,12 +151,42 @@
                 }
                 break;
             case 'listcolor' :
-                $listColor = list_color();
+                $listColor = list_variant();
                 include "bienthe/listcolor.php";
                 break;
+            case 'suacolor' :
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $list = list_color($_GET['id']);
+                }
+                include "bienthe/updatecolor.php";
+                break;
+            case 'updatecolor' :
+                if(isset($_POST['updateColor']) && $_POST['updateColor']) {
+                    $id = $_POST['id'];
+                    $color = $_POST['color'];
+                    $update = update_color($id, $color);
+                    header('location: index.php?act=listcolor');
+                }
+                include "bienthe/updatecolor.php";
+                break;
             case 'listsize' :
-                $listSize = list_size();
+                $listSize = list_variant();
                 include "bienthe/listsize.php";
+                break;
+            case 'suasize' :
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    $list = list_size($_GET['id']);
+                }
+                include "bienthe/updatesize.php";
+                break;
+            case 'updatesize' :
+                if(isset($_POST['updateSize']) && $_POST['updateSize']) {
+                    $id = $_POST['id'];
+                    $size = $_POST['size'];
+                    $update = update_size($id, $size);
+                    header('location: index.php?act=listsize');
+                }
+                include "bienthe/updatesize.php";
                 break;
             case 'listbl' :
                 $binhluan = load_all_comment();
@@ -161,12 +199,20 @@
                 $binhluan = load_all_comment();
                 include "binhluan/list.php";
                 break;
+            case 'deleteselected-bl':
+                if (isset($_POST['selectedComments']) && !empty($_POST['selectedComments'])) {
+                    foreach ($_POST['selectedComments'] as $selectedCommentId) {
+                        delete_comment($selectedCommentId);
+                    }
+                    header('location: index.php?act=listbl');
+                }
+                break;
             case 'khachhang':
-                $keyword=$_POST['keyword'];
-                $table='account';
-                $column1='username';
-                $column2='email';
                 if (isset($_POST['searchkh'])) {
+                    $keyword=$_POST['keyword'];
+                    $table='account';
+                    $column1='username';
+                    $column2='email';
                     $id=$_SESSION['login']['id'];
                     if ($search_wp=search_wp($table,$column1,$column2,$keyword, $id)==true) {
                         $dskh=search_wp($table,$column1,$column2,$keyword,$id);
