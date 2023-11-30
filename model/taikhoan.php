@@ -40,4 +40,9 @@
       pdo_execute($sql);
     }
 
+    function update_info_user_order($name_order,$phone_order,$address_order,$idkh){
+      $sql="UPDATE `account` SET `name`='$name_order',`phone`='$phone_order',`address`='$address_order' WHERE id=$idkh";
+      pdo_execute($sql);
+    }
+
 ?>

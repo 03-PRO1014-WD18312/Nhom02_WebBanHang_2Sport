@@ -1,7 +1,7 @@
 <?php 
     //thêm thông tin nhận hàng
-    function insert_infor_order($name,$phone,$address,$idkh,$payment){
-        $sql="INSERT INTO `order_info`(`name`, `address`, `phoneNumber`,`payment`, `date`, `idAccount`) VALUES ('$name','$address','$phone','$payment',CURRENT_DATE(),'$idkh')";
+    function insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment){
+        $sql="INSERT INTO `order_info`(`name`, `address`, `phoneNumber`,`payment`, `date`, `idAccount`) VALUES ('$name_order','$address_order','$phone_order','$payment',CURRENT_DATE(),'$idkh')";
         pdo_execute($sql);
     }
     //
@@ -33,14 +33,14 @@
     }
     //list toàn bộ danh sách đơn hàng
     function list_order(){
-        $sql="SELECT * FROM order_info JOIN account ON order_info.idAccount = account.id";
+        $sql="SELECT * FROM order_info JOIN account ON order_info.idAccount = account.id ORDER BY order_info.id DESC";
         $list_order=pdo_query($sql);
         return $list_order;
     }
     
     //tong tien
     function total_money_order($id_order){
-       $sql="SELECT SUM(price) AS total_price FROM order_detail WHERE idOrder=$id_order GROUP BY idOrder;";
+       $sql="SELECT SUM(price * quantity) AS total_price FROM order_detail WHERE idOrder=$id_order GROUP BY idOrder";
        $total_order=pdo_query($sql);
        return $total_order;
     }
