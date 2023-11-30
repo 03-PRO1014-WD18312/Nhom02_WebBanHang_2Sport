@@ -18,7 +18,7 @@
                     </thead>
                     <tbody>
                         <?php 
-
+                            $sum = 0;
                             foreach ($thongke_dt as $dthu) {
                                 extract($dthu);
                                 // var_dump($dthu);
