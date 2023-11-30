@@ -14,6 +14,7 @@
             <tbody>
                 <?php 
                     $merge_order = [];
+                
                     foreach ($info_order as $order) {
                         extract($order);
                         $id_order = $id;

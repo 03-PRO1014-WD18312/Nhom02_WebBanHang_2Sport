@@ -69,7 +69,10 @@
                         }else{
                             $pass=md5($_POST['pass']);
                             register_kh($user,$pass,$email);
-                            echo 'đăng kí thành công';
+                            echo "<script>
+                                    alert('Đăng ký thành công!');
+                                    window.location.href = 'index.php?act=dangnhap';
+                                </script>";
                         }
                         
                     }
@@ -382,4 +385,4 @@
         include 'view/home.php';
     }
         include 'view/footer.php';
-?>
+ ?>
