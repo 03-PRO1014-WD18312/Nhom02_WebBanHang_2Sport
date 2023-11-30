@@ -19,6 +19,7 @@
                             <tbody>
                                 <?php 
                                     $sum=0;
+                                    $stt=1;
                                     foreach ($show_order as $show) {
                                         extract($show);
                                         // echo "<pre>";
@@ -29,6 +30,7 @@
                                         echo'
                                             <tr>
                                                 <td>
+                                                
                                                     <img src="../assets/img/'.$img.'" width="150%" alt="">
                                                     <div>
                                                         <a href="../index.php?act=detail&id='.$idProduct.'"><span style="font-weight:600; color:#DB0000">'.$productName.'</span></a></br>
@@ -54,23 +56,30 @@
                                 <span>
                                 <?php 
                                     if ($status == 0 ) {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #DB0000; border-radius:20px;"">Chưa xử lý</span>';
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #DB0000; border-radius:20px;"">Chờ xác nhận</span>';
                                     }elseif ($status == 1) {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #069A8E; border-radius:20px;">Đã xử lý</span>';
-                                    }elseif ($status == 2) {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Đang giao hàng</span>';
-                                    }else {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #153462; border-radius:20px;">Đã giao hàng <i class="fa-solid fa-check" style="font-size:15px;"></i></span>';
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #069A8E; border-radius:20px;">Chờ lấy hàng</span>';
                                     }
+                                    elseif ($status == 2) {
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Chờ giao hàng</span>';
+                                    }elseif ($status == 3) {
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #153462; border-radius:20px;">Đã giao hàng <i class="fa-solid fa-check" style="font-size:15px;"></i></span>';
+                                    }elseif ($status == 4){
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Đã huỷ</span>';
+                                    }else {
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Trả hàng</span>';
+                                    } 
                                 ?>
 
                             </span></h4>
                             <div class="status-wp">
                                 <select name="statusUpdate" id="">
-                                    <option value="0"<?php if($status == "0") echo "selected";?>>Đang xử lý</option>
-                                    <option value="1"<?php if($status == "1") echo "selected";?>>Đã xử lý</option>
-                                    <option value="2"<?php if($status == "2") echo "selected";?>>Đang giao hàng</option>
+                                    <option value="0"<?php if($status == "0") echo "selected";?>>Chờ xác nhận</option>
+                                    <option value="1"<?php if($status == "1") echo "selected";?>>Chờ lấy hàng</option>
+                                    <option value="2"<?php if($status == "2") echo "selected";?>>Chờ giao hàng</option>
                                     <option value="3"<?php if($status == "3") echo "selected";?>>Đã giao hàng</option>
+                                    <option value="4"<?php if($status == "4") echo "selected";?>>Đã huỷ</option>
+                                    <option value="5"<?php if($status == "5") echo "selected";?>>Trả hàng</option>
                                 </select>
                             <?php  } ?>
                                 <input type="submit" value="CẬP NHẬT ĐƠN HÀNG" name="update_order"></div>

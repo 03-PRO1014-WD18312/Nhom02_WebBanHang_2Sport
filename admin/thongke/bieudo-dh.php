@@ -1,30 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<body>
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-<script>
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green","blue","orange","brown"];
+  <head>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
 
-    new Chart("myChart", {
-    type: "bar",
-    data: {
-        labels: xValues,
-        datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-        }]
-    },
-    options: {
-        legend: {display: false},
-        title: {
-        display: true,
-        text: "World Wine Production 2018"
-        }
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['Tên danh mục','Doanh thu','Lãi'],
+          <?php 
+            foreach ($thongke_dt as $tkdt) {
+                extract($tkdt);
+                $lai=$tongtien * 20/100;
+                $tongdoanhthu+=$lai;
+                echo "['$name',$tongtien,$lai],
+                ";
+            }
+            echo "['Tổng doanh thu', null, $tongdoanhthu]";
+          ?>
+
+        ]);
+
+        var options = {
+          title : 'THỐNG KÊ ĐƠN HÀNG THEO DOANH THU',
+          vAxis: {title: 'Doanh thu'},
+          hAxis: {title: 'Tên danh mục'},
+          seriesType: 'bars',
+          series: {2: {
+            type: 'line',
+            }
+          }
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+        <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Tên danh mục','Số lượng đặt hàng thành công'],
+          <?php 
+            foreach ($thongke_dt as $tkdt) {
+                extract($tkdt);
+                echo "['$name',$soluongdh,],
+                ";
+            }
+          ?>
+        ]);
+
+        var options = {
+          title: 'THỐNG KÊ SỐ LƯỢNG ĐƠN HÀNG THÀNH CÔNG THEO DANH MỤC',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <style>
+    #header{
+      display: none;
     }
-    });
-</script>
-</body>
+  </style>
+  <body>
+    <div style="display: flex;">
+        <div id="chart_div" style="width: 900px; height: 500px;"></div>
+        <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+    </div>
+  </body>
+
 </html>
+

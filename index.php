@@ -6,6 +6,7 @@
     include 'model/search.php';
     include 'model/taikhoan.php';
     include 'model/cart.php';
+    include 'model/rating.php';
     include 'model/order_payment.php';
     if (isset($_SESSION['login'])) {
         $idkh = $_SESSION['login']['id'];
@@ -202,30 +203,53 @@
                 include 'view/cart.php'; 
                 break;
             case 'order':
-                    extract($_SESSION['login']);
-                    $idkh=$id;
+                    // extract($_SESSION['login']);
+                    $idkh=$_SESSION['login']['id'];
                     $showcart = showcart($idkh);
                     $_SESSION['history_cart'] = $showcart;
+                    $error_name=$error_phone=$error_address="";
+                    $name_order=$_POST['name_order'];
+                    $phone_order=$_POST['phone_order'];
+                    $address_order=$_POST['address_order'];
                     if (isset($_POST['payment'])) {
-                        insert_infor_order($name,$phone,$address,$idkh,$payment);
-                        $info_order=check_infor_order($idkh);
-                        foreach ($_SESSION['history_cart'] as $cartItem) {
-                            $productName = $cartItem['product_name'];
-                            $price = $cartItem['variant_discount'];
-                            $color = $cartItem['color'];
-                            $size = $cartItem['size'];
-                            $quantity = $cartItem['quantity'];
-                            $idProduct = $cartItem['product_id'];
-                            $idOrder = $info_order[0]['id'];
-                            insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
+                        if (empty($name_order)) {
+                            $error_name="(*)";
                         }
-                        clean_cart($idkh);
-                        echo "
-                            <script>
-                                alert('Đặt hàng thành công 👏');
-                                window.location.href = 'index.php?act=history-order';
-                            </script>
-                        ";
+                        if (empty($phone_order) ) {
+                            $error_phone="(*)";
+                        }
+                        if (empty($address_order)) {
+                            $error_address="(*)";
+                        }
+                        if (empty($error_name) && empty($error_phone) && empty($error_address)) {
+
+                            update_info_user_order($name_order,$phone_order,$address_order,$idkh);
+                            $_SESSION['login']['name'] = $name_order;
+                            $_SESSION['login']['phone'] = $phone_order;
+                            $_SESSION['login']['address'] = $address_order;
+                            update_info_user_order($name_order,$phone_order,$address_order,$idkh);
+                            insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment);
+                            $info_order=check_infor_order($idkh);
+                            $idOrder = $info_order[0]['id'];
+                            echo $idOrder;
+                            foreach ($_SESSION['history_cart'] as $cartItem) {
+                                $productName = $cartItem['product_name'];
+                                $price = $cartItem['variant_discount'];
+                                $color = $cartItem['color'];
+                                $size = $cartItem['size'];
+                                $quantity = $cartItem['quantity'];
+                                $idProduct = $cartItem['product_id'];
+                                $idOrder = $info_order[0]['id'];
+                                insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
+                            }
+                            clean_cart($idkh);
+                            echo "
+                                <script>
+                                    alert('Đặt hàng thành công 👏');
+                                    window.location.href = 'index.php?act=history-order';
+                                </script>
+                            ";
+                        }
 
                     }
                 $showcart=showcart($idkh);
@@ -240,6 +264,8 @@
             case 'show_order_hs':
                 $id_order=$_GET['id'];
                 $show_order=show_order($id_order);
+                $idkh = $_SESSION['login']['id'];
+                $info_order=check_infor_order($idkh);
                 include 'view/chitietdh.php';
                break;
             case 'checkdh':
@@ -289,6 +315,18 @@
 
                 }
                 include 'view/setting_info_user.php';
+                break;
+            case 'rate':
+                $rating=$_POST['rating'];
+                $content_rate=$_POST['contentRate'];
+                $id_product=$_GET['idproduct'];
+                $idkh = $_SESSION['login']['id'];
+                // var_dump($id_product,$rating,$content_rate,$idkh);
+                if (isset($_POST['rateSubmit'])) {
+                    rating_rate($idkh, $id_product, $content_rate,$rating);
+                    echo 'Đánh giá thành công 👋';
+                }
+                include'view/rate.php';
                 break;
             case "quenmatkhau" :
                 include 'view/quenmatkhau.php';
