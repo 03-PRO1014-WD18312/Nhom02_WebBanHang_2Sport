@@ -22,6 +22,27 @@
             </script>';
         }
     }
+    
+    if (isset($_POST['buyProduct'])) {
+        $nameSp=$_POST['productName'];
+        $priceSp=$_POST['selectedDiscount'];
+        $imgSp=$_POST['productImage'];
+        $quantity = $_POST['quantity'];
+        $id_variant=$_POST['variantId'];
+
+        $idkh=$_SESSION['login']['id'];
+        $on_size_color_variant=on_size_color_variant($id_variant);
+        $colorSp=$on_size_color_variant[0]['color'];
+        $sizeSp=$on_size_color_variant[0]['size'];
+        $order=[$nameSp,$priceSp,$imgSp,$quantity,$id_variant,$idkh,$colorSp,$sizeSp];
+        $_SESSION['order']=$order;
+        include 'view/order.php';
+        echo '<pre>';
+        var_dump($order);
+    }
+
+
+
 ?>
 
 <div class="form-detail container">
@@ -103,7 +124,6 @@
                 <input type="hidden" id="selectedSize" name="selectedSize">
                 <input type="submit" class="addToCart" name="addToCart" value="THÊM VÀO GIỎ">
                 <input type="submit" class="buy" name="buyProduct" value="MUA HÀNG">
-
             </div>
         </form>
     </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawVisualization);
@@ -61,12 +62,12 @@
         chart.draw(data, options);
       }
     </script>
-  </head>
-  <style>
+      <style>
     #header{
       display: none;
     }
   </style>
+  </head>
   <body>
     <div style="display: flex;">
         <div id="chart_div" style="width: 900px; height: 500px;"></div>
