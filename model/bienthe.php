@@ -18,7 +18,7 @@ function list_size($id){
     $result = pdo_query($sql);
     return $result;
 } 
-function update_size($id, $size){
+function update_size($id,$size){
     $sql = "UPDATE product_size SET size = '$size' WHERE id = $id";
     pdo_execute($sql);
 }
@@ -33,7 +33,7 @@ function list_color($id){
     $result = pdo_query($sql);
     return $result;
 } 
-function update_color($id, $color){
+function update_color($id,$color){
     $sql = "UPDATE product_color set color = '$color' where id = $id";
     pdo_execute($sql);
 }

@@ -167,7 +167,7 @@
                 if(isset($_POST['updateColor']) && $_POST['updateColor']) {
                     $id = $_POST['id'];
                     $color = $_POST['color'];
-                    $update = update_color($id, $color);
+                    $update = update_color($id,$color);
                     header('location: index.php?act=listcolor');
                 }
                 include "bienthe/updatecolor.php";
@@ -186,7 +186,7 @@
                 if(isset($_POST['updateSize']) && $_POST['updateSize']) {
                     $id = $_POST['id'];
                     $size = $_POST['size'];
-                    $update = update_size($id, $size);
+                    $update = update_size($id,$size);
                     header('location: index.php?act=listsize');
                 }
                 include "bienthe/updatesize.php";
@@ -274,7 +274,12 @@
                 include 'thongke/bieudo-sp.php';
                 break;
             case 'dhdt':
+                $thongke_dt=thongke_doanh_thu();
                 include 'thongke/dh-dt.php';
+                break;
+            case 'tkdt':
+                $thongke_dt=thongke_doanh_thu();
+                include 'thongke/bieudo-dh.php';
                 break;
         default:
             include 'home.php';

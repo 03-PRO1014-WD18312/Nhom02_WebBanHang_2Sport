@@ -27,11 +27,10 @@
                     <th>Thành tiền</th>
                 </tr>
                 <?php 
-                    $i=0;
-                    $stt=1;
-                    $sum = 0;
+                        $i=0;
+                        $stt=1;
+                        $sum = 0;
                             foreach ($showcart as $cart) {
-
                             extract($cart);
                             $price_formatted = number_format($variant_discount, 0, '.', ',');
                             $thanhtien = $variant_discount * $quantity;
@@ -52,76 +51,51 @@
                             $i++;
                         }echo'<caption style="caption-side:bottom;text-align:left; color: #A6A6A4; font-style:italic; padding:15px 0px;">Có '.$i.' sản phẩm cần thanh toán</caption>'; 
                 ?>
-            </table>
-            
+            </table> 
         </div>
-        <div class="profile-payment">
+        <div>
+            <form action="" method="post" class="profile-payment">
             <?php 
-                    if (!empty($_SESSION['login']['email']) && !empty($_SESSION['login']['name']) && !empty($_SESSION['login']['phone']) && !empty($_SESSION['login']['address'])) {
-                        echo'
-                        <form action="" class="form-receive" method="post">                            
-                            <h4>Thông tin nhận hàng</h4>
-                            <div class="receive-infor">                        
-                                <div class="show_infor_order">                       
-                                    <label for="">Họ và tên: <span>'.$name.'</span></label><br>
-                                    <label for="">Số điện thoại: <span>'.$phone.'</span></label><br>
-                                    <label for="">Địa chỉ: <span>'.$address.'</span></label><br>
-                                </div>
-                                <div class="btn-edit-infor-order">    
-                                    <a href="index.php?act=setInfoUser"><i class="fa-solid fa-square-pen"></i></a>
+                echo'
+                <div class="form-receive">                            
+                    <h4>Thông tin nhận hàng</h4>
+                    <div class="receive-infor">                        
+                        <div class="show_infor_order">                       
+                        <label for="">Họ và tên</label> <span style="color:#DB0000;">'.$error_name.'</span>
+                            <input type="text" name="name_order" placeholder="Nhập họ và tên : " value="'.$name.'"><br>
+                            <label for="">Số điện thoại</label> <span style="color:#DB0000;">'.$error_name.'</span>
+                            <input type="text" name="phone_order" placeholder="Nhập số điện thoại : " value="'.$phone.'"><br>
+                            <label for="">Địa chỉ</label> <span style="color:#DB0000;">'.$error_name.'</span>
+                            <textarea name="address_order" id="" cols="30" rows="6" placeholder="Nhập địa chỉ nhận hàng : ">'.$address.'</textarea><br>
+                        </div>
+                    </div>
+                </div>
+                ';
+                    $sum=0;
+                    foreach ($showcart as $cart ) {
+                        extract($cart);
+                        $thanhtien = $variant_discount * $quantity;
+                        $thanhtien_formatted = number_format($thanhtien, 0, '.', ',');
+                        $sum += $thanhtien;
+                    }
+                        echo '
+                            <div class="right_order">
+                                <h4><i class="fa-solid fa-money-bill"></i> TỔNG TIỀN: '.number_format($sum, 0, '.', ',').' VNĐ</h4>
+                                <div class="payment-in">
+                                    <input type="hidden" name="tongtien_order" value="'. $sum .'">
+                                    <h5><i class="fa-solid fa-credit-card"></i> HÌNH THỨC THANH TOÁN <a href="index.php?act=setInfoUser"><i class="fa-solid fa-square-pen" style="font-size:15px; color:#BD0000;"></i></a></h5> 
+                                    <div class="payout-in">
+                                        <select class="select-payment" name="payment_method" disabled id="">
+                                            <option value="0" '.($payment == "0" ? "selected" : "").'>💵 Thanh toán bằng tiền mặt</option>
+                                            <option value="1" '.($payment == "1" ? "selected" : "").'>🏧 Thanh toán bằng ATM MOMO</option>
+                                        </select>
+                                        <input type="submit" name="payment" value="ĐẶT HÀNG">
+                                    </div>
                                 </div>
                             </div>
-                        </form>
                         ';
-                        $sum=0;
-                        foreach ($showcart as $cart ) {
-                            extract($cart);
-                            $thanhtien = $variant_discount * $quantity;
-                            $thanhtien_formatted = number_format($thanhtien, 0, '.', ',');
-                            $sum += $thanhtien;
-                        }
-                        if ($payment == "0") {
-                            echo '
-                                <div class="right_order">
-                                    <h4><i class="fa-solid fa-money-bill"></i> TỔNG TIỀN: '.number_format($sum, 0, '.', ',').' VNĐ</h4>
-                                    <form class="payment-in" method="POST" target="_top" action="">
-                                        <input type="hidden" name="tongtien_order" value="'. $sum .'">
-                                        <h5><i class="fa-solid fa-credit-card"></i> HÌNH THỨC THANH TOÁN <a href="index.php?act=setInfoUser"><i class="fa-solid fa-square-pen" style="font-size:15px; color:#BD0000;"></i></a></h5> 
-                                        <div class="payout-in">
-                                            <select class="select-payment" name="payment_method" disabled id="">
-                                                <option value="0" '.($payment == "0" ? "selected" : "").'>💵 Thanh toán bằng tiền mặt</option>
-                                                <option value="1" '.($payment == "1" ? "selected" : "").'>🏧 Thanh toán bằng ATM MOMO</option>
-                                            </select>
-                                            <input type="submit" name="payment" value="ĐẶT HÀNG">
-                                        </div>
-                                    </form>
-                                </div>
-                            ';
-                        }else {
-                            echo'
-                                <div class="right_order">
-                                    <h4><i class="fa-solid fa-money-bill"></i> TỔNG TIỀN: '.number_format($sum, 0, '.', ',').' VNĐ</h4>
-                                    <form class="payment-in" method="POST" target="_top" enctype="application/x-www-form-urlencoded" action="view/payment_atm.php">
-                                        <input type="hidden" name="tongtien_order" value="'. $sum .'">
-                                        <h5><i class="fa-solid fa-credit-card"></i> HÌNH THỨC THANH TOÁN <a href="index.php?act=setInfoUser"><i class="fa-solid fa-square-pen" style="font-size:15px; color:#BD0000;"></i></a></h5>
-                                        <div class="payout-in">
-                                            <select class="select-payment" name="payment_method" disabled id="">
-                                                <option value="0" '.($payment == "0" ? "selected" : "").'>💵 Thanh toán bằng tiền mặt</option>
-                                                <option value="1" '.($payment == "1" ? "selected" : "").'>🏧 Thanh toán bằng ATM MOMO</option>
-                                            </select>
-                                            <input type="submit" name="payment" value="ĐẶT HÀNG">
-                                        </div>
-                                    </form>
-                                </div>
-                            ';                    
-                        }
-                    }else{
-                        echo "<script>
-                            alert('Vui lòng thiết lập đầy đủ thông tin !!!');
-                            window.location.href = 'index.php?act=setInfoUser';
-                        </script>";
-                    }
             ?>
+            </form>
         </div>
     </main>
 <?php }else{
