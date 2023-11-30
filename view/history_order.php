@@ -8,13 +8,13 @@
                     <th>Ngày mua</th>
                     <th>Tổng tiền</th>
                     <th>Tình trạng</th>
-                    <th>Nhận xét</th>
                     <th>Chi tiết</th>
                 </tr>
             </thead>
             <tbody>
                 <?php 
                     $merge_order = [];
+                
                     foreach ($info_order as $order) {
                         extract($order);
                         $id_order = $id;
@@ -45,7 +45,6 @@
                                         echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Trả hàng</span>';
                                     } ?>
                                 </td>
-                                <td><?=$rate?></td>
                                 <td><a href="index.php?act=show_order_hs&id=<?=$id?>">Chi tiết</a></td>
                             </tr>
 

@@ -69,7 +69,10 @@
                         }else{
                             $pass=md5($_POST['pass']);
                             register_kh($user,$pass,$email);
-                            echo 'đăng kí thành công';
+                            echo "<script>
+                                    alert('Đăng ký thành công!');
+                                    window.location.href = 'index.php?act=dangnhap';
+                                </script>";
                         }
                         
                     }
@@ -203,6 +206,7 @@
                 include 'view/cart.php'; 
                 break;
             case 'order':
+                error_reporting(0);
                     // extract($_SESSION['login']);
                     $idkh=$_SESSION['login']['id'];
                     $showcart = showcart($idkh);
@@ -317,12 +321,12 @@
                 include 'view/setting_info_user.php';
                 break;
             case 'rate':
-                $rating=$_POST['rating'];
-                $content_rate=$_POST['contentRate'];
-                $id_product=$_GET['idproduct'];
-                $idkh = $_SESSION['login']['id'];
                 // var_dump($id_product,$rating,$content_rate,$idkh);
                 if (isset($_POST['rateSubmit'])) {
+                    $rating=$_POST['rating'];
+                    $content_rate=$_POST['contentRate'];
+                    $id_product=$_GET['idproduct'];
+                    $idkh = $_SESSION['login']['id'];
                     rating_rate($idkh, $id_product, $content_rate,$rating);
                     echo 'Đánh giá thành công 👋';
                 }
@@ -342,4 +346,4 @@
         include 'view/home.php';
     }
         include 'view/footer.php';
-?>
+ ?>
