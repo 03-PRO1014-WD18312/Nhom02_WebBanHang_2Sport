@@ -4,7 +4,7 @@
         <div class="list-product">
             <h1>DANH SÁCH DANH MỤC</h1>
             <form action="" class="formSearch">
-                <input type="text" placeholder="Tìm tên sản phẩm">
+                <input type="text" placeholder="Tìm tên danh mục">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <table>
@@ -12,7 +12,9 @@
                     <th>Mã danh mục</th>
                     <th>Tên danh mục</th>
                     <th>Ảnh</th>
+                    <?php if($_SESSION['login']['role'] == 2){ ?>
                     <th>Hành động</th>
+                    <?php } ?>
                 </tr>
                 
                 <?php foreach($listCate as $row){
@@ -25,12 +27,14 @@
                         <td><?= $id ?></td>
                         <td><?= $name ?></td>
                         <td><img src="../assets/img/<?= $img ?>" alt=""></td>
-                        <td>
-                            <a href="<?= $sualoai ?>"><input type="button" value="Sửa"></a>   
-                            <?php if ($canDelete): ?>
-                                <a href="<?= $xoaloai ?>"><input type="button" value="Xóa" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
-                            <?php endif; ?>
-                        </td>
+                        <?php if($_SESSION['login']['role'] == 2){ ?>
+                            <td>
+                                <a href="<?= $sualoai ?>"><input type="button" value="Sửa"></a>   
+                                <?php if ($canDelete): ?>
+                                    <a href="<?= $xoaloai ?>"><input type="button" value="Xóa" onclick="return confirm('Bạn có chắc muốn xóa?')"></a>
+                                <?php endif; ?>
+                            </td>
+                        <?php } ?>
                     </tr>
                 <?php } ?>
             </table>

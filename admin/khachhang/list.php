@@ -1,6 +1,5 @@
 <?php 
-    if (isset($_SESSION['login'])) {
-        if ($_SESSION['login']['role']=='2') {
+    if ($_SESSION['login']['role']=='2') {
 ?>
 <main class="container">
         <?php include "boxleft.php" ?>
@@ -51,9 +50,7 @@
             </table>  
         </article>
 </main>
-<?php }
-    else {
-        header('Location: ../index.php');
+<?php }else {
+        header('Location: index.php');
     }
-}
 ?>
