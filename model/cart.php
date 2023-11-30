@@ -1,8 +1,11 @@
 <?php 
     //thêm giỏ hàng
     function addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant){
-        $sql="INSERT INTO `cart`(`name`,`price`, `img`, `idAccount`, `idVariant`) VALUES ('$nameSp','$priceSp','$imgSp','$idkh','$id_variant')
-        ";
+        $sql="INSERT INTO `cart`(`name`,`price`, `img`, `idAccount`, `idVariant`) VALUES ('$nameSp','$priceSp','$imgSp','$idkh','$id_variant')";
+        pdo_execute($sql);
+    }
+    function addcart_quantity($nameSp,$priceSp,$imgSp, $quantity,$idkh,$id_variant){
+        $sql="INSERT INTO `cart`(`name`,`price`, `img`, `quantity`, `idAccount`, `idVariant`) VALUES ('$nameSp','$priceSp','$imgSp', '$quantity', '$idkh','$id_variant')";
         pdo_execute($sql);
     }
     //show giỏ hàng 

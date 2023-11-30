@@ -37,6 +37,17 @@
                         </tr>
                     <?php } ?>
                 </table>
+                <!-- Thêm phần phân trang -->
+                <div class="pagination">
+                    <?php
+                        $totalCategories = count(pdo_query("SELECT id FROM product"));
+                        $totalPages = ceil($totalCategories / $perPage);
+                        
+                        for ($i = 1; $i <= $totalPages; $i++) {
+                            echo "<a href='index.php?act=listsp&page=$i'>$i</a> ";
+                        }
+                    ?>
+                </div>
                 <div class="action">
                     <a href="index.php?act=addsp">THÊM SẢN PHẨM</a>
                     <a href="#" class="select-all">CHỌN TẤT CẢ</a>

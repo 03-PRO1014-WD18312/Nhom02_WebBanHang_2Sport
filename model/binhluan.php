@@ -8,6 +8,7 @@ function load_comment($idsp){
     $result = pdo_query($sql);
     return $result;
 }
+
 function load_all_comment(){
     $sql = "SELECT comment.id, comment.text, comment.date, account.username, product.name
             from comment

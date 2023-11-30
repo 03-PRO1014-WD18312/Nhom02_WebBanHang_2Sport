@@ -860,7 +860,7 @@ main .slide-banner img{
     display: flex;
     gap: 10px;
     margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 .form-detail .infor-product .right .choose-size div{
     border: 0.5px solid var(--bg-color-black-ins);
@@ -872,6 +872,39 @@ main .slide-banner img{
     background-color: #FF0000;
     border: 0.5px solid var(--bg-color-ins);
 }
+.form-detail .infor-product .right .quantity{
+    font-weight: bold;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+.form-detail .infor-product .right .number-input {
+    display: flex;
+    max-width: 120px;
+  }
+
+  .form-detail .infor-product .right .number-input input {
+    flex: 1;
+    text-align: center;
+  }
+
+  .form-detail .infor-product .right .number-input button {
+    padding: 5px 10px;
+    background-color: var(--bg-color-black-ins);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .form-detail .infor-product .right .number-input button:hover{
+    background-color: var(--bg-color-main);
+  }
+  .form-detail .infor-product .right .number-input .btn-minus {
+    border-radius: 4px 0 0 4px;
+  }
+
+  .form-detail .infor-product .right .number-input .btn-plus {
+    border-radius: 0 4px 4px 0;
+  }
 
 .form-detail .infor-product .right input[type="submit"]{
     padding: 7px 10px;
@@ -882,9 +915,15 @@ main .slide-banner img{
 }
 .form-detail .infor-product .right .addToCart{
     background-color: #FF0000;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.color-id{
+    cursor: pointer;
 }
 .form-detail .infor-product .right .buy{
     background-color: var(--bg-color-black-ins);
+    cursor: pointer;
 }
 .form-detail .detail-product{
     width: 1360px;

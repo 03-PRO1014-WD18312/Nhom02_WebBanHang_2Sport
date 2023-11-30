@@ -88,15 +88,16 @@ function count_update($id){
     $result = pdo_query($sql);
     return $result;
 }
-function list_product(){
-    $sql = "SELECT * from product order by id";
-    $listProduct = pdo_query($sql);
-    return $listProduct;
+function pdo_paginate($sql, $page, $perPage){
+    $start = ($page - 1) * $perPage;
+    $sql .= " LIMIT $start, $perPage";
+    return pdo_query($sql);
 }
-function loadone_product($id){
-    $sql = "SELECT * from product where id='$id'";
-    $result = pdo_query_one($sql);
-    return $result;
+
+function list_product($page, $perPage){
+    $sql = "SELECT * from product order by id";
+    $listProduct = pdo_paginate($sql, $page, $perPage);
+    return $listProduct;
 }
 function detail_product($id){
     $sql = "SELECT category.id as idCategory, product.id, product.name, product.img, product.des, product.view, product.status, category.name as cateName

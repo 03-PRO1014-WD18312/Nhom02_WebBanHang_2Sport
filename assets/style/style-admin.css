@@ -564,6 +564,24 @@ tbody img{
 .list-product table tr td a input:hover{
     background-color: var(--bg-color-black-ins);
 }
+.list-product .pagination{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.list-product .pagination a{
+    text-decoration: none;
+    padding: 7px 12px;
+    border-radius: 15px;
+    color: var(--bg-color-while-ins);
+    background-color: var(--bg-color-black-ins);
+}
+.list-product .pagination a:hover{
+    background-color: var(--bg-color-main);
+}
 .list-product .action a{
     text-decoration: none;
     color: var(--bg-color-while-ins);
