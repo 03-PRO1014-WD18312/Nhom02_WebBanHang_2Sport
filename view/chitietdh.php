@@ -46,7 +46,7 @@
                             </tr>
                     <?php  }
                     ?><tr style="font-weight:600">
-                        <td colspan="7" style="text-align:right;padding:15px 10px;">TỔNG DOANH THU: <span style="color:#DB0000;"><?=number_format($sum, 0, '.', ',');?> VND</span></td>
+                        <td colspan="7" style="text-align:right;padding:15px 10px;">TỔNG TIỀN: <span style="color:#DB0000;"><?=number_format($sum, 0, '.', ',');?> VND</span></td>
                     </tr>
             </tbody>
         </table>

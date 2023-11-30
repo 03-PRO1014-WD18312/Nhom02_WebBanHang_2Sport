@@ -56,16 +56,18 @@
             </table>
             <div class="submit-cart">
                 <button class="update-cart" type="submit">Cập nhật giỏ hàng</button>
+                <div>
                 <a href="index.php" class="shopping">Tiếp tục mua hàng</a>
-                <?php 
-                    if (!empty($showcart)) {
-                        echo '<a href="index.php?act=order" class="order">Mua hàng</a>';
-                    }else {
-                        echo "<script>alert('Giỏ hàng rỗng 😐');
-                        </script>";
-                    }
-                    
-                ?>
+                    <?php 
+                        if (!empty($showcart)) {
+                            echo '<a href="index.php?act=order_cart" class="order">Mua hàng</a>';
+                        }else {
+                            echo "<script>alert('Giỏ hàng rỗng 😐');
+                            </script>";
+                        }
+                        
+                    ?>
+                </div>
             </div>
         </form>
     </div>
