@@ -1,3 +1,6 @@
+<?php 
+    if ($_SESSION['login']['role']=='2') {
+?>
 <?php
 if (is_array($danhmuc)) {
     extract($danhmuc);
@@ -25,3 +28,7 @@ if (is_array($danhmuc)) {
         </div>
     </article>
 </main>
+<?php }else {
+        header('Location: index.php');
+    }
+?>

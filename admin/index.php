@@ -11,6 +11,7 @@
     include "../model/binhluan.php";
     include "../model/search.php";
     include "../model/order_payment.php";
+    include "../model/thongke.php";
     include "header.php";
     if (isset($_GET['act']) && ($_GET['act']) != ""){
     $act = $_GET['act'];
@@ -30,7 +31,9 @@
                 include 'view/home.php';
                 break;
             case 'listsp' :
-                $listProduct = list_product();
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $perPage = 10; // Số lượng mục hiển thị trên mỗi trang
+                $listProduct = list_product($page, $perPage);
                 include "sanpham/list.php";
                 break;
             case 'addsp' :
@@ -195,9 +198,8 @@
             case 'deletebl' :
                 if(isset($_GET['id']) && $_GET['id'] > 0) {
                     delete_comment($_GET['id']);
+                    header('Location: index.php?act=listbl');
                 }
-                $binhluan = load_all_comment();
-                include "binhluan/list.php";
                 break;
             case 'deleteselected-bl':
                 if (isset($_POST['selectedComments']) && !empty($_POST['selectedComments'])) {
@@ -264,7 +266,12 @@
                 include 'donhang/chitietdh.php';
                 break;
             case 'spdm':
+                $thongkesp = load_thongke_sanpham_danhmuc();
                 include 'thongke/sp-dm.php';
+                break;
+            case 'bieudo-sp' :
+                $thongkesp = load_thongke_sanpham_danhmuc();
+                include 'thongke/bieudo-sp.php';
                 break;
             case 'dhdt':
                 include 'thongke/dh-dt.php';

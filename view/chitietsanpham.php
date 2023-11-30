@@ -4,10 +4,11 @@
         $nameSp=$_POST['productName'];
         $priceSp=$_POST['selectedDiscount'];
         $imgSp=$_POST['productImage'];
+        $quantity = $_POST['quantity'];
         $id_variant=$_POST['variantId'];
         $idkh=$_SESSION['login']['id'];
         if (isset($_SESSION['login'])) {
-            addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
+            addcart_quantity($nameSp,$priceSp,$imgSp,$quantity,$idkh,$id_variant);
             echo "<script>alert('Thêm giỏ hàng thành công 🛒');
                 if (performance.navigation.type == 0) {
                     window.location.href = window.location.href;
@@ -85,7 +86,14 @@
                         <div class="size" id="display-size"><?= $size ?></div>
                     <?php break; }?>
                 </div>
-
+                <div class="quantity">
+                    <p>Số lượng: </p>
+                    <div class="number-input">
+                        <button type="button" class="btn-minus" onclick="decrement()">-</button>
+                        <input type="number" id="quantity" name="quantity" min="1" value="1"/>
+                        <button type="button" class="btn-plus" onclick="increment()">+</button>
+                    </div>
+                </div>
                 <input type="hidden" name="productName" value="<?= $name ?>">
                 <input type="hidden" name="productImage" value="<?= $img ?>">
                 <input type="hidden" name="variantId" id="variantId">
@@ -94,6 +102,7 @@
                 <input type="hidden" id="selectedDiscount" name="selectedDiscount">
                 <input type="hidden" id="selectedSize" name="selectedSize">
                 <input type="submit" class="addToCart" name="addToCart" value="THÊM VÀO GIỎ">
+                <input type="submit" class="buy" name="buyProduct" value="MUA HÀNG">
 
             </div>
         </form>
@@ -163,5 +172,18 @@
         document.getElementById("selectedDiscount").value = discount;
         document.getElementById("selectedSize").value = size;
         document.getElementById("variantId").value = idVariant;
+    }
+    function increment() {
+        var input = document.getElementById('quantity');
+        var value = parseInt(input.value, 10);
+        input.value = value + 1;
+    }
+
+    function decrement() {
+        var input = document.getElementById('quantity');
+        var value = parseInt(input.value, 10);
+        if (value > 0) {
+            input.value = value - 1;
+        }
     }
 </script>

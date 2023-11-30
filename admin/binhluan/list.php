@@ -18,7 +18,7 @@
                         $delete = "index.php?act=deletebl&id=$id";
                     ?>
                     <tr>
-                        <td><input id="checkbox<?= $id ?>" name="selectedComments[]" type="checkbox"></td>
+                        <td><input id="checkbox<?= $id ?>" name="selectedComments[]" type="checkbox" value="<?= $id ?>"></td>
                         <td><?= $username ?></td>
                         <td><?= $name ?></td>
                         <td><?= $text ?></td>
@@ -29,6 +29,7 @@
                     </tr>
                     <?php } ?>
                 </table>
+                </div>
                 <div class="action">
                     <a href="#" class="select-all">CHỌN TẤT CẢ</a>
                     <a href="#" class="deselect-all">BỎ CHỌN</a>
@@ -41,7 +42,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('a.select-all').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default behavior of the anchor tag
+            event.preventDefault();
             var checkboxes = document.querySelectorAll('input[name="selectedComments[]"]');
             checkboxes.forEach(function (checkbox) {
                 checkbox.checked = true;
@@ -49,11 +50,12 @@
         });
 
         document.querySelector('a.deselect-all').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default behavior of the anchor tag
+            event.preventDefault();
             var checkboxes = document.querySelectorAll('input[name="selectedComments[]"]');
             checkboxes.forEach(function (checkbox) {
                 checkbox.checked = false;
             });
         });
     });
+
 </script>

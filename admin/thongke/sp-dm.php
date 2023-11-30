@@ -1,3 +1,6 @@
+<?php 
+    if ($_SESSION['login']['role']=='2') {
+?>
 <main class="container">
             <?php include "boxleft.php" ?>
             <article>
@@ -15,43 +18,30 @@
                             <th>Giá trung bình</th>
                         </tr>
                     </thead>
+                    <?php 
+                    $i = 0;
+                    foreach($thongkesp as $row){
+                        extract($row);
+                        $i++;
+                    ?>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Giày bóng đá</td>
-                            <td>100</td>
-                            <td>1.000.000đ</td>
-                            <td>200.000đ</td>
-                            <td>600.000đ</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Giày bóng đá</td>
-                            <td>100</td>
-                            <td>1.000.000đ</td>
-                            <td>200.000đ</td>
-                            <td>600.000đ</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Giày bóng đá</td>
-                            <td>100</td>
-                            <td>1.000.000đ</td>
-                            <td>200.000đ</td>
-                            <td>600.000đ</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Giày bóng đá</td>
-                            <td>100</td>
-                            <td>1.000.000đ</td>
-                            <td>200.000đ</td>
-                            <td>600.000đ</td>
+                            <td><?= $i ?></td>
+                            <td><?= $category_name ?></td>
+                            <td><?= $variant_count ?></td>
+                            <td><?= number_format($max_price) ?> VND</td>
+                            <td><?= number_format($min_price) ?> VND</td>
+                            <td><?= number_format($avg_price) ?> VND</td>
                         </tr>
                     </tbody>
+                    <?php } ?>
                 </table>  
                     <a target="chart" href="./thongke/bieudo-sp.php"><button class="btn-bieudo">XEM BIỂU ĐỒ</button> </a>
                 <!-- <a target="chart" href="./thongke/bieudo-sp.php">XEM BIỂU ĐỒ </a> -->
                 <iframe src="" name="chart" frameborder="0" width="100%" height="520px"></iframe>
             </article>
     </main>
+<?php }else {
+        header('Location: index.php');
+    }
+?>

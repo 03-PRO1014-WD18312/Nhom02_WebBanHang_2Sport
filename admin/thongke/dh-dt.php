@@ -1,3 +1,6 @@
+<?php 
+    if ($_SESSION['login']['role']=='2') {
+?>
 <main class="container">
             <?php include "boxleft.php" ?>
             <article>
@@ -47,3 +50,7 @@
                 <iframe src="" name="chart" frameborder="0" width="100%" height="520px"></iframe>
             </article>
     </main>
+<?php }else {
+    header('Location: index.php');
+}
+?>
