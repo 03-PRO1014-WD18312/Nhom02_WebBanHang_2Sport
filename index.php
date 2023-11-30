@@ -205,8 +205,7 @@
                 $showcart=showcart($idkh);
                 include 'view/cart.php'; 
                 break;
-            case 'order':
-                error_reporting(0);
+            case 'order_cart':
                     // extract($_SESSION['login']);
                     $idkh=$_SESSION['login']['id'];
                     $showcart = showcart($idkh);
@@ -226,7 +225,6 @@
                             $error_address="(*)";
                         }
                         if (empty($error_name) && empty($error_phone) && empty($error_address)) {
-
                             update_info_user_order($name_order,$phone_order,$address_order,$idkh);
                             $_SESSION['login']['name'] = $name_order;
                             $_SESSION['login']['phone'] = $phone_order;
@@ -234,8 +232,6 @@
                             update_info_user_order($name_order,$phone_order,$address_order,$idkh);
                             insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment);
                             $info_order=check_infor_order($idkh);
-                            $idOrder = $info_order[0]['id'];
-                            echo $idOrder;
                             foreach ($_SESSION['history_cart'] as $cartItem) {
                                 $productName = $cartItem['product_name'];
                                 $price = $cartItem['variant_discount'];
@@ -257,6 +253,49 @@
 
                     }
                 $showcart=showcart($idkh);
+                include 'view/order_cart.php';
+                break;
+            case 'order':
+                $idkh=$_SESSION['login']['id'];
+                $name_order=$_POST['name_order'];
+                $phone_order=$_POST['phone_order'];
+                $address_order=$_POST['address_order'];
+                if (isset($_POST['order_pay'])){
+                    $error_name=$error_phone=$error_address="";
+                    if (empty($name_order)) {
+                        $error_name="(*)";
+                    }
+                    if (empty($phone_order) ) {
+                        $error_phone="(*)";
+                    }
+                    if (empty($address_order)) {
+                        $error_address="(*)";
+                    }
+                    if (empty($error_name) && empty($error_phone) && empty($error_address)) {
+                        update_info_user_order($name_order,$phone_order,$address_order,$idkh);
+                        $_SESSION['login']['name'] = $name_order;
+                        $_SESSION['login']['phone'] = $phone_order;
+                        $_SESSION['login']['address'] = $address_order;
+                        insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment);
+                        $info_order=check_infor_order($idkh);
+                        $idOrder = $info_order[0]['id'];
+                        $productName = $_SESSION['order'][0];
+                        $price = $_SESSION['order'][1];
+                        $color = $_SESSION['order'][6];
+                        $size = $_SESSION['order'][7];
+                        $quantity = $_SESSION['order'][3];
+                        $idProduct = $_SESSION['order'][4];
+                        // var_dump($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
+                        insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
+                       echo "
+                            <script>
+                                alert('Đặt hàng thành công 👏');
+                                window.location.href = 'index.php?act=history-order';
+                            </script>
+                        ";
+
+                    }
+                }
                 include 'view/order.php';
                 break;
             case 'history-order':

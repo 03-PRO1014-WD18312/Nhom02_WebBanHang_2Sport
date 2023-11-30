@@ -50,7 +50,7 @@
         $show_order=pdo_query($sql);
         return $show_order;
     }
-    //
+    
     // update trạng thái đơn hàng
     function update_status_order($id_order,$status){
         $sql="UPDATE `order_info` SET `status`='$status' WHERE id=$id_order";
@@ -62,5 +62,11 @@
         $sql="SELECT * FROM `order_info` WHERE id=$id_order";
         $list_staus_order=pdo_query($sql);
         return $list_staus_order;
+    }
+    //lấy màu,size từ bảng biến thể
+    function on_size_color_variant($id_variant){
+        $sql="SELECT product_color.color, product_size.size FROM `variants` INNER JOIN product_size ON variants.id=product_size.id INNER JOIN product_color ON variants.id=product_color.id WHERE variants.id=$id_variant";
+        $on_size_color_variant=pdo_query($sql);
+        return $on_size_color_variant;
     }
 ?>

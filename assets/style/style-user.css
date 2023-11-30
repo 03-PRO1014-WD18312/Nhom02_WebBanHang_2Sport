@@ -626,7 +626,7 @@ main .slide-banner img{
 }
 .form-cart .submit-cart{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
 
 }
 .form-cart .submit-cart a{
@@ -647,7 +647,6 @@ main .slide-banner img{
     border-radius: 10px;
     font-size: 16px;
     border: none;
-    margin-right: 800px;
 }
 .form-cart .update-cart:hover{
     background-color: var(--bg-color-black-ins);
