@@ -192,7 +192,9 @@
                 include "bienthe/updatesize.php";
                 break;
             case 'listbl' :
-                $binhluan = load_all_comment();
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $perPage = 10; // Số lượng mục hiển thị trên mỗi trang
+                $binhluan = load_all_comment($page, $perPage);
                 include "binhluan/list.php";
                 break;
             case 'deletebl' :
@@ -246,7 +248,9 @@
                 include 'khachhang/list.php';
             break;
             case 'qldh':
-                $list_order=list_order();
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $perPage = 10; // Số lượng mục hiển thị trên mỗi trang
+                $list_order=list_order($page, $perPage);
                 include 'donhang/list.php';
                 break;
             case 'chitietdh':

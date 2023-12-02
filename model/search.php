@@ -15,7 +15,9 @@
             GROUP BY idProduct
         ) AS variants ON product.id = variants.idProduct 
         JOIN category ON product.idCategory = category.id where product.name like '%$keyw%'";
+        
         $search_wp=pdo_query($sql);
         return $search_wp;
     }
+
 ?>

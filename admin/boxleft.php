@@ -18,21 +18,17 @@
                 <li><a href="index.php?act=listsize">Size</a></li>
             </ul>
         </li>
-        <?php if($_SESSION['login']['role'] == 2){ ?>
-            <li><a href="index.php?act=qldh">Đơn hàng</a></li>
-        <?php } ?>
+        <li><a href="index.php?act=qldh">Đơn hàng</a></li>
         <?php if($_SESSION['login']['role'] == 2){ ?>
             <li><a href="index.php?act=khachhang">Khách hàng</i></a></li>
         <?php } ?>
         <li><a href="index.php?act=listbl">Bình luận</a></li>
-        <?php if($_SESSION['login']['role'] == 2){ ?>
             <li class="list-item">Thống kê <i class="fa-solid fa-caret-down"></i>
                 <ul class="menu-item">
                     <li><a href="index.php?act=spdm">Sản phẩm theo danh mục</a></li>
                     <li><a href="index.php?act=dhdt">Đơn hàng theo danh thu</a></li>
                 </ul>
             </li>
-        <?php } ?>
         <!-- <li><a href="#">Phản hồi</a></li> -->
     </ul>
 </aside>
