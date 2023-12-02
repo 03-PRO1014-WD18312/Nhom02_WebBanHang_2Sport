@@ -140,7 +140,7 @@
     </div>
     <div class="comment container" >
         <h2>Bình luận</h2>
-        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="250px" style="margin-bottom: 50px;"></iframe>
+        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="200px"></iframe>
     </div>
     <div class="rate-wp">
         <h2>

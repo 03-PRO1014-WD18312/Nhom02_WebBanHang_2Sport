@@ -285,7 +285,6 @@
                         </script>";
                     } 
                 }
-                $list_order=list_order();
                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
                 $perPage = 10; // Số lượng mục hiển thị trên mỗi trang
                 $list_order=list_order($page, $perPage);
