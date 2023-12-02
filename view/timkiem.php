@@ -1,4 +1,22 @@
 <main class="container">
+    <h2 class="name-cate">Danh mục:</h2>
+    <div class="extra">
+        <div class="list-cate">
+            <?php foreach($listCategory as $row){
+                extract($row);
+            ?>
+                <a href="index.php?act=sanpham&id=<?= $id ?>"><?= $name ?></a>
+            <?php } ?>
+        </div>
+        <div class="filter" id="filterContainer">
+            <i class="fa-solid fa-filter" id="filterIcon"></i>
+            <div class="filter-options" id="filterOptions">
+                <a href="" class="filter-link">Được xem nhiều nhất</a>
+                <a href="#" class="filter-link">Từ giá thấp đến cao</a>
+                <a href="#" class="filter-link">Từ giá cao đến thấp</a>
+            </div>
+        </div>
+    </div>
     <div class="product-wp">
         <h3>Kết quả tìm kiếm từ khóa " <?= $keyw ?> "</h3>
         <div class="product-ins">
@@ -37,4 +55,26 @@
         </div>
     </div>
 </main>
+<script>
+    var filterContainer = document.getElementById('filterContainer');
+    var filterOptions = document.getElementById('filterOptions');
+
+    // Hiển thị dropdown khi di chuột vào biểu tượng
+    filterContainer.addEventListener('mouseenter', function() {
+        filterOptions.style.display = 'block';
+    });
+
+    // Ẩn dropdown khi di chuột ra khỏi biểu tượng
+    filterContainer.addEventListener('mouseleave', function() {
+        filterOptions.style.display = 'none';
+    });
+
+    // Ẩn dropdown nếu di chuột ra khỏi cả khu vực chứa biểu tượng và dropdown
+    filterOptions.addEventListener('mouseleave', function() {
+        filterOptions.style.display = 'none';
+    });
+</script>
+
+
+
     

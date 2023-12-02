@@ -216,7 +216,9 @@
                 include "bienthe/updatesize.php";
                 break;
             case 'listbl' :
-                $binhluan = load_all_comment();
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $perPage = 10; // Số lượng mục hiển thị trên mỗi trang
+                $binhluan = load_all_comment($page, $perPage);
                 include "binhluan/list.php";
                 break;
             case 'deletebl' :
@@ -274,6 +276,7 @@
                     $keyword=$_POST['inOrder'];
                     if ($search_dh=search_order($keyword)==true) {
                         $list_order=search_order($keyword);
+                        $perPage = 20;
                         include 'donhang/list.php';
                         break;
                     }else {
@@ -283,6 +286,9 @@
                     } 
                 }
                 $list_order=list_order();
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $perPage = 10; // Số lượng mục hiển thị trên mỗi trang
+                $list_order=list_order($page, $perPage);
                 include 'donhang/list.php';
                 break;
             case 'chitietdh':

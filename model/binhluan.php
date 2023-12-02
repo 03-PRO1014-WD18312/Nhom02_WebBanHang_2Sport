@@ -9,13 +9,13 @@ function load_comment($idsp){
     return $result;
 }
 
-function load_all_comment(){
+function load_all_comment($page, $perPage){
     $sql = "SELECT comment.id, comment.text, comment.date, account.username, product.name
             from comment
             join account on comment.idAccount = account.id
             join product on comment.idProduct = product.id
             order by date desc";
-    $result = pdo_query($sql);
+    $result = pdo_paginate($sql, $page, $perPage);
     return $result;
 }
 function delete_comment($id){

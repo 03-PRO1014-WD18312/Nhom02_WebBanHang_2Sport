@@ -29,11 +29,10 @@
                 include "view/danhmucsampham.php";
                 break;
             case "timkiem" :
-                if(isset($_POST['keyw'])) {
+                if(isset($_POST['keyw']) && $_POST['keyw'] != '') {
                     $keyw = $_POST['keyw'];
                     $listSearch = search_product($keyw);
-                } else{
-
+                    $listCategory = list_category();
                 }
                 include "view/timkiem.php";
                 break;
@@ -142,8 +141,9 @@
                 $imgSp=$_POST['imgsp'];
                 $id_variant=$_POST['id_variant'];
                 $idkh=$_SESSION['login']['id'];
+                $quantity = 1;
                 if (isset($_SESSION['login'])) {
-                    addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
+                    addcart_quantity($nameSp, $priceSp, $imgSp, $quantity, $idkh, $id_variant);
                     echo "<script>alert('Thêm giỏ hàng thành công 🛒');
                         if (performance.navigation.type == 0) {
                             window.location.href = window.location.href;
@@ -206,7 +206,8 @@
                 $showcart=showcart($idkh);
                 include 'view/cart.php'; 
                 break;
-            case 'order_cart':
+                case 'order_cart':
+                    error_reporting(0);
                     // extract($_SESSION['login']);
                     $idkh=$_SESSION['login']['id'];
                     $showcart = showcart($idkh);
@@ -297,8 +298,57 @@
                                 window.location.href = 'index.php?act=history-order';
                             </script>
                         ";
+=======
+                    error_reporting(0);
+                    // extract($_SESSION['login']);
+                    $idkh=$_SESSION['login']['id'];
+                    $showcart = showcart($idkh);
+                    $_SESSION['history_cart'] = $showcart;
+                    $error_name=$error_phone=$error_address="";
+                    $name_order=$_POST['name_order'];
+                    $phone_order=$_POST['phone_order'];
+                    $address_order=$_POST['address_order'];
+                    if (isset($_POST['payment'])) {
+                        if (empty($name_order)) {
+                            $error_name="(*)";
+                        }
+                        if (empty($phone_order) ) {
+                            $error_phone="(*)";
+                        }
+                        if (empty($address_order)) {
+                            $error_address="(*)";
+                        }
+                        if (empty($error_name) && empty($error_phone) && empty($error_address)) {
+
+                            update_info_user_order($name_order,$phone_order,$address_order,$idkh);
+                            $_SESSION['login']['name'] = $name_order;
+                            $_SESSION['login']['phone'] = $phone_order;
+                            $_SESSION['login']['address'] = $address_order;
+                            update_info_user_order($name_order,$phone_order,$address_order,$idkh);
+                            insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment);
+                            $info_order=check_infor_order($idkh);
+                            $idOrder = $info_order[0]['id'];
+                            echo $idOrder;
+                            foreach ($_SESSION['history_cart'] as $cartItem) {
+                                $productName = $cartItem['product_name'];
+                                $price = $cartItem['variant_discount'];
+                                $color = $cartItem['color'];
+                                $size = $cartItem['size'];
+                                $quantity = $cartItem['quantity'];
+                                $idProduct = $cartItem['product_id'];
+                                $idOrder = $info_order[0]['id'];
+                                insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
+                            }
+                            clean_cart($idkh);
+                            echo "
+                                <script>
+                                    alert('Đặt hàng thành công 👏');
+                                    window.location.href = 'index.php?act=history-order';
+                                </script>
+                            ";
+                        }
                     }
-                }
+                $showcart=showcart($idkh);
                 include 'view/order.php';
                 break;
             case 'history-order':
@@ -367,6 +417,7 @@
             case 'rate':
                 $id_product=$_GET['idproduct'];
                 $listProductRate=list_product_rate($id_product);
+                error_reporting(0);
                 // var_dump($id_product,$rating,$content_rate,$idkh);
                 if (isset($_POST['rateSubmit'])) {
                     $rating=$_POST['rating'];

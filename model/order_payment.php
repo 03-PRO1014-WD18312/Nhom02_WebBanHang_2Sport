@@ -32,9 +32,9 @@
         return $history_order;
     }
     //list toàn bộ danh sách đơn hàng
-    function list_order(){
+    function list_order($page, $perPage){
         $sql="SELECT * FROM order_info JOIN account ON order_info.idAccount = account.id ORDER BY order_info.id DESC";
-        $list_order=pdo_query($sql);
+        $list_order=pdo_paginate($sql, $page, $perPage);
         return $list_order;
     }
     
