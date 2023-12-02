@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
     if (is_array($_SESSION['login'])) {
         extract($_SESSION['login']);
     }

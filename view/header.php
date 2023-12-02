@@ -22,7 +22,7 @@
                 <div class="nav-left">
                     <form class="form-search" action="index.php?act=timkiem" method="POST">
                         <div class="search-wp">
-                            <input class="input-search" type="search" name="keyw" placeholder="Bạn cần tìm gì...">
+                            <input class="input-search" type="search" name="keyw" placeholder="Bạn cần tìm gì..." required>
                             <button type="submit" name="search" class="btn-search"><i class="fa fa-search"></i></button>
                         </div>
                         <div class="search-res">

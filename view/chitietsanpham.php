@@ -36,9 +36,10 @@
         $sizeSp=$on_size_color_variant[0]['size'];
         $order=[$nameSp,$priceSp,$imgSp,$quantity,$id_variant,$idkh,$colorSp,$sizeSp];
         $_SESSION['order']=$order;
-        include 'view/order.php';
-        echo '<pre>';
-        var_dump($order);
+        echo "<script>
+                window.location.href = 'index.php?act=order';
+            </script>";
+        exit();
     }
 
 

@@ -1,13 +1,21 @@
 <?php 
     //thêm giỏ hàng
-    function addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant){
-        $sql="INSERT INTO `cart`(`name`,`price`, `img`, `idAccount`, `idVariant`) VALUES ('$nameSp','$priceSp','$imgSp','$idkh','$id_variant')";
-        pdo_execute($sql);
+    function addcart_quantity($nameSp, $priceSp, $imgSp, $quantity, $idkh, $id_variant) {
+        // Kiểm tra xem sản phẩm với ID biến thể đã cho đã tồn tại trong giỏ hàng chưa
+        $existingCartItem = pdo_query_one("SELECT * FROM `cart` WHERE `idVariant` = ?", $id_variant);
+
+        if ($existingCartItem) {
+            // Nếu tồn tại thì update số lương
+            $newQuantity = $existingCartItem['quantity'] + $quantity;
+            pdo_execute("UPDATE `cart` SET `quantity` = ? WHERE `idVariant` = ?", $newQuantity, $id_variant);
+        } else {
+            // Nếu không thì thêm sản phẩm 
+            $sql = "INSERT INTO `cart`(`name`,`price`, `img`, `quantity`, `idAccount`, `idVariant`) 
+                    VALUES ('$nameSp','$priceSp','$imgSp', '$quantity', '$idkh','$id_variant')";
+            pdo_execute($sql);
+        }
     }
-    function addcart_quantity($nameSp,$priceSp,$imgSp, $quantity,$idkh,$id_variant){
-        $sql="INSERT INTO `cart`(`name`,`price`, `img`, `quantity`, `idAccount`, `idVariant`) VALUES ('$nameSp','$priceSp','$imgSp', '$quantity', '$idkh','$id_variant')";
-        pdo_execute($sql);
-    }
+
     //show giỏ hàng 
     function showcart($idkh){
         $sql="SELECT

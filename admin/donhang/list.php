@@ -1,6 +1,4 @@
-<?php 
-    if ($_SESSION['login']['role']=='2') {
-?>
+
 <main class="container">
             <?php include "boxleft.php" ?>
             <article>
@@ -63,9 +61,16 @@
                         ?>
                     </tbody>
                 </table>
+                <!-- Thêm phần phân trang -->
+                <div class="pagination">
+                    <?php
+                        $totalCategories = count(pdo_query("SELECT id FROM order_info"));
+                        $totalPages = ceil($totalCategories / $perPage);
+                        
+                        for ($i = 1; $i <= $totalPages; $i++) {
+                            echo "<a href='index.php?act=qldh&page=$i'>$i</a> ";
+                        }
+                    ?>
+                </div>
             </article>
 </main>
-<?php }else {
-        header('Location: index.php');
-    }
-?>
