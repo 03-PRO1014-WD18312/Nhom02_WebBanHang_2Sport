@@ -582,26 +582,28 @@ tbody img{
 .list-product .pagination a:hover{
     background-color: var(--bg-color-main);
 }
-.list-product .action a{
+.action a{
     text-decoration: none;
     color: var(--bg-color-while-ins);
     background-color: var(--bg-color-black-ins);
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-.list-product .action a:hover{
+.action a:hover{
     background-color: var(--bg-color-main);
 }
-.list-product .action .delete{
+.action .delete{
     color: var(--bg-color-while-ins);
     background-color: var(--bg-color-black-ins);
     padding: 5px 10px;
     border-radius: 5px;
     border: none;
     font-size: 16px;
+    cursor: pointer;
 }
-.list-product .action .delete:hover{
+.action .delete:hover{
     background-color: var(--bg-color-main);
 }
 #btn-variant{
@@ -654,7 +656,6 @@ tbody img{
     grid-template-columns: 2fr 1fr;
     margin-top: 30px;
     gap: 1.5em;
-    min-height: 100%;
 }
 .table-product-ins{
     background-color: var(--bg-color-while-ins);
@@ -720,7 +721,7 @@ tbody img{
 }
 .table-product-right{
     overflow: hidden;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 10px;
     background-color: var(--bg-color-while-ins);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
@@ -756,6 +757,9 @@ tbody img{
 }
 .total-receipt h4{
     color: var(--bg-color-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .total-receipt span{
     color: var(--bg-color-black-ins);

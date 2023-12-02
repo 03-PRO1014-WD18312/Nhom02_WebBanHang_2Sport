@@ -21,7 +21,7 @@
             <span style="color: orangered; font-size: small;"><?php if(isset($errorEnterUsername)) echo $errorEnterUsername;?></span><br>
             <input type="password" name="password" placeholder="Vui lòng nhập mật khẩu">
             <span style="color: orangered; font-size: small;"><?php if(isset($errorEnterPassword)) echo $errorEnterPassword;?></span><br>
-            <a class="forget-pass" href="">Quên mật khẩu?</a>
+            <a class="forget-pass" href="index.php?act=quenmatkhau">Quên mật khẩu?</a>
             <input type="submit" name="login" value="Đăng nhập">
             <p>Bạn chưa có tài khoản? <a class="signup-now" href="index.php?act=dangky">Đăng ký ngay</a></p>
         </form>

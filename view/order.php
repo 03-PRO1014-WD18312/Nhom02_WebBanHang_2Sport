@@ -15,7 +15,7 @@
                     <th>Số lượng</th>
                     <th>Thành tiền</th>
                 </tr>
-                <?php 
+                <?php   
                         $sum = 0;
                         $price_formatted = number_format($_SESSION['order'][1], 0, '.', ',');
                         $thanhtien = $_SESSION['order'][1] * $_SESSION['order'][3];
@@ -24,7 +24,7 @@
                         echo '
                             <tr>
                                 <td><img src="assets/img/'.$_SESSION['order'][2].'" width="50px" alt=""></td>
-                                <td>'.$_SESSION['order'][0].'</td>
+                                <td><a style="text-decoration: none;" href="index.php?act=detail&id='.$_SESSION['order'][8].'">'.$_SESSION['order'][0].'</a></td>
                                 <td><span style="background-color: '.$_SESSION['order'][6].'; padding: 5px 15px; border:1px solid #d9d9d9; border-radius:50%;"></span></td>
                                 <td>'.$_SESSION['order'][7].'</td>
                                 <td>'.$price_formatted.'đ</td>
@@ -36,7 +36,7 @@
             </table> 
         </div>
         <div>
-            <form action="index.php?act=order" method="post" class="profile-payment">
+            <form action="" method="post" class="profile-payment">
             <?php 
                 echo'
                 <div class="form-receive">                            

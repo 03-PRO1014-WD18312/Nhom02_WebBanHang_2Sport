@@ -63,13 +63,13 @@
                                         echo '<span style="color:#fff; padding:2px 15px; background-color: #069A8E; border-radius:20px;">Chờ lấy hàng</span>';
                                     }
                                     elseif ($status == 2) {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Chờ giao hàng</span>';
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #ED7D31; border-radius:20px;">Chờ giao hàng</span>';
                                     }elseif ($status == 3) {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #153462; border-radius:20px;">Đã giao hàng <i class="fa-solid fa-check" style="font-size:15px;"></i></span>';
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #0F117A; border-radius:20px;">Đã giao hàng <i class="fa-solid fa-check" style="font-size:15px;"></i></span>';
                                     }elseif ($status == 4){
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Đã huỷ</span>';
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #000; border-radius:20px;">Đã huỷ <i class="fa-solid fa-xmark" style="color: #ffffff; font-size:15px;"></i></span>';
                                     }else {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Trả hàng</span>';
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #980F5A; border-radius:20px;">Trả hàng <i class="fa-solid fa-arrow-rotate-left" style="color: #ffffff; font-size:15px;"></i></span>';
                                     } 
                                 ?>
 

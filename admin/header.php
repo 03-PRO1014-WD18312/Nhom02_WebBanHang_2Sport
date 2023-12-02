@@ -24,7 +24,7 @@
                         echo'
                             <marquee class="marquee-wel" behavior="" direction="" style="text-transform: uppercase;"><i class="fa-solid fa-bolt-lightning"></i> CHÀO MỪNG '.$_SESSION['login']['username'].' ĐẾN VỚI TRANG QUẢN TRỊ</marquee>
                             <div class="profile-out">
-                                <a href=""><i class="fa-solid fa-user-tie"></i>'.$_SESSION['login']['username'].'<span style="font-size: 14px;">'.($_SESSION['login']['role'] == 2 ? ' (Admin)' : ' (Nhân viên)').'</span></a>
+                                <a href="#"><i class="fa-solid fa-user-tie"></i>'.$_SESSION['login']['username'].'<span style="font-size: 14px;">'.($_SESSION['login']['role'] == 2 ? ' (Admin)' : ' (Nhân viên)').'</span></a>
                                 <a href="index.php?act=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                             </div>
                         ';

@@ -1,7 +1,7 @@
-<div class="form-forgetpass">
-    <h1>QUÊN MẬT KHẨU</h1>
-    <form action="">
-        <input type="text" placeholder="Vui lòng nhập vào email của bạn">
-        <input type="button" value="Gửi">
+<main class="container form-restore-pass">
+    <h2>KHÔI PHỤC MẬT KHẨU</h2>
+    <form action="" method="post">
+        <input type="text" name="info_email" placeholder="Vui lòng nhập email của bạn" > 
+        <input type="submit" value="Khôi phục" name="restorePass">
     </form>
-</div>
+</main>

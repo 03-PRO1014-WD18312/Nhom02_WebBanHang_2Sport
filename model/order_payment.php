@@ -65,8 +65,14 @@
     }
     //lấy màu,size từ bảng biến thể
     function on_size_color_variant($id_variant){
-        $sql="SELECT product_color.color, product_size.size FROM `variants` INNER JOIN product_size ON variants.id=product_size.id INNER JOIN product_color ON variants.id=product_color.id WHERE variants.id=$id_variant";
+        $sql="SELECT product_color.color, product_size.size,product.id FROM `variants` INNER JOIN product_size ON variants.id=product_size.id INNER JOIN product_color ON variants.id=product_color.id INNER JOIN product ON variants.idProduct=product.id WHERE variants.id=$id_variant";
         $on_size_color_variant=pdo_query($sql);
         return $on_size_color_variant;
+    }
+    // Đếm số lượng đơn hàng chờ xác nhân
+    function countOrderWait($status){
+        $sql="SELECT COUNT(order_info.id) AS countOrderWait FROM `order_info` WHERE order_info.status = $status";
+        $countOrderWait=pdo_query($sql);
+        return $countOrderWait; 
     }
 ?>

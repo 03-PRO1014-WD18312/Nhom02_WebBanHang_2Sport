@@ -23,4 +23,9 @@ function load_thongke_sanpham_danhmuc(){
         $thongke_dt=pdo_query($sql);
         return $thongke_dt;
     }
+    function thongke_doanh_thu_follow_date(){
+        $sql="SELECT order_info.date, order_info.status,SUM(order_detail.price*order_detail.quantity) AS totalOrder FROM `order_info` INNER JOIN order_detail ON order_info.id=order_detail.idOrder WHERE order_info.status=3 GROUP BY date(order_info.date)";
+        $thongke_dt_follow_date=pdo_query($sql);
+        return $thongke_dt_follow_date;
+    }
 ?>
