@@ -1,7 +1,7 @@
 
 <main class="container history-order">
     <h2>LỊCH SỬ MUA HÀNG</h2>
-    <div>
+    <div class="history_order_rate">
         <table>
             <thead>
                 <tr>
@@ -32,7 +32,7 @@
                         ?>
                             <tr>
                                 <td><?=$stt++ ?></td>
-                                <td><?=$productName?></td>
+                                <td><a style="text-decoration: none;" href="index.php?act=detail&id=<?=$idProduct?>"><?=$productName?></a></td>
                                 <td><span style="background-color: <?=$color?>; padding: 5px 15px; border:1px solid #d9d9d9; border-radius:50%;"></span></td>
                                 <td><?=$size?></td>
                                 <td><?=$price_formatted?>đ</td>
@@ -50,6 +50,6 @@
                     </tr>
             </tbody>
         </table>
-        <iframe src="" name="rate" frameborder="0" height="500px"></iframe>
+        <iframe src="" name="rate" frameborder="0" class="container" width="100%" height="500px"></iframe>
     </div>
 </main>

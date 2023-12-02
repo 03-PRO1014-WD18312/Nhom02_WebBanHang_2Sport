@@ -55,7 +55,7 @@
                         <input type="hidden" name="imgsp" value="<?= $sp['img'] ?>">
                         <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
                     </form>
-                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
         <?php } ?>
@@ -92,7 +92,7 @@
                         <input type="hidden" name="imgsp" value="<?= $sp['img'] ?>">
                         <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
                     </form>
-                    <a href="index.php?" class="buy-product"><button>MUA HÀNG</button></a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
         <?php } ?>
@@ -129,7 +129,7 @@
                         <input type="hidden" name="imgsp" value="<?= $sp['img'] ?>">
                         <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
                     </form>
-                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
         <?php } ?>
@@ -166,7 +166,7 @@
                         <input type="hidden" name="imgsp" value="<?= $sp['img'] ?>">
                         <button type="submit" class="addcart-product"><i class="fa-solid fa-cart-plus fa-shake"></i></button>
                     </form>
-                    <a href="" class="buy-product"><button>MUA HÀNG</button></a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="buy-product"><button>MUA HÀNG</button></a>
                 </div>
             </div>
         <?php } ?>

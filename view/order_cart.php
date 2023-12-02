@@ -40,7 +40,7 @@
                                 <tr>
                                     <td>'.$stt++.'</td>
                                     <td><img src="assets/img/'.$product_img.'" width="50px" alt=""></td>
-                                    <td>'.$product_name.'</td>
+                                    <td><a style="text-decoration: none;" href="index.php?act=detail&id='.$product_id.'">'.$product_name.'</a></td>
                                     <td><span style="background-color: '.$color.'; padding: 5px 15px; border:1px solid #d9d9d9; border-radius:50%;"></span></td>
                                     <td>'.$size.'</td>
                                     <td>'.$price_formatted.'đ</td>
@@ -49,7 +49,7 @@
                                 </tr>
                             ';
                             $i++;
-                        }echo'<caption style="caption-side:bottom;text-align:left; color: #A6A6A4; font-style:italic; padding:15px 0px;">Có '.$i.' sản phẩm cần thanh toán</caption>'; 
+                        }echo'<caption style="caption-side:bottom;text-align:left; color: #A6A6A4; font-style:italic; padding:10px 0px;">Có '.$i.' sản phẩm cần thanh toán</caption>'; 
                 ?>
             </table> 
         </div>

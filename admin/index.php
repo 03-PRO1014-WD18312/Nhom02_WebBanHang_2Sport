@@ -33,6 +33,20 @@
             case 'listsp' :
                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
                 $perPage = 10; // Số lượng mục hiển thị trên mỗi trang
+                if (isset($_POST['searchProduct'])) {
+                    $keyword=$_POST['inProduct'];
+                    if ($search_sp=search_product_admin($keyword)==true) {
+                        $perPage = 20;
+                        $listProduct=search_product_admin($keyword);
+                        include "sanpham/list.php";
+                        break;
+                    }else {
+                        echo"<script>
+                            alert('Sản phẩm không tồn tại !');
+                        </script>";
+                    }
+                    
+                }
                 $listProduct = list_product($page, $perPage);
                 include "sanpham/list.php";
                 break;
@@ -76,7 +90,6 @@
                     $iddm = $_POST['iddm'];
                     $status = $_POST['status'];
                     $des = $_POST['des'];
-
                     $price = $_POST['price'];
                     $discount = $_POST['priceSale'];
                     $quantity = $_POST['quantity'];
@@ -87,7 +100,6 @@
                     $target_direct = "../assets/img/";
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-
                     update_product($id, $iddm, $name, $status, $des, $hinh, $price, $discount, $quantity, $color, $size);
                     header('location: index.php?act=listsp');
                 }
@@ -109,6 +121,18 @@
                 }
                 break;
             case 'listdm' :
+                if (isset($_POST['searchCategory'])) {
+                    $keyword=$_POST['inCategory'];
+                    if ($search_dm=search_category_admin($keyword)==true) {
+                        $listCate=search_category_admin($keyword);
+                        include "danhmuc/list.php";
+                        break;
+                    }else {
+                        echo"<script>
+                            alert('Danh mục không tồn tại !');
+                        </script>";
+                    } 
+                }
                 $listCate = list_category();
                 $check = check_category($id);
                 include "danhmuc/list.php";
@@ -218,10 +242,10 @@
                     $column1='username';
                     $column2='email';
                     $id=$_SESSION['login']['id'];
-                    if ($search_wp=search_wp($table,$column1,$column2,$keyword, $id)==true) {
-                        $dskh=search_wp($table,$column1,$column2,$keyword,$id);
+                    if ($search_tk=search_tk($table,$column1,$column2,$keyword, $id)==true) {
+                        $dskh=search_tk($table,$column1,$column2,$keyword, $id);
                         include 'khachhang/list.php';
-                        exit();
+                        break;
                     }else {
                         echo"<script>
                             alert('Không có user hoặc email tồn tại ! hoặc đã đăng nhập');
@@ -248,6 +272,20 @@
                 include 'khachhang/list.php';
             break;
             case 'qldh':
+                if (isset($_POST['searchOrder'])) {
+                    $keyword=$_POST['inOrder'];
+                    if ($search_dh=search_order($keyword)==true) {
+                        $list_order=search_order($keyword);
+                        $perPage = 20;
+                        include 'donhang/list.php';
+                        break;
+                    }else {
+                        echo"<script>
+                            alert('Đơn hàng không tồn tại !');
+                        </script>";
+                    } 
+                }
+                $list_order=list_order();
                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
                 $perPage = 10; // Số lượng mục hiển thị trên mỗi trang
                 $list_order=list_order($page, $perPage);

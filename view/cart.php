@@ -33,7 +33,7 @@
                             <tr>
                                 <td>'.$stt++.'</td>
                                 <td><img src="assets/img/'.$product_img.'" width="50px" alt=""></td>
-                                <td>'.$product_name.'</td>
+                                <td><a style="text-decoration: none;" href="index.php?act=detail&id='.$product_id.'">'.$product_name.'</a></td>
                                 <td><span style="background-color: '.$color.'; padding: 10px 20px; border:1px solid #d9d9d9; border-radius:50%;"></span></td>
                                 <td>'.$size.'</td>
                                 <td>'.$price_formatted.'đ</td>
