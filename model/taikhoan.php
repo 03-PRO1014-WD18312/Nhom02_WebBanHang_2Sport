@@ -44,5 +44,12 @@
       $sql="UPDATE `account` SET `name`='$name_order',`phone`='$phone_order',`address`='$address_order' WHERE id=$idkh";
       pdo_execute($sql);
     }
+    // Đếm số lượng khách hàng 
+    function countUser(){
+        $sql="SELECT COUNT(account.id) AS countKH FROM `account` WHERE account.role = '0'";
+        $countUser=pdo_query($sql);
+        return $countUser; 
+    }
+
 
 ?>

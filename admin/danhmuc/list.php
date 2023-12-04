@@ -3,9 +3,11 @@
     <article>
         <div class="list-product">
             <h1>DANH SÁCH DANH MỤC</h1>
-            <form action="" class="formSearch">
-                <input type="text" placeholder="Tìm tên danh mục">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <form class="form-search" action="" method="post">
+                <div class="search-wp">
+                    <input class="input-search" name="inCategory" type="search" required placeholder="Bạn cần tìm gì...">
+                    <button class="btn-search" type="submit" name="searchCategory"><i class="fa fa-search"></i></button>
+                </div>
             </form>
             <table>
                 <tr>

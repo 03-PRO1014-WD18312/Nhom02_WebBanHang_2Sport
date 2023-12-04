@@ -136,6 +136,12 @@ function list_product($page, $perPage){
     $listProduct = pdo_paginate($sql, $page, $perPage);
     return $listProduct;
 }
+//list sản phẩm theo id
+function list_product_rate($id_product){
+    $sql = "SELECT * from product WHERE id= $id_product";
+    $listProductRate=pdo_query($sql);
+    return $listProductRate;
+}
 function detail_product($id){
     $sql = "SELECT category.id as idCategory, product.id, product.name, product.img, product.des, product.view, product.status, category.name as cateName
     from product join category on product.idCategory = category.id where product.id = '$id'";
@@ -275,4 +281,6 @@ function tang_luot_xem($id){
     $sql = "UPDATE product set view = view + 1 where id = $id";
     pdo_execute($sql);
 }
+
+
 ?>

@@ -20,6 +20,8 @@
         top: 0;
         z-index: 999;
         transform: translateX(-100%);
+        background-color: #fff;
+        min-height: 100%;
     }
     .show-menu{
         opacity: 1;
