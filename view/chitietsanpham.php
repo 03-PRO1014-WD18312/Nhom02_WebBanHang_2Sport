@@ -60,20 +60,22 @@
                     </div>
                 </div>
                 <div class="color-product">
-                    <?php foreach($infor as $row){
-                        extract($row);    
-                    ?>
-                        <div 
-                            onclick="loadForms(<?= $idVariant ?>); return false;" 
-                            class="color-id" 
+                <?php
+                $uniqueColors = array(); // Mảng để lưu trữ các màu duy nhất
+                foreach ($infor as $row) {
+                    extract($row);
+                    // Kiểm tra xem màu đã xuất hiện chưa
+                    if (!in_array($color, $uniqueColors)) {
+                        array_push($uniqueColors, $color); // Thêm màu vào danh sách duy nhất
+                        ?>
+                        <div
+                            onclick="loadForms('<?= $color ?>'); return false;"
+                            class="color-id"
                             style="background-color:<?= $color; ?>"
-                            data-id="<?= $idVariant; ?>"
-                            data-price="<?= $price; ?>"
-                            data-size="<?= $size; ?>"
-                            data-discount="<?= $discount; ?>"
+                            data-color="<?= $color; ?>"
                         ></div>
                     <?php } ?>
-                </div>
+                <?php } ?>
             </div>
             <div class="right">
                 <h3 class="name-product"><?= $name ?></h3>
@@ -88,19 +90,21 @@
                 </div>
                 <div class="choose-color">
                     <p>Chọn màu:</p>
-                    <?php foreach($infor as $row){
-                        extract($row);    
-                    ?>
-                        <div 
-                            onclick="loadForms(<?= $idVariant ?>); return false;" 
-                            class="color-id" 
-                            style="background-color:<?= $color; ?>"
-                            data-id="<?= $idVariant; ?>"
-                            data-price="<?= $price; ?>"
-                            data-size="<?= $size; ?>"
-                            data-discount="<?= $discount; ?>"
-                            data-percent="<?= round(($discount - $price) / 10000); ?>"
-                        ></div>
+                    <?php
+                    $uniqueColors = array(); // Mảng để lưu trữ các màu duy nhất
+                    foreach ($infor as $row) {
+                        extract($row);
+                        // Kiểm tra xem màu đã xuất hiện chưa
+                        if (!in_array($color, $uniqueColors)) {
+                            array_push($uniqueColors, $color); // Thêm màu vào danh sách duy nhất
+                            ?>
+                            <div
+                                onclick="loadForms('<?= $color ?>'); return false;"
+                                class="color-id"
+                                style="background-color:<?= $color; ?>"
+                                data-color="<?= $color; ?>"
+                            ></div>
+                        <?php } ?>
                     <?php } ?>
                 </div>
                 <div class="choose-size">
@@ -261,30 +265,68 @@
     </div>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    // Call loadForms with the ID of the first variant
-    loadForms(<?php echo $infor[0]['idVariant']; ?>);
+    document.addEventListener("DOMContentLoaded", function () {
+        // Gọi hàm loadForms với màu đầu tiên trong danh sách
+        loadForms('<?= $infor[0]['color']; ?>');
     });
-    function loadForms(idVariant) {
-        // Lấy thông tin từ data-attributes của màu được chọn
-        var selectedColor = document.querySelector(`[data-id="${idVariant}"]`);
-        var discount = selectedColor.getAttribute("data-discount");
-        var price = selectedColor.getAttribute("data-price");
-        var size = selectedColor.getAttribute("data-size");
-        var percent = (discount - price)/10000;
+
+    function loadForms(selectedColor) {
+        var variants = <?= json_encode($infor); ?>;
+        var selectedVariants = variants.filter(function (variant) {
+            return variant.color === selectedColor;
+        });
+
+        var sizeContainer = document.querySelector('.choose-size');
+        sizeContainer.innerHTML = '<p>Size:</p>';
+
+        selectedVariants.forEach(function (variant) {
+            var sizeDiv = document.createElement('div');
+            sizeDiv.className = 'size';
+            sizeDiv.innerText = variant.size;
+            sizeDiv.onclick = function () {
+                // Gọi hàm để hiển thị giá và thông tin liên quan khi size được chọn
+                displayVariantInfo(variant);
+            };
+            sizeContainer.appendChild(sizeDiv);
+        });
+
+        // Hiển thị thông tin đầu tiên trong danh sách size
+        if (selectedVariants.length > 0) {
+            displayVariantInfo(selectedVariants[0]);
+        } else {
+            // Nếu không có size nào, ẩn thông tin
+            clearVariantInfo();
+        }
+    }
+
+    function displayVariantInfo(variant) {
+        document.getElementById("selectedColor").value = variant.color;
+        document.getElementById("selectedPrice").value = variant.price;
+        document.getElementById("selectedDiscount").value = variant.discount;
+        document.getElementById("selectedSize").value = variant.size;
+        document.getElementById("variantId").value = variant.id; // Chỉnh sửa đây
 
         // Hiển thị giá, discount và size tương ứng
-        document.getElementById("display-discount").innerText = "Giảm giá: " + discount + " đ";
-        document.getElementById("display-price").innerText = "Giá: " + price + " đ";
-        document.getElementById("display-size").innerText = size;
-        document.getElementById("display-percent").innerText = percent + "%";
-
-        document.getElementById("selectedColor").value = selectedColor.style.backgroundColor;
-        document.getElementById("selectedPrice").value = price;
-        document.getElementById("selectedDiscount").value = discount;
-        document.getElementById("selectedSize").value = size;
-        document.getElementById("variantId").value = idVariant;
+        document.getElementById("display-discount").innerText = "Giảm giá: " + variant.discount + " đ";
+        document.getElementById("display-price").innerText = "Giá: " + variant.price + " đ";
+        document.getElementById("display-size").innerText = variant.size;
+        document.getElementById("display-percent").innerText = (variant.discount - variant.price) / 10000 + "%";
     }
+
+    function clearVariantInfo() {
+        // Ẩn thông tin khi không có size nào được chọn
+        document.getElementById("selectedColor").value = "";
+        document.getElementById("selectedPrice").value = "";
+        document.getElementById("selectedDiscount").value = "";
+        document.getElementById("selectedSize").value = "";
+        document.getElementById("variantId").value = "";
+
+        document.getElementById("display-discount").innerText = "";
+        document.getElementById("display-price").innerText = "";
+        document.getElementById("display-size").innerText = "";
+        document.getElementById("display-percent").innerText = "";
+    }
+
     function increment() {
         var input = document.getElementById('quantity');
         var value = parseInt(input.value, 10);
