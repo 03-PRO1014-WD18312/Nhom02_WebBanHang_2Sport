@@ -77,18 +77,28 @@
                     $status = $_POST['status'];
                     $des = $_POST['des'];
 
-                    $price = $_POST['price'];
-                    $discount = $_POST['priceSale'];
-                    $quantity = $_POST['quantity'];
-                    $size = $_POST['size'];
-                    $color = $_POST['color'];
+                    $price1 = $_POST['price1'];
+                    $discount1 = $_POST['priceSale1'];
+                    $quantity1 = $_POST['quantity1'];
+                    $size1 = $_POST['size1'];
+                    $color1 = $_POST['color1'];
+
+                    if(isset($_POST['color'])){
+                            
+                        $price = $_POST['price'];
+                        $discount = $_POST['priceSale'];
+                        $quantity = $_POST['quantity'];
+                        $size = $_POST['size'];
+                        $color = $_POST['color'];
+                        insert_product_details($id, $color, $size, $price, $discount, $quantity);
+                    }
 
                     $hinh = $_FILES['image']['name'];
                     $target_direct = "../assets/img/";
                     $target_file = $target_direct.basename($hinh);
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
 
-                    update_product($id, $iddm, $name, $status, $des, $hinh, $price, $discount, $quantity, $color, $size);
+                    update_product($id, $iddm, $name, $status, $des, $hinh, $price1, $discount1, $quantity1, $color1, $size1);
                     header('location: index.php?act=listsp');
                 }
                 $listdanhmuc = list_category();
@@ -106,6 +116,12 @@
                         delete_product($selectedProductId);
                     }
                     header('location: index.php?act=listsp');
+                }
+                break;
+            case 'deleteVariant' :
+                if(isset($_GET['id'])){
+                    delete_variant($_GET['id']);
+                    header('Location: index.php?act=listsp');
                 }
                 break;
             case 'listdm' :

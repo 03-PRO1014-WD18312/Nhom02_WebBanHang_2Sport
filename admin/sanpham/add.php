@@ -40,7 +40,7 @@
                     <hr>
                     <div id="container">
                     </div>
-                    <button id="btn-variant">
+                    <button id="btn-variant" type="button">
                         <i class="fa-solid fa-circle-plus"></i>
                     </button>
                     <datalist id="size">

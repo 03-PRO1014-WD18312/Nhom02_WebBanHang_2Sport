@@ -35,7 +35,44 @@ function insert_product($name, $iddm, $status, $des, $prices, $discounts, $quant
     }
     pdo_execute_multi($sql_array);
 }
-function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $discounts, $quantitys, $colors, $sizes){
+function insert_product_details($idProduct, $colors, $sizes, $prices, $discounts, $quantitys) {
+    $sql_array = array();
+
+    $colorCounter = 1;
+    $sizeCounter = 1;
+
+    foreach ($colors as $color) {
+        $sql_array[] = "INSERT INTO product_color (color) VALUES ('$color')";
+        $sql_array[] = "SET @lastColorId$colorCounter = LAST_INSERT_ID()";
+        $colorCounter++;
+    }
+
+    foreach ($sizes as $size) {
+        $sql_array[] = "INSERT INTO product_size (size) VALUES ('$size')";
+        $sql_array[] = "SET @lastSizeId$sizeCounter = LAST_INSERT_ID()";
+        $sizeCounter++;
+    }
+
+    $colorCounter = 1;
+    $sizeCounter = 1;
+
+    $count = count($colors);
+
+    for ($i = 0; $i < $count; $i++) {
+        $quantity = $quantitys[$i];
+        $price = $prices[$i];
+        $discount = $discounts[$i];
+
+        $sql_array[] = "INSERT INTO variants (price, quantity, discount, idProduct, idSize, idColor) VALUES ('$price', '$quantity', '$discount', '$idProduct', @lastSizeId$sizeCounter, @lastColorId$colorCounter)";
+
+        $colorCounter++;
+        $sizeCounter++;
+    }
+
+    pdo_execute_multi($sql_array);
+}
+
+function update_product($id, $iddm, $name, $status, $des, $hinh, $prices1, $discounts1, $quantitys1, $colors1, $sizes1){
     $sql_array = array();
     
     // Update bảng product
@@ -46,27 +83,27 @@ function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $disco
     }
 
     // Update variants, product_size, and product_color 
-    $count = count($colors);
+    $count = count($colors1);
     for ($i = 0; $i < $count; $i++) {
-        $quantity = $quantitys[$i];
-        $price = $prices[$i];
-        $size = $sizes[$i];
-        $color = $colors[$i];
-        $discount = $discounts[$i];
+        $quantity1 = $quantitys1[$i];
+        $price1 = $prices1[$i];
+        $size1 = $sizes1[$i];
+        $color1 = $colors1[$i];
+        $discount1 = $discounts1[$i];
 
         // Update product_color tại dòng hiện tại
         $sql_array[] = "UPDATE product_color 
-                        SET color = '$color' 
+                        SET color = '$color1' 
                         WHERE id = (SELECT idColor FROM variants WHERE idProduct = '$id' LIMIT 1 OFFSET $i);";
 
         // Update product_size tại dòng hiện tại
         $sql_array[] = "UPDATE product_size 
-                        SET size = '$size'
+                        SET size = '$size1'
                         WHERE id = (SELECT idSize FROM variants WHERE idProduct = '$id' LIMIT 1 OFFSET $i);";
 
         // Update variants tại dòng hiện tại
         $sql_array[] = "UPDATE variants 
-                SET price = '$price', quantity = '$quantity', discount = '$discount'
+                SET price = '$price1', quantity = '$quantity1', discount = '$discount1'
                 WHERE idProduct = '$id' AND id = (SELECT id FROM variants WHERE idProduct = '$id' LIMIT 1 OFFSET $i);";
     }
 
@@ -74,7 +111,7 @@ function update_product($id, $iddm, $name, $status, $des, $hinh, $prices, $disco
 }
 function select_update_product($id){
     $sql = "SELECT product.id as idProduct, product.name, product.status, product.img, product.des, product.idCategory, 
-    variants.id, variants.price, variants.discount, variants.quantity, product_color.color, product_size.size
+    variants.id as idVariant, variants.price, variants.discount, variants.quantity, product_color.color, product_size.size
     FROM variants 
     JOIN product ON variants.idProduct = product.id 
     JOIN product_size ON variants.idSize = product_size.id 
@@ -120,6 +157,8 @@ function loadone_product_infor($id){
     $result = pdo_query($sql);
     return $result;
 }
+
+
 function load_product_same_type($idCategory,$id){
     $sql = "SELECT category.id as idCategory, product.id as idProduct, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
@@ -135,17 +174,17 @@ function load_product_same_type($idCategory,$id){
     $result = pdo_query($sql);
     return $result;
 }
-function load_detail($id){
-    $sql = "SELECT variants.id, product.name, product.img, variants.price, variants.discount, product_color.color, 
-    product_size.size
-    FROM product 
-    JOIN variants on variants.idProduct = product.id 
-    JOIN product_size on product_size.id = variants.idSize 
-    JOIN product_color on product_color.id = variants.idColor 
-    WHERE variants.id = $id;";
-    $result = pdo_query($sql);
-    return $result;
-}
+// function load_detail($id){
+//     $sql = "SELECT variants.id, product.name, product.img, variants.price, variants.discount, product_color.color, 
+//     product_size.size
+//     FROM product 
+//     JOIN variants on variants.idProduct = product.id 
+//     JOIN product_size on product_size.id = variants.idSize 
+//     JOIN product_color on product_color.id = variants.idColor 
+//     WHERE variants.id = $id;";
+//     $result = pdo_query($sql);
+//     return $result;
+// }
 function delete_product($id){
     // Tắt ràng buộc khóa ngoại trước khi xóa sau đó bật lại
     $sql = "SET foreign_key_checks = 0;

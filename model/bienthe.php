@@ -37,4 +37,18 @@ function update_color($id,$color){
     $sql = "UPDATE product_color set color = '$color' where id = $id";
     pdo_execute($sql);
 }
+function delete_variant($id){
+    // Tắt ràng buộc khóa ngoại trước khi xóa sau đó bật lại
+    $sql = "SET foreign_key_checks = 0;
+
+    DELETE variants,product_color,product_size
+    FROM variants
+    LEFT JOIN product_color ON variants.idColor = product_color.id
+    LEFT JOIN product_size ON variants.idSize = product_size.id
+    WHERE variants.id = '$id';
+
+    SET foreign_key_checks = 1;";
+
+    pdo_execute($sql);;
+}
 ?>
