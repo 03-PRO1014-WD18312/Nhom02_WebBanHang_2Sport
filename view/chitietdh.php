@@ -25,6 +25,8 @@
                     $sum=0;
                     foreach ($show_order as $show) {
                         extract($show);
+                        // echo '<pre>';
+                        // var_dump($show);
                         $price_formatted = number_format($price, 0, '.', ',');
                         $thanhtien = $price * $quantity;
                         $thanhtien_formatted = number_format($thanhtien, 0, '.', ',');
@@ -40,13 +42,38 @@
                                 <td><?=$thanhtien_formatted?>đ</td>
                                 <td><?php 
                                     if ($status=='3') {
-                                        echo'<a style="background-color: #DB0000; padding:7px 15px;text-decoration: none; color:#fff; border-radius:5px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="index.php?act=rate&id='.$id.'&idproduct='.$idProduct.'" target="rate">ĐÁNH GIÁ 🌟</a>';
+                                        $idkh=$_SESSION['login']['id'];
+                                        $id_product=$idProduct;
+                                        $comPareCheckRateTrue=comPareRate($idkh,$id_product);
+                                        if (empty($comPareCheckRateTrue)) {
+                                            echo'<a style="background-color: #DB0000; padding:7px 15px;text-decoration: none; color:#fff; border-radius:5px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="index.php?act=rate&id='.$id.'&idproduct='.$idProduct.'" target="rate">ĐÁNH GIÁ 🌟</a>';
+                                        }else {
+                                            echo'<a style="background-color: #DB0000; padding:7px 15px;text-decoration: none; color:#fff; border-radius:5px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="index.php?act=rate&id='.$id.'&idproduct='.$idProduct.'" target="rate">ĐÁNH GIÁ LẠI 🌟</a>';
+                                        }
                                     }
                                 ?></td>
                             </tr>
                     <?php  }
                     ?><tr style="font-weight:600">
-                        <td colspan="7" style="text-align:right;padding:15px 10px;">TỔNG TIỀN: <span style="color:#DB0000;"><?=number_format($sum, 0, '.', ',');?> VND</span></td>
+                        <td colspan="3" style="text-align:left; padding-left:10px;">TRẠNG THÁI ĐƠN HÀNG: 
+                        <?php 
+                        if ($status == 0 ) {
+                                echo '<span style="color:#fff; padding:2px 15px; background-color: #DB0000; border-radius:20px;"">Chờ xác nhận</span>';
+                            }elseif ($status == 1) {
+                                echo '<span style="color:#fff; padding:2px 15px; background-color: #069A8E; border-radius:20px;">Chờ lấy hàng</span>';
+                            }
+                            elseif ($status == 2) {
+                                echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Chờ giao hàng</span>';
+                            }elseif ($status == 3) {
+                                echo '<span style="color:#fff; padding:2px 15px; background-color: #153462; border-radius:20px;">Đã giao hàng <i class="fa-solid fa-check" style="font-size:15px;"></i></span>';
+                            }elseif ($status == 4){
+                                echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Đã huỷ</span>';
+                            }else {
+                                echo '<span style="color:#fff; padding:2px 15px; background-color: #F2921D; border-radius:20px;">Trả hàng</span>';
+                            } ?>
+                                    
+                        </td>
+                        <td colspan="4" style="text-align:right;padding:15px 10px;">TỔNG TIỀN: <span style="color:#DB0000;"><?=number_format($sum, 0, '.', ',');?> VND</span></td>
                     </tr>
             </tbody>
         </table>

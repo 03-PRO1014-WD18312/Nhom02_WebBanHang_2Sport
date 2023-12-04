@@ -141,15 +141,21 @@
                 $imgSp=$_POST['imgsp'];
                 $id_variant=$_POST['id_variant'];
                 $idkh=$_SESSION['login']['id'];
-                $quantity = 1;
                 if (isset($_SESSION['login'])) {
-                    addcart_quantity($nameSp, $priceSp, $imgSp, $quantity, $idkh, $id_variant);
+                    $search_quantily=search_quantily($id_variant,$idkh);
+                    if ($search_quantily) {
+                        foreach ($search_quantily as $searchSl) {
+                            extract($searchSl);
+                        }
+                        update_quantily($total_quantity,$id_variant,$idkh);
+                    }else {
+                        addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant);
+                    }
                     echo "<script>alert('Thêm giỏ hàng thành công 🛒');
                         if (performance.navigation.type == 0) {
                             window.location.href = window.location.href;
                             window.location.href = 'index.php?act=showcart';
                         }
-                        window.location.href = 'index.php?act=showcart';
                     </script>";
                 }else {
                     echo'<script>
@@ -206,8 +212,8 @@
                 $showcart=showcart($idkh);
                 include 'view/cart.php'; 
                 break;
-                case 'order_cart':
-                    error_reporting(0);
+            case 'order_cart':
+                    // extract($_SESSION['login']);
                     $idkh=$_SESSION['login']['id'];
                     $showcart = showcart($idkh);
                     $_SESSION['history_cart'] = $showcart;
@@ -226,12 +232,6 @@
                             $error_address="(*)";
                         }
                         if (empty($error_name) && empty($error_phone) && empty($error_address)) {
-                            update_info_user_order($name_order,$phone_order,$address_order,$idkh);
-                            $_SESSION['login']['name'] = $name_order;
-                            $_SESSION['login']['phone'] = $phone_order;
-                            $_SESSION['login']['address'] = $address_order;
-                            update_info_user_order($name_order,$phone_order,$address_order,$idkh);
-                            
                             insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment);
                             $info_order=check_infor_order($idkh);
                             foreach ($_SESSION['history_cart'] as $cartItem) {
@@ -274,11 +274,6 @@
                         $error_address="(*)";
                     }
                     if (empty($error_name) && empty($error_phone) && empty($error_address)) {
-                        update_info_user_order($name_order,$phone_order,$address_order,$idkh);
-                        $_SESSION['login']['name'] = $name_order;
-                        $_SESSION['login']['phone'] = $phone_order;
-                        $_SESSION['login']['address'] = $address_order;
-                        update_info_user_order($name_order,$phone_order,$address_order,$idkh);
                         insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment);
                         $info_order=check_infor_order($idkh);
                         $idOrder = $info_order[0]['id'];
@@ -299,10 +294,8 @@
                         ";
                     }
                 }
-                $showcart=showcart($idkh);
                 include 'view/order.php';
                 break;
-                
             case 'history-order':
                 $idkh = $_SESSION['login']['id'];
                 $info_order=check_infor_order($idkh);
@@ -369,13 +362,17 @@
             case 'rate':
                 $id_product=$_GET['idproduct'];
                 $listProductRate=list_product_rate($id_product);
+                $rating=$_POST['rating'];
+                $content_rate=$_POST['contentRate'];
+                $idkh = $_SESSION['login']['id'];
                 error_reporting(0);
                 // var_dump($id_product,$rating,$content_rate,$idkh);
                 if (isset($_POST['rateSubmit'])) {
-                    $rating=$_POST['rating'];
-                    $content_rate=$_POST['contentRate'];
-                    $idkh = $_SESSION['login']['id'];
                     rating_rate($idkh, $id_product, $content_rate,$rating);
+                    echo 'Đánh giá thành công 👋';
+                }
+                if (isset($_POST['rateComeBackSubmit'])) {
+                    ratingComeback_rate($idkh, $id_product, $content_rate, $rating);
                     echo 'Đánh giá thành công 👋';
                 }
                 include'view/rate.php';
@@ -383,7 +380,16 @@
             case "quenmatkhau" :
                 include 'view/quenmatkhau.php';
             break;
-            case "changePass" :
+            case "changePass":
+                if (isset($_POST['changePass'])) {
+                    $passMain=md5($_POST['passMain']);
+                    $passNew=$_POST['passNew'];
+                    $passEnter=$_POST['passEnter'];
+                    var_dump($passMain,$passNew,$passEnter);
+                    if (isset($_SESSION['login'])) {
+                        
+                    }
+                }
                 include 'view/changePass.php';
             break;
             case "price-form" :

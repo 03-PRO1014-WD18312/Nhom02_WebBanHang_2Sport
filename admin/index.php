@@ -259,6 +259,7 @@
                 if (isset($_GET['id'])) {
                     $id=$_GET['id'];
                     phanquyen($id);
+                    header('location: ?act=khachhang');
                 }
                 $dskh=list_kh();
                 include 'khachhang/list.php';
@@ -267,6 +268,7 @@
                 if (isset($_GET['id'])) {
                     $id=$_GET['id'];
                     goquyen($id);
+                    header('location: ?act=khachhang');
                 }
                 $dskh=list_kh();
                 include 'khachhang/list.php';
