@@ -39,15 +39,32 @@
                                 <td> 
                                     '. ($role == 1 ? 'Nhân viên' : 'Khách hàng') .'
                                 </td>
-                                <td>'. ($role == 0 ? '<a href="index.php?act=phanquyen&id='.$id.'" style="padding:10px; display:block;"><i class="fa-solid fa-user-plus" style="color: #023588;"></i></a>' : '<a href="index.php?act=goquyen&id='.$id.'" style="padding:10px; display:block;"><i class="fa-solid fa-user-minus" style="color: #ac0000;"></i></a>') .'</td>
+                                <td>'. ($role == 0 ? '<a href="index.php?act=phanquyen&id='.$id.'" style="padding:10px; display:block; text-decoration: none; color:#068FFF; "  onclick="return phanquyen()">Phân quyền</a>' : '<a href="index.php?act=goquyen&id='.$id.'" style="padding:10px; display:block; text-decoration: none; color:#DB0000;" onclick="return goquyen()">Gỡ quyền</a>') .'</td>
                             </tr>
                         ';
                         $i++;
                     }
                     echo'<caption style="caption-side:bottom;text-align:left; color: #A6A6A4; font-style:italic; padding:15px 0px;">Có '.$i.' khách hàng</caption>';
                 ?>
+                <script>
+                    function phanquyen() {
+                        confirm('Bạn có muốn phân quyền khách hàng này không ?');
+                    }
+                    function goquyen() {
+                        confirm('Bạn có muốn gỡ quyền nhân viên này không ?');
+                    }
+                </script>
                 </tbody>
             </table>  
+            <?php 
+                if (isset($search_tk)) {
+                    echo '
+                    <div class="btn-back" style="padding-top:20px;">
+                        <a href="index.php?act=khachhang"><i class="fa-regular fa-circle-left"></i> Danh sách</a>
+                    </div>
+                    ';
+                }
+            ?>
         </article>
 </main>
 <?php }else {

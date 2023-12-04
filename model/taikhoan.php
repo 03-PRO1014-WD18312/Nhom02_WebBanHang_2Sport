@@ -50,6 +50,9 @@
         $countUser=pdo_query($sql);
         return $countUser; 
     }
-
+    //Đổi mật khẩu
+    function changePass($idkh){
+      $sql=" ";
+    }
 
 ?>
