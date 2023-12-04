@@ -21,6 +21,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .binhluan{
+            width: 100%;
+        }
         .binhluan table{
             width: 100%; 
             border-left: 1px solid #D70019;

@@ -3,9 +3,11 @@
     <article>
         <div class="list-product">
             <h1>DANH SÁCH SẢN PHẨM</h1>
-            <form action="" class="formSearch">
-                <input type="text" placeholder="Tìm tên sản phẩm">
-                <button name="button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <form class="form-search" action="" method="post">
+                <div class="search-wp">
+                    <input class="input-search" name="inProduct" type="search" required placeholder="Bạn cần tìm gì...">
+                    <button class="btn-search" type="submit" name="searchProduct"><i class="fa fa-search"></i></button>
+                </div>
             </form>
             <form action="index.php?act=deleteselected-sp" method="post">
                 <table>
@@ -76,5 +78,6 @@
             });
         });
     });
+    
 </script>
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
     extract($detail);
     if(isset($_POST['addToCart'])){
         $nameSp=$_POST['productName'];
@@ -22,23 +22,26 @@
             </script>';
         }
     }
-    
+    ob_start();
     if (isset($_POST['buyProduct'])) {
         $nameSp=$_POST['productName'];
         $priceSp=$_POST['selectedDiscount'];
         $imgSp=$_POST['productImage'];
         $quantity = $_POST['quantity'];
         $id_variant=$_POST['variantId'];
-
         $idkh=$_SESSION['login']['id'];
-        $on_size_color_variant=on_size_color_variant($id_variant);
-        $colorSp=$on_size_color_variant[0]['color'];
-        $sizeSp=$on_size_color_variant[0]['size'];
-        $order=[$nameSp,$priceSp,$imgSp,$quantity,$id_variant,$idkh,$colorSp,$sizeSp];
+        if (isset($id_variant)) {
+            $on_size_color_variant=on_size_color_variant($id_variant);
+            $colorSp=$on_size_color_variant[0]['color'];
+            $sizeSp=$on_size_color_variant[0]['size'];
+        }
+        $idProduct=$_GET['id'];
+        $order=[$nameSp,$priceSp,$imgSp,$quantity,$id_variant,$idkh,$colorSp,$sizeSp,$idProduct];
         $_SESSION['order']=$order;
+    ob_clean();
         echo "<script>
-                window.location.href = 'index.php?act=order';
-            </script>";
+            window.location.href = 'index.php?act=order';
+        </script>";
         exit();
     }
 
@@ -135,9 +138,98 @@
             <div class="des"><b>Mô tả: </b><?= $des?></div>
         </div>
     </div>
-    <div class="comment" width="1360px">
+    <div class="comment container" >
         <h2>Bình luận</h2>
-        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="250px" style="margin-bottom: 50px;"></iframe>
+        <iframe src="view/binhluan-form.php?id=<?= $_GET['id'] ?>" frameborder="0" width="100%" height="200px"></iframe>
+    </div>
+    <div class="rate-wp">
+        <h2>
+            Đánh giá gần đây 🌟
+        </h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                if (!$showRating=='') {
+                    ?>
+                <?php 
+                foreach ($showRating as $showR ) {
+                    extract($showR);
+                    // echo '<pre>';
+                    // var_dump($showR);
+                    ?>
+                <tr>
+                    <td style="width:60px;"><img src="assets/img/<?=$img?>" width="50px" alt=""><br></td>
+                    <td style="padding:15px 0px;">
+                        <span style="font-weight:600;"><?= $name;?></span> <i class="fa-solid fa-circle-check" style="color: #1c4b2f; font-size:15px;"></i> <span style="font-size:15px; color: #1c4b2f;">Mua hàng tại 2 SPORT</span> <br>
+                        <div style="    
+                        float: left; display: flex;flex-direction: row-reverse; clear:left; padding:5px 0px;" >
+                        <?php
+                        switch ($rating) {
+                            case "5":
+                                echo "<p class='color-rating'>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    ";
+                                break;
+                            case "4":
+                                echo "                                    
+                                    <p>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    ";
+                                break;
+                            case "3":
+                                echo "                                          
+                                        <p>&#9733;<p>
+                                        <p>&#9733;<p>
+                                        <p class='color-rating'>&#9733;<p>
+                                        <p class='color-rating'>&#9733;<p>
+                                        <p class='color-rating'>&#9733;<p>
+                                        ";
+                                break;
+                            case "2":
+                                echo "
+                                    <p>&#9733;<p>
+                                    <p>&#9733;<p>
+                                    <p>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    <p class='color-rating'>&#9733;<p>
+                                    ";
+                                break;
+                            case "1":
+                                echo "
+                                <p>&#9733;<p>
+                                <p>&#9733;<p>
+                                <p>&#9733;<p>
+                                <p>&#9733;<p>
+                                <p class='color-rating'>&#9733;<p>
+                                ";
+                                break;
+                        }
+                        ?>
+                        </div><br>
+                        <span style="float:left; clear: left; padding-bottom:5px;"><?= $content_rate ?></span><br>
+                        <span style="font-size:14px; font-style:italic; color:#A2A378;float:left; clear: left;"><?= $date_rate ?></span>
+                    </td>
+                </tr>
+                    
+              <?php }
+
+                ?> <?php    }else{
+                    echo"<span style='font-size:20px;padding:20px 0px; display:inline-block;'>SẢN PHẨM CHƯA CÓ ĐÁNH GIÁ 🌟</span>";
+                }?>
+            </tbody>
+        </table>
     </div>
     <div class="similar-product">
         <h2>Sản phẩm cùng loại</h2>
@@ -168,7 +260,6 @@
         </div>
     </div>
 </div>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
     // Call loadForms with the ID of the first variant

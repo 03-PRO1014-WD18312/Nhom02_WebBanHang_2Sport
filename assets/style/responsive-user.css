@@ -37,6 +37,12 @@
         transition: opacity 0.3s;
     }
 }
+/* Màn hình lớn nhất là  1024x */
+@media  screen and (max-width: 1024px){
+    .product-ins{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
 /* Màn hình lớn nhất là  950px */
 @media  screen and (max-width: 950px){
     .list-menu>li:nth-child(1){
@@ -49,6 +55,9 @@
 
 /* Màn hình lớn nhất là  800px */
 @media  screen and (max-width: 800px){
+    .product-ins{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
     .form-search{
         height: 33px;
     }
@@ -81,6 +90,9 @@
 
 /* Màn hình lớn nhất là  600px */
 @media  screen and (max-width: 600px){
+    .product-ins{
+        grid-template-columns: 1fr 1fr;
+    }
     .fa-bag,.circle-user-none{
         display: block;
     }
@@ -117,6 +129,9 @@
 
 /* màn hình lớn nhất là  320px */
 @media  screen and (max-width: 320px){
+    .product-ins{
+        grid-template-columns: 1fr;
+    }
     .category{
         width: 70%;
     }
