@@ -1,6 +1,4 @@
 <?php
-// var_dump($sanpham);
-// extract($sanpham);
 $i = 0;
 ?>
 <main class="container">
@@ -48,29 +46,35 @@ $i = 0;
                         <?php foreach ($count as $row){
                             
                         ?>
-                        <div class="variant">
-                            <div class="variant-in">
+                        <div class="variant-update">
+                            <div class="variant-up">
                                 <label for="">Màu</label></br>
-                                <input type="text" list="color" name="color[]" placeholder="Nhập màu" value="<?= $sanpham[$i]['color'] ?>">
+                                <input type="text" list="color" name="color1[]" placeholder="Nhập màu" value="<?= $sanpham[$i]['color'] ?>">
                             </div>
-                            <div class="variant-in size">
+                            <div class="variant-up size">
                                 <label for="">Kích cỡ</label></br>
-                                <input type="text" list="size" name="size[]" placeholder="Nhập size" value="<?= $sanpham[$i]['size'] ?>">
+                                <input type="text" list="size" name="size1[]" placeholder="Nhập size" value="<?= $sanpham[$i]['size'] ?>">
                             </div>
-                            <div class="variant-in">
+                            <div class="variant-up">
                                 <label for="">Giá gốc</label></br>
-                                <input type="number" name="price[]" placeholder="Nhập giá gốc" value="<?= $sanpham[$i]['price'] ?>">
+                                <input type="number" name="price1[]" placeholder="Nhập giá gốc" value="<?= $sanpham[$i]['price'] ?>">
                             </div>
-                            <div class="variant-in">
+                            <div class="variant-up">
                                 <label for="">Giá khuyến mãi</label></br>
-                                <input type="number" name="priceSale[]" placeholder="Nhập giá sale" value="<?= $sanpham[$i]['discount'] ?>">
+                                <input type="number" name="priceSale1[]" placeholder="Nhập giá sale" value="<?= $sanpham[$i]['discount'] ?>">
                             </div>
-                            <div class="variant-in">
+                            <div class="variant-up">
                                 <label for="">Số lượng</label></br>
-                                <input type="number" name="quantity[]" min="1" value="<?= $sanpham[$i]['quantity'] ?>" placeholder="Nhập số lượng" >
+                                <input type="number" name="quantity1[]" min="1" value="<?= $sanpham[$i]['quantity'] ?>" placeholder="Nhập số lượng" >
                             </div>
+                            <a style="margin-top: 18px;" href="index.php?act=deleteVariant&id=<?= $sanpham[$i]['idVariant'] ?>"><i class="fa-solid fa-trash"></i></a>
                         </div>
                         <?php $i++; } ?>
+                        <div id="container-update">
+                        </div>
+                        <button id="btn-variant" type="button">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </button>
                     </div>
                     <datalist id="size">
                         <option value="39">
@@ -99,4 +103,64 @@ $i = 0;
         </div>
     </article>
 </main>
-        
+<script>
+    //thêm biến thể sản phẩm
+    var addButton = document.getElementById("btn-variant");
+    var container = document.getElementById("container-update");
+
+    // Định nghĩa hàm xử lý sự kiện khi người dùng nhấn vào nút "Thêm"
+    function addElement() {
+    // Tạo một phần tử HTML mới
+        var newElement = document.createElement("div");
+                // Thêm class "my-class" vào phần tử div
+        newElement.classList.add("variant");
+        // Hiển thị phần tử div trong DOM
+        // document.body.appendChild(newElement);
+        newElement.innerHTML = `
+            <div class="variant-in">
+                <label for="">Màu</label></br>
+                <input type="text" list="color" name="color[]" placeholder="Nhập màu">
+            </div>
+            <div class="variant-in size">
+                <label for="">Kích cỡ</label></br>
+                <input type="text" list="size" name="size[]" placeholder="Nhập size">
+            </div>
+            <div class="variant-in">
+                <label for="">Giá gốc</label></br>
+                <input type="number" name="price[]" placeholder="Nhập giá gốc">
+            </div>
+            <div class="variant-in">
+                <label for="">Giá khuyến mãi</label></br>
+                <input type="number" name="priceSale[]" placeholder="Nhập giá sale">
+            </div>
+            <div class="variant-in">
+                <label for="">Số lượng</label></br>
+                <input type="number" name="quantity[]" min="1" value="1" placeholder="Nhập số lượng">
+            </div>
+        `;
+
+        // Thêm phần tử mới vào container
+        container.appendChild(newElement);
+
+        // Tạo nút "Xóa" và gắn sự kiện xóa khi người dùng nhấn vào
+        var deleteButton = document.createElement("button");
+        deleteButton.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+        deleteButton.addEventListener("click", function() {
+            container.removeChild(newElement);
+            saveState();
+        });
+
+        // Thêm nút "Xóa" vào phần tử mới
+        newElement.appendChild(deleteButton);
+
+        // Lưu trạng thái của phần tử mới vào Local Storage
+        saveState();
+    }
+
+    // Gắn sự kiện "click" cho nút "Thêm" và gọi hàm addElement() khi xảy ra sự kiện
+    addButton.addEventListener("click", addElement);
+
+    // Gọi hàm khôi phục trạng thái khi trang được load lại
+    restoreState();
+
+</script>

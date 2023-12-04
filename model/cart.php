@@ -1,3 +1,4 @@
+
 <?php
     function search_quantily($id_variant,$idkh){
         $sql="SELECT quantity + 1  AS total_quantity
@@ -17,6 +18,7 @@
         $sql="UPDATE `cart` SET `quantity` = $total_quantity  WHERE `idVariant`= $id_variant AND `idAccount`= $idkh" ;
         pdo_execute($sql);
     }
+
     function addcart($nameSp,$priceSp,$imgSp,$idkh,$id_variant){
         $sql="INSERT INTO `cart`(`name`,`price`, `img`, `idAccount`, `idVariant`) VALUES ('$nameSp','$priceSp','$imgSp','$idkh','$id_variant')";
         pdo_execute($sql);
