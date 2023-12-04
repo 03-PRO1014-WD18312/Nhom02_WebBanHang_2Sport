@@ -36,40 +36,9 @@
             chart.draw(data, options);
         }
     </script>
-        <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            const data = google.visualization.arrayToDataTable([
-                ['Khách hàng', ''],
-                <?php
-                    $countUser=countUser();
-                    foreach ($countUser as $count ) {
-                        extract($count);
-                        echo "['Khách hàng', $countKH],";
-                    }
-                ?>
-
-            ]);
-            // Set Options
-            const options = {
-                title: 'THỐNG KÊ LƯỢNG KHÁCH HÀNG',
-                is3D: true
-            };
-            // Draw
-            const chart = new google.visualization.PieChart(document.getElementById('piechart_4d'));
-            chart.draw(data, options);
-        }
-    </script>
 </head>
 <body>
-    <div style="display: flex;">
-        <div id="piechart_3d" style="width: 900px; height: 400px;"></div>
-        <div id="piechart_4d" style="width: 500px; height: 400px;"></div>
-    </div>
+    <div id="piechart_3d" style="width: 100%; height: 400px;"></div>
 </body>
 </html>
 

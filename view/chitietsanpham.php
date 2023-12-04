@@ -8,7 +8,15 @@
         $id_variant=$_POST['variantId'];
         $idkh=$_SESSION['login']['id'];
         if (isset($_SESSION['login'])) {
-            addcart_quantity($nameSp,$priceSp,$imgSp,$quantity,$idkh,$id_variant);
+            $search_quantily_chitiet=search_quantily_chitiet($id_variant,$quantity,$idkh);
+            if ($search_quantily_chitiet) {
+                foreach ($search_quantily_chitiet as $searchSl) {
+                    extract($searchSl);
+                }
+                update_quantily($total_quantity,$id_variant,$idkh);
+            }else {
+                addcart_quantity($nameSp,$priceSp,$imgSp, $quantity,$idkh,$id_variant);
+            }
             echo "<script>alert('Thêm giỏ hàng thành công 🛒');
                 if (performance.navigation.type == 0) {
                     window.location.href = window.location.href;
@@ -19,10 +27,10 @@
         }else {
             echo'<script>
                 alert("Vui lòng đăng nhập");
-            </script>';
+            </script>';        
+            exit();
         }
     }
-    ob_start();
     if (isset($_POST['buyProduct'])) {
         $nameSp=$_POST['productName'];
         $priceSp=$_POST['selectedDiscount'];

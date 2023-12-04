@@ -89,6 +89,7 @@
             <?php 
                 foreach ($listProductRate as $listRatePro) {
                     extract($listRatePro);
+                    // var_dump($listRatePro);
                     ?>
                 <h3>Đánh giá sản phẩm 🌟<br>( <span style="font-size:15px; font-weight:400;font-style:italic;"><?= $name ?></span> )</h3>
             <?php    }
@@ -102,8 +103,17 @@
                 <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
             </div>
             <div class="subRate">
-                <textarea id="" cols="80" rows="7" name="contentRate" placeholder="Nhập đánh giá của bạn"></textarea><br>
-                <input type="submit" name="rateSubmit" value="Đánh giá">
+                <textarea id="" cols="80" rows="7" name="contentRate" placeholder="Nhập đánh giá của bạn" required></textarea><br>
+                <?php 
+                    $idkh=$_SESSION['login']['id'];
+                    $id_product=$id;
+                    $comPareCheckRateTrue=comPareRate($idkh,$id_product);
+                    if (empty($comPareCheckRateTrue)) {
+                        echo'<input type="submit" name="rateSubmit" value="Đánh giá">';
+                    }else {
+                        echo'<input type="submit" name="rateComeBackSubmit" value="Đánh giá lại">';
+                    }
+                ?>
             </div>
         </form>
         <div>

@@ -35,13 +35,13 @@
         ?>
             <div class="product-item">
                 <div class="detail">
-                    <a href="" class="detail-img">
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-img">
                         <img src="assets/img/<?= $sp['img']?>" alt="">
                     </a>
                     <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
-                    <a href=""><p><?= $sp['name'] ?></p></a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>"><p><?= $sp['name'] ?></p></a>
                     <span class="price-new"><?= number_format($sp['discount'])  ?></span>
                     <span class="price-origin">
                         <del><?=number_format($sp['price'])?></del>
@@ -72,13 +72,13 @@
         ?>
                         <div class="product-item">
                 <div class="detail">
-                    <a href="" class="detail-img">
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-img">
                         <img src="assets/img/<?= $sp['img']?>" alt="">
                     </a>
                     <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
-                    <a href=""><p><?= $sp['name'] ?></p></a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>"><p><?= $sp['name'] ?></p></a>
                     <span class="price-new"><?= number_format($sp['discount'])  ?></span>
                     <span class="price-origin">
                         <del><?=number_format($sp['price'])?></del>
@@ -109,13 +109,13 @@
         ?>
             <div class="product-item">
                 <div class="detail">
-                    <a href="" class="detail-img">
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-img">
                         <img src="assets/img/<?= $sp['img']?>" alt="">
                     </a>
                     <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
-                    <a href=""><p><?= $sp['name'] ?></p></a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>"><p><?= $sp['name'] ?></p></a>
                     <span class="price-new"><?= number_format($sp['discount'])  ?></span>
                     <span class="price-origin">
                         <del><?=number_format($sp['price'])?></del>
@@ -146,13 +146,13 @@
         ?>
             <div class="product-item">
                 <div class="detail">
-                    <a href="" class="detail-img">
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-img">
                         <img src="assets/img/<?= $sp['img']?>" alt="">
                     </a>
                     <a href="index.php?act=detail&id=<?= $sp[0]?>" class="detail-show">CHI TIẾT</a>
                 </div>
                 <div class="product-describe">
-                    <a href=""><p><?= $sp['name'] ?></p></a>
+                    <a href="index.php?act=detail&id=<?= $sp[0]?>"><p><?= $sp['name'] ?></p></a>
                     <span class="price-new"><?= number_format($sp['discount'])  ?></span>
                     <span class="price-origin">
                         <del><?=number_format($sp['price'])?></del>
