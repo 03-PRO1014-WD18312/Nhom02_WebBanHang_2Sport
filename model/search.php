@@ -24,17 +24,28 @@
         return $search_dh;
     }
     // tìm kiếm sản phẩm trang chủ user
-    function search_product($keyw){
+    // Hàm thực hiện sắp xếp kết quả tìm kiếm
+    function search_product($keyw, $orderBy = null){
+        // ...
         $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount
-        FROM product 
-        JOIN (
-            SELECT idProduct, price, discount, id as idVariant
-            FROM variants
-            GROUP BY idProduct
-        ) AS variants ON product.id = variants.idProduct 
-        JOIN category ON product.idCategory = category.id where product.name like '%$keyw%'";
-        
-        $search_wp=pdo_query($sql);
+                FROM product 
+                JOIN (
+                    SELECT idProduct, price, discount, id as idVariant
+                    FROM variants
+                    GROUP BY idProduct
+                ) AS variants ON product.id = variants.idProduct 
+                JOIN category ON product.idCategory = category.id 
+                WHERE product.name LIKE '%$keyw%'";
+    
+        // Thêm điều kiện sắp xếp nếu có
+        if ($orderBy) {
+            $sql .= " ORDER BY $orderBy";
+        }
+    
+        $search_wp = pdo_query($sql);
         return $search_wp;
     }
+    
+
+    
 ?>

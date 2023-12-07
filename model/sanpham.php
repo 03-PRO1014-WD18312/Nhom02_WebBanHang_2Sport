@@ -180,17 +180,6 @@ function load_product_same_type($idCategory,$id){
     $result = pdo_query($sql);
     return $result;
 }
-// function load_detail($id){
-//     $sql = "SELECT variants.id, product.name, product.img, variants.price, variants.discount, product_color.color, 
-//     product_size.size
-//     FROM product 
-//     JOIN variants on variants.idProduct = product.id 
-//     JOIN product_size on product_size.id = variants.idSize 
-//     JOIN product_color on product_color.id = variants.idColor 
-//     WHERE variants.id = $id;";
-//     $result = pdo_query($sql);
-//     return $result;
-// }
 function delete_product($id){
     // Tắt ràng buộc khóa ngoại trước khi xóa sau đó bật lại
     $sql = "SET foreign_key_checks = 0;
@@ -213,11 +202,11 @@ function list_sanpham_danhmuc($id){
     AS category_name FROM product JOIN category AS category_main ON product.idCategory = category_main.id 
     JOIN ( SELECT idProduct, price, discount, id as idVariant FROM variants GROUP BY idProduct ) AS variants 
     ON product.id = variants.idProduct JOIN category AS category_variants 
-    ON product.idCategory = category_variants.id WHERE product.idCategory = $id";
+    ON product.idCategory = category_variants.id WHERE product.idCategory = $id order by product.id desc";
     $result = pdo_query($sql);
     return $result;
 }
-function list_giay(){
+function list_giay_home(){
     $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
@@ -228,11 +217,11 @@ function list_giay(){
     JOIN category ON product.idCategory = category.id 
     JOIN product_size ON variants.idSize=product_size.id
     JOIN product_color ON variants.idColor=product_color.id
-    WHERE product.idCategory = 4";
+    WHERE product.idCategory = 4 order by product.id desc limit 5";
     $result = pdo_query($sql);
     return $result;
 }
-function list_gang(){
+function list_gang_home(){
     $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
@@ -243,11 +232,11 @@ function list_gang(){
     JOIN category ON product.idCategory = category.id 
     JOIN product_size ON variants.idSize=product_size.id
     JOIN product_color ON variants.idColor=product_color.id
-    WHERE product.idCategory = 5 LIMIT 5";
+    WHERE product.idCategory = 5 order by product.id desc limit 5";
     $result = pdo_query($sql);
     return $result;
 }
-function list_quanao(){
+function list_quanao_home(){
     $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
@@ -258,11 +247,11 @@ function list_quanao(){
     JOIN category ON product.idCategory = category.id 
     JOIN product_size ON variants.idSize=product_size.id
     JOIN product_color ON variants.idColor=product_color.id
-    WHERE product.idCategory = 6 LIMIT 5";
+    WHERE product.idCategory = 6 order by product.id desc limit 5";
     $result = pdo_query($sql);
     return $result;
 }
-function list_ball(){
+function list_ball_home(){
     $sql = "SELECT product.id, product.name, product.img, variants.price, variants.discount, variants.id, variants.idSize, variants.idColor, product_color.color, product_size.size 
     FROM product 
     JOIN (
@@ -273,7 +262,7 @@ function list_ball(){
     JOIN category ON product.idCategory = category.id 
     JOIN product_size ON variants.idSize=product_size.id
     JOIN product_color ON variants.idColor=product_color.id
-    WHERE product.idCategory = 7 LIMIT 5";
+    WHERE product.idCategory = 7 order by product.id desc limit 5";
     $result = pdo_query($sql);
     return $result;
 }

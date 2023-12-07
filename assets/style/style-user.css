@@ -1637,14 +1637,14 @@ footer{
     position: absolute;
     right: 35px;
 }
-#filterContainer{
+.extra #filterContainer{
     position: relative;
 }
-#filterOptions {
+.extra #filterOptions {
     position: absolute;
     top: 70px;
     right: -30px;
-    display: none; /* Ẩn ban đầu */
+     display: none;/* Ẩn ban đầu */
     position: absolute;
     background-color: #fff; /* Màu nền của dropdown */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng */
@@ -1652,14 +1652,14 @@ footer{
     z-index: 1;
 }
 
-.filter-link {
+.extra .filter-link {
     display: block;
     padding: 8px;
     text-decoration: none;
     color: #333; /* Màu chữ */
 }
 
-.filter-link:hover {
+.extra .filter-link:hover {
     background-color: #f0f0f0; /* Màu nền khi hover */
 
 }

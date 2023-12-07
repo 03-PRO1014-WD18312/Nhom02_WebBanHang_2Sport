@@ -28,14 +28,15 @@
                 }
                 include "view/danhmucsampham.php";
                 break;
-            case "timkiem" :
-                if(isset($_POST['keyw']) && $_POST['keyw'] != '') {
-                    $keyw = $_POST['keyw'];
-                    $listSearch = search_product($keyw);
-                    $listCategory = list_category();
-                }
-                include "view/timkiem.php";
-                break;
+                case "timkiem" :
+                    if(isset($_POST['keyw']) && $_POST['keyw'] != '') {
+                        $keyw = $_POST['keyw'];
+                        $orderBy = isset($_GET['orderby']) ? $_GET['orderby'] : null; // Lấy giá trị sắp xếp từ URL
+                        $listSearch = search_product($keyw, $orderBy);
+                        $listCategory = list_category();
+                    }
+                    include "view/timkiem.php";
+                    break;
             case "dangky" :
                 if (isset($_POST['register'])) {
                     $user=$_POST['user'];
@@ -213,6 +214,7 @@
                 include 'view/cart.php'; 
                 break;
             case 'order_cart':
+                    error_reporting(0);
                     // extract($_SESSION['login']);
                     $idkh=$_SESSION['login']['id'];
                     $showcart = showcart($idkh);
@@ -253,6 +255,21 @@
                             ";
                         }
 
+                    }elseif(isset($_POST['payment_atm'])) {
+                        insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment);
+                            $info_order=check_infor_order($idkh);
+                            foreach ($_SESSION['history_cart'] as $cartItem) {
+                                $productName = $cartItem['product_name'];
+                                $price = $cartItem['variant_discount'];
+                                $color = $cartItem['color'];
+                                $size = $cartItem['size'];
+                                $quantity = $cartItem['quantity'];
+                                $idProduct = $cartItem['product_id'];
+                                $idOrder = $info_order[0]['id'];
+                                insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
+                            }
+                            clean_cart($idkh);
+                            header('Location: view/payment_atm.php');
                     }
                 $showcart=showcart($idkh);
                 include 'view/order_cart.php';

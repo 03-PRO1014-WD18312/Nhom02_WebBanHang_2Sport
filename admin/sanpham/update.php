@@ -30,7 +30,7 @@ $i = 0;
                     </div>
                     <div class="right">
                             <div class="main-image">
-                                <label for="fileInput5" class="main-file-input"><i class="fa-solid fa-upload"></i>Ảnh chính</label>
+                                <label for="fileInput5" class="main-file-input"><img src="../assets/img/<?= $sanpham[0]['img'] ?>" alt=""><i class="fa-solid fa-upload"></i></label>
                                 <input type="file" name="image" id="fileInput5" style="display: none;">
                             </div>
                             <div class="textarea-sp">
