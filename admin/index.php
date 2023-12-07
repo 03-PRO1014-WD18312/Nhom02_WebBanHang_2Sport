@@ -98,7 +98,6 @@
                         $color1 = $_POST['color1'];
     
                         if(isset($_POST['color'])){
-                                
                             $price = $_POST['price'];
                             $discount = $_POST['priceSale'];
                             $quantity = $_POST['quantity'];
@@ -106,12 +105,10 @@
                             $color = $_POST['color'];
                             insert_product_details($id, $color, $size, $price, $discount, $quantity);
                         }
-    
                         $hinh = $_FILES['image']['name'];
                         $target_direct = "../assets/img/";
                         $target_file = $target_direct.basename($hinh);
                         move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-    
                         update_product($id, $iddm, $name, $status, $des, $hinh, $price1, $discount1, $quantity1, $color1, $size1);
                         header('location: index.php?act=listsp');
                     }
@@ -338,9 +335,15 @@
                 $thongke_dt=thongke_doanh_thu();
                 include 'thongke/dh-dt.php';
                 break;
-            case 'tkdt':
-                $thongke_dt=thongke_doanh_thu();
-                include 'thongke/bieudo-dh.php';
+            case 'dtweek':
+                // $thongke_dt=thongke_doanh_thu();
+                $thongke_dt_follow_week=thongke_doanh_thu_follow_week();
+                include 'thongke/bieudo-dt-week.php';
+                break;
+            case 'dtmonth':
+                // $thongke_dt=thongke_doanh_thu();
+                $thongke_dt_follow_month=thongke_doanh_thu_follow_month();
+                include 'thongke/bieudo-dt-month.php';
                 break;
         default:
             include 'home.php';
