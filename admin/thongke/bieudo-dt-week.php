@@ -1,8 +1,3 @@
-<?php
-    include "../model/pdo.php";
-    include "../model/thongke.php";
-    include "../model/taikhoan.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,28 +12,30 @@
             const data = google.visualization.arrayToDataTable([
                 ['Danh mục', 'Doanh thu'],
                 <?php
-                    $thongke_doanh_thu_follow_date=thongke_doanh_thu_follow_date();
-                    foreach ($thongke_doanh_thu_follow_date as $tk_date_dt ) {
-                        extract($tk_date_dt);
+                    foreach ($thongke_dt_follow_week as $tk_week_dt ) {
+                        extract($tk_week_dt);
                         echo "['$date', $totalOrder],";
                     }
                 ?>
-
             ]);
             // Set Options
             const options = {
-                title: 'BIỂU ĐỒ DOANH THU THEO NGÀY',
+                title: 'BIỂU ĐỒ DOANH THU THEO TUẦN',
                 is3D: true,
                 colors: ['#BD0000']
             };
             // Draw
-            const chart = new google.visualization.LineChart(document.getElementById('piechart_3d'));
+            const chart = new google.visualization.ColumnChart(document.getElementById('piechart_4d'));
             chart.draw(data, options);
         }
     </script>
+        <style>
+        #header{
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div id="piechart_3d" style="width: 100%; height: 400px;"></div>
+    <div id="piechart_4d" style="width: 100%; height: 400px;"></div>
 </body>
 </html>
-

@@ -13,11 +13,11 @@
         <div class="update-user-right">
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-grid-pass-info">
-                    <label for="">Mật khẩu cũ</label><br>
+                    <label for="">Mật khẩu cũ</label> <span style="color:#DB0000; font-size:15px; font-style:italic;"><?= $error_PassMain; ?></span><br>
                     <input type="password" name="passMain" placeholder="Vui lòng nhập mật khẩu cũ" id=""><br><br>
-                    <label for="">Mật khẩu mới</label><br>
+                    <label for="">Mật khẩu mới</label> <span style="color:#DB0000; font-size:15px; font-style:italic;"><?= $error_PassNew; ?></span><br>
                     <input type="password" name="passNew" placeholder="Vui lòng nhập mật khẩu mới" id=""><br><br>
-                    <label for="">Nhập lại mật khẩu mới</label><br>
+                    <label for="">Nhập lại mật khẩu mới</label> <span style="color:#DB0000; font-size:15px;font-style:italic;"><?= $error_PassEnter; ?></span><br>
                     <input type="password" name="passEnter" placeholder="Vui lòng nhập lại mật khẩu mới" id=""><br>
                     <br><br>
                     <input type="submit" name="changePass" value="UPDATE">
