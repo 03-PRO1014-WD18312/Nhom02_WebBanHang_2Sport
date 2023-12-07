@@ -50,9 +50,17 @@
         $countUser=pdo_query($sql);
         return $countUser; 
     }
-    //Đổi mật khẩu
-    function changePass($idkh){
-      $sql=" ";
+    //check password
+    function searchPass($idkh){
+      $sql="SELECT * FROM `account` WHERE id=$idkh";
+      $searchPass=pdo_query($sql);
+      return $searchPass;
+    }
+    //đổi mật khẩu
+    function changePass($idkh,$passwordNews){
+      $sql="UPDATE `account` SET `password`='$passwordNews' WHERE  id=$idkh";
+      $changePass=pdo_query($sql);
+      return $changePass;
     }
 
 ?>

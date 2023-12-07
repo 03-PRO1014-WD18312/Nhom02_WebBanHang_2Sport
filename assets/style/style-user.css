@@ -713,6 +713,7 @@ main .slide-banner img{
     font-size: 20px;
     background-color: var(--bg-color-main);
     color: var(--bg-color-ins);
+    cursor: pointer;
 }
 .captcha-wp span{
     font-weight: 600;

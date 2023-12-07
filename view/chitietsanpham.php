@@ -84,6 +84,7 @@
                         ></div>
                     <?php } ?>
                 <?php } ?>
+                </div>
             </div>
             <div class="right">
                 <h3 class="name-product"><?= $name ?></h3>

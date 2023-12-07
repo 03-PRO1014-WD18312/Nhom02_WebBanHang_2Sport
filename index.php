@@ -9,6 +9,7 @@
     include 'model/cart.php';
     include 'model/rating.php';
     include 'model/order_payment.php';
+    include 'model/checkOrder.php';
     if (isset($_SESSION['login'])) {
         $idkh = $_SESSION['login']['id'];
         // Retrieve cart count
@@ -74,9 +75,7 @@
                                     window.location.href = 'index.php?act=dangnhap';
                                 </script>";
                         }
-                        
                     }
-
                 }
                 if (isset($_SESSION['login'])) {
                     include 'view/home.php';
@@ -310,6 +309,24 @@
                 include 'view/chitietdh.php';
                break;
             case 'checkdh':
+                if (isset($_POST['checkOrder'])) {
+                    $enterCaptcha=$_POST['enterCaptcha'];
+                    $phoneUser=$_POST['phoneUser'];
+                    $error_EnterPhone=$error_captcha='';
+                    if (empty($enterCaptcha)) {
+                        $error_EnterPhone="Vui lòng nhập số điện thoại !";
+                    }
+                    $checkPhone_Order=checkPhone_Order($phoneUser);
+                    if (!$checkPhone_Order) {
+                        $error_EnterPhone="Số điện thoại không tồn tại !";
+                    }
+                    if ($enterCaptcha==$_SESSION['captcha']) {
+                        include 'view/show-check-order.php';
+                        break;
+                    }else{
+                        $error_captcha='Bạn nhập sai captcha ! Vui lòng nhập lại ✍️';
+                    }
+                }
                 include 'view/checkdh.php';
                 break;
             case "detail" :
@@ -346,9 +363,7 @@
                     $_SESSION['login']['phone'] = $phone_order;
                     $_SESSION['login']['address'] = $address_order;
                     $_SESSION['login']['payment'] = $payment_order;
-                    update_info_user($email_user,$name_order,$img_user,$phone_order,$address_order,$payment_order,$idkh);
-
-                    header("Location: index.php?act=setInfoUser");
+                    
                     echo "<script>alert('Cập nhập thông tin thành công 👏');
                         if (performance.navigation.type == 0) {
                             window.location.href = window.location.href;
@@ -382,12 +397,41 @@
             break;
             case "changePass":
                 if (isset($_POST['changePass'])) {
+                    $passwordMain=$_POST['passMain'];
                     $passMain=md5($_POST['passMain']);
                     $passNew=$_POST['passNew'];
                     $passEnter=$_POST['passEnter'];
-                    var_dump($passMain,$passNew,$passEnter);
+                    $idkh=$_SESSION['login']['id'];
+                    // var_dump($passMain,$passNew,$passEnter);
+                    $error_PassMain=$error_PassNew=$error_PassEnter='';
                     if (isset($_SESSION['login'])) {
-                        
+                        $searchPass=searchPass($idkh);
+                        // echo '<pre>';
+                        // var_dump($searchPass);
+                        if (empty($passNew)) {
+                            $error_PassNew="(*)";
+                            $error_PassEnter="(*)";
+                        }
+                        if ($passMain==$searchPass[0]['password']) {
+                            if ($passNew == $passEnter) {
+                                $passwordNews=md5($_POST['passNew']);
+                                changePass($idkh,$passwordNews);
+                                unset($_SESSION['login']);
+                                echo "
+                                    <script>
+                                        alert('Đổi mật khẩu thành công 👏');
+                                        window.location.href = 'index.php';
+                                    </script>
+                                ";
+                            }else {
+                                $error_PassEnter="( Mật khẩu nhập lại không chính xác ! )";
+                            }
+                        }else {
+                            $error_PassMain="( Mật khẩu cũ không chính xác ! )";
+                        }
+                        if (empty($passwordMain)) {
+                            $error_PassMain="(*)";
+                        }
                     }
                 }
                 include 'view/changePass.php';

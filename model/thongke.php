@@ -23,9 +23,23 @@ function load_thongke_sanpham_danhmuc(){
         $thongke_dt=pdo_query($sql);
         return $thongke_dt;
     }
+    // thống kê doanh thu theo ngày
     function thongke_doanh_thu_follow_date(){
         $sql="SELECT order_info.date, order_info.status,SUM(order_detail.price*order_detail.quantity) AS totalOrder FROM `order_info` INNER JOIN order_detail ON order_info.id=order_detail.idOrder WHERE order_info.status=3 GROUP BY date(order_info.date)";
         $thongke_dt_follow_date=pdo_query($sql);
         return $thongke_dt_follow_date;
     }
+    // thống kê doanh thu theo tuần
+    function thongke_doanh_thu_follow_week(){
+        $sql="SELECT order_info.date, order_info.status,SUM(order_detail.price*order_detail.quantity) AS totalOrder FROM `order_info` INNER JOIN order_detail ON order_info.id=order_detail.idOrder WHERE order_info.status=3 GROUP BY WEEK(order_info.date)";
+        $thongke_dt_follow_week=pdo_query($sql);
+        return $thongke_dt_follow_week;
+    }
+        // thống kê doanh thu theo ngày
+        function thongke_doanh_thu_follow_month(){
+            $sql="SELECT order_info.date, order_info.status,SUM(order_detail.price*order_detail.quantity) AS totalOrder FROM `order_info` INNER JOIN order_detail ON order_info.id=order_detail.idOrder WHERE order_info.status=3 GROUP BY MONTH(order_info.date)";
+            $thongke_dt_follow_month=pdo_query($sql);
+            return $thongke_dt_follow_month;
+        }
+
 ?>

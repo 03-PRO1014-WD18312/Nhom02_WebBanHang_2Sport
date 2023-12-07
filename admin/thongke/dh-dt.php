@@ -3,7 +3,7 @@
             <?php include "boxleft.php" ?>
             <article>
                 <div class="tilte-ds">
-                    <h2>THỐNG KÊ ĐƠN HÀNG THEO DOANH THU</h2>
+                    <h2>THỐNG KÊ DOANH THU</h2>
                 </div>
                 <table class="table-tk">
                     <thead>
@@ -36,7 +36,8 @@
                                     </tr>
                     </tbody>
                 </table>  
-                <a target="chart" href="index.php?act=tkdt"><button class="btn-bieudo">XEM BIỂU ĐỒ</button> </a>
+                <a target="chart" href="index.php?act=dtweek"><button class="btn-bieudo">DOANH THU THEO TUẦN</button> </a>
+                <a target="chart" href="index.php?act=dtmonth"><button class="btn-bieudo">DOANH THU THEO THÁNG</button> </a>
                 <iframe src="" name="chart" frameborder="0" width="100%" height="520px"></iframe>
             </article>
     </main>
