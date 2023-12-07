@@ -2,7 +2,18 @@
     
     <div class="product-wp">
         <h3><?= $listsp[0]['category_name'] ?> <span>( 100 SẢN PHẨM )</span></h3>
-        <div class="product-ins">
+        <div class="filter" id="filterContainer">
+            <div id="fatherFilter">
+                <i class="fa-solid fa-filter" id="filterIcon"></i>
+                <div class="filter-options" id="filterOptions">
+                    <button value="view desc" class="filter-link">Được xem nhiều nhất</button>
+                    <button value="discount asc" class="filter-link">Từ giá thấp đến cao</button>
+                    <button value="discount desc" class="filter-link">Từ giá cao đến thấp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="product-ins" id="searchResults">
         <?php 
         foreach ($listsp as $sp){
             extract($sp);
@@ -38,4 +49,41 @@
         </div>
     </div>
 </main>
+<script>
+    var filterContainer = document.getElementById('filterContainer');
+    var filterOptions = document.getElementById('filterOptions');
+    var fatherFilter = document.getElementById('fatherFilter');
+
+    // Hiển thị dropdown khi di chuột vào biểu tượng
+    fatherFilter.addEventListener('mouseenter', function() {
+        filterOptions.style.display = 'block';
+    });
+
+    // Ẩn dropdown khi di chuột ra khỏi biểu tượng
+    fatherFilter.addEventListener('mouseleave', function() {
+        filterOptions.style.display = 'none';
+    });
+
+    // Ẩn dropdown nếu di chuột ra khỏi cả khu vực chứa biểu tượng và dropdown
+    filterOptions.addEventListener('mouseleave', function() {
+        filterOptions.style.display = 'none';
+    });
     
+    var filterOptions = document.getElementById('filterOptions');
+    var searchResults = document.getElementById('searchResults');
+
+    filterOptions.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON') {
+            var orderBy = e.target.value;
+            // Gửi yêu cầu Ajax để lấy lại kết quả tìm kiếm dựa trên thứ tự sắp xếp mới
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    searchResults.innerHTML = xhr.responseText; // Cập nhật nội dung tìm kiếm
+                }
+            };
+            xhr.open('GET', 'view/ajax_search.php?keyw=<?= $keyw ?>&orderby=' + orderBy, true);
+            xhr.send();
+        }
+    });
+</script>

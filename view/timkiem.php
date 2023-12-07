@@ -9,17 +9,19 @@
             <?php } ?>
         </div>
         <div class="filter" id="filterContainer">
-            <i class="fa-solid fa-filter" id="filterIcon"></i>
-            <div class="filter-options" id="filterOptions">
-                <a href="" class="filter-link">Được xem nhiều nhất</a>
-                <a href="#" class="filter-link">Từ giá thấp đến cao</a>
-                <a href="#" class="filter-link">Từ giá cao đến thấp</a>
+            <div id="fatherFilter">
+                <i class="fa-solid fa-filter" id="filterIcon"></i>
+                <div class="filter-options" id="filterOptions">
+                    <button value="view desc" class="filter-link">Được xem nhiều nhất</button>
+                    <button value="discount asc" class="filter-link">Từ giá thấp đến cao</button>
+                    <button value="discount desc" class="filter-link">Từ giá cao đến thấp</button>
+                </div>
             </div>
         </div>
     </div>
     <div class="product-wp">
         <h3>Kết quả tìm kiếm từ khóa " <?= $keyw ?> "</h3>
-        <div class="product-ins">
+        <div class="product-ins" id="searchResults">
         <?php 
         foreach ($listSearch as $sp){
             extract($sp);
@@ -58,20 +60,39 @@
 <script>
     var filterContainer = document.getElementById('filterContainer');
     var filterOptions = document.getElementById('filterOptions');
+    var fatherFilter = document.getElementById('fatherFilter');
 
     // Hiển thị dropdown khi di chuột vào biểu tượng
-    filterContainer.addEventListener('mouseenter', function() {
+    fatherFilter.addEventListener('mouseenter', function() {
         filterOptions.style.display = 'block';
     });
 
     // Ẩn dropdown khi di chuột ra khỏi biểu tượng
-    filterContainer.addEventListener('mouseleave', function() {
+    fatherFilter.addEventListener('mouseleave', function() {
         filterOptions.style.display = 'none';
     });
 
     // Ẩn dropdown nếu di chuột ra khỏi cả khu vực chứa biểu tượng và dropdown
     filterOptions.addEventListener('mouseleave', function() {
         filterOptions.style.display = 'none';
+    });
+    
+    var filterOptions = document.getElementById('filterOptions');
+    var searchResults = document.getElementById('searchResults');
+
+    filterOptions.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON') {
+            var orderBy = e.target.value;
+            // Gửi yêu cầu Ajax để lấy lại kết quả tìm kiếm dựa trên thứ tự sắp xếp mới
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    searchResults.innerHTML = xhr.responseText; // Cập nhật nội dung tìm kiếm
+                }
+            };
+            xhr.open('GET', 'view/ajax_search.php?keyw=<?= $keyw ?>&orderby=' + orderBy, true);
+            xhr.send();
+        }
     });
 </script>
 

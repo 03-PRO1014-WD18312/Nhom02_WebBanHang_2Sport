@@ -28,7 +28,7 @@
         <h3>GIÀY BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
-        $listGiay = list_giay();
+        $listGiay = list_giay_home();
         foreach ($listGiay as $sp){
             // echo '<pre>';
             // var_dump($sp);
@@ -42,9 +42,9 @@
                 </div>
                 <div class="product-describe">
                     <a href="index.php?act=detail&id=<?= $sp[0]?>"><p><?= $sp['name'] ?></p></a>
-                    <span class="price-new"><?= number_format($sp['discount'])  ?></span>
+                    <span class="price-new"><?= number_format($sp['discount'])  ?>đ</span>
                     <span class="price-origin">
-                        <del><?=number_format($sp['price'])?></del>
+                        <del><?=number_format($sp['price'])?>đ</del>
                     </span>
                 </div>
                 <div class="buy-cart">
@@ -66,7 +66,7 @@
         <h3>GĂNG TAY THỦ MÔN <span>( 100 SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
-        $listGang = list_gang();
+        $listGang = list_gang_home();
         foreach ($listGang as $sp){
             extract($sp);
         ?>
@@ -79,9 +79,9 @@
                 </div>
                 <div class="product-describe">
                     <a href="index.php?act=detail&id=<?= $sp[0]?>"><p><?= $sp['name'] ?></p></a>
-                    <span class="price-new"><?= number_format($sp['discount'])  ?></span>
+                    <span class="price-new"><?= number_format($sp['discount'])  ?>đ</span>
                     <span class="price-origin">
-                        <del><?=number_format($sp['price'])?></del>
+                        <del><?=number_format($sp['price'])?>đ</del>
                     </span>
                 </div>
                 <div class="buy-cart">
@@ -103,7 +103,7 @@
         <h3>QUẢ BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
-        $listBall = list_ball();
+        $listBall = list_ball_home();
         foreach ($listBall as $sp){
             extract($sp);
         ?>
@@ -116,9 +116,9 @@
                 </div>
                 <div class="product-describe">
                     <a href="index.php?act=detail&id=<?= $sp[0]?>"><p><?= $sp['name'] ?></p></a>
-                    <span class="price-new"><?= number_format($sp['discount'])  ?></span>
+                    <span class="price-new"><?= number_format($sp['discount'])  ?>đ</span>
                     <span class="price-origin">
-                        <del><?=number_format($sp['price'])?></del>
+                        <del><?=number_format($sp['price'])?>đ</del>
                     </span>
                 </div>
                 <div class="buy-cart">
@@ -140,7 +140,7 @@
         <h3>ÁO BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
-        $listQuanao = list_quanao();
+        $listQuanao = list_quanao_home();
         foreach ($listQuanao as $sp){
             extract($sp);
         ?>
@@ -153,9 +153,9 @@
                 </div>
                 <div class="product-describe">
                     <a href="index.php?act=detail&id=<?= $sp[0]?>"><p><?= $sp['name'] ?></p></a>
-                    <span class="price-new"><?= number_format($sp['discount'])  ?></span>
+                    <span class="price-new"><?= number_format($sp['discount'])  ?>đ</span>
                     <span class="price-origin">
-                        <del><?=number_format($sp['price'])?></del>
+                        <del><?=number_format($sp['price'])?>đ</del>
                     </span>
                 </div>
                 <div class="buy-cart">

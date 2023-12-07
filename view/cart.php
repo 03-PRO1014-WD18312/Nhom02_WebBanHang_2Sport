@@ -37,7 +37,7 @@
                                 <td><span style="background-color: '.$color.'; padding: 10px 20px; border:1px solid #d9d9d9; border-radius:50%;"></span></td>
                                 <td>'.$size.'</td>
                                 <td>'.$price_formatted.'đ</td>
-                                <td><input type="number" min="1" name="quantity['.$cart_id.']" value="'.$quantity.'" id=""></td>
+                                <td><input type="number" min="1" name="quantity['.$cart_id.']" value="'.$quantity.'" id="" max="'.$variant_quantity.'"></td>
                                 <td>'.$thanhtien_formatted.'đ</td>
                                 <td><a href="index.php?act=deletecart&id='.$cart_id.'" onclick="return xoacart()"><i class="fa-solid fa-trash-can"></i></a></td>
                             </tr>
