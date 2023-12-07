@@ -78,22 +78,23 @@
                         $thanhtien_formatted = number_format($thanhtien, 0, '.', ',');
                         $sum += $thanhtien;
                     }
-                    echo '
-                        <div class="right_order">
-                            <h4><i class="fa-solid fa-money-bill"></i> TỔNG TIỀN: '.number_format($sum, 0, '.', ',').' VNĐ</h4>
-                            <div class="payment-in">
-                                <input type="hidden" name="tongtien_order" value="'. $sum .'">
-                                <h5><i class="fa-solid fa-credit-card"></i> HÌNH THỨC THANH TOÁN <a href="index.php?act=setInfoUser"><i class="fa-solid fa-square-pen" style="font-size:15px; color:#BD0000;"></i></a></h5> 
-                                <div class="payout-in">
-                                    <select class="select-payment" name="payment_method" disabled id="">
-                                        <option value="0" '.($payment == "0" ? "selected" : "").'>💵 Thanh toán bằng tiền mặt</option>
-                                        <option value="1" '.($payment == "1" ? "selected" : "").'>🏧 Thanh toán bằng ATM MOMO</option>
-                                    </select>
-                                    <input type="submit" name="payment" value="ĐẶT HÀNG">
+                        echo '
+                            <div class="right_order">
+                                <h4><i class="fa-solid fa-money-bill"></i> TỔNG TIỀN: ' . number_format($sum, 0, '.', ',') . ' VNĐ</h4>
+                                <div class="payment-in">
+                                    <input type="hidden" name="tongtien_order" value="' . $sum . '">
+                                    <h5><i class="fa-solid fa-credit-card"></i> HÌNH THỨC THANH TOÁN <a href="index.php?act=setInfoUser"><i class="fa-solid fa-square-pen" style="font-size:15px; color:#BD0000;"></i></a></h5> 
+                                    <div class="payout-in">
+                                        <select class="select-payment" name="payment_method" id="">
+                                            <option value="0" selected>💵 Thanh toán bằng tiền mặt</option>
+                                            <option value="1">🏧 Thanh toán bằng ATM MOMO</option>
+                                        </select>
+                                        <input type="submit" name="payment" value="THANH TOÁN BẰNG TIỀN MẶT">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    ';      
+                    '; 
             ?>
             </form>
         </div>

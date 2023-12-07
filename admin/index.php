@@ -98,7 +98,6 @@
                         $color1 = $_POST['color1'];
     
                         if(isset($_POST['color'])){
-    
                             $price = $_POST['price'];
                             $discount = $_POST['priceSale'];
                             $quantity = $_POST['quantity'];

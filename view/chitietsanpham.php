@@ -46,15 +46,12 @@
         $idProduct=$_GET['id'];
         $order=[$nameSp,$priceSp,$imgSp,$quantity,$id_variant,$idkh,$colorSp,$sizeSp,$idProduct];
         $_SESSION['order']=$order;
-    ob_clean();
+        ob_clean();
         echo "<script>
             window.location.href = 'index.php?act=order';
         </script>";
         exit();
     }
-
-
-
 ?>
 
 <div class="form-detail container">
@@ -128,7 +125,7 @@
                     <p>Số lượng: </p>
                     <div class="number-input">
                         <button type="button" class="btn-minus" onclick="decrement()">-</button>
-                        <input type="number" id="quantity" name="quantity" min="1" value="1"/>
+                        <input type="number" id="quantity" name="quantity" min="1" max="" value="1"/>
                         <button type="button" class="btn-plus" onclick="increment()">+</button>
                     </div>
                 </div>
@@ -313,7 +310,8 @@
         document.getElementById("selectedPrice").value = variant.price;
         document.getElementById("selectedDiscount").value = variant.discount;
         document.getElementById("selectedSize").value = variant.size;
-        document.getElementById("variantId").value = variant.id; // Chỉnh sửa đây
+        document.getElementById("quantity").max = variant.quantity;
+        document.getElementById("variantId").value = variant.idVariant; 
 
         // Hiển thị giá, discount và size tương ứng
         document.getElementById("display-discount").innerText = "Giảm giá: " + variant.discount + " đ";
@@ -345,7 +343,7 @@
     function decrement() {
         var input = document.getElementById('quantity');
         var value = parseInt(input.value, 10);
-        if (value > 0) {
+        if (value > 1) {
             input.value = value - 1;
         }
     }
