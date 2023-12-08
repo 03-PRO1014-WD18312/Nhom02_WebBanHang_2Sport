@@ -1,5 +1,9 @@
 <?php
 $i = 0;
+if (is_array($join_product_iddm)) {
+    // extract($join_product_iddm);
+}
+
 ?>
 <main class="container">
     <?php include "boxleft.php" ?>
@@ -17,8 +21,9 @@ $i = 0;
                         <label for="">DANH MỤC</label><br>
                         <select name="iddm" id="category">
                         <?php 
-                            foreach ($selectdm as $danhmuc) {?>
-                            <option value="<?= $danhmuc['idCategory'] ?>"<?= ($danhmuc['idCategory']) ?'selected':""?> ><?= $danhmuc['name'] ?></option>
+                            foreach ($selectdm as $danhmuc) {
+                                ?>
+                                <option value="<?= $danhmuc['id'] ?>" <?= ($join_product_iddm[0]['idCategory']==$danhmuc['id']) ?'selected':""?> ><?= $danhmuc['name'] ?></option>
                             <?php }
                         ?>
                         </select><br><br>
