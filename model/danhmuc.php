@@ -28,7 +28,7 @@ function check_category($id){
 }
 
 function list_category_home(){
-    $sql = "SELECT * from category order by id limit 7";
+    $sql = "SELECT * from category order by id";
     $listCate = pdo_query($sql);
     return $listCate;
 }
