@@ -204,6 +204,7 @@
     z-index: 999;        
     transform: translateX(-100%);
 }
+
 .chinhanh-none{
     width: 100%;
     height: 40px;
@@ -351,9 +352,9 @@ main .slide-banner img{
 }  
 /* end banner */
 /* catalog */
-/* .catalog{
-
-} */
+.catalog{
+    width: 100%;
+}
 .catalog .text{
     display: flex;
     justify-content: space-between;
@@ -374,17 +375,20 @@ main .slide-banner img{
     font-weight: bold;
 }
 .catalog .list-catalog{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+    display: flex;
     border-radius: 10px;
     background: linear-gradient(180deg, #010000 0%, #A70000 100%);
     height: 250px;
+    overflow: scroll;
 }
 .catalog .list-catalog .product-symbolic{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0px 24px;
 }
 .catalog .list-catalog .product-symbolic img{
     width: 140px;
@@ -540,6 +544,9 @@ main .slide-banner img{
     align-items: center;
     margin-top: 25px;
 }
+.form-signup form .accept span{
+    padding-left: 5px;
+}
 .form-signup form .accept:hover{
     color: var(--bg-color-black-ins);
 }
@@ -557,7 +564,6 @@ main .slide-banner img{
     width: 20px;
     height: 20px;
 }
-
 
 .form-signup form input[type="submit"]:hover{
     background-color: var(--bg-color-black-ins);
@@ -739,6 +745,7 @@ main .slide-banner img{
     max-width: 100%;
     height: 500px;
     margin: 30px auto;
+    position: relative;
 }
 .form-restore-pass h2{
     background: linear-gradient(180deg, #BD0000 0%, #5A0000 100%);
@@ -748,14 +755,30 @@ main .slide-banner img{
     text-align: center;
 }
 .form-restore-pass form{
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     background-color: var(--bg-color-ins);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     height: 90%;
-    
+    padding-top: 100px;
 }
+.form-restore-pass form input{
+    height: 35px;
+    border: 1px solid #d9d9d9;
+    padding: 0px 10px;
+    width: 50%;
+    outline: none;
+    margin: 10px 0px;
+    border-radius: 5px;
+}
+.form-restore-pass form input[type='submit']{
+    cursor: pointer;
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-ins);
+    font-size: 20px;
+}
+
 /* .form-forgetpass{
     margin-top: 30px;
     width: 100%;
@@ -848,9 +871,10 @@ main .slide-banner img{
     display: flex;
     gap: 15px;
     margin-bottom: 20px;
+    align-items: center;
 }
 .form-detail .infor-product .right .price .discount{
-    color: #FF0000;
+    color: #BD0000;
     font-size: 22px;
     font-weight: bold;
 }
@@ -888,16 +912,18 @@ main .slide-banner img{
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
+    align-items: center;
 }
-.form-detail .infor-product .right .choose-size div{
-    border: 0.5px solid var(--bg-color-black-ins);
+.size{
+    border: 1px solid #d9d9d9;
+    background-color: white;
+    cursor: pointer;
     text-align: center;
     padding: 3px 10px;
 }
-.form-detail .infor-product .right .choose-size div:hover{
+.size:active {
+    background-color: var(--bg-color-main);
     color: var(--bg-color-ins);
-    background-color: #FF0000;
-    border: 0.5px solid var(--bg-color-ins);
 }
 .form-detail .infor-product .right .quantity{
     font-weight: bold;
@@ -1155,6 +1181,7 @@ main .slide-banner img{
     max-width: 100%;
     gap: 2em;
     margin: 100px 0px;
+    overflow: scroll;
 }
 .policy-item{
     display: flex;
@@ -1182,6 +1209,12 @@ main .slide-banner img{
     font-style: italic;
     font-weight: lighter;
     color: #d9d9d9;
+}
+.policy-des h4, .policy-des p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
 }
 .fa-trash-can{
     color: var(--bg-color-main);
@@ -1616,7 +1649,7 @@ footer{
 }
 
 .color-rating {
-    color: #DB0000;}
+    color: #BD0000;}
 /* tim kiem */
 .extra{
     display: flex;
@@ -1739,4 +1772,47 @@ footer{
     width: 50%;
     margin: 0 auto;
     padding-left: 10px;
+}
+.form-infor_order_user{
+    margin: 30px 0px;
+}
+.form-infor_order_user h4{
+    padding: 15px 20px;
+    width: 20%;
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-ins);
+    border-radius: 0px 50px 50px 0px;
+}
+.form-infor_order_user form{
+    margin-top: 15px;
+}
+.form-infor_order_user form input , .form-infor_order_user form select{
+    height: 35px;
+    width: 30%;
+    padding-left: 10px;
+}
+.form-infor_order_user textarea{
+    width: 30%;
+    padding: 10px;
+}
+.form-infor_order_user form label{
+    padding: 5px 0px;
+    display: inline-block;
+    font-weight: 600;
+}
+.reset-pass{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.reset-pass label{
+    font-weight: 600;
+}
+.reset-pass input[type='password']{
+    width: 100%;
+}
+.reset-pass input{
+    width: 100%;
+}
+.reset-pass .img-pass-reset{
+    margin: 0 auto;
 }

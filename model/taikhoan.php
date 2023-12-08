@@ -58,9 +58,28 @@
     }
     //đổi mật khẩu
     function changePass($idkh,$passwordNews){
-      $sql="UPDATE `account` SET `password`='$passwordNews' WHERE  id=$idkh";
-      $changePass=pdo_query($sql);
-      return $changePass;
+      $sql="UPDATE `account` SET `password`='$passwordNews' WHERE id=$idkh";
+      pdo_execute($sql);
     }
-
+  //form khôi phục mật khẩu bằng email
+    function changePassEmail($email,$tokenEmail){
+      $sql="UPDATE `account` SET `tokenEmail`='$tokenEmail' WHERE email='$email'";
+      pdo_execute($sql);
+    }
+    //check token email
+    function searchTokenEmail($token_email){
+      $sql="SELECT * FROM `account` WHERE tokenEmail='$token_email'";
+      $searchTokenEmail=pdo_query($sql);
+      return $searchTokenEmail;
+    }
+    function restorePassEmail($md5PassNew,$token_email){
+      $sql="UPDATE `account` SET `password`='$md5PassNew' WHERE tokenEmail='$token_email'";
+      pdo_execute($sql);
+    }
+  //lấy tên của người dùng theo email
+  function searchName($email){
+    $sql="SELECT * FROM `account` WHERE email='$email'";
+    $searchName=pdo_query($sql);
+    return $searchName;
+  }
 ?>

@@ -359,6 +359,11 @@
                 $history_order=history_order($idkh);
                 include 'view/history_order.php';
                 break;
+            case 'infoOrder':
+                $id_order=$_GET['id'];
+                $show_order=show_order($id_order);
+                include 'view/infoOrder.php';
+                break;
             case 'show_order_hs':
                 $id_order=$_GET['id'];
                 $show_order=show_order($id_order);
@@ -386,6 +391,11 @@
                     }
                 }
                 include 'view/checkdh.php';
+                break;
+            case 'checkOrderDetail':
+                $id_order=$_GET['id'];
+                $show_order=show_order($id_order);
+                include 'view/showCheckOrderDetail.php';
                 break;
             case "detail" :
                 if(isset($_GET['id'])){
@@ -451,8 +461,55 @@
                 include'view/rate.php';
                 break;
             case "quenmatkhau" :
+                $email = $_POST['info_email'];
+                $searchName=searchName($email);
+                    if(isset($_POST['restorePass'])){
+                        if ($searchName==true) {
+                            $searchName=searchName($email);
+                            $tokenEmail=password_hash($email,PASSWORD_DEFAULT);
+                            changePassEmail($email,$tokenEmail);
+                        }else {
+                            echo'<div style="width:100%; text-align:center; padding-top:75px">
+                                <img src="assets/img/404.svg" width="50%" alt="">
+                            </div>';
+                            break;
+                        }
+                    }
                 include 'view/quenmatkhau.php';
             break;
+            case 'restorePass':
+                $token_email=$_GET['tokenEmail'];
+                $searchTokenEmail=searchTokenEmail($token_email);
+                if ($searchTokenEmail==true) {
+                    if (isset($_POST['pass_reset'])) {
+                        $token_email=$_GET['tokenEmail'];
+                        $passNew=$_POST['pass'];
+                        $passEnter=$_POST['passW'];
+                        $md5PassNew=md5($_POST['pass']);
+                        $error_PassNew=$error_PassEnter='';
+                        if (empty($passNew)) {
+                            $error_PassNew='(*)';
+                        }
+                        elseif (strlen($passNew) < 6) {
+                            $error_PassNew='( Mật khẩu phải lớn hơn 6 kí tự !)';
+                        }
+                        elseif ($passNew==$passEnter) {
+                            restorePassEmail($md5PassNew,$token_email);
+                            echo "
+                            <script>alert('Đổi mật khẩu thành công 👋');
+                                window.location.href = 'index.php?act=dangnhap';
+                            </script>";
+                        }else {
+                            $error_PassEnter="Mật khẩu nhập lại không chính xác !";
+                        }
+                    }
+                include 'view/formRestorePass.php';
+                }else {
+                    echo'<div style="width:100%; text-align:center; padding-top:75px">
+                        <img src="assets/img/404.svg" width="50%" alt="">
+                    </div>';
+                }
+                break;
             case "changePass":
                 if (isset($_POST['changePass'])) {
                     $passwordMain=$_POST['passMain'];

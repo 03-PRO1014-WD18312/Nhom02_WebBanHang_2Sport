@@ -56,7 +56,7 @@
                                 <span>
                                 <?php 
                                     if ($status == 0 ) {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #DB0000; border-radius:20px;"">Chờ xác nhận</span>';
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #BD0000; border-radius:20px;"">Chờ xác nhận</span>';
                                     }elseif ($status == 1) {
                                         echo '<span style="color:#fff; padding:2px 15px; background-color: #069A8E; border-radius:20px;">Chờ lấy hàng</span>';
                                     }
