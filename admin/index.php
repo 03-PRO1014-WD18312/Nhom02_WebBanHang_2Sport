@@ -78,8 +78,10 @@
                     $id = $_GET['id'];
                     $sanpham = select_update_product($id);
                     $listdanhmuc=list_category();
-                    $selectdm = join_sp_dm($id); 
+                    $selectdm = join_sp_dm(); 
+                    $join_product_iddm=join_product_iddm($id);
                     $count = count_update($id);
+
                 }
                 include "sanpham/update.php";
                 break;
