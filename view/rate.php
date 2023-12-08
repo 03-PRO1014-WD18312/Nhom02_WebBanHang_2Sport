@@ -22,7 +22,7 @@
         #ratingForm h3{
             padding: 10px 0px;
             width: 40%;
-            background-color: #DB0000;
+            background-color: #BD0000;
             border-radius: 0px 50px 50px 0px;
             box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
             margin: 10px 0px;
@@ -40,7 +40,7 @@
 
         .rating input {
             display: none;
-            color: #DB0000;
+            color: #BD0000;
         }
 
         .rating label {
@@ -53,7 +53,7 @@
         }
 
         .rating input:checked~label {
-            color: #DB0000;
+            color: #BD0000;
             opacity: 0.9;
         }
         .subRate{
@@ -72,7 +72,7 @@
             margin-bottom: 15px;
         }
         .subRate input{
-            background-color: #DB0000;
+            background-color: #BD0000;
             padding: 10px 15px;
             border: none;
             outline: none;

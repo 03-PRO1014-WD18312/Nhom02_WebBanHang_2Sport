@@ -14,7 +14,6 @@
                 </div>
             </div>
         </div>
-        
     </div>
         <div class="product-ins" id="searchResults">
         <?php 

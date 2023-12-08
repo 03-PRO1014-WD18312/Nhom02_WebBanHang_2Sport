@@ -25,8 +25,8 @@
         <li><a href="index.php?act=listbl">Bình luận</a></li>
             <li class="list-item">Thống kê <i class="fa-solid fa-caret-down"></i>
                 <ul class="menu-item">
-                    <li><a href="index.php?act=spdm">Sản phẩm theo danh mục</a></li>
-                    <li><a href="index.php?act=dhdt">Đơn hàng theo danh thu</a></li>
+                    <li><a href="index.php?act=spdm">Sản phẩm</a></li>
+                    <li><a href="index.php?act=dhdt">Danh thu</a></li>
                 </ul>
             </li>
         <!-- <li><a href="#">Phản hồi</a></li> -->

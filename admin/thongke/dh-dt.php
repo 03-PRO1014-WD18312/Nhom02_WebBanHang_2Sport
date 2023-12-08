@@ -8,7 +8,7 @@
                 <table class="table-tk">
                     <thead>
                         <tr>
-                            <th>Tên danh mục</th>
+                            <th>Danh mục</th>
                             <th>Số lượng đặt hàng hoàn thành</th>
                             <th>Doanh thu</th>
                             <th>Lãi 20% / SP</th>
