@@ -90,9 +90,9 @@
                         extract($row);    
                     ?>
                         <p id="display-discount" class="discount">Giảm giá: <?= $discount ?> đ</p>
-                        <p id="display-price" class="origin-price">Giá: <?= $price ?> đ</p>
+                        <p id="display-price" class="origin-price">Giá gốc: <?= $price ?> đ</p>
                     <?php break; }?>
-                    <p id="display-percent" class="percent"><?= round(($discount - $price) / 10000) ?>%</p>
+                    <!-- <p id="display-percent" class="percent"> round(($discount - $price) / 10000) %</p> -->
                 </div>
                 <div class="choose-color">
                     <p>Chọn màu:</p>
@@ -118,7 +118,8 @@
                     <?php foreach($infor as $row){
                         extract($row);    
                     ?>
-                        <div class="size" id="display-size"><?= $size ?></div>
+                        <div class="size" id="sizeElement"><?= $size ?></div>
+                        
                     <?php break; }?>
                 </div>
                 <div class="quantity">
@@ -315,9 +316,10 @@
 
         // Hiển thị giá, discount và size tương ứng
         document.getElementById("display-discount").innerText = "Giảm giá: " + variant.discount + " đ";
-        document.getElementById("display-price").innerText = "Giá: " + variant.price + " đ";
+        document.getElementById("display-price").innerText = "Giá gốc: " + variant.price + " đ";
         document.getElementById("display-size").innerText = variant.size;
         document.getElementById("display-percent").innerText = (variant.discount - variant.price) / 10000 + "%";
+
     }
 
     function clearVariantInfo() {
@@ -347,4 +349,7 @@
             input.value = value - 1;
         }
     }
+
 </script>
+    
+
