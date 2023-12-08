@@ -503,7 +503,7 @@
                             $error_PassEnter="Mật khẩu nhập lại không chính xác !";
                         }
                     }
-                include 'view/formRestorePass.php';
+                    include 'view/formRestorePass.php';
                 }else {
                     echo'<div style="width:100%; text-align:center; padding-top:75px">
                         <img src="assets/img/404.svg" width="50%" alt="">
@@ -564,4 +564,3 @@
     }
         include 'view/footer.php';
  ?>
- <?php var_dump($_SESSION['order']); ?>

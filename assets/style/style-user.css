@@ -1679,7 +1679,7 @@ footer{
 }
 .extra .filter{
     display: flex;
-    width: 60%;
+    width: 25%;
     justify-content: end;
     align-items: end;
 }
@@ -1691,19 +1691,29 @@ footer{
 }
 .extra #filterContainer{
     position: relative;
-}
-.extra #filterOptions {
-    position: absolute;
-    top: 75px;
-    right: -30px;
-     display: none;
-    position: absolute;
-    background-color: #fff; /* Màu nền của dropdown */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng */
-    border: 1px solid #ccc; /* Viền */
-    z-index: 1;
+    cursor: pointer;
 }
 
+.extra #filterOptions {
+    position: absolute;
+    width: 500px;
+    left: 45%;
+    padding-top: 20px;
+}
+.extra #filterOptions button{
+    width: 30%;
+    outline:none;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: 5px 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.extra #filterOptions button:hover{
+    color: #fff;
+    background-color: var(--bg-color-main);
+    transition: 0.3s;
+}
 .extra .filter-link {
     display: block;
     padding: 8px;
@@ -1724,21 +1734,33 @@ footer{
     position: absolute;
     left: 0px;
 }
-.ter #filterContainer{
+.ter #fatherFilter{
     position: relative;
 }
 .ter #filterOptions {
     position: absolute;
-    top: 70px;
-    right: -30px;
-    display: none;
-    position: absolute;
-    background-color: #fff; /* Màu nền của dropdown */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng */
-    border: 1px solid #ccc; /* Viền */
-    z-index: 1;
+    z-index: 999;
+    width: 500px;
+    padding-top: 25px;
+    left: 0;
+    cursor: pointer;
 }
-
+.ter #filterOptions button{
+    cursor: pointer;
+    background-color: var(--bg-color-ins);
+    border-radius: 10px;
+    width: 40%;
+    outline:none;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: 5px 0px;
+    font-size: 17px;
+}
+.ter #filterOptions button:hover{
+    color: #fff;
+    background-color: var(--bg-color-main);
+    transition: 0.3s;
+}
 .ter .filter-link {
     display: block;
     padding: 8px;
