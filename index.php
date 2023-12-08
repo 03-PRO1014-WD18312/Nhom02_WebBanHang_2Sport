@@ -10,15 +10,52 @@
     include 'model/rating.php';
     include 'model/order_payment.php';
     include 'model/checkOrder.php';
+
     if (isset($_SESSION['login'])) {
         $idkh = $_SESSION['login']['id'];
-        // Retrieve cart count
         $cartCount = count(showcart($idkh));
         include 'view/header.php';
     }
     else{
         include 'view/header.php';
     }
+
+    if (isset($_GET['message']) && strpos($_GET['message'], 'Successful') !== false) {
+        $idkh = $_SESSION['login']['id'];
+        if(isset($_SESSION['order'])) {
+            insert_infor_order($_SESSION['name_order'], $_SESSION['phone_order'], $_SESSION['address_order'], $idkh, 1);
+            $info_order=check_infor_order($idkh);
+            $idOrder = $info_order[0]['id'];
+
+            insert_history_cart($_SESSION['order'][0], $_SESSION['order'][1], $_SESSION['order'][6], $_SESSION['order'][7], $_SESSION['order'][3], $_SESSION['order'][8], $idOrder);
+            unset($_SESSION['order']);
+        } else{
+            $showcart = showcart($idkh);
+            $_SESSION['history_cart'] = $showcart;
+        
+            insert_infor_order($_SESSION['name_order'], $_SESSION['phone_order'], $_SESSION['address_order'], $idkh, 1);
+        
+            $info_order = check_infor_order($idkh);
+        
+            foreach ($_SESSION['history_cart'] as $cartItem) {
+                $productName = $cartItem['product_name'];
+                $price = $cartItem['variant_discount'];
+                $color = $cartItem['color'];
+                $size = $cartItem['size'];
+                $quantity = $cartItem['quantity'];
+                $idProduct = $cartItem['product_id'];
+                $idOrder = $info_order[0]['id'];
+                insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
+            }
+            unset($_SESSION['name_order']);
+            unset($_SESSION['phone_order']);
+            unset($_SESSION['address_order']);
+            clean_cart($idkh);
+        }
+            include "view/payment_atm.php";
+            header('Location: index.php');
+
+    } 
     if (isset($_GET['act']) && ($_GET['act'] != '')){
         $act = $_GET['act'];
         switch ($act) {
@@ -136,6 +173,7 @@
                 include 'view/home.php';
                 break;
             case "addcart" :
+                error_reporting(0);
                 $nameSp=$_POST['ten_sp'];
                 $priceSp=$_POST['price'];
                 $imgSp=$_POST['imgsp'];
@@ -254,24 +292,18 @@
                             ";
                         }
 
-                    }elseif(isset($_POST['payment_atm'])) {
-                        insert_infor_order($name_order,$phone_order,$address_order,$idkh,$payment);
-                            $info_order=check_infor_order($idkh);
-                            foreach ($_SESSION['history_cart'] as $cartItem) {
-                                $productName = $cartItem['product_name'];
-                                $price = $cartItem['variant_discount'];
-                                $color = $cartItem['color'];
-                                $size = $cartItem['size'];
-                                $quantity = $cartItem['quantity'];
-                                $idProduct = $cartItem['product_id'];
-                                $idOrder = $info_order[0]['id'];
-                                insert_history_cart($productName, $price, $color, $size, $quantity, $idProduct, $idOrder);
-                            }
-                            clean_cart($idkh);
-                            header('Location: view/payment_atm.php');
                     }
                 $showcart=showcart($idkh);
                 include 'view/order_cart.php';
+                break;
+            case 'momo_pay' :
+                error_reporting(0);
+                if(isset($_POST['payment_atm'])){
+                    $_SESSION['name_order'] = $_POST['name_order'];
+                    $_SESSION['phone_order'] = $_POST['phone_order'];
+                    $_SESSION['address_order'] = $_POST['address_order'];
+                    include "view/payment_atm.php";
+                }
                 break;
             case 'order':
                 if (isset($_POST['order_pay'])){
@@ -311,6 +343,15 @@
                     }
                 }
                 include 'view/order.php';
+                break;
+            case 'momo_pay1' :
+                error_reporting(0);
+                if(isset($_POST['payment_atm1'])){
+                    $_SESSION['name_order'] = $_POST['name_order'];
+                    $_SESSION['phone_order'] = $_POST['phone_order'];
+                    $_SESSION['address_order'] = $_POST['address_order'];
+                    include "view/payment_atm.php";
+                }
                 break;
             case 'history-order':
                 $idkh = $_SESSION['login']['id'];
@@ -460,8 +501,10 @@
             include 'view/home.php';
             break;
         }
+        
     } else{
         include 'view/home.php';
     }
         include 'view/footer.php';
  ?>
+ <?php var_dump($_SESSION['order']); ?>

@@ -53,7 +53,14 @@
                 ?>
             </table> 
         </div>
-        <div>
+        <div class="select_payment">
+            <select name="payment_method" id="payment_method">
+                <option value="">-Chọn phương thức thanh toán-</option>
+                <option value="cash">💵Thanh toán bằng tiền mặt</option>
+                <option value="momo">🏧 Thanh toán bằng ATM MOMO</option>
+            </select>
+        </div>
+        <div id="cash_form" style="display: none;">
             <form action="" method="post" class="profile-payment">
             <?php 
                 echo'
@@ -83,18 +90,56 @@
                                 <h4><i class="fa-solid fa-money-bill"></i> TỔNG TIỀN: ' . number_format($sum, 0, '.', ',') . ' VNĐ</h4>
                                 <div class="payment-in">
                                     <input type="hidden" name="tongtien_order" value="' . $sum . '">
-                                    <h5><i class="fa-solid fa-credit-card"></i> HÌNH THỨC THANH TOÁN <a href="index.php?act=setInfoUser"><i class="fa-solid fa-square-pen" style="font-size:15px; color:#BD0000;"></i></a></h5> 
                                     <div class="payout-in">
-                                        <select class="select-payment" name="payment_method" id="">
-                                            <option value="0" selected>💵 Thanh toán bằng tiền mặt</option>
-                                            <option value="1">🏧 Thanh toán bằng ATM MOMO</option>
-                                        </select>
                                         <input type="submit" name="payment" value="THANH TOÁN BẰNG TIỀN MẶT">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     '; 
+                    
+            ?>
+            </form>
+        <div>
+
+        <div id="momo_form" style="display: none;">
+            <form method="POST" enctype="application/x-www-form-urlencoded" action="index.php?act=momo_pay" class="profile-payment">
+            <?php 
+                echo'
+                <div class="form-receive">                            
+                    <h4>Thông tin nhận hàng</h4>
+                    <div class="receive-infor">                        
+                        <div class="show_infor_order">                       
+                        <label for="">Họ và tên</label> <span style="color:#DB0000;">'.$error_name.'</span>
+                            <input type="text" name="name_order" placeholder="Nhập họ và tên : " value="'.$name.'"><br>
+                            <label for="">Số điện thoại</label> <span style="color:#DB0000;">'.$error_name.'</span>
+                            <input type="text" name="phone_order" placeholder="Nhập số điện thoại : " value="'.$phone.'"><br>
+                            <label for="">Địa chỉ</label> <span style="color:#DB0000;">'.$error_name.'</span>
+                            <textarea name="address_order" id="" cols="30" rows="6" placeholder="Nhập địa chỉ nhận hàng : ">'.$address.'</textarea><br>
+                        </div>
+                    </div>
+                </div>
+                ';
+                    $sum=0;
+                    foreach ($showcart as $cart ) {
+                        extract($cart);
+                        $thanhtien = $variant_discount * $quantity;
+                        $thanhtien_formatted = number_format($thanhtien, 0, '.', ',');
+                        $sum += $thanhtien;
+                    }
+                        echo '
+                            <div class="right_order">
+                                <h4><i class="fa-solid fa-money-bill"></i> TỔNG TIỀN: ' . number_format($sum, 0, '.', ',') . ' VNĐ</h4>
+                                <div class="payment-in">
+                                    <input type="hidden" name="tongtien_order" value="' . $sum . '">
+                                    <div class="payout-in">
+                                        <input type="submit" name="payment_atm" value="THANH TOÁN BẰNG MOMO">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    '; 
+                    
             ?>
             </form>
         </div>
@@ -106,3 +151,24 @@
         ';
     }
 ?>
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var paymentMethodSelect = document.getElementById("payment_method");
+            var cashForm = document.getElementById("cash_form");
+            var momoForm = document.getElementById("momo_form");
+
+            paymentMethodSelect.addEventListener("change", function () {
+                // Hide all forms
+                cashForm.style.display = "none";
+                momoForm.style.display = "none";
+
+                // Show the selected form based on the payment method
+                var selectedPaymentMethod = paymentMethodSelect.value;
+                if (selectedPaymentMethod === "cash") {
+                    cashForm.style.display = "block";
+                } else if (selectedPaymentMethod === "momo") {
+                    momoForm.style.display = "block";
+                }
+            });
+        });
+    </script>

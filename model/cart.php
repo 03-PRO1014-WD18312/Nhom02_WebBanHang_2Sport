@@ -36,6 +36,7 @@
         product.id AS product_id,
         product.name AS product_name,
         product.img AS product_img,
+        variants.id AS variant_id,
         variants.price AS variant_price,
         variants.discount AS variant_discount,
         variants.quantity AS variant_quantity,
