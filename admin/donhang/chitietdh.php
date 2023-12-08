@@ -112,8 +112,8 @@
                         <div class="payment-cash">
                             <i class="fa-solid fa-credit-card"></i> <span>Phương thức thanh toán</span>
                             <select name="" id="" disabled>
-                                <option value="0" <?php if($_SESSION['login']['payment'] == "0") echo "selected";?>>💵 Thanh toán bằng tiền mặt</option>
-                                <option value="1" <?php if($_SESSION['login']['payment'] == "1") echo "selected";?>>🏧 Thanh toán bằng ATM MOMO</option>
+                                <option value="0" <?= ($payment == "0" ? "selected" : "") ?>>💵 Thanh toán bằng tiền mặt</option>
+                                <option value="1" <?= ($payment == "1" ? "selected" : "")?>>🏧 Thanh toán bằng ATM MOMO</option>
                             </select>
                         </div>
                     </div>

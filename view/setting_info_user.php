@@ -37,11 +37,6 @@
                         <input type="text" name="phone_order" placeholder="Nhập số điện thoại : " value="<?= $phone;?>"><br><br>
                         <label for="">Địa chỉ</label><br>
                         <textarea name="address_order" id="" cols="30" rows="6" placeholder="Nhập địa chỉ nhận hàng : "><?= $address;?></textarea><br><br>
-                        <label for=""><i class="fa-solid fa-credit-card"></i> Cài đặt phương thức thanh toán</label>
-                        <select class="select-payment" name="payment_method" id="">
-                            <option value="0" <?php if($payment == "0") echo "selected";?>>💵 Thanh toán bằng tiền mặt</option>
-                            <option value="1" <?php if($payment == "1") echo "selected";?>>🏧 Thanh toán bằng ATM MOMO</option>
-                        </select>
                     </div>
                 </div>
                 <br><br>
