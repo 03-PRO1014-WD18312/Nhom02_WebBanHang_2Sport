@@ -1,3 +1,9 @@
+<?php
+$listGiay = list_giay_home();
+$listGang = list_gang_home();
+$listBall = list_ball_home();
+$listQuanao = list_quanao_home();
+?>
 <main class="container">
     <div class="slide-banner">
         <a href=""><img id="banner" src="assets/img/banner1.png" alt=""></a>
@@ -25,10 +31,10 @@
         </div>
     </div>
     <div class="product-wp">
-        <h3>GIÀY BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
+        <h3>GIÀY BÓNG ĐÁ <span>( <?= count($listGiay) ?> SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
-        $listGiay = list_giay_home();
+        
         foreach ($listGiay as $sp){
             // echo '<pre>';
             // var_dump($sp);
@@ -63,10 +69,10 @@
         <div class="view-now"><a href="index.php?act=sanpham&id=4">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
-        <h3>GĂNG TAY THỦ MÔN <span>( 100 SẢN PHẨM )</span></h3>
+        <h3>GĂNG TAY THỦ MÔN <span>( ( <?= count($listGang) ?> SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
-        $listGang = list_gang_home();
+        
         foreach ($listGang as $sp){
             extract($sp);
         ?>
@@ -100,10 +106,10 @@
         <div class="view-now"><a href="index.php?act=sanpham&id=5">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
-        <h3>QUẢ BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
+        <h3>QUẢ BÓNG ĐÁ <span>( ( <?= count($listBall) ?> SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
-        $listBall = list_ball_home();
+        
         foreach ($listBall as $sp){
             extract($sp);
         ?>
@@ -137,10 +143,10 @@
         <div class="view-now"><a href="index.php?act=sanpham&id=7">XEM THÊM</a></div>
     </div>
     <div class="product-wp">
-        <h3>ÁO BÓNG ĐÁ <span>( 100 SẢN PHẨM )</span></h3>
+        <h3>ÁO BÓNG ĐÁ <span>( ( <?= count($listQuanao) ?> SẢN PHẨM )</span></h3>
         <div class="product-ins">
         <?php 
-        $listQuanao = list_quanao_home();
+        
         foreach ($listQuanao as $sp){
             extract($sp);
         ?>
