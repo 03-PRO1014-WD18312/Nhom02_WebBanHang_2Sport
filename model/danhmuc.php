@@ -28,7 +28,7 @@ function check_category($id){
 }
 
 function list_category_home(){
-    $sql = "SELECT * from category order by id limit 7";
+    $sql = "SELECT * from category order by id ";
     $listCate = pdo_query($sql);
     return $listCate;
 }
@@ -41,9 +41,14 @@ function delete_category($id){
     $sql = "DELETE from category where id = $id";
     pdo_execute($sql);
 }
-function join_sp_dm($id){
-    $sql = "SELECT * FROM product JOIN category ON product.idCategory = category.id WHERE product.id = $id";
+function join_sp_dm(){
+    $sql = "SELECT * FROM category order by id desc";
     $dssp=pdo_query($sql);
     return $dssp;
+}
+function join_product_iddm($id){
+    $sql="SELECT * FROM `product` WHERE id = $id";
+    $join_product_iddm=pdo_query($sql);
+    return $join_product_iddm;
 }
 ?>
