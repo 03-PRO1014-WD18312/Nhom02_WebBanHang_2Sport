@@ -56,7 +56,7 @@
                                 <span>
                                 <?php 
                                     if ($status == 0 ) {
-                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #DB0000; border-radius:20px;"">Chờ xác nhận</span>';
+                                        echo '<span style="color:#fff; padding:2px 15px; background-color: #BD0000; border-radius:20px;"">Chờ xác nhận</span>';
                                     }elseif ($status == 1) {
                                         echo '<span style="color:#fff; padding:2px 15px; background-color: #069A8E; border-radius:20px;">Chờ lấy hàng</span>';
                                     }
@@ -112,8 +112,8 @@
                         <div class="payment-cash">
                             <i class="fa-solid fa-credit-card"></i> <span>Phương thức thanh toán</span>
                             <select name="" id="" disabled>
-                                <option value="0" <?php if($_SESSION['login']['payment'] == "0") echo "selected";?>>💵 Thanh toán bằng tiền mặt</option>
-                                <option value="1" <?php if($_SESSION['login']['payment'] == "1") echo "selected";?>>🏧 Thanh toán bằng ATM MOMO</option>
+                                <option value="0" <?= ($payment == "0" ? "selected" : "") ?>>💵 Thanh toán bằng tiền mặt</option>
+                                <option value="1" <?= ($payment == "1" ? "selected" : "")?>>🏧 Thanh toán bằng ATM MOMO</option>
                             </select>
                         </div>
                     </div>

@@ -25,8 +25,6 @@
                     $sum=0;
                     foreach ($show_order as $show) {
                         extract($show);
-                        // echo '<pre>';
-                        // var_dump($show);
                         $price_formatted = number_format($price, 0, '.', ',');
                         $thanhtien = $price * $quantity;
                         $thanhtien_formatted = number_format($thanhtien, 0, '.', ',');
@@ -46,9 +44,9 @@
                                         $id_product=$idProduct;
                                         $comPareCheckRateTrue=comPareRate($idkh,$id_product);
                                         if (empty($comPareCheckRateTrue)) {
-                                            echo'<a style="background-color: #DB0000; padding:7px 15px;text-decoration: none; color:#fff; border-radius:5px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="index.php?act=rate&id='.$id.'&idproduct='.$idProduct.'" target="rate">ĐÁNH GIÁ 🌟</a>';
+                                            echo'<a style="background-color: #BD0000; padding:7px 15px;text-decoration: none; color:#fff; border-radius:5px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="index.php?act=rate&id='.$id.'&idproduct='.$idProduct.'" target="rateandinfo">ĐÁNH GIÁ 🌟</a>';
                                         }else {
-                                            echo'<a style="background-color: #DB0000; padding:7px 15px;text-decoration: none; color:#fff; border-radius:5px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="index.php?act=rate&id='.$id.'&idproduct='.$idProduct.'" target="rate">ĐÁNH GIÁ LẠI 🌟</a>';
+                                            echo'<a style="background-color: #BD0000; padding:7px 15px;text-decoration: none; color:#fff; border-radius:5px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;" href="index.php?act=rate&id='.$id.'&idproduct='.$idProduct.'" target="rateandinfo">ĐÁNH GIÁ LẠI 🌟</a>';
                                         }
                                     }
                                 ?></td>
@@ -58,7 +56,7 @@
                         <td colspan="3" style="text-align:left; padding-left:10px;">TRẠNG THÁI ĐƠN HÀNG: 
                         <?php 
                         if ($status == 0 ) {
-                                echo '<span style="color:#fff; padding:2px 15px; background-color: #DB0000; border-radius:20px;"">Chờ xác nhận</span>';
+                                echo '<span style="color:#fff; padding:2px 15px; background-color: #BD0000; border-radius:20px;"">Chờ xác nhận</span>';
                             }elseif ($status == 1) {
                                 echo '<span style="color:#fff; padding:2px 15px; background-color: #069A8E; border-radius:20px;">Chờ lấy hàng</span>';
                             }
@@ -73,10 +71,11 @@
                             } ?>
                                     
                         </td>
+                        <td style="text-align:right;padding:15px 10px;"><a target="rateandinfo" href="index.php?act=infoOrder&id=<?=$idOrder?>" style="background-color: #BD0000; padding:7px 15px;text-decoration: none; color:#fff; border-radius:5px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">XEM THÔNG TIN NHẬN HÀNG</a></td>
                         <td colspan="4" style="text-align:right;padding:15px 10px;">TỔNG TIỀN: <span style="color:#DB0000;"><?=number_format($sum, 0, '.', ',');?> VND</span></td>
                     </tr>
             </tbody>
         </table>
-        <iframe src="" name="rate" frameborder="0" class="container" width="100%" height="500px"></iframe>
+        <iframe src="" name="rateandinfo" frameborder="0" class="container" width="100%" height="500px"></iframe>
     </div>
 </main>

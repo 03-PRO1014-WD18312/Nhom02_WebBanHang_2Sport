@@ -19,7 +19,7 @@
                     </div>
                     <span style="color:#DB0000; font-size:13px; font-style:italic; padding-top:10px; display:inline-block;"><?= $error_captcha; ?></span>
                 </div>
-                <button type="submit" name="checkOrder">TRA CỨU</button>
+                <button  style="padding: 15px 25px; background-color:#bd0000; color: #fff; border:none; outline:none; border-radius:10px; cursor: pointer;" type="submit" name="checkOrder">TRA CỨU <i class="fa-solid fa-arrow-right"></i></button>
                 <!-- <a href="#" class="btn-checkdh">TRA CỨU <i class="fa-solid fa-arrow-right"></i></a> -->
             </form>
         </div>
