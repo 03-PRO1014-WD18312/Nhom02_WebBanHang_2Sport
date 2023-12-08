@@ -1,17 +1,20 @@
 <main class="container">
     
     <div class="product-wp">
-        <h3><?= $listsp[0]['category_name'] ?> <span>( 100 SẢN PHẨM )</span></h3>
-        <div class="filter" id="filterContainer">
-            <div id="fatherFilter">
-                <i class="fa-solid fa-filter" id="filterIcon"></i>
-                <div class="filter-options" id="filterOptions">
-                    <button value="view desc" class="filter-link">Được xem nhiều nhất</button>
-                    <button value="discount asc" class="filter-link">Từ giá thấp đến cao</button>
-                    <button value="discount desc" class="filter-link">Từ giá cao đến thấp</button>
+        <h3><?= $listsp[0]['category_name'] ?> <span>( <?= count($listsp) ?> SẢN PHẨM )</span></h3>
+        <div class="ter">
+            <div class="filter" id="filterContainer">
+                <div id="fatherFilter">
+                    <i class="fa-solid fa-filter" id="filterIcon"></i>
+                    <div class="filter-options" id="filterOptions">
+                        <button value="view desc" class="filter-link">Được xem nhiều nhất</button>
+                        <button value="discount asc" class="filter-link">Từ giá thấp đến cao</button>
+                        <button value="discount desc" class="filter-link">Từ giá cao đến thấp</button>
+                    </div>
                 </div>
             </div>
         </div>
+        
     </div>
         <div class="product-ins" id="searchResults">
         <?php 

@@ -1277,13 +1277,26 @@ main .slide-banner img{
     font-weight: 100;
     color: #444444;
 }
+.select_payment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+#payment_method{
+    padding: 10px 0;
+    background-color: var(--bg-color-main);
+    color: var(--bg-color-ins);
+    border: 1px solid var(--bg-color-ins);
+}
 .right_order{
     background-color: var(--bg-color-ins);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
     max-width: 100%;
     padding: 10px;
-    height: 200px;
+    height: 150px;
 }
 .right_order img{
     width: 100%;
@@ -1304,6 +1317,10 @@ main .slide-banner img{
 }
 .payout-in{
     max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
 .select-payment{
@@ -1636,16 +1653,17 @@ footer{
 .extra .filter i{
     color: var(--bg-color-main);
     position: absolute;
-    right: 35px;
+    right: 30px;
+    top: 50px;
 }
 .extra #filterContainer{
     position: relative;
 }
 .extra #filterOptions {
     position: absolute;
-    top: 70px;
+    top: 75px;
     right: -30px;
-     display: none;/* Ẩn ban đầu */
+     display: none;
     position: absolute;
     background-color: #fff; /* Màu nền của dropdown */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng */
@@ -1661,6 +1679,41 @@ footer{
 }
 
 .extra .filter-link:hover {
+    background-color: #f0f0f0; /* Màu nền khi hover */
+
+}
+.ter .filter{
+    display: flex;
+    width: 100%;
+}
+.ter .filter i{
+    color: var(--bg-color-main);
+    position: absolute;
+    left: 0px;
+}
+.ter #filterContainer{
+    position: relative;
+}
+.ter #filterOptions {
+    position: absolute;
+    top: 70px;
+    right: -30px;
+    display: none;
+    position: absolute;
+    background-color: #fff; /* Màu nền của dropdown */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    border: 1px solid #ccc; /* Viền */
+    z-index: 1;
+}
+
+.ter .filter-link {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: #333; /* Màu chữ */
+}
+
+.ter .filter-link:hover {
     background-color: #f0f0f0; /* Màu nền khi hover */
 
 }

@@ -15,9 +15,22 @@
         $sql="INSERT INTO `order_info`(`payment`) VALUES ('$payment_method')";
         pdo_execute($sql);
     }
-    //clean-cart khi thanh toán thành công
+    //clean-cart khi thanh toán thành công và update lại số lượng
     function clean_cart($idkh){
-        $sql="DELETE FROM `cart` WHERE idAccount=$idkh";
+        $cartItems = showcart($idkh);
+    
+        foreach ($cartItems as $cartItem) {
+            $variantId = $cartItem['variant_id'];
+            $quantity = $cartItem['quantity'];
+    
+            update_product_quantity($variantId, $quantity);
+        }
+    
+        $sql = "DELETE FROM `cart` WHERE idAccount = $idkh";
+        pdo_execute($sql);
+    }
+    function update_product_quantity($variantId, $quantity) {
+        $sql = "UPDATE `variants` SET `quantity` = `quantity` - $quantity WHERE id = $variantId";
         pdo_execute($sql);
     }
     //lịch sử mua hàng
